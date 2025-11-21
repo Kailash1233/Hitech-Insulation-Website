@@ -1,0 +1,724 @@
+export interface Product {
+  id: string;
+  name: string;
+  category: string;
+  shortDescription: string;
+  description: string[];
+  specifications: {
+    label: string;
+    value: string;
+  }[];
+  applications: string[];
+  benefits: string[];
+  relatedProducts: string[];
+}
+
+export const products: Record<string, Product> = {
+  'pressboard-3mm': {
+    id: 'pressboard-3mm',
+    name: 'Pressboard 3mm - Standard Electrical Insulation',
+    category: 'Pressboard',
+    shortDescription: 'High-density electrical insulation pressboard for transformer applications',
+    description: [
+      'Our 3mm standard pressboard delivers reliable electrical insulation for power transformers and distribution equipment. Manufactured from high-quality cellulose fibers, this pressboard provides excellent dielectric strength and mechanical stability.',
+      'This material is ideal for transformer manufacturers who need consistent quality at competitive prices. Every sheet undergoes rigorous testing to ensure it meets international standards for electrical insulation.',
+      'Whether you\'re building large power transformers or smaller distribution units, our 3mm pressboard offers the perfect balance of insulation performance and ease of handling.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'Cellulose fiber' },
+      { label: 'Thickness', value: '3mm ±0.1mm' },
+      { label: 'Density', value: '1.2 g/cm³' },
+      { label: 'Dielectric Strength', value: '≥15 kV/mm' },
+      { label: 'Temperature Rating', value: '-40°C to 105°C' },
+      { label: 'Available Sizes', value: '1000x2000mm, Custom sizes available' },
+      { label: 'Custom Options', value: 'Pre-cut shapes, Custom thickness' }
+    ],
+    applications: [
+      'Power transformer insulation barriers',
+      'Distribution transformer winding separation',
+      'High-voltage equipment insulation',
+      'Electrical panel board components',
+      'Bushing insulation'
+    ],
+    benefits: [
+      'Excellent dielectric properties for safe operation',
+      'High mechanical strength prevents deformation',
+      'Consistent quality across every batch',
+      'ISO-certified manufacturing process'
+    ],
+    relatedProducts: ['pre-compressed-pressboard', 'kraft-paper', 'nomex-paper']
+  },
+  'pre-compressed-pressboard': {
+    id: 'pre-compressed-pressboard',
+    name: 'Pre-Compressed Pressboard - High-Density Transformer Grade',
+    category: 'Pressboard',
+    shortDescription: 'Premium pre-compressed pressboard for demanding transformer applications',
+    description: [
+      'Pre-compressed pressboard offers superior density and dimensional stability compared to standard pressboard. The pre-compression process creates a material with enhanced mechanical properties and reduced shrinkage during transformer operation.',
+      'This premium grade material is the choice of leading transformer manufacturers who cannot compromise on quality. The higher density provides better resistance to oil absorption and maintains consistent performance over the equipment\'s lifetime.',
+      'Used in critical applications where standard pressboard would not meet performance requirements, our pre-compressed pressboard delivers the reliability you need for high-value transformer projects.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'Pre-compressed cellulose fiber' },
+      { label: 'Thickness', value: '3mm - 75mm' },
+      { label: 'Density', value: '1.3 - 1.4 g/cm³' },
+      { label: 'Dielectric Strength', value: '≥18 kV/mm' },
+      { label: 'Temperature Rating', value: '-40°C to 105°C' },
+      { label: 'Available Sizes', value: '1000x2000mm, Custom sizes' },
+      { label: 'Custom Options', value: 'Any thickness, Pre-cut components' }
+    ],
+    applications: [
+      'Large power transformer insulation',
+      'High-voltage transformer barriers',
+      'Critical winding insulation',
+      'Transformer spacers and supports',
+      'Premium electrical equipment'
+    ],
+    benefits: [
+      'Superior dimensional stability under oil and heat',
+      'Higher density for better performance',
+      'Reduced shrinkage during operation',
+      'Extended equipment service life'
+    ],
+    relatedProducts: ['pressboard-3mm', 'kraft-paper', 'transformer-kits']
+  },
+  'fr4-epoxy-sheet': {
+    id: 'fr4-epoxy-sheet',
+    name: 'Fiberglass Epoxy Sheet FR4 - General Purpose Grade',
+    category: 'Epoxy Sheets',
+    shortDescription: 'Superior mechanical strength epoxy sheets for demanding applications',
+    description: [
+      'FR4 fiberglass epoxy sheets are the industry standard for electrical and mechanical applications. Composed of woven fiberglass cloth impregnated with epoxy resin, this material offers excellent strength, dimensional stability, and electrical insulation.',
+      'Our FR4 sheets meet international standards and are perfect for manufacturing printed circuit boards, electrical insulation components, and mechanical parts that require high strength-to-weight ratio.',
+      'Available in multiple thicknesses and sizes, FR4 sheets can be easily machined, drilled, and punched to create custom components for your specific application.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'Epoxy resin + Fiberglass cloth' },
+      { label: 'Thickness', value: '0.5mm - 100mm' },
+      { label: 'Tensile Strength', value: '≥340 MPa' },
+      { label: 'Dielectric Strength', value: '≥16 kV/mm' },
+      { label: 'Temperature Rating', value: '-40°C to 130°C' },
+      { label: 'Available Sizes', value: '1020x1220mm, 1020x2040mm' },
+      { label: 'Custom Options', value: 'CNC machining, Laser cutting' }
+    ],
+    applications: [
+      'Printed circuit board substrates',
+      'Electrical insulation barriers',
+      'Structural components for electronics',
+      'Test fixtures and jigs',
+      'Motor and generator insulation'
+    ],
+    benefits: [
+      'Excellent electrical insulation properties',
+      'High mechanical strength and rigidity',
+      'Easy to machine and fabricate',
+      'Flame retardant properties (FR4 grade)'
+    ],
+    relatedProducts: ['g10-epoxy-sheet', 'epoxy-rods', 'paper-phenolic']
+  },
+  'g10-epoxy-sheet': {
+    id: 'g10-epoxy-sheet',
+    name: 'Epoxy Sheet G10 - High Mechanical Strength Variant',
+    category: 'Epoxy Sheets',
+    shortDescription: 'Premium G10 grade for maximum strength and durability',
+    description: [
+      'G10 epoxy sheets provide even higher mechanical strength than FR4, making them ideal for applications requiring maximum structural integrity. The continuous filament fiberglass reinforcement creates a material with superior impact resistance and dimensional stability.',
+      'This material excels in applications where FR4 would be insufficient. G10 maintains its properties across a wide temperature range and resists moisture absorption better than many alternatives.',
+      'Choose G10 when your application demands the highest quality epoxy laminate. Our G10 sheets are manufactured to strict tolerances and inspected for consistency.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'Epoxy resin + Continuous fiberglass' },
+      { label: 'Thickness', value: '0.5mm - 100mm' },
+      { label: 'Tensile Strength', value: '≥380 MPa' },
+      { label: 'Dielectric Strength', value: '≥18 kV/mm' },
+      { label: 'Temperature Rating', value: '-60°C to 140°C' },
+      { label: 'Available Sizes', value: '1020x1220mm, 1020x2040mm' },
+      { label: 'Custom Options', value: 'Precision machining, Custom dimensions' }
+    ],
+    applications: [
+      'High-strength structural components',
+      'Aerospace and defense applications',
+      'Cryogenic insulation systems',
+      'High-performance electrical insulation',
+      'Precision mechanical parts'
+    ],
+    benefits: [
+      'Maximum mechanical strength in epoxy laminates',
+      'Excellent low-temperature properties',
+      'Superior moisture resistance',
+      'Maintains properties under extreme conditions'
+    ],
+    relatedProducts: ['fr4-epoxy-sheet', 'epoxy-rods', 'delrin-sheet']
+  },
+  'paper-phenolic': {
+    id: 'paper-phenolic',
+    name: 'Paper Phenolic Laminate - NEMA XX Grade',
+    category: 'Phenolic Laminates',
+    shortDescription: 'Paper-based phenolic laminate for electrical applications',
+    description: [
+      'Paper phenolic laminates combine kraft paper with phenolic resin to create an economical material with good electrical insulation properties. This material is widely used in electrical equipment where high mechanical strength is not critical.',
+      'NEMA XX grade paper phenolic offers consistent quality at a competitive price point. It machines easily and provides reliable electrical insulation for a variety of applications.',
+      'This material is the go-to choice for manufacturers who need cost-effective electrical insulation without compromising on quality standards.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'Phenolic resin + Kraft paper' },
+      { label: 'Thickness', value: '0.5mm - 50mm' },
+      { label: 'Tensile Strength', value: '≥60 MPa' },
+      { label: 'Dielectric Strength', value: '≥12 kV/mm' },
+      { label: 'Temperature Rating', value: '-40°C to 120°C' },
+      { label: 'Available Sizes', value: '1020x1220mm, Custom sizes' },
+      { label: 'Custom Options', value: 'Punching, Die-cutting, Machining' }
+    ],
+    applications: [
+      'Terminal boards and strips',
+      'Electrical panel insulation',
+      'Switch and relay components',
+      'Transformer barriers',
+      'General electrical insulation'
+    ],
+    benefits: [
+      'Cost-effective electrical insulation',
+      'Easy to machine and fabricate',
+      'Good dielectric properties',
+      'Consistent quality and availability'
+    ],
+    relatedProducts: ['cotton-phenolic', 'bakelite-sheet', 'fr4-epoxy-sheet']
+  },
+  'cotton-phenolic': {
+    id: 'cotton-phenolic',
+    name: 'Cotton Phenolic Laminate - NEMA CE Grade',
+    category: 'Phenolic Laminates',
+    shortDescription: 'Cotton-based phenolic for mechanical applications',
+    description: [
+      'Cotton phenolic laminates use cotton fabric reinforcement for applications requiring higher impact resistance than paper-based laminates. NEMA CE grade material offers excellent machinability and wear resistance.',
+      'This material is ideal for mechanical components that also require electrical insulation properties. The cotton fabric reinforcement provides better impact strength and toughness compared to paper phenolic.',
+      'Manufacturers choose cotton phenolic when they need a material that can withstand mechanical stress while maintaining electrical insulation.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'Phenolic resin + Cotton fabric' },
+      { label: 'Thickness', value: '1mm - 75mm' },
+      { label: 'Tensile Strength', value: '≥90 MPa' },
+      { label: 'Dielectric Strength', value: '≥10 kV/mm' },
+      { label: 'Temperature Rating', value: '-40°C to 120°C' },
+      { label: 'Available Sizes', value: '1020x1220mm, 1020x2040mm' },
+      { label: 'Custom Options', value: 'CNC machining, Custom shapes' }
+    ],
+    applications: [
+      'Gears and mechanical components',
+      'Washers and spacers',
+      'Electrical motor parts',
+      'Machinery insulation',
+      'Wear-resistant components'
+    ],
+    benefits: [
+      'Superior impact resistance',
+      'Excellent machinability',
+      'Good wear resistance',
+      'Combined electrical and mechanical properties'
+    ],
+    relatedProducts: ['paper-phenolic', 'bakelite-sheet', 'delrin-sheet']
+  },
+  'bakelite-sheet': {
+    id: 'bakelite-sheet',
+    name: 'Bakelite Sheet - General Phenolic Applications',
+    category: 'Phenolic Laminates',
+    shortDescription: 'Versatile bakelite sheets for diverse industrial uses',
+    description: [
+      'Bakelite sheets are versatile phenolic laminates suitable for both electrical and mechanical applications. Available in paper and cotton grades, these sheets offer reliable performance across a wide range of uses.',
+      'As one of the earliest synthetic materials, bakelite has proven its reliability over decades of industrial use. Our bakelite sheets maintain the traditional quality while meeting modern manufacturing standards.',
+      'Whether you need electrical insulation, mechanical components, or heat-resistant parts, our bakelite sheets deliver consistent performance at competitive prices.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'Phenolic resin + Paper/Cotton' },
+      { label: 'Thickness', value: '0.5mm - 100mm' },
+      { label: 'Tensile Strength', value: '60-90 MPa (grade dependent)' },
+      { label: 'Dielectric Strength', value: '10-12 kV/mm' },
+      { label: 'Temperature Rating', value: '-40°C to 130°C' },
+      { label: 'Available Sizes', value: '1020x1220mm, Custom sizes' },
+      { label: 'Custom Options', value: 'Multiple grades, Custom fabrication' }
+    ],
+    applications: [
+      'Electrical switchgear components',
+      'Industrial machinery parts',
+      'Heat-resistant handles and knobs',
+      'Terminal blocks and connectors',
+      'General purpose insulation'
+    ],
+    benefits: [
+      'Proven reliability over decades',
+      'Available in multiple grades',
+      'Heat and chemical resistance',
+      'Cost-effective for many applications'
+    ],
+    relatedProducts: ['paper-phenolic', 'cotton-phenolic', 'fr4-epoxy-sheet']
+  },
+  'kraft-paper': {
+    id: 'kraft-paper',
+    name: 'Electrical Grade Kraft Paper',
+    category: 'Insulation Paper',
+    shortDescription: 'Premium kraft paper for transformer winding insulation',
+    description: [
+      'Electrical grade kraft paper is essential for transformer winding insulation. Our kraft paper is manufactured to precise thickness tolerances and undergoes rigorous testing to ensure consistent electrical properties.',
+      'This specialized paper provides reliable insulation between transformer windings while allowing proper oil flow for cooling. The high dielectric strength prevents electrical breakdown while maintaining flexibility for easy winding.',
+      'Transformer manufacturers trust our kraft paper for both small distribution transformers and large power transformers. Every roll is tested and certified before shipping.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'Pure cellulose kraft pulp' },
+      { label: 'Thickness', value: '0.05mm - 0.5mm' },
+      { label: 'Density', value: '0.7 - 0.9 g/cm³' },
+      { label: 'Dielectric Strength', value: '≥20 kV/mm (in oil)' },
+      { label: 'Temperature Rating', value: '105°C continuous' },
+      { label: 'Available Sizes', value: 'Rolls: 1000mm width, Custom lengths' },
+      { label: 'Custom Options', value: 'Custom thickness, Slit widths' }
+    ],
+    applications: [
+      'Transformer winding insulation',
+      'Layer insulation in coils',
+      'Cable wrapping and insulation',
+      'Capacitor dielectric',
+      'Electrical equipment insulation'
+    ],
+    benefits: [
+      'High dielectric strength in transformer oil',
+      'Excellent flexibility for winding',
+      'Precise thickness control',
+      'Low moisture content for reliability'
+    ],
+    relatedProducts: ['pressboard-3mm', 'nomex-paper', 'polyester-film']
+  },
+  'delrin-sheet': {
+    id: 'delrin-sheet',
+    name: 'Delrin Sheet (POM) - Engineering Grade Acetal',
+    category: 'Engineering Plastics',
+    shortDescription: 'High-performance acetal sheets for precision components',
+    description: [
+      'Delrin (POM - Polyoxymethylene) sheets offer exceptional mechanical properties, low friction, and excellent dimensional stability. This engineering thermoplastic is ideal for precision parts that require tight tolerances.',
+      'The material\'s natural lubricity makes it perfect for wear-resistant components like gears, bearings, and sliding parts. Delrin machines beautifully, producing smooth surfaces without extensive finishing.',
+      'When your application demands precision and reliability, Delrin delivers. Our sheets are manufactured to consistent quality standards and available in multiple thicknesses.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'Polyoxymethylene (Acetal)' },
+      { label: 'Thickness', value: '1mm - 100mm' },
+      { label: 'Tensile Strength', value: '≥60 MPa' },
+      { label: 'Dielectric Strength', value: 'Moderate (not primary use)' },
+      { label: 'Temperature Rating', value: '-40°C to 90°C' },
+      { label: 'Available Sizes', value: '1000x2000mm, Custom sizes' },
+      { label: 'Custom Options', value: 'Precision CNC machining, Custom parts' }
+    ],
+    applications: [
+      'Precision gears and bearings',
+      'Conveyor components',
+      'Food processing equipment parts',
+      'Automotive components',
+      'Medical device components'
+    ],
+    benefits: [
+      'Excellent dimensional stability',
+      'Low friction and self-lubricating',
+      'Superior machinability',
+      'High fatigue resistance'
+    ],
+    relatedProducts: ['g10-epoxy-sheet', 'cotton-phenolic', 'ptfe-sheet']
+  },
+  'fiberglass-tubes': {
+    id: 'fiberglass-tubes',
+    name: 'Fiberglass Tubes - Industrial Grade',
+    category: 'Fiberglass Products',
+    shortDescription: 'Robust insulation tubes for high-stress environments',
+    description: [
+      'Fiberglass tubes provide excellent electrical insulation with mechanical strength for industrial applications. Made from continuous fiberglass filaments and resin, these tubes resist heat, chemicals, and mechanical stress.',
+      'Our fiberglass tubes are used in electrical equipment, motor windings, and industrial machinery where both insulation and structural support are required. The tubes maintain their properties across a wide temperature range.',
+      'Available in multiple diameters and wall thicknesses, we can supply standard sizes or custom-made tubes to your exact specifications.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'Fiberglass + Epoxy/Polyester resin' },
+      { label: 'Diameter Range', value: '3mm - 200mm' },
+      { label: 'Wall Thickness', value: '0.5mm - 10mm' },
+      { label: 'Dielectric Strength', value: '≥15 kV/mm' },
+      { label: 'Temperature Rating', value: '-40°C to 155°C' },
+      { label: 'Available Lengths', value: 'Up to 3000mm, Custom cut' },
+      { label: 'Custom Options', value: 'Custom diameters, Special resins' }
+    ],
+    applications: [
+      'Motor and generator slot insulation',
+      'Electrical bus bar sleeves',
+      'High-voltage equipment insulation',
+      'Structural supports in electrical gear',
+      'Industrial machinery components'
+    ],
+    benefits: [
+      'Excellent electrical insulation',
+      'High mechanical strength',
+      'Chemical and heat resistant',
+      'Long service life in harsh conditions'
+    ],
+    relatedProducts: ['fr4-epoxy-sheet', 'syndanio-sheet', 'g10-epoxy-sheet']
+  },
+  'syndanio-sheet': {
+    id: 'syndanio-sheet',
+    name: 'Syndanio Sheets - Thermal Insulation',
+    category: 'Thermal Insulation',
+    shortDescription: 'High-temperature insulation boards for foundries and furnaces',
+    description: [
+      'Syndanio sheets are specialized thermal insulation materials designed for high-temperature industrial applications. These boards withstand extreme heat while providing both thermal and electrical insulation properties.',
+      'Commonly used in foundries, furnaces, and high-temperature electrical equipment, Syndanio sheets prevent heat transfer while maintaining structural integrity. The material resists thermal shock and repeated heating cycles.',
+      'When your application involves high temperatures, Syndanio sheets deliver the insulation performance you need without degrading over time.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'Calcium silicate composite' },
+      { label: 'Thickness', value: '3mm - 75mm' },
+      { label: 'Density', value: '0.9 - 1.1 g/cm³' },
+      { label: 'Thermal Conductivity', value: 'Low (0.06 W/mK)' },
+      { label: 'Temperature Rating', value: 'Up to 1000°C' },
+      { label: 'Available Sizes', value: '1000x1000mm, Custom sizes' },
+      { label: 'Custom Options', value: 'Custom thickness, Die-cut shapes' }
+    ],
+    applications: [
+      'Foundry mold insulation',
+      'Furnace lining and insulation',
+      'High-temperature electrical equipment',
+      'Induction heating systems',
+      'Metal casting operations'
+    ],
+    benefits: [
+      'Withstands extreme temperatures',
+      'Excellent thermal insulation',
+      'Resistant to thermal shock',
+      'Both thermal and electrical insulation'
+    ],
+    relatedProducts: ['mica-sheets', 'fiberglass-tubes', 'ptfe-sheet']
+  },
+  'ptfe-cloth-non-adhesive': {
+    id: 'ptfe-cloth-non-adhesive',
+    name: 'PTFE Cloth Non-Adhesive - Brown and White',
+    category: 'PTFE Products',
+    shortDescription: 'Premium Teflon cloth for extreme conditions',
+    description: [
+      'PTFE (Teflon) cloth without adhesive backing offers exceptional chemical resistance and non-stick properties. Available in brown and white variants, this material handles extreme temperatures and aggressive chemicals.',
+      'The fiberglass fabric base provides mechanical strength while the PTFE coating delivers the unique properties that make Teflon famous. This cloth is perfect for applications requiring heat resistance and release properties.',
+      'Use PTFE cloth in food processing, packaging machinery, heat sealing, and anywhere you need a material that resists sticking and chemical attack.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'PTFE-coated fiberglass fabric' },
+      { label: 'Thickness', value: '0.08mm - 0.5mm' },
+      { label: 'Tensile Strength', value: '≥1500 N/5cm' },
+      { label: 'Temperature Rating', value: '-70°C to 260°C continuous' },
+      { label: 'Colors Available', value: 'Brown, White' },
+      { label: 'Available Widths', value: '1000mm, 1270mm, Custom widths' },
+      { label: 'Custom Options', value: 'Custom widths, Lengths, Colors' }
+    ],
+    applications: [
+      'Heat sealing and packaging',
+      'Conveyor belts for high temperatures',
+      'Release sheets for molding',
+      'Food processing equipment',
+      'Chemical processing applications'
+    ],
+    benefits: [
+      'Extreme temperature resistance',
+      'Non-stick surface properties',
+      'Excellent chemical resistance',
+      'Long service life in harsh conditions'
+    ],
+    relatedProducts: ['ptfe-cloth-adhesive', 'ptfe-sheet', 'polyester-film']
+  },
+  'ptfe-cloth-adhesive': {
+    id: 'ptfe-cloth-adhesive',
+    name: 'PTFE Cloth Adhesive - Cream and Dark Brown',
+    category: 'PTFE Products',
+    shortDescription: 'Self-adhesive Teflon cloth for easy installation',
+    description: [
+      'PTFE cloth with adhesive backing combines the exceptional properties of Teflon with the convenience of pressure-sensitive adhesive. Simply peel and stick to create non-stick surfaces on existing equipment.',
+      'Available in cream and dark brown colors, this material makes it easy to upgrade machinery with PTFE surfaces without complex installation. The silicone adhesive withstands high temperatures while providing strong bonding.',
+      'Perfect for retrofitting existing equipment or temporary applications where you need PTFE properties without permanent modifications.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'PTFE cloth + Silicone adhesive' },
+      { label: 'Thickness', value: '0.13mm - 0.25mm (total)' },
+      { label: 'Tensile Strength', value: '≥1400 N/5cm' },
+      { label: 'Temperature Rating', value: '-70°C to 260°C' },
+      { label: 'Colors Available', value: 'Cream, Dark brown' },
+      { label: 'Available Widths', value: '1000mm, Custom widths' },
+      { label: 'Custom Options', value: 'Die-cut shapes, Custom sizes' }
+    ],
+    applications: [
+      'Heat seal bar covering',
+      'Chute and hopper lining',
+      'Packaging machinery upgrades',
+      'Mold release surfaces',
+      'Food processing equipment'
+    ],
+    benefits: [
+      'Easy peel-and-stick application',
+      'No special installation tools needed',
+      'High-temperature adhesive',
+      'Instant PTFE surface creation'
+    ],
+    relatedProducts: ['ptfe-cloth-non-adhesive', 'ptfe-sheet', 'polyester-film']
+  },
+  'ptfe-sheet': {
+    id: 'ptfe-sheet',
+    name: 'PTFE Virgin Sheets - Pure Teflon',
+    category: 'PTFE Products',
+    shortDescription: 'Pure PTFE sheets for demanding applications',
+    description: [
+      'Virgin PTFE sheets offer the full range of Teflon properties in solid sheet form. Made from 100% pure PTFE resin, these sheets provide unmatched chemical resistance, low friction, and temperature stability.',
+      'Unlike filled PTFE, virgin material delivers the best possible performance for critical applications. The material remains stable from cryogenic temperatures to well above 200°C.',
+      'When your application cannot compromise on PTFE properties, choose virgin sheets. Available in various thicknesses and supplied in rolls or cut sheets.'
+    ],
+    specifications: [
+      { label: 'Material', value: '100% Virgin PTFE resin' },
+      { label: 'Thickness', value: '0.5mm - 10mm' },
+      { label: 'Tensile Strength', value: '≥27 MPa' },
+      { label: 'Dielectric Strength', value: '≥60 kV/mm' },
+      { label: 'Temperature Rating', value: '-200°C to 260°C' },
+      { label: 'Available Sizes', value: 'Rolls and sheets, Custom cut' },
+      { label: 'Custom Options', value: 'Skived sheets, Custom thickness' }
+    ],
+    applications: [
+      'Chemical processing gaskets',
+      'Pharmaceutical equipment seals',
+      'Food industry components',
+      'High-purity electrical insulation',
+      'Cryogenic sealing applications'
+    ],
+    benefits: [
+      'Maximum chemical resistance',
+      'Lowest coefficient of friction',
+      'Wide temperature capability',
+      'FDA compliant for food contact'
+    ],
+    relatedProducts: ['ptfe-cloth-non-adhesive', 'custom-gaskets', 'delrin-sheet']
+  },
+  'epoxy-rods': {
+    id: 'epoxy-rods',
+    name: 'Epoxy Rods - Fiberglass Round Bars',
+    category: 'Epoxy Products',
+    shortDescription: 'Solid epoxy rods for precision machining',
+    description: [
+      'Fiberglass epoxy rods provide excellent electrical insulation in a machinable round bar form. These rods are perfect for creating custom components through turning, milling, and drilling operations.',
+      'Made with the same quality epoxy resin and fiberglass as our sheets, these rods offer consistent properties throughout their diameter. They machine cleanly without delamination.',
+      'Use epoxy rods when you need to produce cylindrical insulation components, spacers, standoffs, or any round parts requiring electrical insulation and mechanical strength.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'Epoxy resin + Fiberglass' },
+      { label: 'Diameter Range', value: '3mm - 200mm' },
+      { label: 'Tensile Strength', value: '≥350 MPa' },
+      { label: 'Dielectric Strength', value: '≥16 kV/mm' },
+      { label: 'Temperature Rating', value: '-40°C to 130°C' },
+      { label: 'Available Lengths', value: 'Up to 3000mm, Custom cut' },
+      { label: 'Custom Options', value: 'Custom diameters, Precision machining' }
+    ],
+    applications: [
+      'Electrical standoffs and spacers',
+      'Insulating shafts and rods',
+      'Mechanical and structural supports',
+      'Custom machined components',
+      'High-voltage equipment parts'
+    ],
+    benefits: [
+      'Excellent machinability',
+      'Consistent properties throughout',
+      'High strength-to-weight ratio',
+      'Electrical insulation in round form'
+    ],
+    relatedProducts: ['fr4-epoxy-sheet', 'g10-epoxy-sheet', 'fiberglass-tubes']
+  },
+  'nomex-paper': {
+    id: 'nomex-paper',
+    name: 'Nomex Paper - Aramid Fiber Insulation',
+    category: 'Advanced Insulation',
+    shortDescription: 'High-performance aramid insulation for extreme conditions',
+    description: [
+      'Nomex paper is a premium insulation material made from aramid fibers. This advanced material offers superior thermal stability, mechanical strength, and electrical insulation compared to traditional kraft paper.',
+      'The meta-aramid fiber structure gives Nomex exceptional heat resistance and the ability to maintain properties at temperatures where cellulose materials would fail. It\'s the choice for high-performance motors and transformers.',
+      'When equipment operates under extreme conditions or requires maximum reliability, Nomex paper delivers. Though more expensive than kraft paper, it provides insurance against premature failure.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'Meta-aramid (Nomex) fibers' },
+      { label: 'Thickness', value: '0.05mm - 0.76mm' },
+      { label: 'Density', value: '0.6 - 0.8 g/cm³' },
+      { label: 'Dielectric Strength', value: '≥24 kV/mm' },
+      { label: 'Temperature Rating', value: '220°C continuous, 240°C peak' },
+      { label: 'Available Sizes', value: 'Rolls and sheets, Custom sizes' },
+      { label: 'Custom Options', value: 'Die-cut shapes, Custom thickness' }
+    ],
+    applications: [
+      'High-temperature motor insulation',
+      'Premium transformer insulation',
+      'Aerospace and defense applications',
+      'Industrial motors in harsh environments',
+      'High-reliability electrical equipment'
+    ],
+    benefits: [
+      'Exceptional thermal stability',
+      'Superior mechanical strength',
+      'Maintains properties at high temperatures',
+      'Extended equipment service life'
+    ],
+    relatedProducts: ['kraft-paper', 'polyester-film', 'mica-sheets']
+  },
+  'polyester-film': {
+    id: 'polyester-film',
+    name: 'Polyester Film - Electrical Grade Mylar',
+    category: 'Insulation Films',
+    shortDescription: 'Thin, flexible electrical insulation film',
+    description: [
+      'Electrical grade polyester film (Mylar) provides excellent insulation in a thin, flexible format. This material combines good electrical properties with mechanical strength and dimensional stability.',
+      'Polyester film is essential for slot insulation in motors, transformer layer insulation, and any application requiring thin but reliable electrical barriers. The film resists moisture and maintains properties across temperature changes.',
+      'Available in various thicknesses from ultra-thin to heavier gauges, our polyester film meets international standards for electrical insulation applications.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'Biaxially oriented polyester (BOPET)' },
+      { label: 'Thickness', value: '0.012mm - 0.35mm' },
+      { label: 'Tensile Strength', value: '≥170 MPa' },
+      { label: 'Dielectric Strength', value: '≥280 kV/mm' },
+      { label: 'Temperature Rating', value: '-70°C to 130°C' },
+      { label: 'Available Widths', value: 'Rolls up to 1000mm, Custom slitting' },
+      { label: 'Custom Options', value: 'Custom widths, Corona treatment' }
+    ],
+    applications: [
+      'Motor slot insulation',
+      'Transformer layer insulation',
+      'Capacitor dielectric',
+      'Cable wrapping and insulation',
+      'Flexible printed circuits'
+    ],
+    benefits: [
+      'Excellent dielectric strength',
+      'Thin profile saves space',
+      'Good mechanical properties',
+      'Moisture resistant'
+    ],
+    relatedProducts: ['kraft-paper', 'nomex-paper', 'ptfe-cloth-non-adhesive']
+  },
+  'mica-sheets': {
+    id: 'mica-sheets',
+    name: 'Mica Sheets - Natural and Phlogopite',
+    category: 'Mica Products',
+    shortDescription: 'High-temperature mineral insulation',
+    description: [
+      'Mica sheets offer exceptional thermal and electrical insulation properties derived from natural mineral sources. Available in muscovite (natural) and phlogopite variants, mica withstands extreme temperatures while providing excellent electrical insulation.',
+      'The unique layered structure of mica allows it to be split into thin sheets while maintaining strength. This material is irreplaceable in high-temperature electrical applications where organic materials would decompose.',
+      'Our mica sheets are carefully selected and processed to ensure consistent quality. Choose mica when your application involves temperatures beyond the capability of conventional insulation materials.'
+    ],
+    specifications: [
+      { label: 'Material', value: 'Natural/Phlogopite mica' },
+      { label: 'Thickness', value: '0.1mm - 2mm' },
+      { label: 'Tensile Strength', value: 'Moderate (brittle material)' },
+      { label: 'Dielectric Strength', value: '≥60 kV/mm' },
+      { label: 'Temperature Rating', value: 'Up to 600°C (Phlogopite)' },
+      { label: 'Available Sizes', value: '1000x1200mm, Custom sizes' },
+      { label: 'Custom Options', value: 'Mica paper, Flexible mica, Custom cuts' }
+    ],
+    applications: [
+      'High-temperature furnace insulation',
+      'Electric heating element insulation',
+      'Foundry and metallurgical applications',
+      'Commutator segment insulation',
+      'High-voltage electrical insulation'
+    ],
+    benefits: [
+      'Extreme temperature capability',
+      'Excellent electrical insulation',
+      'Natural mineral durability',
+      'Resistant to chemicals and arc'
+    ],
+    relatedProducts: ['syndanio-sheet', 'nomex-paper', 'ptfe-sheet']
+  },
+  'custom-gaskets': {
+    id: 'custom-gaskets',
+    name: 'Custom Gaskets & Precision Components',
+    category: 'Custom Fabrication',
+    shortDescription: 'Precision-cut parts from any material we supply',
+    description: [
+      'Our custom fabrication service turns any material we supply into precision components for your specific application. Using CNC machining, laser cutting, water jet cutting, and die stamping, we produce parts to your exact specifications.',
+      'Whether you need simple gaskets or complex multi-layer assemblies, our engineering team works with you to optimize designs for manufacturability and performance. We handle everything from prototypes to production volumes.',
+      'Stop struggling with in-house fabrication of specialized materials. Send us your drawings and let our experts produce components that meet your tolerance requirements consistently.'
+    ],
+    specifications: [
+      { label: 'Materials Available', value: 'All materials we supply' },
+      { label: 'Tolerance', value: '±0.05mm (depending on material)' },
+      { label: 'Size Range', value: 'Small gaskets to 2000mm panels' },
+      { label: 'Thickness Range', value: 'As thin as 0.05mm to 100mm+' },
+      { label: 'Production Volume', value: 'Prototype to high volume' },
+      { label: 'Processing Methods', value: 'CNC, Laser, Water jet, Die cutting' },
+      { label: 'Custom Options', value: 'Multi-layer assemblies, Special shapes' }
+    ],
+    applications: [
+      'Electrical equipment gaskets and barriers',
+      'Transformer insulation components',
+      'Motor and generator parts',
+      'Custom mechanical components',
+      'Specialized electrical insulation assemblies'
+    ],
+    benefits: [
+      'Expert fabrication of difficult materials',
+      'Consistent quality across production runs',
+      'Engineering support for design optimization',
+      'Single-source solution from material to finished part'
+    ],
+    relatedProducts: ['transformer-kits', 'ptfe-sheet', 'fr4-epoxy-sheet']
+  },
+  'transformer-kits': {
+    id: 'transformer-kits',
+    name: 'Transformer Insulation Kits - Complete Solutions',
+    category: 'Complete Assemblies',
+    shortDescription: 'Pre-cut insulation component kits for transformer assembly',
+    description: [
+      'Transformer insulation kits provide all the pressboard, kraft paper, and other insulation components you need for transformer assembly in one convenient package. Each kit is engineered for specific transformer designs and pre-cut to exact dimensions.',
+      'Eliminate cutting errors and material waste by ordering complete kits instead of raw materials. Our engineering team works from your transformer design to create kits that include every insulation component needed.',
+      'These kits dramatically reduce assembly time and ensure consistency across multiple transformers. Perfect for manufacturers who want to streamline production and eliminate in-house cutting operations.'
+    ],
+    specifications: [
+      { label: 'Included Materials', value: 'Pressboard, Kraft paper, Custom components' },
+      { label: 'Kit Types', value: 'Distribution, Power, Specialty transformers' },
+      { label: 'Customization', value: 'Fully custom to your design' },
+      { label: 'Quality Control', value: 'Pre-assembly verification' },
+      { label: 'Packaging', value: 'Organized by assembly sequence' },
+      { label: 'Lead Time', value: 'Depends on complexity' },
+      { label: 'Volume Pricing', value: 'Available for recurring orders' }
+    ],
+    applications: [
+      'Distribution transformer assembly',
+      'Power transformer manufacturing',
+      'Specialty transformer production',
+      'Repair and remanufacturing',
+      'High-volume transformer production'
+    ],
+    benefits: [
+      'Eliminate material cutting operations',
+      'Reduce assembly errors and waste',
+      'Consistent quality across production',
+      'Engineering support included'
+    ],
+    relatedProducts: ['pressboard-3mm', 'kraft-paper', 'custom-gaskets']
+  }
+};
+
+export const productCategories = [
+  'Pressboard',
+  'Epoxy Sheets',
+  'Phenolic Laminates',
+  'Insulation Paper',
+  'Engineering Plastics',
+  'Fiberglass Products',
+  'Thermal Insulation',
+  'PTFE Products',
+  'Advanced Insulation',
+  'Insulation Films',
+  'Mica Products',
+  'Custom Fabrication',
+  'Complete Assemblies'
+];
+
+export const featuredProducts = [
+  'pressboard-3mm',
+  'pre-compressed-pressboard',
+  'fr4-epoxy-sheet',
+  'paper-phenolic',
+  'kraft-paper',
+  'delrin-sheet',
+  'fiberglass-tubes',
+  'syndanio-sheet'
+];
