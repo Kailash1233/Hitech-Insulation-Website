@@ -1,9 +1,10 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useState } from 'react';
-import { Menu, X, Phone, Mail } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import Link from "next/link";
+import { useState } from "react";
+import { Menu, X, Phone, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,25 +14,41 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="font-bold text-xl text-gray-900">
+            <Image src="/logo.png" alt="HiTech Logo" width={120} height={120} />
+            {/* <div className="font-bold text-xl text-gray-900">
               HITECH INSULATION
-            </div>
+            </div> */}
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-blue-900 transition-colors">
+            {/* <Link
+              href="/"
+              className="text-gray-700 hover:text-blue-900 transition-colors"
+            >
               Home
-            </Link>
-            <Link href="/#products" className="text-gray-700 hover:text-blue-900 transition-colors">
+            </Link> */}
+            <Link
+              href="/#products"
+              className="text-gray-700 hover:text-blue-900 transition-colors"
+            >
               Products
             </Link>
-            <Link href="/#industries" className="text-gray-700 hover:text-blue-900 transition-colors">
+            <Link
+              href="/#industries"
+              className="text-gray-700 hover:text-blue-900 transition-colors"
+            >
               Industries
             </Link>
-            <Link href="/#about" className="text-gray-700 hover:text-blue-900 transition-colors">
+            <Link
+              href="/#about"
+              className="text-gray-700 hover:text-blue-900 transition-colors"
+            >
               About
             </Link>
-            <Link href="/#contact" className="text-gray-700 hover:text-blue-900 transition-colors">
+            <Link
+              href="/#contact"
+              className="text-gray-700 hover:text-blue-900 transition-colors"
+            >
               Contact
             </Link>
             <Button asChild className="bg-blue-900 hover:bg-blue-800">
