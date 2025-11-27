@@ -1,13 +1,25 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import "./globals.css";
+import type { Metadata } from "next";
+import { Inter, Poppins } from "next/font/google";
+import { getSeoMetadata } from "@/lib/seo";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
 
 export const metadata: Metadata = {
-  title: 'Hitech Insulation - Electrical Insulation Manufacturer Chennai | Transformer Materials India',
-  description: 'Leading electrical insulation manufacturer in Chennai since 1977. Supplier of pressboard, epoxy sheets, phenolic laminates, PTFE products for transformer, motor & switchgear industries across India.',
-  keywords: 'electrical insulation manufacturer, transformer insulation materials, insulation pressboard, epoxy fiberglass sheets, phenolic laminates, Chennai insulation supplier, electrical grade kraft paper, PTFE insulation',
+  ...getSeoMetadata("home"),
+  metadataBase: new URL("https://www.hitechinsulation.in"),
 };
 
 export default function RootLayout({
@@ -16,8 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+      <link rel="icon" href="/favicon.png" />
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }

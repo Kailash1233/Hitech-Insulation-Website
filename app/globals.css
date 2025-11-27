@@ -76,11 +76,41 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+  h1 {
+    @apply text-4xl sm:text-5xl lg:text-6xl;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+  h2 {
+    @apply text-3xl sm:text-4xl;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  h3 {
+    @apply text-2xl sm:text-3xl;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  h4 {
+    @apply text-xl sm:text-2xl;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  p {
+    @apply leading-relaxed;
   }
 }
 

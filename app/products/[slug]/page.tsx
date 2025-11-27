@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { ArrowRight, Home, ChevronRight, Box, FileText, Mail } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Home, ChevronRight, FileText, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -7,12 +8,35 @@ import { Badge } from '@/components/ui/badge';
 import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
 import { products } from '@/lib/products';
+import { getProductImage } from '@/lib/product-images';
+import { getSeoMetadata } from '@/lib/seo';
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 
 export function generateStaticParams() {
   return Object.keys(products).map((slug) => ({
     slug,
   }));
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const product = products[params.slug];
+  if (!product) {
+    return getSeoMetadata('default');
+  }
+  
+  return getSeoMetadata('productDetails', {
+    title: `${product.name} | Best ${product.category} Supplier in India | Hitech Insulation`,
+    description: `${product.shortDescription} Manufactured in Chennai, India. ${product.specifications[0]?.value || 'Custom specifications available'}. Get quote within 24 hours.`,
+    keywords: [
+      `best ${product.category.toLowerCase()} supplier india`,
+      `${product.name.toLowerCase()} manufacturer chennai`,
+      `buy ${product.category.toLowerCase()} india`,
+      `electrical insulation ${product.category.toLowerCase()} india`,
+      `transformer insulation ${product.category.toLowerCase()}`,
+    ],
+    path: `/products/${params.slug}`,
+  });
 }
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
@@ -38,7 +62,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               <Home className="h-4 w-4" />
             </Link>
             <ChevronRight className="h-4 w-4" />
-            <Link href="/#products" className="hover:text-blue-900">
+            <Link href="/products" className="hover:text-blue-900">
               Products
             </Link>
             <ChevronRight className="h-4 w-4" />
@@ -48,15 +72,25 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
             <div>
               <div className="sticky top-24">
-                <div className="h-96 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg mb-6 flex items-center justify-center">
-                  <Box className="h-32 w-32 text-gray-400" />
+                <div className="relative h-96 w-full rounded-lg mb-6 overflow-hidden border-2 border-gray-200 bg-gray-100">
+                  <Image
+                    src={getProductImage(product.id)}
+                    alt={`${product.name} - ${product.category} electrical insulation material`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
                 </div>
                 <div className="flex gap-4">
-                  <Button size="lg" asChild className="flex-1 bg-blue-900 hover:bg-blue-800">
-                    <Link href="/#quote">Request Custom Quote</Link>
+                  <Button size="lg" asChild className="flex-1 bg-blue-600 hover:bg-blue-700">
+                    <Link href="/contact#quote">Request Custom Quote</Link>
                   </Button>
-                  <Button size="lg" variant="outline" className="border-blue-900 text-blue-900">
-                    <FileText className="h-5 w-5" />
+                  <Button size="lg" variant="outline" className="border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600" asChild>
+                    <a href="mailto:srk@hitechinsulation.in?subject=Technical%20Specs%20-%20{product.name}">
+                      <FileText className="h-5 w-5 mr-2" />
+                      Get Specs
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -64,11 +98,11 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
             <div>
               <Badge className="mb-4 bg-blue-100 text-blue-900">{product.category}</Badge>
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">{product.name}</h1>
+              <h1 className="font-display text-4xl font-bold text-gray-900 mb-4">{product.name}</h1>
               <p className="text-xl text-gray-600 mb-8">{product.shortDescription}</p>
 
               <div className="space-y-6 mb-12">
-                <h2 className="text-2xl font-bold text-gray-900">Overview</h2>
+                <h2 className="font-display text-2xl font-bold text-gray-900">Overview</h2>
                 {product.description.map((paragraph, index) => (
                   <p key={index} className="text-gray-600 leading-relaxed">
                     {paragraph}
@@ -77,7 +111,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </div>
 
               <div className="mb-12">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Technical Specifications</h2>
+                <h2 className="font-display text-2xl font-bold text-gray-900 mb-6">Technical Specifications</h2>
                 <div className="border rounded-lg overflow-hidden">
                   <Table>
                     <TableHeader>
@@ -99,7 +133,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </div>
 
               <div className="mb-12">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Applications</h2>
+                <h2 className="font-display text-2xl font-bold text-gray-900 mb-6">Applications</h2>
                 <ul className="space-y-3">
                   {product.applications.map((application, index) => (
                     <li key={index} className="flex items-start space-x-3">
@@ -111,7 +145,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </div>
 
               <div className="mb-12">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Why Choose This Product</h2>
+                <h2 className="font-display text-2xl font-bold text-gray-900 mb-6">Why Choose This Product</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {product.benefits.map((benefit, index) => (
                     <Card key={index}>
@@ -130,8 +164,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                     Our engineering team can customize this product to your exact requirements. Get in touch for a detailed quote.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Button asChild className="bg-blue-900 hover:bg-blue-800">
-                      <Link href="/#quote">Request Quote</Link>
+                    <Button asChild className="bg-blue-600 hover:bg-blue-700">
+                      <Link href="/contact#quote">Request Quote</Link>
                     </Button>
                     <Button variant="outline" asChild>
                       <a href="mailto:srk@hitechinsulation.in">
@@ -147,13 +181,19 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
           {relatedProductsData.length > 0 && (
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Products</h2>
+              <h2 className="font-display text-3xl font-bold text-gray-900 mb-8">Related Products</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {relatedProductsData.map((relatedProduct) => (
                   <Card key={relatedProduct.id} className="hover:shadow-lg transition-shadow">
                     <CardHeader>
-                      <div className="h-40 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                        <Box className="h-16 w-16 text-gray-400" />
+                      <div className="relative h-40 w-full rounded-lg mb-4 overflow-hidden border border-gray-200 bg-gray-100">
+                        <Image
+                          src={getProductImage(relatedProduct.id)}
+                          alt={`${relatedProduct.name} - ${relatedProduct.category}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
                       </div>
                       <CardTitle className="text-lg">{relatedProduct.name}</CardTitle>
                       <CardDescription className="line-clamp-2">
@@ -161,7 +201,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <Button asChild variant="outline" className="w-full border-blue-900 text-blue-900 hover:bg-blue-50">
+                      <Button asChild variant="outline" className="w-full border-2 border-gray-300 text-gray-700 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50">
                         <Link href={`/products/${relatedProduct.id}`}>
                           View Details <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
