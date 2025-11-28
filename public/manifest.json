@@ -1,0 +1,30 @@
+{
+  "name": "Hitech Insulation - Electrical Insulation Manufacturer",
+  "short_name": "Hitech Insulation",
+  "description": "India's leading electrical insulation manufacturer since 1977. Premium pressboard, epoxy sheets, PTFE products, and custom transformer insulation components.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
+

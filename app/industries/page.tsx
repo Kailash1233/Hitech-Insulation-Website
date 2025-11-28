@@ -4,7 +4,7 @@ import { Footer } from "@/components/footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Box, Cpu, Factory, Flame, Layers, Shield, Sparkles, Zap } from "lucide-react";
+import { Award, Box, Cpu, Factory, Flame, Shield, Sparkles, Zap } from "lucide-react";
 import { getSeoMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -14,7 +14,11 @@ const industries = [
     icon: Zap,
     description:
       "Pressboard spacers, insulation kits, winding cylinders, and crepe papers engineered for high dielectric strength and oil compatibility.",
-    needs: ["High-voltage dielectric strength", "Precision pre-cut components", "Oil-immersed reliability"],
+    needs: [
+      "High-voltage dielectric strength",
+      "Precision pre-cut components",
+      "Oil-immersed reliability",
+    ],
     materials: ["Pressboard", "Kraft Paper", "Nomex", "Transformer Kits"],
   },
   {
@@ -59,7 +63,7 @@ const industries = [
   },
 ];
 
-export const metadata: Metadata = getSeoMetadata('industries');
+export const metadata: Metadata = getSeoMetadata("industries");
 
 export default function IndustriesPage() {
   return (
@@ -68,18 +72,27 @@ export default function IndustriesPage() {
 
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white text-center">
         <div className="max-w-4xl mx-auto space-y-6">
-          <Badge className="bg-blue-50 text-blue-900 border border-blue-100 text-sm px-4 py-2 rounded-full font-semibold">
-            Trusted By Electrical OEMs Worldwide
-          </Badge>
+          <div className="flex justify-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-5 py-2.5">
+              <Award className="h-4 w-4 text-blue-600" />
+              <span className="text-sm font-semibold text-blue-900">
+                Trusted By Electrical OEMs Worldwide
+              </span>
+            </div>
+          </div>
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900">
             Industries We Power
           </h1>
           <p className="text-lg sm:text-xl text-gray-600">
-            From power transformers to aerospace-grade insulation, Hitech delivers customized solutions that survive
-            extreme electrical, mechanical, and thermal loads.
+            From power transformers to aerospace-grade insulation, Hitech delivers customized
+            solutions that survive extreme electrical, mechanical, and thermal loads.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base shadow-lg shadow-blue-600/20">
+            <Button
+              asChild
+              size="lg"
+              className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base shadow-lg shadow-blue-600/20"
+            >
               <Link href="/contact#quote">Discuss Your Application</Link>
             </Button>
             <Button
@@ -138,7 +151,11 @@ export default function IndustriesPage() {
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {industry.materials.map((material) => (
-                      <Badge key={material} variant="secondary" className="bg-blue-50 text-blue-900">
+                      <Badge
+                        key={material}
+                        variant="secondary"
+                        className="bg-blue-50 text-blue-900"
+                      >
                         {material}
                       </Badge>
                     ))}
@@ -160,7 +177,8 @@ export default function IndustriesPage() {
             Component Capabilities Across Industries
           </h2>
           <p className="text-lg text-gray-600">
-            We produce everything from raw sheets to finished assemblies. Send us drawings or legacy part numbers and we&apos;ll reverse engineer the exact insulation stack-up.
+            We produce everything from raw sheets to finished assemblies. Send us drawings or legacy
+            part numbers and we&apos;ll reverse engineer the exact insulation stack-up.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -169,7 +187,10 @@ export default function IndustriesPage() {
               { title: "PTFE Fabrication", detail: "Custom gaskets, seals" },
               { title: "Machined Assemblies", detail: "Ready-to-install kits" },
             ].map((capability) => (
-              <div key={capability.title} className="p-6 bg-white rounded-2xl border border-gray-200 shadow-sm">
+              <div
+                key={capability.title}
+                className="p-6 bg-white rounded-2xl border border-gray-200 shadow-sm"
+              >
                 <h3 className="text-xl font-semibold text-gray-900">{capability.title}</h3>
                 <p className="text-gray-600 mt-2">{capability.detail}</p>
               </div>
@@ -184,10 +205,15 @@ export default function IndustriesPage() {
             Need Field-Proven Insulation For Your Industry?
           </h2>
           <p className="text-lg text-blue-100">
-            Our application engineers review your specs, match the right materials, and deliver prototypes or production batches with zero guesswork.
+            Our application engineers review your specs, match the right materials, and deliver
+            prototypes or production batches with zero guesswork.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-white text-blue-900 hover:bg-gray-100 px-8 py-6">
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-blue-900 hover:bg-gray-100 px-8 py-6"
+            >
               <Link href="/contact#quote">Submit Project Brief</Link>
             </Button>
             <Button
@@ -206,4 +232,3 @@ export default function IndustriesPage() {
     </div>
   );
 }
-

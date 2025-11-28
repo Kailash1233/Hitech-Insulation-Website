@@ -123,7 +123,6 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -168,7 +167,7 @@ export function Navigation() {
     { href: "/products", label: "Products" },
     { href: "/industries", label: "Industries" },
     { href: "/about", label: "About Us" },
-    { href: "/contact", label: "Contact" },
+    // { href: "/contact", label: "Contact" },
   ];
 
   return (
@@ -218,7 +217,7 @@ export function Navigation() {
               size="lg"
               className="ml-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 transition-all font-semibold"
             >
-              <Link href="/contact#quote">Get Quote</Link>
+              <Link href="/contact">Get a Quote</Link>
             </Button>
           </div>
 
@@ -317,12 +316,7 @@ export function Navigation() {
                   href="mailto:srk@hitechinsulation.in"
                   className="text-sm text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"
                 >
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -338,9 +332,7 @@ export function Navigation() {
                 <p className="text-xs font-semibold text-blue-900 uppercase tracking-wider mb-1">
                   Manufacturing Since 1977
                 </p>
-                <p className="text-xs text-blue-700">
-                  Made in Chennai, India • Shipped Globally
-                </p>
+                <p className="text-xs text-blue-700">Made in Chennai, India • Shipped Globally</p>
               </div>
             </div>
           </div>
