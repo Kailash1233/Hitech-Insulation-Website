@@ -565,7 +565,6 @@ import {
   Shield,
   Clock,
   Target,
-  Check,
   Factory,
   Cpu,
   Zap,
@@ -578,13 +577,7 @@ import {
   Box,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -656,8 +649,8 @@ export default function Home() {
             </h1>
 
             <p className="text-xl sm:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto font-light">
-              High-performance electrical insulation components for transformer,
-              motor, and switchgear manufacturers across India.
+              High-performance electrical insulation components for transformer, motor, and
+              switchgear manufacturers across India.
             </p>
 
             {/* CTAs */}
@@ -705,9 +698,7 @@ export default function Home() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                  <p className="text-white font-semibold text-sm">
-                    Epoxy Sheets
-                  </p>
+                  <p className="text-white font-semibold text-sm">Epoxy Sheets</p>
                 </div>
               </div>
 
@@ -733,9 +724,7 @@ export default function Home() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                  <p className="text-white font-semibold text-sm">
-                    Kraft Paper
-                  </p>
+                  <p className="text-white font-semibold text-sm">Kraft Paper</p>
                 </div>
               </div>
             </div>
@@ -744,23 +733,15 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-12 border-t border-gray-200">
               <div>
                 <div className="text-4xl font-bold text-gray-900 mb-2">47+</div>
-                <div className="text-sm text-gray-600 font-medium">
-                  Years in Business
-                </div>
+                <div className="text-sm text-gray-600 font-medium">Years in Business</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">
-                  100+
-                </div>
-                <div className="text-sm text-gray-600 font-medium">
-                  Custom Products
-                </div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">100+</div>
+                <div className="text-sm text-gray-600 font-medium">Custom Products</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-gray-900 mb-2">ISO</div>
-                <div className="text-sm text-gray-600 font-medium">
-                  Certified
-                </div>
+                <div className="text-sm text-gray-600 font-medium">Certified</div>
               </div>
             </div>
           </div>
@@ -777,8 +758,8 @@ export default function Home() {
               <div className="relative flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
                 <div className="w-full h-full flex items-center justify-center bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all">
                   <Image
-                    src="/logos/hitachi.png"
-                    alt="Hitachi - Trusted Partner"
+                    src="/partners/bhagyanagar-1.png"
+                    alt="Bhagyanagar - Trusted Partner"
                     width={120}
                     height={60}
                     className="object-contain w-full h-full"
@@ -790,8 +771,8 @@ export default function Home() {
               <div className="relative flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
                 <div className="w-full h-full flex items-center justify-center bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all">
                   <Image
-                    src="/logos/toyota.png"
-                    alt="Toyota - Industry Leader"
+                    src="/partners/bhel.png"
+                    alt="Bhel - Industry Leader"
                     width={120}
                     height={60}
                     className="object-contain w-full h-full"
@@ -803,8 +784,8 @@ export default function Home() {
               <div className="relative flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
                 <div className="w-full h-full flex items-center justify-center bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all">
                   <Image
-                    src="/logos/nike.png"
-                    alt="Nike - Global Brand"
+                    src="/partners/ezgif.com-webp-to-png.png"
+                    alt="Bharat Dynamics - Global Brand"
                     width={120}
                     height={60}
                     className="object-contain w-full h-full"
@@ -816,8 +797,8 @@ export default function Home() {
               <div className="relative flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
                 <div className="w-full h-full flex items-center justify-center bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all">
                   <Image
-                    src="/logos/abb.png"
-                    alt="ABB - Electrical Equipment"
+                    src="/partners/railway1.png"
+                    alt="Indian Railway - Electrical Equipment"
                     width={120}
                     height={60}
                     className="object-contain w-full h-full"
@@ -829,8 +810,8 @@ export default function Home() {
               <div className="relative flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
                 <div className="w-full h-full flex items-center justify-center bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all">
                   <Image
-                    src="/logos/siemens.png"
-                    alt="Siemens - Engineering Excellence"
+                    src="/partners/shiridi-sai-1.png"
+                    alt="Shiridi Sai - Engineering Excellence"
                     width={120}
                     height={60}
                     className="object-contain w-full h-full"
@@ -842,8 +823,8 @@ export default function Home() {
               <div className="relative flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
                 <div className="w-full h-full flex items-center justify-center bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all">
                   <Image
-                    src="/logos/schneider.png"
-                    alt="Schneider Electric - Power Solutions"
+                    src="/partners/transcon.png"
+                    alt="Transcon - Power Solutions"
                     width={120}
                     height={60}
                     className="object-contain w-full h-full"
@@ -867,8 +848,8 @@ export default function Home() {
               Why Engineers Choose Hitech
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Your equipment demands precision. We deliver components engineered
-              to exact specifications.
+              Your equipment demands precision. We deliver components engineered to exact
+              specifications.
             </p>
           </div>
 
@@ -882,9 +863,8 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 leading-relaxed">
-                  One insulation failure shuts down production lines. Our
-                  components meet the strictest quality standards to keep you
-                  running.
+                  One insulation failure shuts down production lines. Our components meet the
+                  strictest quality standards to keep you running.
                 </p>
               </CardContent>
             </Card>
@@ -913,8 +893,8 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 leading-relaxed">
-                  Time is money. Our streamlined manufacturing delivers custom
-                  components on schedule without compromising quality.
+                  Time is money. Our streamlined manufacturing delivers custom components on
+                  schedule without compromising quality.
                 </p>
               </CardContent>
             </Card>
@@ -930,8 +910,8 @@ export default function Home() {
               Industries We Serve
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Specialized insulation solutions for critical applications across
-              electrical manufacturing sectors.
+              Specialized insulation solutions for critical applications across electrical
+              manufacturing sectors.
             </p>
           </div>
 
@@ -943,12 +923,10 @@ export default function Home() {
                     <Zap className="h-7 w-7 text-blue-600 group-hover:text-white transition-colors" />
                   </div>
                 </div>
-                <CardTitle className="text-2xl mb-3">
-                  Transformer Manufacturers
-                </CardTitle>
+                <CardTitle className="text-2xl mb-3">Transformer Manufacturers</CardTitle>
                 <CardDescription className="text-base text-gray-600">
-                  High-voltage insulation pressboard, kraft paper, and epoxy
-                  components for power and distribution transformers.
+                  High-voltage insulation pressboard, kraft paper, and epoxy components for power
+                  and distribution transformers.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -962,8 +940,8 @@ export default function Home() {
                 </div>
                 <CardTitle className="text-2xl mb-3">Motor Industry</CardTitle>
                 <CardDescription className="text-base text-gray-600">
-                  Durable phenolic laminates and insulation sheets for electric
-                  motor winding and mechanical protection.
+                  Durable phenolic laminates and insulation sheets for electric motor winding and
+                  mechanical protection.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -975,12 +953,10 @@ export default function Home() {
                     <Factory className="h-7 w-7 text-blue-600 group-hover:text-white transition-colors" />
                   </div>
                 </div>
-                <CardTitle className="text-2xl mb-3">
-                  Panel Board & Switchgear
-                </CardTitle>
+                <CardTitle className="text-2xl mb-3">Panel Board & Switchgear</CardTitle>
                 <CardDescription className="text-base text-gray-600">
-                  Precision-cut pressboard, epoxy glass sheets, and bakelite for
-                  electrical panel assemblies and arc protection.
+                  Precision-cut pressboard, epoxy glass sheets, and bakelite for electrical panel
+                  assemblies and arc protection.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -992,12 +968,10 @@ export default function Home() {
                     <Box className="h-7 w-7 text-blue-600 group-hover:text-white transition-colors" />
                   </div>
                 </div>
-                <CardTitle className="text-2xl mb-3">
-                  Bus Duct Systems
-                </CardTitle>
+                <CardTitle className="text-2xl mb-3">Bus Duct Systems</CardTitle>
                 <CardDescription className="text-base text-gray-600">
-                  Temperature-resistant insulation materials engineered for
-                  high-current busbar applications and cable management.
+                  Temperature-resistant insulation materials engineered for high-current busbar
+                  applications and cable management.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -1013,8 +987,8 @@ export default function Home() {
               Core Products
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              8 product families. 1000+ custom configurations. Manufactured to
-              micron-level precision in Chennai.
+              8 product families. 1000+ custom configurations. Manufactured to micron-level
+              precision in Chennai.
             </p>
           </div>
 
@@ -1089,8 +1063,7 @@ export default function Home() {
               The Hitech Advantage
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Engineering excellence backed by decades of manufacturing
-              expertise.
+              Engineering excellence backed by decades of manufacturing expertise.
             </p>
           </div>
 
@@ -1145,9 +1118,7 @@ export default function Home() {
                   <benefit.icon className="h-6 w-6 text-blue-600 group-hover:text-white transition-colors" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-1 text-gray-900">
-                    {benefit.title}
-                  </h3>
+                  <h3 className="text-lg font-semibold mb-1 text-gray-900">{benefit.title}</h3>
                   <p className="text-gray-600 text-sm">{benefit.desc}</p>
                 </div>
               </div>
@@ -1220,15 +1191,9 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="pt-6 border-t border-gray-100">
-                    <p className="font-bold text-gray-900 text-lg">
-                      {testimonial.name}
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1">
-                      {testimonial.title}
-                    </p>
-                    <p className="text-sm text-blue-600 font-medium mt-1">
-                      {testimonial.company}
-                    </p>
+                    <p className="font-bold text-gray-900 text-lg">{testimonial.name}</p>
+                    <p className="text-sm text-gray-600 mt-1">{testimonial.title}</p>
+                    <p className="text-sm text-blue-600 font-medium mt-1">{testimonial.company}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -1245,8 +1210,7 @@ export default function Home() {
               47 Years of Manufacturing Excellence
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From Chennai to the world-building trust through precision
-              engineering.
+              From Chennai to the world-building trust through precision engineering.
             </p>
           </div>
 
@@ -1265,13 +1229,10 @@ export default function Home() {
                     <Award className="h-6 w-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      Founded 1977
-                    </h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Founded 1977</h3>
                     <p className="text-gray-600 leading-relaxed">
-                      Mr. Radhakrushnun established Hitech Insulation with one
-                      mission: manufacture insulation components that don&apos;t
-                      fail under pressure.
+                      Mr. Radhakrushnun established Hitech Insulation with one mission: manufacture
+                      insulation components that don&apos;t fail under pressure.
                     </p>
                   </div>
                 </div>
@@ -1281,13 +1242,10 @@ export default function Home() {
                     <Factory className="h-6 w-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      Modern Facilities
-                    </h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Modern Facilities</h3>
                     <p className="text-gray-600 leading-relaxed">
-                      State-of-the-art manufacturing in Chennai, Tamil Nadu,
-                      supplying transformer manufacturers, motor industries, and
-                      electrical equipment makers nationwide.
+                      State-of-the-art manufacturing in Chennai, Tamil Nadu, supplying transformer
+                      manufacturers, motor industries, and electrical equipment makers nationwide.
                     </p>
                   </div>
                 </div>
@@ -1297,23 +1255,17 @@ export default function Home() {
                     <Globe className="h-6 w-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      Global Trust
-                    </h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Global Trust</h3>
                     <p className="text-gray-600 leading-relaxed">
-                      From trading insulation products to manufacturing partner
-                      for Hitachi, Toyota, and Nike-our commitment stays the
-                      same: engineering excellence, delivered consistently.
+                      From trading insulation products to manufacturing partner for Hitachi, Toyota,
+                      and Nike-our commitment stays the same: engineering excellence, delivered
+                      consistently.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <Button
-                asChild
-                size="lg"
-                className="bg-blue-600 hover:bg-blue-700 mt-8"
-              >
+              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 mt-8">
                 <Link href="/contact">Learn About Our Process</Link>
               </Button>
             </div>
@@ -1329,8 +1281,8 @@ export default function Home() {
               Get Your Custom Quote
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Tell us your specifications. Our engineers will design the perfect
-              solution-and respond within 24 hours.
+              Tell us your specifications. Our engineers will design the perfect solution-and
+              respond within 24 hours.
             </p>
           </div>
 
@@ -1345,9 +1297,7 @@ export default function Home() {
                     <Input
                       required
                       value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Your name"
                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
                     />
@@ -1359,9 +1309,7 @@ export default function Home() {
                     <Input
                       required
                       value={formData.company}
-                      onChange={(e) =>
-                        setFormData({ ...formData, company: e.target.value })
-                      }
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       placeholder="Your company"
                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
                     />
@@ -1377,9 +1325,7 @@ export default function Home() {
                       type="email"
                       required
                       value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="your@email.com"
                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
                     />
@@ -1392,9 +1338,7 @@ export default function Home() {
                       type="tel"
                       required
                       value={formData.phone}
-                      onChange={(e) =>
-                        setFormData({ ...formData, phone: e.target.value })
-                      }
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="+91 XXXXX XXXXX"
                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
                     />
@@ -1407,9 +1351,7 @@ export default function Home() {
                   </label>
                   <Select
                     value={formData.product}
-                    onValueChange={(value) =>
-                      setFormData({ ...formData, product: value })
-                    }
+                    onValueChange={(value) => setFormData({ ...formData, product: value })}
                   >
                     <SelectTrigger className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600">
                       <SelectValue placeholder="Select a product category" />
@@ -1417,9 +1359,7 @@ export default function Home() {
                     <SelectContent>
                       <SelectItem value="pressboard">Pressboard</SelectItem>
                       <SelectItem value="epoxy">Epoxy Sheets</SelectItem>
-                      <SelectItem value="phenolic">
-                        Bakelite/Phenolic Laminates
-                      </SelectItem>
+                      <SelectItem value="phenolic">Bakelite/Phenolic Laminates</SelectItem>
                       <SelectItem value="kraft">Kraft Paper</SelectItem>
                       <SelectItem value="delrin">Delrin Sheets</SelectItem>
                       <SelectItem value="custom">Custom Components</SelectItem>
@@ -1435,9 +1375,7 @@ export default function Home() {
                   <Textarea
                     required
                     value={formData.requirements}
-                    onChange={(e) =>
-                      setFormData({ ...formData, requirements: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, requirements: e.target.value })}
                     placeholder="Please describe: thickness, dimensions, quantity, voltage rating, application, delivery timeline..."
                     rows={6}
                     className="border-gray-200 focus:border-blue-600 focus:ring-blue-600 resize-none"
@@ -1449,8 +1387,7 @@ export default function Home() {
                   size="lg"
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white h-14 text-base font-semibold shadow-lg shadow-blue-600/25"
                 >
-                  Get Quote Within 24 Hours{" "}
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  Get Quote Within 24 Hours <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </form>
 
@@ -1473,9 +1410,7 @@ export default function Home() {
                   >
                     <Mail className="h-5 w-5 text-blue-600 group-hover:scale-110 transition-transform" />
                     <div className="text-left">
-                      <div className="text-xs text-gray-500 font-medium">
-                        Email
-                      </div>
+                      <div className="text-xs text-gray-500 font-medium">Email</div>
                       <div className="text-sm text-gray-900 font-semibold">
                         srk@hitechinsulation.in
                       </div>
@@ -1484,12 +1419,8 @@ export default function Home() {
                   <div className="flex items-center justify-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-200">
                     <Phone className="h-5 w-5 text-blue-600" />
                     <div className="text-left">
-                      <div className="text-xs text-gray-500 font-medium">
-                        Response Time
-                      </div>
-                      <div className="text-sm text-gray-900 font-semibold">
-                        Within 24 Hours
-                      </div>
+                      <div className="text-xs text-gray-500 font-medium">Response Time</div>
+                      <div className="text-sm text-gray-900 font-semibold">Within 24 Hours</div>
                     </div>
                   </div>
                 </div>

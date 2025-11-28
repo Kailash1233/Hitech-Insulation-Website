@@ -1,4 +1,4 @@
-import { Award, Factory, Globe, Handshake, Layers, ShieldCheck, Users, Wrench } from "lucide-react";
+import { Factory, Globe, Handshake, ShieldCheck, Users, Wrench } from "lucide-react";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";

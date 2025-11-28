@@ -130,7 +130,6 @@ import Image from "next/image";
 import {
   Mail,
   MapPin,
-  Phone,
   Instagram,
   Facebook,
   Youtube,

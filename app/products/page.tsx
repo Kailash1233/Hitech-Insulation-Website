@@ -1,12 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ArrowRight,
-  Layers,
-  ListChecks,
-  Ruler,
-  Shield,
-} from "lucide-react";
+import { ArrowRight, Award, Layers, ListChecks, Ruler, Shield } from "lucide-react";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -26,7 +20,7 @@ const categorizedProducts = productCategories
   }))
   .filter((group) => group.items.length > 0);
 
-export const metadata: Metadata = getSeoMetadata('products');
+export const metadata: Metadata = getSeoMetadata("products");
 
 export default function ProductsPage() {
   return (
@@ -35,14 +29,20 @@ export default function ProductsPage() {
 
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-6xl mx-auto text-center space-y-6">
-          <Badge className="bg-blue-50 text-blue-900 border border-blue-100 text-sm font-semibold px-4 py-2 rounded-full">
-            20 Core Products • 1000+ Custom Configurations
-          </Badge>
+          <div className="flex justify-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-5 py-2.5">
+              <Award className="h-4 w-4 text-blue-600" />
+              <span className="text-sm font-semibold text-blue-900">
+                20 Core Products • 1000+ Custom Configurations
+              </span>
+            </div>
+          </div>
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight">
             Complete Electrical Insulation Catalog
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Explore precision pressboards, epoxy laminates, PTFE products, and custom-engineered insulation components built for transformer, motor, and switchgear manufacturers.
+            Explore precision pressboards, epoxy laminates, PTFE products, and custom-engineered
+            insulation components built for transformer, motor, and switchgear manufacturers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -72,9 +72,7 @@ export default function ProductsPage() {
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-2xl font-bold text-gray-900">{stat.label}</div>
-                <p className="text-xs uppercase tracking-wide text-gray-500">
-                  {stat.description}
-                </p>
+                <p className="text-xs uppercase tracking-wide text-gray-500">{stat.description}</p>
               </div>
             ))}
           </div>
@@ -87,17 +85,20 @@ export default function ProductsPage() {
             {
               icon: Shield,
               title: "Certified Quality",
-              description: "Electrical insulation materials produced under ISO-certified processes for consistent performance.",
+              description:
+                "Electrical insulation materials produced under ISO-certified processes for consistent performance.",
             },
             {
               icon: Ruler,
               title: "Custom Dimensions",
-              description: "Sheets, rods, tubes, and components cut or machined to the exact tolerances your design requires.",
+              description:
+                "Sheets, rods, tubes, and components cut or machined to the exact tolerances your design requires.",
             },
             {
               icon: ListChecks,
               title: "Application Ready",
-              description: "Products engineered for real-world transformer, motor, switchgear, and bus duct environments.",
+              description:
+                "Products engineered for real-world transformer, motor, switchgear, and bus duct environments.",
             },
           ].map((feature) => (
             <Card
@@ -138,9 +139,7 @@ export default function ProductsPage() {
               <div key={group.category} className="space-y-6">
                 <div className="flex items-center justify-between flex-wrap gap-4">
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900">
-                      {group.category}
-                    </h3>
+                    <h3 className="text-2xl font-bold text-gray-900">{group.category}</h3>
                     <p className="text-gray-600">
                       {group.items.length} specialized product
                       {group.items.length > 1 ? "s" : ""}
@@ -176,9 +175,7 @@ export default function ProductsPage() {
                             {product.category}
                           </div>
                         </div>
-                        <CardTitle className="text-xl text-gray-900">
-                          {product.name}
-                        </CardTitle>
+                        <CardTitle className="text-xl text-gray-900">{product.name}</CardTitle>
                         <CardDescription className="line-clamp-3">
                           {product.shortDescription}
                         </CardDescription>
@@ -196,9 +193,7 @@ export default function ProductsPage() {
                             size="sm"
                             className="flex-1 bg-blue-600 hover:bg-blue-700"
                           >
-                            <Link href={`/products/${product.id}`}>
-                              View Details
-                            </Link>
+                            <Link href={`/products/${product.id}`}>View Details</Link>
                           </Button>
                           <Button
                             asChild
@@ -227,7 +222,9 @@ export default function ProductsPage() {
             Need a Material You Don&apos;t See Here?
           </h2>
           <p className="text-lg text-gray-600">
-            Our engineering team fabricates custom gaskets, machined parts, and assemblies from any insulation material we supply. Share your drawings-we&apos;ll send CAD-reviewed solutions within 24 hours.
+            Our engineering team fabricates custom gaskets, machined parts, and assemblies from any
+            insulation material we supply. Share your drawings-we&apos;ll send CAD-reviewed
+            solutions within 24 hours.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 px-8 py-6">
@@ -251,4 +248,3 @@ export default function ProductsPage() {
     </div>
   );
 }
-

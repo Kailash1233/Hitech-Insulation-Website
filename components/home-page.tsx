@@ -2,70 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ArrowRight,
-  Shield,
-  Clock,
-  Target,
-  Check,
-  Factory,
-  Cpu,
-  Zap,
-  Box,
-  Mail,
-  Phone,
-  Award,
-  Globe,
-  Users,
-  TrendingUp,
-  Omega,
-} from "lucide-react";
+import { ArrowRight, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Navigation } from "@/components/navigation";
-import { Footer } from "@/components/footer";
-import { products, featuredProducts } from "@/lib/products";
-import { useState } from "react";
 
 export function HomePage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    email: "",
-    phone: "",
-    product: "",
-    requirements: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you! We will contact you within 24 hours.");
-    setFormData({
-      name: "",
-      company: "",
-      email: "",
-      phone: "",
-      product: "",
-      requirements: "",
-    });
-  };
-
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
