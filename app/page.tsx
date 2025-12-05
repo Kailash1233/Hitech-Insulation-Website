@@ -621,6 +621,32 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <Navigation />
 
+      {/* <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/hero/pressboardsheet.jpg"
+            alt="Electrical insulation background"
+            fill
+            priority
+            className="object-cover blur-xl opacity-30"
+          />
+
+          <div className="absolute inset-x-0 bottom-0 h-[350px] bg-gradient-to-b from-transparent to-white" />
+        </div>
+
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-blue-50 via-indigo-50 to-transparent opacity-60 blur-3xl z-10" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-gray-50 to-transparent opacity-40 blur-3xl z-10" />
+
+        <div className="max-w-7xl mx-auto relative z-20">
+          <div className="flex justify-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-blue-50/90 border border-blue-100 rounded-full px-5 py-2.5">
+              <Award className="h-4 w-4 text-blue-600" />
+              <span className="text-sm font-semibold text-blue-900">
+                Manufacturing Excellence Since 1977
+              </span>
+            </div>
+          </div>  */}
+
       {/* Hero Section - Clean, Modern with Added Spacing */}
       <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
         {/* Subtle gradient accent */}
@@ -1216,9 +1242,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl blur-xl opacity-50" />
-              <div className="relative h-[500px] bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                <Factory className="h-40 w-40 text-white opacity-30" />
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl blur-xl opacity-40" />
+              <div className="relative h-[500px] rounded-2xl shadow-2xl overflow-hidden">
+                <Image src="/slide1.jpg" alt="Factory" fill className="object-cover" />
               </div>
             </div>
 

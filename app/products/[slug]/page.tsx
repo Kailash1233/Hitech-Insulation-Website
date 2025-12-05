@@ -1,17 +1,24 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowRight, Home, ChevronRight, FileText, Mail } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
-import { Navigation } from '@/components/navigation';
-import { Footer } from '@/components/footer';
-import { products } from '@/lib/products';
-import { getProductImage } from '@/lib/product-images';
-import { getSeoMetadata } from '@/lib/seo';
-import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight, Home, ChevronRight, FileText, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
+import { products } from "@/lib/products";
+import { getProductImage } from "@/lib/product-images";
+import { getSeoMetadata } from "@/lib/seo";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 export function generateStaticParams() {
   return Object.keys(products).map((slug) => ({
@@ -19,15 +26,19 @@ export function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const product = products[params.slug];
   if (!product) {
-    return getSeoMetadata('default');
+    return getSeoMetadata("default");
   }
-  
-  return getSeoMetadata('productDetails', {
+
+  return getSeoMetadata("productDetails", {
     title: `${product.name} | Best ${product.category} Supplier in India | Hitech Insulation`,
-    description: `${product.shortDescription} Manufactured in Chennai, India. ${product.specifications[0]?.value || 'Custom specifications available'}. Get quote within 24 hours.`,
+    description: `${product.shortDescription} Manufactured in Chennai, India. ${product.specifications[0]?.value || "Custom specifications available"}. Get quote within 24 hours.`,
     keywords: [
       `best ${product.category.toLowerCase()} supplier india`,
       `${product.name.toLowerCase()} manufacturer chennai`,
@@ -48,7 +59,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
   const relatedProductsData = product.relatedProducts
     .slice(0, 3)
-    .map(id => products[id])
+    .map((id) => products[id])
     .filter(Boolean);
 
   return (
@@ -84,9 +95,14 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                 </div>
                 <div className="flex gap-4">
                   <Button size="lg" asChild className="flex-1 bg-blue-600 hover:bg-blue-700">
-                    <Link href="/contact#quote">Request Custom Quote</Link>
+                    <Link href="/contact">Request Custom Quote</Link>
                   </Button>
-                  <Button size="lg" variant="outline" className="border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600" asChild>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600"
+                    asChild
+                  >
                     <a href="mailto:srk@hitechinsulation.in?subject=Technical%20Specs%20-%20{product.name}">
                       <FileText className="h-5 w-5 mr-2" />
                       Get Specs
@@ -111,7 +127,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </div>
 
               <div className="mb-12">
-                <h2 className="font-display text-2xl font-bold text-gray-900 mb-6">Technical Specifications</h2>
+                <h2 className="font-display text-2xl font-bold text-gray-900 mb-6">
+                  Technical Specifications
+                </h2>
                 <div className="border rounded-lg overflow-hidden">
                   <Table>
                     <TableHeader>
@@ -145,7 +163,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </div>
 
               <div className="mb-12">
-                <h2 className="font-display text-2xl font-bold text-gray-900 mb-6">Why Choose This Product</h2>
+                <h2 className="font-display text-2xl font-bold text-gray-900 mb-6">
+                  Why Choose This Product
+                </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {product.benefits.map((benefit, index) => (
                     <Card key={index}>
@@ -159,13 +179,16 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
               <Card className="bg-blue-50 border-blue-200">
                 <CardContent className="pt-6">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">Need Custom Specifications?</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    Need Custom Specifications?
+                  </h3>
                   <p className="text-gray-600 mb-4">
-                    Our engineering team can customize this product to your exact requirements. Get in touch for a detailed quote.
+                    Our engineering team can customize this product to your exact requirements. Get
+                    in touch for a detailed quote.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Button asChild className="bg-blue-600 hover:bg-blue-700">
-                      <Link href="/contact#quote">Request Quote</Link>
+                      <Link href="/contact">Request Quote</Link>
                     </Button>
                     <Button variant="outline" asChild>
                       <a href="mailto:srk@hitechinsulation.in">
@@ -181,7 +204,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
           {relatedProductsData.length > 0 && (
             <div>
-              <h2 className="font-display text-3xl font-bold text-gray-900 mb-8">Related Products</h2>
+              <h2 className="font-display text-3xl font-bold text-gray-900 mb-8">
+                Related Products
+              </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {relatedProductsData.map((relatedProduct) => (
                   <Card key={relatedProduct.id} className="hover:shadow-lg transition-shadow">
@@ -201,7 +226,11 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <Button asChild variant="outline" className="w-full border-2 border-gray-300 text-gray-700 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50">
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="w-full border-2 border-gray-300 text-gray-700 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50"
+                      >
                         <Link href={`/products/${relatedProduct.id}`}>
                           View Details <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>

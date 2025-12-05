@@ -93,7 +93,7 @@ export default function IndustriesPage() {
               size="lg"
               className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base shadow-lg shadow-blue-600/20"
             >
-              <Link href="/contact#quote">Discuss Your Application</Link>
+              <Link href="/contact">Discuss Your Application</Link>
             </Button>
             <Button
               asChild
@@ -163,7 +163,7 @@ export default function IndustriesPage() {
                 </div>
 
                 <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
-                  <Link href="/contact#quote">Request Application Support</Link>
+                  <Link href="/contact">Request Application Support</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -214,7 +214,7 @@ export default function IndustriesPage() {
               size="lg"
               className="bg-white text-blue-900 hover:bg-gray-100 px-8 py-6"
             >
-              <Link href="/contact#quote">Submit Project Brief</Link>
+              <Link href="/contact">Submit Project Brief</Link>
             </Button>
             <Button
               asChild

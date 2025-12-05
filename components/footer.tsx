@@ -127,14 +127,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Mail,
-  MapPin,
-  Instagram,
-  Facebook,
-  Youtube,
-  ArrowRight,
-} from "lucide-react";
+import { Mail, MapPin, Instagram, Facebook, Youtube, ArrowRight } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -151,12 +144,11 @@ export function Footer() {
                 Ready to Get Started?
               </h3>
               <p className="text-gray-400 text-lg">
-                Request a custom quote and get expert engineering support within
-                24 hours.
+                Request a custom quote and get expert engineering support within 24 hours.
               </p>
             </div>
             <Link
-              href="/contact#quote"
+              href="/contact"
               className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg shadow-lg shadow-blue-600/20 hover:shadow-xl hover:shadow-blue-600/30 transition-all whitespace-nowrap"
             >
               Get Quote Now <ArrowRight className="h-5 w-5" />
@@ -178,9 +170,8 @@ export function Footer() {
               />
             </div>
             <p className="text-gray-400 leading-relaxed mb-6 max-w-sm">
-              Manufacturing precision electrical insulation components since
-              1977. Trusted by India&apos;s leading transformer, motor, and
-              switchgear manufacturers.
+              Manufacturing precision electrical insulation components since 1977. Trusted by
+              India&apos;s leading transformer, motor, and switchgear manufacturers.
             </p>
 
             {/* Trust Badges */}
@@ -199,9 +190,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">
-              Company
-            </h3>
+            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Company</h3>
             <ul className="space-y-3">
               <li>
                 <Link
@@ -229,7 +218,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/contact#quote"
+                  href="/contact"
                   className="text-gray-400 hover:text-white transition-colors flex items-center group"
                 >
                   Request Quote
@@ -240,9 +229,7 @@ export function Footer() {
 
           {/* Products */}
           <div>
-            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">
-              Products
-            </h3>
+            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Products</h3>
             <ul className="space-y-3">
               <li>
                 <Link
@@ -289,9 +276,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">
-              Contact
-            </h3>
+            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Contact</h3>
             <ul className="space-y-4">
               <li>
                 <a
@@ -299,9 +284,7 @@ export function Footer() {
                   className="text-gray-400 hover:text-white transition-colors flex items-start gap-3 group"
                 >
                   <Mail className="h-5 w-5 mt-0.5 flex-shrink-0 text-blue-500 group-hover:text-blue-400" />
-                  <span className="text-sm break-all">
-                    srk@hitechinsulation.in
-                  </span>
+                  <span className="text-sm break-all">srk@hitechinsulation.in</span>
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -348,9 +331,18 @@ export function Footer() {
         <div className="border-t border-gray-800 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-500 text-center md:text-left">
-              © {currentYear} Hitech Insulation. All rights reserved. |
-              Established 1977
+              © {currentYear} Hitech Insulation. All rights reserved. | Established 1977 | Designed
+              with <span className="text-red-500">❤️</span> by{" "}
+              <Link
+                href="https://adszoo.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-gray-300 transition-colors"
+              >
+                Adszoo
+              </Link>
             </p>
+
             <div className="flex flex-wrap items-center justify-center md:justify-end gap-6 text-sm text-gray-500">
               <Link href="#" className="hover:text-gray-300 transition-colors">
                 Privacy Policy

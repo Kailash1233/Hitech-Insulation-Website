@@ -49,7 +49,7 @@ export default function ProductsPage() {
               size="lg"
               className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base shadow-lg shadow-blue-600/20"
             >
-              <Link href="/contact#quote">
+              <Link href="/contact">
                 Request Product Consultation <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -149,7 +149,7 @@ export default function ProductsPage() {
                     variant="outline"
                     className="border-gray-200 hover:border-blue-600 hover:text-blue-600"
                   >
-                    <Link href="/contact#quote">
+                    <Link href="/contact">
                       Request Samples <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
@@ -200,7 +200,7 @@ export default function ProductsPage() {
                             size="sm"
                             className="border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600"
                           >
-                            <Link href="/contact#quote">
+                            <Link href="/contact">
                               Quote <ArrowRight className="ml-1 h-3 w-3" />
                             </Link>
                           </Button>
@@ -227,7 +227,7 @@ export default function ProductsPage() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 px-8 py-6">
-              <Link href="/contact#quote">
+              <Link href="/contact">
                 Send Requirements <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>

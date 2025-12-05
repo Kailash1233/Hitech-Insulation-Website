@@ -11,26 +11,30 @@ const milestones = [
   {
     year: "1977",
     title: "Founded in Chennai",
-    description: "Mr. Radhakrushnun starts Hitech Insulation with a mission to build insulation components that never fail on the field.",
+    description:
+      "Mr. Radhakrushnun starts Hitech Insulation with a mission to build insulation components that never fail on the field.",
   },
   {
     year: "1990s",
     title: "Manufacturing Expansion",
-    description: "Invested in CNC cutting, epoxy sheet fabrication, and precision pressboard machining to support transformer OEMs.",
+    description:
+      "Invested in CNC cutting, epoxy sheet fabrication, and precision pressboard machining to support transformer OEMs.",
   },
   {
     year: "2000s",
     title: "Global Partnerships",
-    description: "Products approved by global brands including Hitachi, Toyota, Nike, ABB, Siemens, and Schneider Electric.",
+    description:
+      "Products approved by global brands including Hitachi, Toyota, Nike, ABB, Siemens, and Schneider Electric.",
   },
   {
     year: "Today",
     title: "Custom Engineering Hub",
-    description: "End-to-end insulation engineering partner serving Indian and international transformer, motor, and switchgear manufacturers.",
+    description:
+      "End-to-end insulation engineering partner serving Indian and international transformer, motor, and switchgear manufacturers.",
   },
 ];
 
-export const metadata: Metadata = getSeoMetadata('about');
+export const metadata: Metadata = getSeoMetadata("about");
 
 export default function AboutPage() {
   return (
@@ -46,11 +50,15 @@ export default function AboutPage() {
             Built On Precision. Sustained By Trust.
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-            Hitech Insulation is a second-generation manufacturing company delivering premium electrical insulation
-            components for transformers, motors, and engineered systems worldwide. We combine traditional craftsmanship with modern production.
+            Hitech Insulation is a second-generation manufacturing company delivering premium
+            electrical insulation components for transformers, motors, and engineered systems
+            worldwide. We combine traditional craftsmanship with modern production.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base shadow-lg shadow-blue-600/20">
+            <Button
+              size="lg"
+              className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base shadow-lg shadow-blue-600/20"
+            >
               Talk to Leadership
             </Button>
             <Button
@@ -74,16 +82,18 @@ export default function AboutPage() {
               </div>
               <CardTitle className="text-2xl">Manufacturing Heritage</CardTitle>
               <CardDescription>
-                Multi-decade experience in cellulose pressboards, epoxy laminates, PTFE products, and custom machined insulation components.
+                Multi-decade experience in cellulose pressboards, epoxy laminates, PTFE products,
+                and custom machined insulation components.
               </CardDescription>
             </CardHeader>
             <CardContent className="text-gray-600 space-y-4 text-base leading-relaxed">
               <p>
-                We operate from Chennai, India with ISO-certified processes and carefully sourced raw materials.
-                Every batch is documented, traceable, and tested.
+                We operate from Chennai, India with ISO-certified processes and carefully sourced
+                raw materials. Every batch is documented, traceable, and tested.
               </p>
               <p>
-                Our team blends traditional craft-hand finishing, manual inspection-with modern CNC cutting, laser profiling, and automated curing.
+                Our team blends traditional craft-hand finishing, manual inspection-with modern CNC
+                cutting, laser profiling, and automated curing.
               </p>
             </CardContent>
           </Card>
@@ -95,15 +105,18 @@ export default function AboutPage() {
               </div>
               <CardTitle className="text-2xl">Zero-Compromise Quality</CardTitle>
               <CardDescription>
-                Our guiding principle: insulation should never be the reason a transformer or motor fails in the field.
+                Our guiding principle: insulation should never be the reason a transformer or motor
+                fails in the field.
               </CardDescription>
             </CardHeader>
             <CardContent className="text-gray-600 space-y-4 text-base leading-relaxed">
               <p>
-                Detailed inspection checklists, dielectric testing, and dimensional verification ensure every panel, tube, and gasket meets spec.
+                Detailed inspection checklists, dielectric testing, and dimensional verification
+                ensure every panel, tube, and gasket meets spec.
               </p>
               <p>
-                We partner closely with engineering teams to review drawings, simulate environments, and validate performance before production.
+                We partner closely with engineering teams to review drawings, simulate environments,
+                and validate performance before production.
               </p>
             </CardContent>
           </Card>
@@ -120,8 +133,8 @@ export default function AboutPage() {
               What Sets Hitech Apart
             </h2>
             <p className="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">
-              We are not traders-we are manufacturers. That lets us control material selection, machining,
-              finishing, packaging, and delivery timelines end-to-end.
+              We are not traders-we are manufacturers. That lets us control material selection,
+              machining, finishing, packaging, and delivery timelines end-to-end.
             </p>
           </div>
 
@@ -130,22 +143,26 @@ export default function AboutPage() {
               {
                 icon: Globe,
                 title: "Global Materials",
-                description: "Sourcing programs across Europe and Asia ensure consistent quality of cellulose pulp, epoxy resins, and PTFE fabrics.",
+                description:
+                  "Sourcing programs across Europe and Asia ensure consistent quality of cellulose pulp, epoxy resins, and PTFE fabrics.",
               },
               {
                 icon: Wrench,
                 title: "Engineering Partnership",
-                description: "We study your CAD files, winding plans, and electrical specs before making the first cut.",
+                description:
+                  "We study your CAD files, winding plans, and electrical specs before making the first cut.",
               },
               {
                 icon: Users,
                 title: "People First",
-                description: "Highly trained technicians with decades of experience handle finishing, inspection, and packaging.",
+                description:
+                  "Highly trained technicians with decades of experience handle finishing, inspection, and packaging.",
               },
               {
                 icon: Handshake,
                 title: "Long-Term Support",
-                description: "From prototyping to volume production, we stay involved through installation and maintenance cycles.",
+                description:
+                  "From prototyping to volume production, we stay involved through installation and maintenance cycles.",
               },
             ].map((item) => (
               <Card
@@ -185,9 +202,7 @@ export default function AboutPage() {
                   {milestone.year}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-gray-900">
-                    {milestone.title}
-                  </h3>
+                  <h3 className="text-xl font-semibold text-gray-900">{milestone.title}</h3>
                   <p className="text-gray-600 mt-2">{milestone.description}</p>
                 </div>
                 <div className="hidden md:block text-4xl text-gray-300 font-bold">
@@ -205,11 +220,17 @@ export default function AboutPage() {
             Let&apos;s Build Your Next Insulation Program
           </h2>
           <p className="text-lg text-blue-100">
-            Share your drawings, specifications, or legacy part numbers. Our engineers will recommend the right materials, thicknesses, and finishing to ensure your equipment never fails.
+            Share your drawings, specifications, or legacy part numbers. Our engineers will
+            recommend the right materials, thicknesses, and finishing to ensure your equipment never
+            fails.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-white text-blue-900 hover:bg-gray-100 px-8 py-6">
-              <Link href="/contact#quote">Schedule Technical Call</Link>
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-blue-900 hover:bg-gray-100 px-8 py-6"
+            >
+              <Link href="/contact">Schedule Technical Call</Link>
             </Button>
             <Button
               asChild
@@ -227,4 +248,3 @@ export default function AboutPage() {
     </div>
   );
 }
-

@@ -35,8 +35,8 @@ export function HomePage() {
               </span>
             </h1>
             <p className="text-xl sm:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto font-light">
-              High-performance electrical insulation components for transformer,
-              motor, and switchgear manufacturers across India.
+              High-performance electrical insulation components for transformer, motor, and
+              switchgear manufacturers across India.
             </p>
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
@@ -78,9 +78,7 @@ export function HomePage() {
                     sizes="(max-width: 768px) 50vw, 25vw"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                    <p className="text-white font-semibold text-sm">
-                      {item.label}
-                    </p>
+                    <p className="text-white font-semibold text-sm">{item.label}</p>
                   </div>
                 </div>
               ))}
@@ -93,12 +91,8 @@ export function HomePage() {
                 { label: "ISO", description: "Certified" },
               ].map((stat) => (
                 <div key={stat.description}>
-                  <div className="text-4xl font-bold text-gray-900 mb-2">
-                    {stat.label}
-                  </div>
-                  <div className="text-sm text-gray-600 font-medium">
-                    {stat.description}
-                  </div>
+                  <div className="text-4xl font-bold text-gray-900 mb-2">{stat.label}</div>
+                  <div className="text-sm text-gray-600 font-medium">{stat.description}</div>
                 </div>
               ))}
             </div>
@@ -109,24 +103,22 @@ export function HomePage() {
               Trusted by Industry Leaders
             </p>
             <div className="grid grid-cols-3 md:grid-cols-6 gap-6 items-center max-w-5xl mx-auto mb-8">
-              {["hitachi", "toyota", "nike", "abb", "siemens", "schneider"].map(
-                (logo) => (
-                  <div
-                    key={logo}
-                    className="relative flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-                  >
-                    <div className="w-full h-full flex items-center justify-center bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all">
-                      <Image
-                        src={`/logos/${logo}.png`}
-                        alt={`${logo} logo`}
-                        width={120}
-                        height={60}
-                        className="object-contain w-full h-full"
-                      />
-                    </div>
+              {["hitachi", "toyota", "nike", "abb", "siemens", "schneider"].map((logo) => (
+                <div
+                  key={logo}
+                  className="relative flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
+                >
+                  <div className="w-full h-full flex items-center justify-center bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all">
+                    <Image
+                      src={`/logos/${logo}.png`}
+                      alt={`${logo} logo`}
+                      width={120}
+                      height={60}
+                      className="object-contain w-full h-full"
+                    />
                   </div>
-                )
-              )}
+                </div>
+              ))}
             </div>
             <p className="text-center text-gray-500 text-sm">
               Made in Chennai, India • Shipped Globally
@@ -134,10 +126,6 @@ export function HomePage() {
           </div>
         </div>
       </section>
-      {/* Additional sections remain unchanged */}
-      {/* ...Rest of the existing sections from the original home page component... */}
-      {/* The remainder of the original component should be copied here exactly as before */}
     </div>
   );
 }
-
