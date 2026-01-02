@@ -5,7 +5,7 @@ import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { products, productCategories } from "@/lib/products";
+import { allProducts as products, productCategories } from "@/lib/products";
 import { getProductImage } from "@/lib/product-images";
 import { getSeoMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -26,54 +26,101 @@ export default function ProductsPage() {
     <div className="min-h-screen bg-white">
       <Navigation />
 
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-6xl mx-auto text-center space-y-6">
-          <div className="flex justify-center mb-10">
-            <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-5 py-2.5">
-              <Award className="h-4 w-4 text-blue-600" />
-              <span className="text-sm font-semibold text-blue-900">
+      <section className="relative min-h-[90svh] flex items-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0">
+          <Image
+            src="/hero/product_hero.jpg"
+            alt="Electrical insulation products catalog"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90" />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 w-full max-w-6xl mx-auto text-center text-white">
+          {/* Badge */}
+          <div
+            className="flex justify-center
+                    mt-6 sm:mt-10 lg:mt-14
+                    mb-8 sm:mb-10"
+          >
+            <div
+              className="inline-flex items-center gap-2 rounded-full
+                      bg-white/10 backdrop-blur
+                      border border-white/20
+                      px-4 py-2 sm:px-5 sm:py-2.5"
+            >
+              <Award className="h-4 w-4 text-blue-300 shrink-0" />
+              <span className="text-xs sm:text-sm font-semibold">
                 20 Core Products • 1000+ Custom Configurations
               </span>
             </div>
           </div>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight">
+
+          {/* Heading */}
+          <h1
+            className="font-display font-bold tracking-tight leading-tight
+                   text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+          >
             Complete Electrical Insulation Catalog
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+
+          {/* Subtext */}
+          <p
+            className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl
+                  text-gray-200 max-w-3xl mx-auto leading-relaxed"
+          >
             Explore precision pressboards, epoxy laminates, PTFE products, and custom-engineered
             insulation components built for transformer, motor, and switchgear manufacturers.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+          {/* CTA */}
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               asChild
               size="lg"
-              className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base shadow-lg shadow-blue-600/20"
+              className="bg-blue-600 hover:bg-blue-700
+                   px-8 py-5 text-base font-semibold
+                   shadow-lg shadow-blue-600/30"
             >
               <Link href="/contact">
-                Request Product Consultation <ArrowRight className="ml-2 h-5 w-5" />
+                Request Product Consultation
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
+
             <Button
               asChild
               size="lg"
               variant="outline"
-              className="border-2 border-gray-200 hover:border-blue-600 hover:text-blue-600 px-8 py-6 text-base"
+              className="border-white/30 text-black
+                   hover:bg-white/90 px-8 py-5 text-base font-semibold"
             >
               <Link href="/contact">Talk to Application Engineer</Link>
             </Button>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-10 border-t border-gray-200">
-            {[
-              { label: "47+ Years", description: "Manufacturing" },
-              { label: "ISO", description: "Certified Plant" },
-              { label: "20 Products", description: "Across 12 families" },
-              { label: "24 hrs", description: "Quote turnaround" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-2xl font-bold text-gray-900">{stat.label}</div>
-                <p className="text-xs uppercase tracking-wide text-gray-500">{stat.description}</p>
-              </div>
-            ))}
+
+          {/* Stats */}
+          <div className="mt-12 sm:mt-14 border-t border-white/20 pt-8">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+              {[
+                { label: "47+ Years", description: "Manufacturing" },
+                { label: "ISO", description: "Certified Plant" },
+                { label: "20 Products", description: "Across 12 families" },
+                { label: "24 hrs", description: "Quote turnaround" },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="text-xl sm:text-2xl font-bold">{stat.label}</div>
+                  <p className="mt-1 text-[10px] sm:text-xs uppercase tracking-wide text-gray-300">
+                    {stat.description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

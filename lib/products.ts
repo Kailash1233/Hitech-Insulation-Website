@@ -14,89 +14,188 @@ export interface Product {
 }
 
 export const products: Record<string, Product> = {
+  /* ===================== PRESSBOARD ===================== */
+
   "pressboard-3mm": {
     id: "pressboard-3mm",
-    name: "Pressboard 3mm - Standard Electrical Insulation",
+    name: "Electrical Grade Pressboard – 3 mm",
     category: "Pressboard",
     shortDescription:
-      "High-density electrical insulation pressboard for transformer applications",
+      "Electrical grade cellulose pressboard used as solid insulation in oil-immersed power and distribution transformers",
+
     description: [
-      "Our 3mm standard pressboard delivers reliable electrical insulation for power transformers and distribution equipment. Manufactured from high-quality cellulose fibers, this pressboard provides excellent dielectric strength and mechanical stability.",
-      "This material is ideal for transformer manufacturers who need consistent quality at competitive prices. Every sheet undergoes rigorous testing to ensure it meets international standards for electrical insulation.",
-      "Whether you're building large power transformers or smaller distribution units, our 3mm pressboard offers the perfect balance of insulation performance and ease of handling.",
+      "Electrical grade pressboard is a solid insulation material manufactured from high-purity, long-fibre cellulose pulp. The 3 mm thickness is one of the most commonly used variants in transformer construction due to its balanced electrical, mechanical, and fabrication properties.",
+      "This pressboard is widely used in oil-immersed power and distribution transformers as solid insulation barriers, spacers, and structural insulation elements. Its porous fibre structure enables excellent oil impregnation, which significantly enhances dielectric strength during operation.",
+      "The material is produced under strictly controlled manufacturing conditions to ensure uniform density, low shrinkage, and consistent thickness. These characteristics are critical for maintaining electrical clearances and long-term mechanical stability inside transformer assemblies.",
+      "3 mm pressboard can be supplied as full sheets or further processed into machined components depending on the transformer design requirements.",
     ],
+
     specifications: [
-      { label: "Material", value: "Cellulose fiber" },
-      { label: "Thickness", value: "3mm ±0.1mm" },
-      { label: "Density", value: "1.2 g/cm³" },
-      { label: "Dielectric Strength", value: "≥15 kV/mm" },
-      { label: "Temperature Rating", value: "-40°C to 105°C" },
-      {
-        label: "Available Sizes",
-        value: "1000x2000mm, Custom sizes available",
-      },
-      { label: "Custom Options", value: "Pre-cut shapes, Custom thickness" },
+      { label: "Base Material", value: "High-purity cellulose fibres (electrical grade)" },
+      { label: "Nominal Thickness", value: "3.0 mm" },
+      { label: "Thickness Tolerance", value: "± 0.1 mm" },
+      { label: "Density", value: "0.9 – 1.2 g/cm³" },
+      { label: "Dielectric Strength (in oil)", value: "≥ 15 kV/mm" },
+      { label: "Operating Temperature Class", value: "Class A – 105°C" },
+      { label: "Moisture Content", value: "≤ 6%" },
+      { label: "Oil Compatibility", value: "Excellent (mineral transformer oil)" },
+      { label: "Surface Finish", value: "Smooth / calendered" },
+      { label: "Standard Sheet Sizes", value: "1000 × 2000 mm (custom sizes available)" },
+      { label: "Processing Options", value: "Cut-to-size sheets, machining, drilling" },
     ],
+
     applications: [
-      "Power transformer insulation barriers",
-      "Distribution transformer winding separation",
-      "High-voltage equipment insulation",
-      "Electrical panel board components",
-      "Bushing insulation",
+      "Solid insulation barriers in power transformers",
+      "Phase and winding separation in distribution transformers",
+      "Structural insulation blocks and spacers",
+      "Electrical clearance insulation in HV equipment",
+      "Insulation supports for transformer leads and bushings",
     ],
+
     benefits: [
-      "Excellent dielectric properties for safe operation",
-      "High mechanical strength prevents deformation",
-      "Consistent quality across every batch",
-      "ISO-certified manufacturing process",
+      "High dielectric strength after oil impregnation",
+      "Good mechanical rigidity with low deformation",
+      "Uniform thickness ensures reliable electrical clearances",
+      "Compatible with standard transformer insulation systems",
+      "Easily machinable for custom transformer components",
     ],
-    relatedProducts: [
-      "pre-compressed-pressboard",
-      "kraft-paper",
-      "nomex-paper",
-    ],
+
+    relatedProducts: ["pre-compressed-pressboard", "presspaper", "crepe-paper"],
   },
+
   "pre-compressed-pressboard": {
     id: "pre-compressed-pressboard",
-    name: "Pre-Compressed Pressboard - High-Density Transformer Grade",
+    name: "Pre-Compressed Electrical Pressboard",
     category: "Pressboard",
     shortDescription:
-      "Premium pre-compressed pressboard for demanding transformer applications",
+      "High-density pressboard for critical transformer insulation and load-bearing applications",
+
     description: [
-      "Pre-compressed pressboard offers superior density and dimensional stability compared to standard pressboard. The pre-compression process creates a material with enhanced mechanical properties and reduced shrinkage during transformer operation.",
-      "This premium grade material is the choice of leading transformer manufacturers who cannot compromise on quality. The higher density provides better resistance to oil absorption and maintains consistent performance over the equipment's lifetime.",
-      "Used in critical applications where standard pressboard would not meet performance requirements, our pre-compressed pressboard delivers the reliability you need for high-value transformer projects.",
+      "Pre-compressed pressboard is a high-density insulation material produced by compressing cellulose-based pressboards under controlled pressure and temperature conditions. This process significantly improves dimensional stability, mechanical strength, and resistance to shrinkage.",
+      "This material is specifically intended for demanding transformer applications where standard pressboard may not meet mechanical or long-term stability requirements. It is commonly used in large power transformers and high-voltage insulation systems.",
+      "Due to its higher density, pre-compressed pressboard offers superior resistance to mechanical stresses caused by short-circuit forces while maintaining excellent dielectric properties after oil impregnation.",
+      "It is suitable for thick sections, load-bearing insulation parts, and machined transformer components.",
     ],
+
     specifications: [
-      { label: "Material", value: "Pre-compressed cellulose fiber" },
-      { label: "Thickness", value: "3mm - 75mm" },
-      { label: "Density", value: "1.3 - 1.4 g/cm³" },
-      { label: "Dielectric Strength", value: "≥18 kV/mm" },
-      { label: "Temperature Rating", value: "-40°C to 105°C" },
-      { label: "Available Sizes", value: "1000x2000mm, Custom sizes" },
-      { label: "Custom Options", value: "Any thickness, Pre-cut components" },
+      { label: "Base Material", value: "Pre-compressed high-purity cellulose fibres" },
+      { label: "Thickness Range", value: "3 mm – 75 mm" },
+      { label: "Density", value: "1.3 – 1.4 g/cm³" },
+      { label: "Dielectric Strength (in oil)", value: "≥ 18 kV/mm" },
+      { label: "Operating Temperature Class", value: "Class A – 105°C" },
+      { label: "Dimensional Stability", value: "Very high (low shrinkage)" },
+      { label: "Mechanical Strength", value: "High, suitable for load-bearing insulation" },
+      { label: "Oil Compatibility", value: "Excellent (mineral transformer oil)" },
+      { label: "Supply Form", value: "Sheets, blocks, machined parts" },
+      { label: "Fabrication Options", value: "CNC machining, milling, drilling" },
     ],
+
     applications: [
-      "Large power transformer insulation",
-      "High-voltage transformer barriers",
-      "Critical winding insulation",
-      "Transformer spacers and supports",
-      "Premium electrical equipment",
+      "High-voltage and extra-high-voltage power transformers",
+      "Main insulation barriers and spacers",
+      "Load-bearing structural insulation components",
+      "Transformer cylinders, rings, and support blocks",
+      "Insulation components exposed to high mechanical stress",
     ],
+
     benefits: [
-      "Superior dimensional stability under oil and heat",
-      "Higher density for better performance",
-      "Reduced shrinkage during operation",
-      "Extended equipment service life",
+      "Superior dimensional stability compared to standard pressboard",
+      "High resistance to mechanical stresses during short circuits",
+      "Reduced shrinkage during transformer service life",
+      "Improved reliability in critical insulation zones",
+      "Ideal for thick and precision-machined components",
     ],
-    relatedProducts: ["pressboard-3mm", "kraft-paper", "transformer-kits"],
+
+    relatedProducts: ["pressboard-3mm", "presspaper", "crepe-paper"],
+  },
+
+  /* ===================== PRESSPAPER ===================== */
+
+  presspaper: {
+    id: "presspaper",
+    name: "Multiply Electrical Presspaper",
+    category: "Presspaper",
+    shortDescription:
+      "High-purity cellulose presspaper for transformer, motor, and electrical insulation systems",
+
+    description: [
+      "Multiply presspaper is manufactured from carefully selected cellulose fibres using multi-vat cylinder machines and subsequently calendered to obtain a smooth and uniform surface.",
+      "The paper consists of homogeneous layers with excellent mechanical strength, dielectric performance, and ageing resistance, making it suitable for use in transformer and motor insulation systems.",
+      "Thermally upgraded variants are available for applications requiring improved thermal endurance. Diamond-dotted epoxy resin coatings can be applied on one or both sides for inter-layer bonding in transformer windings.",
+    ],
+
+    specifications: [
+      { label: "Grades Available", value: "KP 4.1, K2, Grade 4, Thermally Upgraded" },
+      { label: "Raw Material", value: "High-purity cellulose fibres" },
+      { label: "Manufacturing Process", value: "Multi-vat cylinder machine" },
+      { label: "Surface Finish", value: "Calendered smooth finish" },
+      { label: "Resin Options", value: "Plain or diamond-dotted epoxy (B-stage)" },
+      { label: "Thermal Class", value: "Class A / upgraded variants available" },
+    ],
+
+    applications: [
+      "Transformer winding insulation",
+      "Inter-layer insulation in coils",
+      "Motor slot insulation",
+      "Capacitor insulation",
+      "High-voltage electrical components",
+    ],
+
+    benefits: [
+      "High electrical and mechanical strength",
+      "Excellent ageing resistance",
+      "Uniform thickness and surface quality",
+      "Compatible with transformer oils and resins",
+    ],
+
+    relatedProducts: ["pressboard-3mm", "pre-compressed-pressboard", "crepe-paper"],
+  },
+
+  /* ===================== CREPE PAPER ===================== */
+
+  "crepe-paper": {
+    id: "crepe-paper",
+    name: "Electrical Crepe Paper",
+    category: "Crepe Paper",
+    shortDescription:
+      "Flexible creped insulation paper for transformer windings and conductor insulation",
+
+    description: [
+      "Electrical crepe paper is produced by mechanically creping electrical grade kraft paper, resulting in improved flexibility and elongation compared to plain paper.",
+      "This material is widely used in transformer windings, lead insulation, and conductor covering where bending, stretching, and oil retention are required.",
+      "Crepe paper provides increased surface area, which improves oil absorption and helps reduce operating temperatures inside transformers.",
+      "Regular, thermally upgraded, and semi-conducting black crepe paper variants are available depending on insulation requirements.",
+    ],
+
+    specifications: [
+      { label: "Base Material", value: "Electrical grade kraft paper" },
+      { label: "Elongation Range", value: "10% – 300%" },
+      { label: "Base Paper Thickness", value: "40 – 150 microns" },
+      { label: "Supply Forms", value: "Rolls, pads, flexible tubes" },
+      { label: "Thermal Class", value: "Class A (upgraded variants available)" },
+    ],
+
+    applications: [
+      "Transformer winding insulation",
+      "Copper conductor covering",
+      "Lead and terminal insulation",
+      "Electrical shielding (semi-conducting crepe)",
+    ],
+
+    benefits: [
+      "High flexibility and tear resistance",
+      "Improved oil retention",
+      "Enhanced mechanical strength",
+      "Suitable for complex winding geometries",
+    ],
+
+    relatedProducts: ["presspaper", "pressboard-3mm", "pre-compressed-pressboard"],
   },
   "fr4-epoxy-sheet": {
     id: "fr4-epoxy-sheet",
     name: "Fiberglass Epoxy Sheet FR4 - General Purpose Grade",
     category: "Epoxy Sheets",
-    shortDescription:
-      "Superior mechanical strength epoxy sheets for demanding applications",
+    shortDescription: "Superior mechanical strength epoxy sheets for demanding applications",
     description: [
       "FR4 fiberglass epoxy sheets are the industry standard for electrical and mechanical applications. Composed of woven fiberglass cloth impregnated with epoxy resin, this material offers excellent strength, dimensional stability, and electrical insulation.",
       "Our FR4 sheets meet international standards and are perfect for manufacturing printed circuit boards, electrical insulation components, and mechanical parts that require high strength-to-weight ratio.",
@@ -167,8 +266,7 @@ export const products: Record<string, Product> = {
     id: "paper-phenolic",
     name: "Paper Phenolic Laminate - NEMA XX Grade",
     category: "Phenolic Laminates",
-    shortDescription:
-      "Paper-based phenolic laminate for electrical applications",
+    shortDescription: "Paper-based phenolic laminate for electrical applications",
     description: [
       "Paper phenolic laminates combine kraft paper with phenolic resin to create an economical material with good electrical insulation properties. This material is widely used in electrical equipment where high mechanical strength is not critical.",
       "NEMA XX grade paper phenolic offers consistent quality at a competitive price point. It machines easily and provides reliable electrical insulation for a variety of applications.",
@@ -378,8 +476,7 @@ export const products: Record<string, Product> = {
     id: "syndanio-sheet",
     name: "Syndanio Sheets - Thermal Insulation",
     category: "Thermal Insulation",
-    shortDescription:
-      "High-temperature insulation boards for foundries and furnaces",
+    shortDescription: "High-temperature insulation boards for foundries and furnaces",
     description: [
       "Syndanio sheets are specialized thermal insulation materials designed for high-temperature industrial applications. These boards withstand extreme heat while providing both thermal and electrical insulation properties.",
       "Commonly used in foundries, furnaces, and high-temperature electrical equipment, Syndanio sheets prevent heat transfer while maintaining structural integrity. The material resists thermal shock and repeated heating cycles.",
@@ -475,11 +572,7 @@ export const products: Record<string, Product> = {
       "High-temperature adhesive",
       "Instant PTFE surface creation",
     ],
-    relatedProducts: [
-      "ptfe-cloth-non-adhesive",
-      "ptfe-sheet",
-      "polyester-film",
-    ],
+    relatedProducts: ["ptfe-cloth-non-adhesive", "ptfe-sheet", "polyester-film"],
   },
   "ptfe-sheet": {
     id: "ptfe-sheet",
@@ -513,11 +606,7 @@ export const products: Record<string, Product> = {
       "Wide temperature capability",
       "FDA compliant for food contact",
     ],
-    relatedProducts: [
-      "ptfe-cloth-non-adhesive",
-      "custom-gaskets",
-      "delrin-sheet",
-    ],
+    relatedProducts: ["ptfe-cloth-non-adhesive", "custom-gaskets", "delrin-sheet"],
   },
   "epoxy-rods": {
     id: "epoxy-rods",
@@ -560,8 +649,7 @@ export const products: Record<string, Product> = {
     id: "nomex-paper",
     name: "Nomex Paper - Aramid Fiber Insulation",
     category: "Advanced Insulation",
-    shortDescription:
-      "High-performance aramid insulation for extreme conditions",
+    shortDescription: "High-performance aramid insulation for extreme conditions",
     description: [
       "Nomex paper is a premium insulation material made from aramid fibers. This advanced material offers superior thermal stability, mechanical strength, and electrical insulation compared to traditional kraft paper.",
       "The meta-aramid fiber structure gives Nomex exceptional heat resistance and the ability to maintain properties at temperatures where cellulose materials would fail. It's the choice for high-performance motors and transformers.",
@@ -709,8 +797,7 @@ export const products: Record<string, Product> = {
     id: "transformer-kits",
     name: "Transformer Insulation Kits - Complete Solutions",
     category: "Complete Assemblies",
-    shortDescription:
-      "Pre-cut insulation component kits for transformer assembly",
+    shortDescription: "Pre-cut insulation component kits for transformer assembly",
     description: [
       "Transformer insulation kits provide all the pressboard, kraft paper, and other insulation components you need for transformer assembly in one convenient package. Each kit is engineered for specific transformer designs and pre-cut to exact dimensions.",
       "Eliminate cutting errors and material waste by ordering complete kits instead of raw materials. Our engineering team works from your transformer design to create kits that include every insulation component needed.",
@@ -762,6 +849,7 @@ export const productCategories = [
   "Mica Products",
   "Custom Fabrication",
   "Complete Assemblies",
+  "Other Products",
 ];
 
 export const featuredProducts = [
@@ -774,3 +862,161 @@ export const featuredProducts = [
   "fiberglass-tubes",
   "syndanio-sheet",
 ];
+
+export const otherProducts: Record<string, Product> = {
+  "mica-tape": {
+    id: "mica-tape",
+    name: "Mica Tapes & Mica Sheets",
+    category: "Other Products",
+    shortDescription: "High-temperature mica insulation tapes and sheets",
+    description: [
+      "Mica tapes and sheets are used in critical high-temperature electrical insulation applications where organic materials fail. Manufactured using muscovite and phlogopite mica, these products provide excellent dielectric strength and thermal endurance.",
+      "Widely used in motors, generators, and heating equipment, mica insulation maintains stability under extreme thermal stress.",
+    ],
+    specifications: [
+      { label: "Material", value: "Muscovite / Phlogopite mica" },
+      { label: "Temperature Rating", value: "Up to 600°C" },
+      { label: "Form", value: "Tape, Sheet, Flexible laminate" },
+    ],
+    applications: [
+      "Motor winding insulation",
+      "Heating element insulation",
+      "High-voltage equipment",
+    ],
+    benefits: ["Excellent thermal resistance", "High dielectric strength", "Long service life"],
+    relatedProducts: ["syndanio-sheet", "nomex-paper"],
+  },
+
+  "glass-fibre-tapes": {
+    id: "glass-fibre-tapes",
+    name: "Glass Fibre, Polyester & Cotton Tapes",
+    category: "Other Products",
+    shortDescription: "Electrical insulation tapes for motors and transformers",
+    description: [
+      "Glass fibre, polyester, and cotton tapes are extensively used in electrical insulation systems for binding, reinforcement, and protection.",
+      "These tapes provide mechanical strength, thermal resistance, and compatibility with varnishes and resins.",
+    ],
+    specifications: [
+      { label: "Material", value: "Glass fibre / Polyester / Cotton" },
+      { label: "Temperature Rating", value: "Up to 155°C" },
+      { label: "Form", value: "Woven tapes" },
+    ],
+    applications: ["Motor winding binding", "Transformer insulation", "Electrical reinforcement"],
+    benefits: ["Excellent tensile strength", "Resin compatibility", "Flexible and durable"],
+    relatedProducts: ["mica-tape", "polyester-film"],
+  },
+
+  "adhesive-tapes": {
+    id: "adhesive-tapes",
+    name: "Adhesive Insulation Tapes",
+    category: "Other Products",
+    shortDescription: "Kapton, Polyester, and Fiberglass adhesive tapes",
+    description: [
+      "Adhesive insulation tapes are pressure-sensitive tapes designed for quick application in electrical insulation systems.",
+      "Includes Kapton tapes, polyester adhesive tapes, and fiberglass adhesive tapes for high-temperature and electrical applications.",
+    ],
+    specifications: [
+      { label: "Adhesive Type", value: "Silicone / Acrylic" },
+      { label: "Temperature Rating", value: "Up to 260°C (Kapton)" },
+      { label: "Form", value: "Rolls" },
+    ],
+    applications: ["Slot insulation", "Electrical masking", "Thermal protection"],
+    benefits: ["Easy application", "High temperature resistance", "Strong adhesion"],
+    relatedProducts: ["ptfe-cloth-adhesive", "polyester-film"],
+  },
+
+  "cork-sheets": {
+    id: "cork-sheets",
+    name: "Cork Sheets",
+    category: "Other Products",
+    shortDescription: "Compressible cork sheets for vibration and sealing",
+    description: [
+      "Cork sheets are used for vibration damping, sealing, and insulation in electrical and mechanical systems.",
+      "They offer excellent compressibility and recovery properties.",
+    ],
+    specifications: [
+      { label: "Material", value: "Natural cork" },
+      { label: "Thickness", value: "1mm – 25mm" },
+    ],
+    applications: ["Transformer vibration damping", "Sealing applications"],
+    benefits: ["Excellent compressibility", "Thermal and acoustic insulation"],
+    relatedProducts: ["custom-gaskets"],
+  },
+
+  "hylam-sheets": {
+    id: "hylam-sheets",
+    name: "Hylam Sheets",
+    category: "Phenolic Laminates",
+    shortDescription: "Electrical grade laminated phenolic sheets",
+    description: [
+      "Hylam sheets are laminated phenolic materials used extensively in electrical and mechanical insulation.",
+      "They offer good dielectric strength and mechanical rigidity.",
+    ],
+    specifications: [
+      { label: "Material", value: "Phenolic laminate" },
+      { label: "Temperature Rating", value: "Up to 120°C" },
+    ],
+    applications: ["Electrical panels", "Switchgear components"],
+    benefits: ["Cost-effective insulation", "Good machinability"],
+    relatedProducts: ["bakelite-sheet"],
+  },
+
+  "epoxy-cast-insulators": {
+    id: "epoxy-cast-insulators",
+    name: "Epoxy Cast Insulators",
+    category: "Other Products",
+    shortDescription: "High-strength epoxy cast electrical insulators",
+    description: [
+      "Epoxy cast insulators are used in medium and high-voltage electrical systems for structural and insulation purposes.",
+      "Manufactured using high-grade epoxy resin systems to ensure mechanical strength and electrical reliability.",
+    ],
+    specifications: [
+      { label: "Material", value: "Cast epoxy resin" },
+      { label: "Voltage Class", value: "Up to 36 kV" },
+    ],
+    applications: ["Switchgear insulation", "Busbar supports"],
+    benefits: ["High mechanical strength", "Excellent electrical insulation"],
+    relatedProducts: ["epoxy-rods", "custom-gaskets"],
+  },
+
+  "crepe-paper-range": {
+    id: "crepe-paper-range",
+    name: "Crepe Paper & Tubes",
+    category: "Other Products",
+    shortDescription: "Electrical crepe papers and insulation tubes",
+    description: [
+      "Electrical crepe papers include semi-conducting black crepe, aluminium foil crepe, and thermally upgraded crepe paper tubes.",
+      "Used extensively in transformer winding insulation systems.",
+    ],
+    specifications: [
+      { label: "Material", value: "Electrical grade cellulose" },
+      { label: "Temperature Rating", value: "105°C – 120°C" },
+    ],
+    applications: ["Transformer winding insulation", "Electrical shielding"],
+    benefits: ["Flexible insulation", "High dielectric strength"],
+    relatedProducts: ["kraft-paper", "pressboard-3mm"],
+  },
+
+  "frp-products": {
+    id: "frp-products",
+    name: "FRP Rods, Tubes & Components",
+    category: "Other Products",
+    shortDescription: "FRP structural and insulation components",
+    description: [
+      "FRP rods, dog bones, tubes, corners, and threaded rods are used in electrical and mechanical structures.",
+      "These products offer high strength-to-weight ratio and corrosion resistance.",
+    ],
+    specifications: [
+      { label: "Material", value: "Fiberglass Reinforced Plastic" },
+      { label: "Form", value: "Rods, Tubes, Corners, Threaded rods" },
+    ],
+    applications: ["Electrical supports", "Structural insulation"],
+    benefits: ["Corrosion resistant", "High mechanical strength"],
+    relatedProducts: ["fiberglass-tubes", "epoxy-rods"],
+  },
+};
+
+export const allProducts: Record<string, Product> = {
+  ...products,
+  ...otherProducts,
+};

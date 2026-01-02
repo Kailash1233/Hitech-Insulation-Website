@@ -6,25 +6,60 @@ import { Button } from "@/components/ui/button";
 import { getSeoMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Location } from "@/components/location";
+import Image from "next/image";
+
+// const milestones = [
+//   {
+//     year: "1977",
+//     title: "Founded in Chennai",
+//     description:
+//       "Mr. Radhakrushnun starts Hitech Insulation with a mission to build insulation components that never fail on the field.",
+//   },
+//   {
+//     year: "1990s",
+//     title: "Manufacturing Expansion",
+//     description:
+//       "Invested in CNC cutting, epoxy sheet fabrication, and precision pressboard machining to support transformer OEMs.",
+//   },
+//   {
+//     year: "2000s",
+//     title: "Global Partnerships",
+//     description:
+//       "Products approved by global brands including Hitachi, Toyota, Nike, ABB, Siemens, and Schneider Electric.",
+//   },
+//   {
+//     year: "Today",
+//     title: "Custom Engineering Hub",
+//     description:
+//       "End-to-end insulation engineering partner serving Indian and international transformer, motor, and switchgear manufacturers.",
+//   },
+// ];
 
 const milestones = [
   {
-    year: "1977",
-    title: "Founded in Chennai",
+    year: "1974",
+    title: "Foundation in Parrys, Chennai",
     description:
-      "Mr. Radhakrushnun starts Hitech Insulation with a mission to build insulation components that never fail on the field.",
+      "The journey began in 1974 at Parrys, Chennai, with a small but focused setup dedicated to precision metal and industrial component work. This phase laid the foundation of discipline, craftsmanship, and long-term vision.",
   },
   {
-    year: "1990s",
-    title: "Manufacturing Expansion",
+    year: "2003",
+    title: "Establishment of a New Factory",
     description:
-      "Invested in CNC cutting, epoxy sheet fabrication, and precision pressboard machining to support transformer OEMs.",
+      "To meet growing demand and expand manufacturing capabilities, a new factory was established in 2003. This marked a significant scale-up in production capacity and technical infrastructure.",
   },
   {
-    year: "2000s",
-    title: "Global Partnerships",
+    year: "2013",
+    title: "Expansion Through Global Partnerships",
     description:
-      "Products approved by global brands including Hitachi, Toyota, Nike, ABB, Siemens, and Schneider Electric.",
+      "Between 2013 and 2014, the company entered strategic global partnerships, enabling technology exchange, quality benchmarking, and access to international markets.",
+  },
+  {
+    year: "2022",
+    title: "Pressboard Component Manufacturing in Kundrathur",
+    description:
+      "In 2022, operations expanded into pressboard component manufacturing with a dedicated facility in Kundrathur, strengthening capabilities in specialized industrial components and diversified manufacturing.",
   },
   {
     year: "Today",
@@ -41,34 +76,71 @@ export default function AboutPage() {
     <div className="min-h-screen bg-white">
       <Navigation />
 
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <p className="text-sm font-semibold text-blue-600 uppercase tracking-[0.3em]">
-            Since 1977
-          </p>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight">
-            Built On Precision. Sustained By Trust.
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-            Hitech Insulation is a second-generation manufacturing company delivering premium
-            electrical insulation components for transformers, motors, and engineered systems
-            worldwide. We combine traditional craftsmanship with modern production.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base shadow-lg shadow-blue-600/20"
+      <section className="relative min-h-[85svh] flex items-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0">
+          <Image
+            src="/hero/about_hero.jpg" // make sure this exists in /public/hero
+            alt="Hitech Insulation manufacturing facility and electrical insulation components"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/65 to-black/85" />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 w-full max-w-4xl mx-auto text-center text-white">
+          <div className="space-y-6 sm:space-y-8">
+            {/* Heritage */}
+            <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.3em] text-blue-300">
+              Since 1977
+            </p>
+
+            {/* Heading */}
+            <h1
+              className="font-display font-bold tracking-tight leading-tight
+                   text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
             >
-              Talk to Leadership
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-2 border-gray-200 hover:border-blue-600 hover:text-blue-600 px-8 py-6 text-base"
+              Built on Precision.
+              <br className="hidden sm:block" />
+              Sustained by Trust.
+            </h1>
+
+            {/* Description */}
+            <p
+              className="text-base sm:text-lg md:text-xl
+                   text-gray-200 leading-relaxed max-w-3xl mx-auto"
             >
-              <a href="mailto:srk@hitechinsulation.in">Email Us</a>
-            </Button>
+              Hitech Insulation is a second-generation manufacturing company delivering premium
+              electrical insulation components for transformers, motors, and engineered electrical
+              systems worldwide. We combine decades of craftsmanship with modern production
+              standards to ensure consistent, field-proven reliability.
+            </p>
+
+            {/* CTA */}
+            <div className="pt-4 sm:pt-6 flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-700
+                     px-8 py-5 text-base font-semibold
+                     shadow-lg shadow-blue-600/30"
+              >
+                Talk to Leadership
+              </Button>
+
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-white/30 text-black
+                     hover:bg-white/90 px-8 py-5 text-base"
+              >
+                <a href="mailto:srk@hitechinsulation.in">Email Us</a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -213,6 +285,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <Location />
 
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blue-900 text-white">
         <div className="max-w-4xl mx-auto text-center space-y-6">

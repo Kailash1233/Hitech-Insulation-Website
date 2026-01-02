@@ -162,7 +162,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <div className="mb-6">
               <Image
-                src="/logo.png"
+                src="/HITECHINSULATION.png"
                 alt="Hitech Insulation"
                 width={140}
                 height={48}

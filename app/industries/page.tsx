@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Award, Box, Cpu, Factory, Flame, Shield, Sparkles, Zap } from "lucide-react";
 import { getSeoMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 const industries = [
   {
@@ -70,36 +71,55 @@ export default function IndustriesPage() {
     <div className="min-h-screen bg-white">
       <Navigation />
 
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white text-center">
-        <div className="max-w-4xl mx-auto space-y-6">
+      <section className="relative min-h-[85vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 text-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/hero-bg.png"
+            alt="Electrical insulation applications across industries"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/85" />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl mx-auto space-y-6 text-white">
           <div className="flex justify-center mb-10">
-            <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-5 py-2.5">
-              <Award className="h-4 w-4 text-blue-600" />
-              <span className="text-sm font-semibold text-blue-900">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full px-5 py-2.5">
+              <Award className="h-4 w-4 text-blue-300" />
+              <span className="text-sm font-semibold text-white">
                 Trusted By Electrical OEMs Worldwide
               </span>
             </div>
           </div>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900">
+
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
             Industries We Power
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600">
+
+          <p className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
             From power transformers to aerospace-grade insulation, Hitech delivers customized
             solutions that survive extreme electrical, mechanical, and thermal loads.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
             <Button
               asChild
               size="lg"
-              className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base shadow-lg shadow-blue-600/20"
+              className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base shadow-lg shadow-blue-600/30"
             >
               <Link href="/contact">Discuss Your Application</Link>
             </Button>
+
             <Button
               asChild
               size="lg"
               variant="outline"
-              className="border-2 border-gray-200 hover:border-blue-600 hover:text-blue-600 px-8 py-6"
+              className="border-white/30 text-black hover:bg-white px-8 py-6"
             >
               <Link href="/products">View Material Catalog</Link>
             </Button>

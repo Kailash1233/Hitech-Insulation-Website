@@ -580,45 +580,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { products, featuredProducts } from "@/lib/products";
 import { getProductImage } from "@/lib/product-images";
-import { useState } from "react";
+import { Location } from "@/components/location";
 
 export default function Home() {
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    email: "",
-    phone: "",
-    product: "",
-    requirements: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you! We will contact you within 24 hours.");
-    setFormData({
-      name: "",
-      company: "",
-      email: "",
-      phone: "",
-      product: "",
-      requirements: "",
-    });
-  };
-
   return (
-    <div className="min-h-screen bg-white">
+    // <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Navigation />
 
       {/* <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -649,12 +620,10 @@ export default function Home() {
 
       {/* Hero Section - Clean, Modern with Added Spacing */}
       <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
-        {/* Subtle gradient accent */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-blue-50 via-indigo-50 to-transparent opacity-60 blur-3xl -z-0" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-gray-50 to-transparent opacity-40 blur-3xl -z-0" />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Badge */}
           <div className="flex justify-center mb-10">
             <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-5 py-2.5">
               <Award className="h-4 w-4 text-blue-600" />
@@ -664,7 +633,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Main Content - Centered */}
           <div className="text-center max-w-5xl mx-auto mb-16">
             <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-[1.1] tracking-tight">
               Precision Insulation
@@ -679,7 +647,6 @@ export default function Home() {
               switchgear manufacturers across India.
             </p>
 
-            {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
               <Button
                 size="lg"
@@ -700,7 +667,6 @@ export default function Home() {
               </Button>
             </div>
 
-            {/* Product Images Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
               <div className="relative bg-white rounded-xl overflow-hidden border-2 border-gray-200 aspect-square group">
                 <Image
@@ -755,7 +721,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Stats Row */}
             <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-12 border-t border-gray-200">
               <div>
                 <div className="text-4xl font-bold text-gray-900 mb-2">47+</div>
@@ -772,15 +737,12 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Client Logos Section - With Real Logo Containers */}
           <div className="pt-16 border-t border-gray-200">
             <p className="text-center text-gray-500 text-xs font-semibold mb-10 uppercase tracking-widest">
               Trusted by Industry Leaders
             </p>
 
-            {/* Logo Grid */}
             <div className="grid grid-cols-3 md:grid-cols-6 gap-6 items-center max-w-5xl mx-auto mb-8">
-              {/* Hitachi Logo */}
               <div className="relative flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
                 <div className="w-full h-full flex items-center justify-center bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all">
                   <Image
@@ -793,7 +755,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Toyota Logo */}
               <div className="relative flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
                 <div className="w-full h-full flex items-center justify-center bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all">
                   <Image
@@ -806,7 +767,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Nike Logo */}
               <div className="relative flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
                 <div className="w-full h-full flex items-center justify-center bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all">
                   <Image
@@ -819,7 +779,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* ABB Logo */}
               <div className="relative flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
                 <div className="w-full h-full flex items-center justify-center bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all">
                   <Image
@@ -832,7 +791,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Siemens Logo */}
               <div className="relative flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
                 <div className="w-full h-full flex items-center justify-center bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all">
                   <Image
@@ -845,7 +803,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Schneider Electric Logo */}
               <div className="relative flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
                 <div className="w-full h-full flex items-center justify-center bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all">
                   <Image
@@ -865,6 +822,144 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/hero.jpg"
+            alt="Electrical insulation manufacturing facility"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/80" />
+        </div>
+
+        <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-gradient-to-br from-blue-600/20 via-indigo-600/10 to-transparent blur-3xl -z-10" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-black/30 to-transparent blur-3xl -z-10" />
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex justify-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full px-5 py-2.5">
+              <Award className="h-4 w-4 text-blue-300" />
+              <span className="text-sm font-semibold text-white">
+                Manufacturing Excellence Since 1977
+              </span>
+            </div>
+          </div>
+
+          <div className="text-center max-w-5xl mx-auto mb-16">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight tracking-tight">
+              Precision Insulation
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-500">
+                You Can Trust
+              </span>
+            </h1>
+
+            <p className="text-base sm:text-lg lg:text-xl text-gray-200 mb-12 leading-relaxed max-w-3xl mx-auto">
+              High-performance electrical insulation components for transformer, motor, and
+              switchgear manufacturers across India.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
+              <Button
+                size="lg"
+                asChild
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 rounded-lg shadow-lg shadow-blue-600/30 font-semibold"
+              >
+                <Link href="/contact#quote" className="inline-flex items-center">
+                  Get Custom Quote <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="px-8 py-6 rounded-lg border-2 border-white/30 text-black hover:bg-white/90 font-semibold"
+              >
+                <Link href="/products">Browse Products</Link>
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+              {[
+                { src: "/hero/pressboardsheet.jpg", label: "Pressboard" },
+                { src: "/hero/epoxy.jpg", label: "Epoxy Sheets" },
+                { src: "/hero/bakelite.png", label: "Bakelite" },
+                { src: "/hero/kraft.png", label: "Kraft Paper" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="relative bg-white rounded-xl overflow-hidden border border-white/20 aspect-square"
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.label}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3">
+                    <p className="text-white text-sm font-semibold">{item.label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-12 border-t border-white/20">
+              <div>
+                <div className="text-3xl sm:text-4xl font-bold text-white mb-1">47+</div>
+                <div className="text-xs sm:text-sm text-gray-300">Years in Business</div>
+              </div>
+              <div>
+                <div className="text-3xl sm:text-4xl font-bold text-white mb-1">100+</div>
+                <div className="text-xs sm:text-sm text-gray-300">Custom Products</div>
+              </div>
+              <div>
+                <div className="text-3xl sm:text-4xl font-bold text-white mb-1">ISO</div>
+                <div className="text-xs sm:text-sm text-gray-300">Certified</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-16 border-t border-white/20">
+            <p className="text-center text-gray-300 text-xs font-semibold mb-10 uppercase tracking-widest">
+              Trusted by Industry Leaders
+            </p>
+
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-6 items-center max-w-5xl mx-auto">
+              {[
+                { src: "/partners/bhagyanagar-1.png", alt: "Bhagyanagar" },
+                { src: "/partners/bhel.png", alt: "BHEL" },
+                { src: "/partners/ezgif.com-webp-to-png.png", alt: "Bharat Dynamics" },
+                { src: "/partners/railway1.png", alt: "Indian Railways" },
+                { src: "/partners/shiridi-sai-1.png", alt: "Shiridi Sai" },
+                { src: "/partners/transcon.png", alt: "Transcon" },
+              ].map((logo) => (
+                <div
+                  key={logo.alt}
+                  className="flex items-center justify-center h-20 bg-white rounded-lg border border-white/20 p-4 grayscale hover:grayscale-0 transition"
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={120}
+                    height={60}
+                    className="object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+
+            <p className="text-center text-gray-400 text-sm mt-10">
+              Made in Chennai, India • Shipped Globally
+            </p>
+          </div>
+        </div>
+      </section> */}
 
       {/* Problem-Solution Section - Matching Clean Design */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
@@ -1299,49 +1394,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quote Form Section - Light Background Match */}
+      <Location />
+
+      {/* Quote Form Section – Formspree Safe */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-4xl mx-auto">
+          {/* Header */}
           <div className="text-center mb-12">
             <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
               Get Your Custom Quote
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Tell us your specifications. Our engineers will design the perfect solution-and
-              respond within 24 hours.
+              Share your requirements. Our engineering team will review and respond within 24 hours.
             </p>
           </div>
 
-          <Card className="bg-white text-gray-900 border-2 border-gray-100 shadow-xl">
+          <Card className="bg-white border-2 border-gray-100 shadow-xl">
             <CardContent className="p-8 sm:p-10">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form action="https://formspree.io/f/xwpgqnay" method="POST" className="space-y-6">
+                {/* Name + Company */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold mb-2 text-gray-700">
                       Full Name *
                     </label>
                     <Input
+                      name="name"
                       required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Your name"
+                      placeholder="Your full name"
                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
                     />
                   </div>
+
                   <div>
                     <label className="block text-sm font-semibold mb-2 text-gray-700">
                       Company Name *
                     </label>
                     <Input
+                      name="company"
                       required
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      placeholder="Your company"
+                      placeholder="Your company name"
                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
                     />
                   </div>
                 </div>
 
+                {/* Email + Phone */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold mb-2 text-gray-700">
@@ -1349,74 +1447,97 @@ export default function Home() {
                     </label>
                     <Input
                       type="email"
+                      name="email"
                       required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="your@email.com"
                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
                     />
                   </div>
+
                   <div>
                     <label className="block text-sm font-semibold mb-2 text-gray-700">
                       Phone Number *
                     </label>
                     <Input
                       type="tel"
+                      name="phone"
                       required
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="+91 XXXXX XXXXX"
                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
                     />
                   </div>
                 </div>
 
+                {/* Product Selection */}
                 <div>
                   <label className="block text-sm font-semibold mb-2 text-gray-700">
-                    Product Category *
+                    Product Required *
                   </label>
-                  <Select
-                    value={formData.product}
-                    onValueChange={(value) => setFormData({ ...formData, product: value })}
+                  <select
+                    name="product_required"
+                    required
+                    className="w-full h-12 rounded-md border border-gray-200 px-3 text-sm focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
                   >
-                    <SelectTrigger className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600">
-                      <SelectValue placeholder="Select a product category" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="pressboard">Pressboard</SelectItem>
-                      <SelectItem value="epoxy">Epoxy Sheets</SelectItem>
-                      <SelectItem value="phenolic">Bakelite/Phenolic Laminates</SelectItem>
-                      <SelectItem value="kraft">Kraft Paper</SelectItem>
-                      <SelectItem value="delrin">Delrin Sheets</SelectItem>
-                      <SelectItem value="custom">Custom Components</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
+                    <option value="">Select a product</option>
+                    <option value="Pressboard Components">
+                      Pressboard Components (Manufacturer)
+                    </option>
+                    <option value="Pressboard Sheets">Pressboard Sheets & Machined Parts</option>
+                    <option value="Mica Sheets / Mica Tapes">Mica Sheets / Mica Tapes</option>
+                    <option value="Glass Fibre Tapes">
+                      Glass Fibre / Polyester / Cotton Tapes
+                    </option>
+                    <option value="Crepe Paper">Crepe Paper (Electrical Grade)</option>
+                    <option value="Hylam Sheets">Hylam Sheets</option>
+                    <option value="Kapton Tape">Kapton Tape</option>
+                    <option value="Fibre Glass Adhesive Tapes">Fibre Glass Adhesive Tapes</option>
+                    <option value="Polyester Adhesive Tapes">Polyester Adhesive Tapes</option>
+                    <option value="Epoxy Cast Insulators">Epoxy Cast Insulators</option>
+                    <option value="Other">Other (Specify Below)</option>
+                  </select>
                 </div>
 
+                {/* Other Product Details */}
+                <div>
+                  <label className="block text-sm font-semibold mb-2 text-gray-700">
+                    If Other, specify product details
+                  </label>
+                  <Textarea
+                    name="other_product_details"
+                    rows={3}
+                    placeholder="Example: FRP Rods, Syndanio Sheets, Epoxy Bushings, Cork Sheets, Custom insulation components..."
+                    className="border-gray-200 focus:border-blue-600 focus:ring-blue-600 resize-none"
+                  />
+                </div>
+
+                {/* Requirements */}
                 <div>
                   <label className="block text-sm font-semibold mb-2 text-gray-700">
                     Specifications & Requirements *
                   </label>
                   <Textarea
+                    name="requirements"
                     required
-                    value={formData.requirements}
-                    onChange={(e) => setFormData({ ...formData, requirements: e.target.value })}
-                    placeholder="Please describe: thickness, dimensions, quantity, voltage rating, application, delivery timeline..."
                     rows={6}
+                    placeholder="Thickness, dimensions, quantity, voltage rating, application, delivery timeline..."
                     className="border-gray-200 focus:border-blue-600 focus:ring-blue-600 resize-none"
                   />
                 </div>
 
+                {/* Hidden Meta */}
+                <input type="hidden" name="source" value="Website Quote Form" />
+
+                {/* Submit */}
                 <Button
                   type="submit"
                   size="lg"
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white h-14 text-base font-semibold shadow-lg shadow-blue-600/25"
                 >
-                  Get Quote Within 24 Hours <ArrowRight className="ml-2 h-5 w-5" />
+                  Get Quote Within 24 Hours
                 </Button>
               </form>
 
+              {/* Divider */}
               <div className="mt-8 space-y-4">
                 <div className="relative">
                   <div className="absolute inset-0 flex items-center">
@@ -1432,9 +1553,9 @@ export default function Home() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <a
                     href="mailto:srk@hitechinsulation.in"
-                    className="flex items-center justify-center gap-3 p-4 bg-gray-50 hover:bg-gray-100 rounded-xl transition-colors group border border-gray-200"
+                    className="flex items-center justify-center gap-3 p-4 bg-gray-50 hover:bg-gray-100 rounded-xl transition-colors border border-gray-200"
                   >
-                    <Mail className="h-5 w-5 text-blue-600 group-hover:scale-110 transition-transform" />
+                    <Mail className="h-5 w-5 text-blue-600" />
                     <div className="text-left">
                       <div className="text-xs text-gray-500 font-medium">Email</div>
                       <div className="text-sm text-gray-900 font-semibold">
@@ -1442,6 +1563,7 @@ export default function Home() {
                       </div>
                     </div>
                   </a>
+
                   <div className="flex items-center justify-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-200">
                     <Phone className="h-5 w-5 text-blue-600" />
                     <div className="text-left">

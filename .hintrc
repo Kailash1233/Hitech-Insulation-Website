@@ -9,6 +9,20 @@
         "aria-valid-attr-value": "off"
       }
     ],
-    "no-inline-styles": "off"
+    "no-inline-styles": "off",
+    "compat-api/html": [
+      "default",
+      {
+        "ignore": [
+          "iframe[loading]"
+        ]
+      }
+    ],
+    "axe/forms": [
+      "default",
+      {
+        "select-name": "off"
+      }
+    ]
   }
 }

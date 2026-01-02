@@ -14,7 +14,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
-import { products } from "@/lib/products";
+import { allProducts as products } from "@/lib/products";
 import { getProductImage } from "@/lib/product-images";
 import { getSeoMetadata } from "@/lib/seo";
 import { notFound } from "next/navigation";

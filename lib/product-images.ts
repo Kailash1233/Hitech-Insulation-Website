@@ -20,6 +20,14 @@ export const productImages: Record<string, string> = {
   "mica-sheets": "/products/porceilein.jpg",
   "custom-gaskets": "/products/epoxy-bushings-2.jpg",
   "transformer-kits": "/products/pressboardsheet-2-570x400.jpg",
+  "mica-tape": "/products/mica-sheet.jpg",
+  "glass-fibre-tapes": "/products/glass-tape.jpg",
+  "adhesive-tapes": "/products/adhesive-tapes.jpg",
+  "cork-sheets": "/products/cork-sheet.jpg",
+  "hylam-sheets": "/products/hylam-sheet.jpg",
+  "epoxy-cast-insulators": "/products/epoxy-bushings-2.jpg",
+  "crepe-paper-range": "/products/thermally-upgraded-paper-1.jpg",
+  "frp-products": "/products/frp-rod.jpg",
 };
 
 // Fallback image for products without specific images
@@ -29,4 +37,3 @@ export const defaultProductImage = "/products/pressboardsheet-2-570x400.jpg";
 export function getProductImage(productId: string): string {
   return productImages[productId] || defaultProductImage;
 }
-
