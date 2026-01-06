@@ -16,6 +16,7 @@ import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { allProducts as products } from "@/lib/products";
 import { getProductImage } from "@/lib/product-images";
+import { resolveProductSeo } from "@/lib/product-seo";
 import { getSeoMetadata } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -29,34 +30,30 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const product = products[params.slug];
+  const { slug } = await params;
+  const product = products[slug];
   if (!product) {
     return getSeoMetadata("default");
   }
 
-  return getSeoMetadata("productDetails", {
-    title: `${product.name} | Best ${product.category} Supplier in India | Hitech Insulation`,
-    description: `${product.shortDescription} Manufactured in Chennai, India. ${product.specifications[0]?.value || "Custom specifications available"}. Get quote within 24 hours.`,
-    keywords: [
-      `best ${product.category.toLowerCase()} supplier india`,
-      `${product.name.toLowerCase()} manufacturer chennai`,
-      `buy ${product.category.toLowerCase()} india`,
-      `electrical insulation ${product.category.toLowerCase()} india`,
-      `transformer insulation ${product.category.toLowerCase()}`,
-    ],
-    path: `/products/${params.slug}`,
-  });
+  return getSeoMetadata("productDetails", resolveProductSeo(slug, product));
 }
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
-  const product = products[params.slug];
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const product = products[slug];
 
   if (!product) {
     notFound();
   }
 
+  const specSubject = encodeURIComponent(`Technical Specs - ${product.name}`);
   const relatedProductsData = product.relatedProducts
     .slice(0, 3)
     .map((id) => products[id])
@@ -103,7 +100,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                     className="border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600"
                     asChild
                   >
-                    <a href="mailto:srk@hitechinsulation.in?subject=Technical%20Specs%20-%20{product.name}">
+                    <a href={`mailto:srk@hitechinsulation.in?subject=${specSubject}`}>
                       <FileText className="h-5 w-5 mr-2" />
                       Get Specs
                     </a>

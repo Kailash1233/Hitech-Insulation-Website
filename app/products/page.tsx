@@ -12,12 +12,19 @@ import type { Metadata } from "next";
 
 const productList = Object.values(products);
 
-const categorizedProducts = productCategories
+const categoryOrder = Array.from(
+  new Set([...productCategories, ...productList.map((product) => product.category)])
+);
+
+const categorizedProducts = categoryOrder
   .map((category) => ({
     category,
     items: productList.filter((product) => product.category === category),
   }))
   .filter((group) => group.items.length > 0);
+
+const categoryCount = categorizedProducts.length;
+const skuCount = productList.length;
 
 export const metadata: Metadata = getSeoMetadata("products");
 
@@ -56,7 +63,7 @@ export default function ProductsPage() {
             >
               <Award className="h-4 w-4 text-blue-300 shrink-0" />
               <span className="text-xs sm:text-sm font-semibold">
-                20 Core Products • 1000+ Custom Configurations
+                {skuCount}+ Core Products • 1000+ Custom Configurations
               </span>
             </div>
           </div>
@@ -110,7 +117,7 @@ export default function ProductsPage() {
               {[
                 { label: "47+ Years", description: "Manufacturing" },
                 { label: "ISO", description: "Certified Plant" },
-                { label: "20 Products", description: "Across 12 families" },
+                { label: `${skuCount} Products`, description: `Across ${categoryCount} families` },
                 { label: "24 hrs", description: "Quote turnaround" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
@@ -176,7 +183,7 @@ export default function ProductsPage() {
             </div>
             <div className="flex items-center gap-2 text-sm text-gray-600">
               <Layers className="h-4 w-4" />
-              12 categories • 20 detailed SKUs
+              {categoryCount} categories • {skuCount} detailed SKUs
             </div>
           </div>
 

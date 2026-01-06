@@ -14,8 +14,6 @@ export interface Product {
 }
 
 export const products: Record<string, Product> = {
-  /* ===================== PRESSBOARD ===================== */
-
   "pressboard-3mm": {
     id: "pressboard-3mm",
     name: "Electrical Grade Pressboard – 3 mm",
@@ -109,8 +107,6 @@ export const products: Record<string, Product> = {
     relatedProducts: ["pressboard-3mm", "presspaper", "crepe-paper"],
   },
 
-  /* ===================== PRESSPAPER ===================== */
-
   presspaper: {
     id: "presspaper",
     name: "Multiply Electrical Presspaper",
@@ -151,8 +147,6 @@ export const products: Record<string, Product> = {
     relatedProducts: ["pressboard-3mm", "pre-compressed-pressboard", "crepe-paper"],
   },
 
-  /* ===================== CREPE PAPER ===================== */
-
   "crepe-paper": {
     id: "crepe-paper",
     name: "Electrical Crepe Paper",
@@ -191,6 +185,196 @@ export const products: Record<string, Product> = {
 
     relatedProducts: ["presspaper", "pressboard-3mm", "pre-compressed-pressboard"],
   },
+  /* ===================== MACHINED COMPONENTS ===================== */
+
+  "machined-pressboard-components": {
+    id: "machined-pressboard-components",
+    name: "Machined Pressboard Components",
+    category: "Machined Components",
+    shortDescription:
+      "Precision machined pressboard insulation components for oil-immersed transformers",
+
+    description: [
+      "Machined pressboard components are manufactured from electrical grade pressboard and pre-compressed pressboard using precision machining processes.",
+      "These components are used extensively in power and distribution transformers where accurate dimensions, smooth edges, and tight tolerances are critical to insulation performance and assembly.",
+      "All components are produced to be burr-free with controlled thickness tolerances, ensuring reliable electrical clearances and mechanical stability inside transformer assemblies.",
+      "Components can be supplied as individual parts or as complete insulation kits based on transformer design drawings.",
+    ],
+
+    specifications: [
+      { label: "Base Materials", value: "Pressboard / Pre-compressed pressboard" },
+      { label: "Manufacturing Method", value: "CNC machining, milling, drilling" },
+      { label: "Edge Finish", value: "Burr-free, rounded edges" },
+      { label: "Dimensional Tolerance", value: "Low tolerance as per drawing" },
+      { label: "Oil Compatibility", value: "Excellent (transformer oil)" },
+      { label: "Supply Form", value: "Individual components or assembled kits" },
+    ],
+
+    applications: [
+      "Oil-immersed power transformers",
+      "Distribution transformers",
+      "HV and EHV transformer insulation systems",
+      "Transformer refurbishment and repair",
+    ],
+
+    benefits: [
+      "High dimensional accuracy",
+      "Reduced assembly errors",
+      "Consistent insulation clearances",
+      "Ready-to-install transformer components",
+      "Improved reliability under electrical and mechanical stress",
+    ],
+
+    relatedProducts: ["pressboard-3mm", "pre-compressed-pressboard", "presspaper"],
+  },
+
+  /* ===================== MACHINED COMPONENT TYPES ===================== */
+
+  "machined-component-types": {
+    id: "machined-component-types",
+    name: "Machined Insulation Component Types",
+    category: "Machined Components",
+    shortDescription: "Standard machined insulation components manufactured from pressboard",
+
+    description: [
+      "A wide range of standard machined insulation components are manufactured from pressboard and pre-compressed pressboard based on transformer design requirements.",
+      "These components are commonly used to provide insulation spacing, mechanical support, and electrical clearance control inside transformers.",
+    ],
+
+    specifications: [
+      { label: "Typical Components", value: "Spacers, runners, wedges, rings, cylinders" },
+      { label: "Profiles", value: "Rectangular, trapezoidal, rounded-edge profiles" },
+      { label: "Customization", value: "As per customer drawings and specifications" },
+    ],
+
+    applications: [
+      "Winding spacers and supports",
+      "End insulation rings",
+      "Clamping and pressure components",
+      "Transformer internal insulation assemblies",
+    ],
+
+    benefits: [
+      "Standardized and custom profiles available",
+      "Consistent electrical clearances",
+      "High mechanical integrity",
+    ],
+
+    relatedProducts: ["machined-pressboard-components"],
+  },
+
+  /* ===================== MOULDED COMPONENTS ===================== */
+
+  "moulded-pressboard-components": {
+    id: "moulded-pressboard-components",
+    name: "Moulded Pressboard Components",
+    category: "Moulded Components",
+    shortDescription:
+      "Hot-moulded pressboard insulation components for complex transformer geometries",
+
+    description: [
+      "Moulded pressboard components are produced by forming electrical grade pressboard under heat and pressure using precision moulds.",
+      "This process allows the manufacture of complex three-dimensional insulation parts that cannot be produced efficiently through machining alone.",
+      "Moulded components provide excellent mechanical strength, dimensional stability, and dielectric performance after oil impregnation.",
+    ],
+
+    specifications: [
+      { label: "Base Material", value: "Electrical grade mouldable pressboard" },
+      { label: "Manufacturing Process", value: "Hot moulding under controlled pressure" },
+      { label: "Shape Capability", value: "Complex 3D geometries" },
+      { label: "Oil Impregnation", value: "Excellent compatibility" },
+      { label: "Dimensional Stability", value: "High after curing and oil impregnation" },
+    ],
+
+    applications: [
+      "Oil-filled power transformers",
+      "Distribution transformers",
+      "High-voltage insulation assemblies",
+    ],
+
+    benefits: [
+      "Complex shapes without machining joints",
+      "Improved mechanical integrity",
+      "Better electric field distribution",
+      "Reduced number of insulation parts",
+    ],
+
+    relatedProducts: ["pressboard-3mm", "pre-compressed-pressboard"],
+  },
+
+  /* ===================== MOULDED COMPONENT TYPES ===================== */
+
+  "moulded-component-types": {
+    id: "moulded-component-types",
+    name: "Standard Moulded Insulation Components",
+    category: "Moulded Components",
+    shortDescription: "Common moulded pressboard insulation components used in transformers",
+
+    description: [
+      "Moulded pressboard components are designed to adapt insulation structures to electric field conditions within transformers.",
+      "These components are critical in controlling stress distribution and improving insulation reliability in high-voltage zones.",
+    ],
+
+    specifications: [
+      {
+        label: "Typical Components",
+        value: "Angle rings, snouts, lead exits, collars, washers",
+      },
+      { label: "Design Basis", value: "Transformer insulation system design" },
+    ],
+
+    applications: [
+      "High-field insulation zones",
+      "Lead exit insulation",
+      "Transformer winding ends",
+      "Critical electrical stress areas",
+    ],
+
+    benefits: [
+      "Optimized electric field control",
+      "Improved dielectric reliability",
+      "Long service life under oil and heat",
+    ],
+
+    relatedProducts: ["moulded-pressboard-components"],
+  },
+
+  /* ===================== INSULATION KITS ===================== */
+
+  "transformer-insulation-kits": {
+    id: "transformer-insulation-kits",
+    name: "Transformer Insulation Component Kits",
+    category: "Machined Components",
+    shortDescription: "Pre-assembled pressboard insulation kits for transformer manufacturing",
+
+    description: [
+      "Transformer insulation kits consist of a complete set of machined and moulded insulation components required for a specific transformer design.",
+      "These kits are supplied as per customer drawings and reduce handling, cutting errors, and assembly time on the shop floor.",
+      "Each kit is verified for dimensional accuracy before dispatch.",
+    ],
+
+    specifications: [
+      { label: "Included Items", value: "Machined and moulded pressboard components" },
+      { label: "Customization", value: "Fully as per transformer design" },
+      { label: "Supply Mode", value: "Tagged and grouped kits" },
+    ],
+
+    applications: [
+      "Distribution transformer manufacturing",
+      "Power transformer manufacturing",
+      "Transformer refurbishment projects",
+    ],
+
+    benefits: [
+      "Reduced production time",
+      "Lower material wastage",
+      "Consistent assembly quality",
+      "Simplified inventory management",
+    ],
+
+    relatedProducts: ["machined-pressboard-components", "moulded-pressboard-components"],
+  },
+
   "fr4-epoxy-sheet": {
     id: "fr4-epoxy-sheet",
     name: "Fiberglass Epoxy Sheet FR4 - General Purpose Grade",
@@ -225,6 +409,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["g10-epoxy-sheet", "epoxy-rods", "paper-phenolic"],
   },
+
   "g10-epoxy-sheet": {
     id: "g10-epoxy-sheet",
     name: "Epoxy Sheet G10 - High Mechanical Strength Variant",
@@ -262,6 +447,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["fr4-epoxy-sheet", "epoxy-rods", "delrin-sheet"],
   },
+
   "paper-phenolic": {
     id: "paper-phenolic",
     name: "Paper Phenolic Laminate - NEMA XX Grade",
@@ -296,6 +482,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["cotton-phenolic", "bakelite-sheet", "fr4-epoxy-sheet"],
   },
+
   "cotton-phenolic": {
     id: "cotton-phenolic",
     name: "Cotton Phenolic Laminate - NEMA CE Grade",
@@ -330,6 +517,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["paper-phenolic", "bakelite-sheet", "delrin-sheet"],
   },
+
   "bakelite-sheet": {
     id: "bakelite-sheet",
     name: "Bakelite Sheet - General Phenolic Applications",
@@ -364,6 +552,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["paper-phenolic", "cotton-phenolic", "fr4-epoxy-sheet"],
   },
+
   "kraft-paper": {
     id: "kraft-paper",
     name: "Electrical Grade Kraft Paper",
@@ -401,6 +590,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["pressboard-3mm", "nomex-paper", "polyester-film"],
   },
+
   "delrin-sheet": {
     id: "delrin-sheet",
     name: "Delrin Sheet (POM) - Engineering Grade Acetal",
@@ -438,6 +628,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["g10-epoxy-sheet", "cotton-phenolic", "ptfe-sheet"],
   },
+
   "fiberglass-tubes": {
     id: "fiberglass-tubes",
     name: "Fiberglass Tubes - Industrial Grade",
@@ -472,6 +663,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["fr4-epoxy-sheet", "syndanio-sheet", "g10-epoxy-sheet"],
   },
+
   "syndanio-sheet": {
     id: "syndanio-sheet",
     name: "Syndanio Sheets - Thermal Insulation",
@@ -506,6 +698,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["mica-sheets", "fiberglass-tubes", "ptfe-sheet"],
   },
+
   "ptfe-cloth-non-adhesive": {
     id: "ptfe-cloth-non-adhesive",
     name: "PTFE Cloth Non-Adhesive - Brown and White",
@@ -540,6 +733,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["ptfe-cloth-adhesive", "ptfe-sheet", "polyester-film"],
   },
+
   "ptfe-cloth-adhesive": {
     id: "ptfe-cloth-adhesive",
     name: "PTFE Cloth Adhesive - Cream and Dark Brown",
@@ -574,6 +768,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["ptfe-cloth-non-adhesive", "ptfe-sheet", "polyester-film"],
   },
+
   "ptfe-sheet": {
     id: "ptfe-sheet",
     name: "PTFE Virgin Sheets - Pure Teflon",
@@ -608,6 +803,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["ptfe-cloth-non-adhesive", "custom-gaskets", "delrin-sheet"],
   },
+
   "epoxy-rods": {
     id: "epoxy-rods",
     name: "Epoxy Rods - Fiberglass Round Bars",
@@ -645,6 +841,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["fr4-epoxy-sheet", "g10-epoxy-sheet", "fiberglass-tubes"],
   },
+
   "nomex-paper": {
     id: "nomex-paper",
     name: "Nomex Paper - Aramid Fiber Insulation",
@@ -679,6 +876,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["kraft-paper", "polyester-film", "mica-sheets"],
   },
+
   "polyester-film": {
     id: "polyester-film",
     name: "Polyester Film - Electrical Grade Mylar",
@@ -716,6 +914,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["kraft-paper", "nomex-paper", "ptfe-cloth-non-adhesive"],
   },
+
   "mica-sheets": {
     id: "mica-sheets",
     name: "Mica Sheets - Natural and Phlogopite",
@@ -753,6 +952,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["syndanio-sheet", "nomex-paper", "ptfe-sheet"],
   },
+
   "custom-gaskets": {
     id: "custom-gaskets",
     name: "Custom Gaskets & Precision Components",
@@ -793,6 +993,7 @@ export const products: Record<string, Product> = {
     ],
     relatedProducts: ["transformer-kits", "ptfe-sheet", "fr4-epoxy-sheet"],
   },
+
   "transformer-kits": {
     id: "transformer-kits",
     name: "Transformer Insulation Kits - Complete Solutions",
@@ -837,7 +1038,12 @@ export const products: Record<string, Product> = {
 
 export const productCategories = [
   "Pressboard",
+  "Presspaper",
+  "Crepe Paper",
+  "Machined Components",
+  "Moulded Components",
   "Epoxy Sheets",
+  "Epoxy Products",
   "Phenolic Laminates",
   "Insulation Paper",
   "Engineering Plastics",

@@ -16,6 +16,7 @@ interface SeoEntry {
   description: string;
   keywords: string[];
   path: string;
+  image?: string;
 }
 
 export const seoConfig: Record<SeoKey, SeoEntry> = {
@@ -117,6 +118,7 @@ export function getSeoMetadata(
   const base = seoConfig[key] ?? seoConfig.default;
   const merged: SeoEntry = { ...base, ...overrides };
   const canonical = new URL(merged.path, siteUrl).toString();
+  const ogImage = merged.image ? new URL(merged.image, siteUrl).toString() : undefined;
 
   return {
     title: merged.title,
@@ -132,11 +134,13 @@ export function getSeoMetadata(
       siteName: "Hitech Insulation",
       locale: "en_IN",
       type: "website",
+      ...(ogImage ? { images: [{ url: ogImage, alt: merged.title }] } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: merged.title,
       description: merged.description,
+      ...(ogImage ? { images: [ogImage] } : {}),
     },
   };
 }

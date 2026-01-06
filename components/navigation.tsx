@@ -346,6 +346,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -353,6 +354,9 @@ import { cn } from "@/lib/utils";
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const useSolidNav = isHome || scrolled;
 
   // Scroll detection
   useEffect(() => {
@@ -390,7 +394,7 @@ export function Navigation() {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled
+        useSolidNav
           ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
           : "bg-transparent"
       )}
@@ -401,7 +405,7 @@ export function Navigation() {
           <Link href="/" aria-label="Hitech Insulation Home">
             <div className="relative w-36 h-12">
               <Image
-                src={scrolled ? "/HITECHINSULATION.png" : "/HITECHINSULATION-white.png"}
+                src={useSolidNav ? "/HITECHINSULATION.png" : "/HITECHINSULATION-white.png"}
                 alt="Hitech Insulation"
                 fill
                 priority
@@ -418,14 +422,16 @@ export function Navigation() {
                 href={link.href}
                 className={cn(
                   linkBase,
-                  scrolled ? "text-gray-700 hover:text-blue-600" : "text-white hover:text-blue-400"
+                  useSolidNav
+                    ? "text-gray-700 hover:text-blue-600"
+                    : "text-white hover:text-blue-400"
                 )}
               >
                 {link.label}
                 <span
                   className={cn(
                     "absolute left-0 -bottom-1 h-0.5 w-0 transition-all duration-300",
-                    scrolled ? "bg-blue-600 group-hover:w-full" : "bg-blue-400 group-hover:w-full"
+                    useSolidNav ? "bg-blue-600 group-hover:w-full" : "bg-blue-400 group-hover:w-full"
                   )}
                 />
               </Link>
@@ -437,7 +443,7 @@ export function Navigation() {
               size="lg"
               className={cn(
                 "ml-4 px-6 py-2.5 font-semibold transition-all",
-                scrolled
+                useSolidNav
                   ? "bg-blue-600 hover:bg-blue-700 text-white shadow-blue-600/20"
                   : "bg-white text-blue-900 hover:bg-blue-100"
               )}
@@ -452,28 +458,28 @@ export function Navigation() {
             aria-label="Toggle Menu"
             className={cn(
               "md:hidden flex h-10 w-10 items-center justify-center rounded-lg",
-              scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+              useSolidNav ? "hover:bg-gray-100" : "hover:bg-white/10"
             )}
           >
             <div className="relative w-6 h-6">
               <span
                 className={cn(
                   "absolute h-0.5 w-6 transition-all",
-                  scrolled ? "bg-gray-900" : "bg-white",
+                  useSolidNav ? "bg-gray-900" : "bg-white",
                   mobileMenuOpen ? "top-3 rotate-45" : "top-1"
                 )}
               />
               <span
                 className={cn(
                   "absolute top-3 h-0.5 w-6 transition-opacity",
-                  scrolled ? "bg-gray-900" : "bg-white",
+                  useSolidNav ? "bg-gray-900" : "bg-white",
                   mobileMenuOpen ? "opacity-0" : "opacity-100"
                 )}
               />
               <span
                 className={cn(
                   "absolute h-0.5 w-6 transition-all",
-                  scrolled ? "bg-gray-900" : "bg-white",
+                  useSolidNav ? "bg-gray-900" : "bg-white",
                   mobileMenuOpen ? "top-3 -rotate-45" : "top-5"
                 )}
               />
@@ -483,9 +489,17 @@ export function Navigation() {
       </div>
 
       {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
       <div
         className={cn(
-          "md:hidden fixed inset-x-0 top-20 bottom-0 bg-white transition-transform duration-300",
+          "md:hidden fixed inset-x-0 top-20 bottom-0 bg-white transition-transform duration-300 z-50 shadow-xl",
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
