@@ -341,7 +341,6 @@
 //     </nav>
 //   );
 // }
-
 "use client";
 
 import Link from "next/link";
@@ -351,30 +350,38 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-export function Navigation() {
+interface NavigationProps {
+  onMobileMenuChange?: (open: boolean) => void;
+}
+
+export function Navigation({ onMobileMenuChange }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
   const pathname = usePathname();
   const isHome = pathname === "/";
   const useSolidNav = isHome || scrolled;
 
-  // Scroll detection
+  /* Scroll detection */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on resize
+  /* Close mobile menu on resize */
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth >= 768) setMobileMenuOpen(false);
+      if (window.innerWidth >= 768) {
+        setMobileMenuOpen(false);
+        onMobileMenuChange?.(false);
+      }
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, []);
+  }, [onMobileMenuChange]);
 
-  // Lock body scroll
+  /* Lock body scroll */
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "unset";
     return () => {
@@ -382,13 +389,21 @@ export function Navigation() {
     };
   }, [mobileMenuOpen]);
 
+  const openMenu = () => {
+    setMobileMenuOpen(true);
+    onMobileMenuChange?.(true);
+  };
+
+  const closeMenu = () => {
+    setMobileMenuOpen(false);
+    onMobileMenuChange?.(false);
+  };
+
   const navigationLinks = [
     { href: "/products", label: "Products" },
     { href: "/industries", label: "Industries" },
     { href: "/about", label: "About Us" },
   ];
-
-  const linkBase = "relative px-4 py-2 text-sm lg:text-base font-medium transition-colors";
 
   return (
     <nav
@@ -409,42 +424,35 @@ export function Navigation() {
                 alt="Hitech Insulation"
                 fill
                 priority
-                className="object-contain transition-opacity"
+                className="object-contain"
               />
             </div>
           </Link>
 
-          {/* Desktop Nav */}
+          {/* Desktop Nav (UNCHANGED) */}
           <div className="hidden md:flex items-center gap-2">
             {navigationLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  linkBase,
+                  "px-4 py-2 text-sm lg:text-base font-medium transition-colors",
                   useSolidNav
                     ? "text-gray-700 hover:text-blue-600"
                     : "text-white hover:text-blue-400"
                 )}
               >
                 {link.label}
-                <span
-                  className={cn(
-                    "absolute left-0 -bottom-1 h-0.5 w-0 transition-all duration-300",
-                    useSolidNav ? "bg-blue-600 group-hover:w-full" : "bg-blue-400 group-hover:w-full"
-                  )}
-                />
               </Link>
             ))}
 
-            {/* CTA */}
             <Button
               asChild
               size="lg"
               className={cn(
-                "ml-4 px-6 py-2.5 font-semibold transition-all",
+                "ml-4 px-6 py-2.5 font-semibold",
                 useSolidNav
-                  ? "bg-blue-600 hover:bg-blue-700 text-white shadow-blue-600/20"
+                  ? "bg-blue-600 hover:bg-blue-700 text-white"
                   : "bg-white text-blue-900 hover:bg-blue-100"
               )}
             >
@@ -454,76 +462,73 @@ export function Navigation() {
 
           {/* Mobile Toggle */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle Menu"
+            onClick={openMenu}
+            aria-label="Open Menu"
             className={cn(
-              "md:hidden flex h-10 w-10 items-center justify-center rounded-lg",
+              "md:hidden flex h-10 w-10 items-center justify-center rounded-xl",
               useSolidNav ? "hover:bg-gray-100" : "hover:bg-white/10"
             )}
           >
-            <div className="relative w-6 h-6">
-              <span
-                className={cn(
-                  "absolute h-0.5 w-6 transition-all",
-                  useSolidNav ? "bg-gray-900" : "bg-white",
-                  mobileMenuOpen ? "top-3 rotate-45" : "top-1"
-                )}
-              />
-              <span
-                className={cn(
-                  "absolute top-3 h-0.5 w-6 transition-opacity",
-                  useSolidNav ? "bg-gray-900" : "bg-white",
-                  mobileMenuOpen ? "opacity-0" : "opacity-100"
-                )}
-              />
-              <span
-                className={cn(
-                  "absolute h-0.5 w-6 transition-all",
-                  useSolidNav ? "bg-gray-900" : "bg-white",
-                  mobileMenuOpen ? "top-3 -rotate-45" : "top-5"
-                )}
-              />
-            </div>
+            <span className={cn("h-0.5 w-6 block", useSolidNav ? "bg-gray-900" : "bg-white")} />
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* ================= MOBILE NAV ================= */}
       {mobileMenuOpen && (
-        <div
-          className="md:hidden fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
-          onClick={() => setMobileMenuOpen(false)}
-          aria-hidden="true"
-        />
-      )}
+        <div className="md:hidden fixed inset-0 z-50">
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={closeMenu} />
 
-      <div
-        className={cn(
-          "md:hidden fixed inset-x-0 top-20 bottom-0 bg-white transition-transform duration-300 z-50 shadow-xl",
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        )}
-      >
-        <div className="p-6 space-y-2">
-          {navigationLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="block rounded-lg px-4 py-4 text-lg font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {/* Panel */}
+          <div className="absolute right-0 top-0 h-full w-[88%] max-w-sm bg-white shadow-2xl flex flex-col">
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 py-5 border-b">
+              <Image
+                src="/HITECHINSULATION.png"
+                alt="Hitech Insulation"
+                width={140}
+                height={40}
+                className="object-contain"
+              />
+              <button
+                onClick={closeMenu}
+                aria-label="Close Menu"
+                className="rounded-lg p-2 hover:bg-gray-100 text-xl"
+              >
+                ✕
+              </button>
+            </div>
 
-          <div className="pt-6 border-t">
-            <Button asChild size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-              <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                Get Custom Quote
-              </Link>
-            </Button>
+            {/* Links */}
+            <div className="flex-1 px-6 py-8 space-y-6">
+              {navigationLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeMenu}
+                  className="block text-2xl font-semibold text-gray-900 tracking-tight hover:text-blue-600"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="px-6 py-6 border-t">
+              <Button
+                asChild
+                size="lg"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg"
+              >
+                <Link href="/contact" onClick={closeMenu}>
+                  Get Custom Quote
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 }
