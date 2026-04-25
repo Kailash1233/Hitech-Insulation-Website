@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import { getSeoMetadata } from "@/lib/seo";
+import ProgressBar from "@/components/ProgressBar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,14 +38,13 @@ export const viewport: Viewport = {
   themeColor: "#2563eb",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased" suppressHydrationWarning>
+        <ProgressBar />
+        {children}
+      </body>
     </html>
   );
 }

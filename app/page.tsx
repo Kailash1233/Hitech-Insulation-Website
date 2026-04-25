@@ -597,184 +597,65 @@ export default function Home() {
       {/* <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden"> */}
       <section
         className={cn(
-          "relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 transition-all overflow-hidden duration-500",
+          "relative h-screen w-full overflow-hidden",
           navOpen && "opacity-10 blur-lg pointer-events-none"
         )}
       >
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-blue-50 via-indigo-50 to-transparent opacity-60 blur-3xl -z-0" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-gray-50 to-transparent opacity-40 blur-3xl -z-0" />
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/hero/hitech_hero_bg.png"
+            alt="Industrial Background"
+            fill
+            priority
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
+        </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="flex justify-center mb-10">
-            <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-5 py-2.5">
-              <Award className="h-4 w-4 text-blue-600" />
-              <span className="text-sm font-semibold text-blue-900">
-                Manufacturing Excellence Since 1977
-              </span>
-            </div>
-          </div>
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col justify-end lg:justify-end px-6 lg:px-16 pb-12 lg:pb-16">
+          <div className="w-full flex flex-col lg:flex-row justify-between items-end">
+            {/* LEFT TEXT */}
+            <div className="max-w-xl text-white">
+              <h1 className="text-4xl md:text-6xl font-light leading-tight">
+                Precision Electrical Insulation
+                <br />
+                <span className="font-semibold">For Critical Systems</span>
+              </h1>
 
-          <div className="text-center max-w-5xl mx-auto mb-16">
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-[1.1] tracking-tight">
-              Electrical Insulation
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700">
-                Engineered for Reliability
-              </span>
-            </h1>
-
-            <p className="text-xl sm:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto font-light">
-              Manufacturer of electrical insulation components including pressboard, epoxy sheets,
-              bakelite, kraft paper, and custom insulation parts for transformers, motors,
-              switchgear, and panel board systems across India.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
-              <Button
-                size="lg"
-                asChild
-                className="bg-blue-600 hover:bg-blue-700 text-white text-base px-8 py-6 rounded-lg shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 transition-all font-semibold"
-              >
-                <Link href="/contact#quote" className="inline-flex items-center">
-                  Get Custom Quote
-                  <ArrowRight className="ml-2 h-5 w-5" />
+              <div className="mt-6 flex flex-wrap gap-4">
+                <Link
+                  href="/contact"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-sm font-semibold transition"
+                >
+                  Get a Quote
                 </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="text-base px-8 py-6 rounded-lg border-2 border-gray-300 text-gray-700 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 transition-all font-semibold"
-              >
-                <Link href="/products">Browse Products</Link>
-              </Button>
-            </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
-              <div className="relative bg-white rounded-xl overflow-hidden border-2 border-gray-200 aspect-square group">
-                <Image
-                  src="/hero/pressboardsheet.jpg"
-                  alt="Pressboard Sheets - High-quality electrical insulation"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                  <p className="text-white font-semibold text-sm">Pressboard</p>
-                </div>
-              </div>
-
-              <div className="relative bg-white rounded-xl overflow-hidden border-2 border-gray-200 aspect-square group">
-                <Image
-                  src="/hero/epoxy.jpg"
-                  alt="Epoxy Sheets - Durable insulation materials"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                  <p className="text-white font-semibold text-sm">Epoxy Sheets</p>
-                </div>
-              </div>
-
-              <div className="relative bg-white rounded-xl overflow-hidden border-2 border-gray-200 aspect-square group">
-                <Image
-                  src="/hero/bakelite.png"
-                  alt="Bakelite Sheets - Phenolic laminates"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                  <p className="text-white font-semibold text-sm">Bakelite Sheets</p>
-                </div>
-              </div>
-
-              <div className="relative bg-white rounded-xl overflow-hidden border-2 border-gray-200 aspect-square group">
-                <Image
-                  src="/hero/kraft.png"
-                  alt="Kraft Paper - Electrical grade insulation"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                  <p className="text-white font-semibold text-sm">Kraft Paper</p>
-                </div>
+                <Link
+                  href="/products"
+                  className="border border-white/30 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/10 transition"
+                >
+                  View Products
+                </Link>
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-12 border-t border-gray-200">
+            {/* RIGHT STATS */}
+            <div className="flex gap-10 mt-10 lg:mt-0 text-white">
               <div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">47+</div>
-                <div className="text-sm text-gray-600 font-medium">
-                  Years of Manufacturing Experience
-                </div>
+                <div className="text-3xl font-semibold">47+</div>
+                <div className="text-sm opacity-80">Years of Experience</div>
               </div>
-
               <div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">100+</div>
-                <div className="text-sm text-gray-600 font-medium">
-                  Insulation Products & Variants
-                </div>
+                <div className="text-3xl font-semibold">100%</div>
+                <div className="text-sm opacity-80">Client Satisfaction</div>
               </div>
-
               <div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">ISO</div>
-                <div className="text-sm text-gray-600 font-medium">
-                  Certified Manufacturing Facility
-                </div>
+                <div className="text-3xl font-semibold">138+</div>
+                <div className="text-sm opacity-80">Projects Completed</div>
               </div>
             </div>
-          </div>
-
-          <div className="pt-16 border-t border-gray-200">
-            <p className="text-center text-gray-500 text-xs font-semibold mb-10 uppercase tracking-widest">
-              Trusted by Industry Leaders
-            </p>
-
-            <div className="max-w-5xl mx-auto">
-              <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8 mb-10">
-                {[
-                  {
-                    src: "/partners/schneider.jpg",
-                    alt: "Schneider Electric - Trusted Partner",
-                  },
-                  {
-                    src: "/partners/bhel.png",
-                    alt: "BHEL - Industry Leader",
-                  },
-                  {
-                    src: "/partners/siemens.png",
-                    alt: "Siemens - Trusted Partner",
-                  },
-                  {
-                    src: "/partners/southern-railways.jpg",
-                    alt: "Southern Railways - Electrical Equipment",
-                  },
-                  {
-                    src: "/partners/toshiba.png",
-                    alt: "Toshiba - Trusted Partner",
-                  },
-                ].map((logo, index) => (
-                  <div key={index} className="flex items-center justify-center h-20 w-40 sm:w-44">
-                    <div className="w-full h-full flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-3 grayscale opacity-70 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:shadow-md hover:border-gray-300">
-                      <Image
-                        src={logo.src}
-                        alt={logo.alt}
-                        width={140}
-                        height={60}
-                        className="object-contain max-h-full"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <p className="text-center text-gray-500 text-sm">
-              Made in Chennai, India • Shipped Globally
-            </p>
           </div>
         </div>
       </section>
@@ -927,7 +808,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {featuredProducts.map((productId) => {
               const product = products[productId];
               return (
@@ -972,6 +853,52 @@ export default function Home() {
                 </Card>
               );
             })}{" "}
+          </div> */}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {featuredProducts.map((productId) => {
+              const product = products[productId];
+              if (!product) return null;
+              return (
+                <Card key={productId} className="border-2 border-gray-100 group bg-white">
+                  <CardHeader>
+                    <div className="relative h-48 w-full rounded-xl mb-4 overflow-hidden border border-gray-200 bg-gray-100">
+                      <Image
+                        src={getProductImage(productId)}
+                        alt={`${product.name} - ${product.category} electrical insulation`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                      <div className="absolute top-3 right-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                        Custom
+                      </div>
+                    </div>
+                    <CardTitle className="text-xl mb-2">{product.name}</CardTitle>
+                    <CardDescription className="line-clamp-2 text-gray-600">
+                      {product.shortDescription}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="mb-4">
+                      <span className="inline-block bg-blue-50 text-blue-900 text-xs font-medium px-3 py-1.5 rounded-full">
+                        {product.specifications[1]?.value || "Multiple specs"}
+                      </span>
+                    </div>
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="w-full border-2 border-gray-300 text-gray-700 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 font-semibold transition-all"
+                    >
+                      <Link href={`/products/${productId}`}>
+                        View Specs
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
 
           <div className="text-center">
