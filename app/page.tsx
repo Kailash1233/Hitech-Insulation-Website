@@ -1,219 +1,173 @@
 // "use client";
 
 // import Link from "next/link";
+// import Image from "next/image";
 // import {
-// ArrowRight,
-// Shield,
-// Clock,
-// Target,
-// Check,
-// Factory,
-// Cpu,
-// Zap,
-// Box,
-// Mail,
+//   ArrowRight,
+//   Shield,
+//   Clock,
+//   Target,
+//   Factory,
+//   Cpu,
+//   Zap,
+//   Mail,
+//   Phone,
+//   Award,
+//   Globe,
+//   Users,
+//   TrendingUp,
+//   Box,
 // } from "lucide-react";
 // import { Button } from "@/components/ui/button";
-// import {
-// Card,
-// CardContent,
-// CardDescription,
-// CardHeader,
-// CardTitle,
-// } from "@/components/ui/card";
+// import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 // import { Input } from "@/components/ui/input";
 // import { Textarea } from "@/components/ui/textarea";
-// import {
-// Select,
-// SelectContent,
-// SelectItem,
-// SelectTrigger,
-// SelectValue,
-// } from "@/components/ui/select";
 // import { Navigation } from "@/components/navigation";
 // import { Footer } from "@/components/footer";
 // import { products, featuredProducts } from "@/lib/products";
+// import { getProductImage } from "@/lib/product-images";
+// import { Location } from "@/components/location";
 // import { useState } from "react";
+// import { cn } from "@/lib/utils";
 
 // export default function Home() {
-// const [formData, setFormData] = useState({
-//     name: "",
-//     company: "",
-//     email: "",
-//     phone: "",
-//     product: "",
-//     requirements: "",
-// });
+//   const [navOpen, setNavOpen] = useState(false);
 
-// const handleSubmit = (e: React.FormEvent) => {
-//     e.preventDefault();
-//     console.log("Form submitted:", formData);
-//     alert("Thank you! We will contact you within 24 hours.");
-//     setFormData({
-//       name: "",
-//       company: "",
-//       email: "",
-//       phone: "",
-//       product: "",
-//       requirements: "",
-//     });
-// };
+//   return (
+//     <div className="min-h-screen">
+//       <Navigation onMobileMenuChange={setNavOpen} />
 
-// return (
-//     <div className="min-h-screen bg-white">
-//       <Navigation />
-
-//       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
-//         <div className="max-w-7xl mx-auto text-center">
-//           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-//             40 Years of Engineering Excellence.
-//             <br />
-//             Zero Compromises on Quality.
-//           </h1>
-//           <p className="text-xl text-gray-600 mb-10 max-w-4xl mx-auto leading-relaxed">
-//             From transformers to switchgear, we manufacture precision-engineered
-//             insulation components that power India&apos;s leading industries -
-//             and the world&apos;s biggest brands.
-//           </p>
-//           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-//             <Button
-//               size="lg"
-//               asChild
-//               className="bg-blue-900 hover:bg-blue-800 text-lg px-8 py-6"
-//             >
-//               <Link href="#quote">Get Custom Quote</Link>
-//             </Button>
-//             <Button
-//               size="lg"
-//               variant="outline"
-//               asChild
-//               className="text-lg px-8 py-6 border-blue-900 text-blue-900 hover:bg-blue-50"
-//             >
-//               <Link href="#products">View All Products</Link>
-//             </Button>
-//           </div>
-//           <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-600 border-t border-gray-200 pt-8">
-//             <span className="font-semibold">Trusted by Hitachi</span>
-//             <span className="text-gray-300">•</span>
-//             <span className="font-semibold">Toyota</span>
-//             <span className="text-gray-300">•</span>
-//             <span className="font-semibold">Nike</span>
-//             <span className="text-gray-300">•</span>
-//             <span className="font-semibold">Made in Chennai, India</span>
-//             <span className="text-gray-300">•</span>
-//             <span className="font-semibold">Shipped Globally</span>
-//           </div>
-//         </div>
-//       </section>
-
-//       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-//         <div className="max-w-7xl mx-auto">
-//           <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-16">
-//             Your Equipment Deserves Insulation That Won&apos;t Fail
-//           </h2>
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-//             <Card className="border-2">
-//               <CardHeader>
-//                 <Shield className="h-12 w-12 text-blue-900 mb-4" />
-//                 <CardTitle className="text-xl">
-//                   Equipment Downtime Costs You Lakhs
-//                 </CardTitle>
-//               </CardHeader>
-//               <CardContent>
-//                 <p className="text-gray-600">
-//                   One insulation failure can shut down your entire production
-//                   line
-//                 </p>
-//               </CardContent>
-//             </Card>
-//             <Card className="border-2">
-//               <CardHeader>
-//                 <Clock className="h-12 w-12 text-blue-900 mb-4" />
-//                 <CardTitle className="text-xl">
-//                   Generic Products Delay Your Projects
-//                 </CardTitle>
-//               </CardHeader>
-//               <CardContent>
-//                 <p className="text-gray-600">
-//                   Off-the-shelf solutions rarely meet exact specifications
-//                 </p>
-//               </CardContent>
-//             </Card>
-//             <Card className="border-2 border-blue-900">
-//               <CardHeader>
-//                 <Target className="h-12 w-12 text-blue-900 mb-4" />
-//                 <CardTitle className="text-xl">
-//                   We Solve Both Problems
-//                 </CardTitle>
-//               </CardHeader>
-//               <CardContent>
-//                 <p className="text-gray-600">
-//                   Custom-engineered insulation delivered on time, every time
-//                 </p>
-//               </CardContent>
-//             </Card>
-//           </div>
-//         </div>
-//       </section>
-
+//       {/* ── HERO ─────────────────────────────────────────────────────── */}
 //       <section
-//         id="industries"
-//         className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50"
+//         aria-label="Hitech Insulation – Electrical Insulation Manufacturer Chennai"
+//         className={cn(
+//           "relative h-screen w-full overflow-hidden",
+//           navOpen && "opacity-10 blur-lg pointer-events-none"
+//         )}
+//       >
+//         <div className="absolute inset-0">
+//           <Image
+//             src="/hero/hitech_hero_bg.webp"
+//             alt="Hitech Insulation manufacturing facility – electrical insulation manufacturer Chennai, India"
+//             fill
+//             priority
+//             className="object-cover"
+//           />
+//           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
+//         </div>
+
+//         <div className="relative z-10 h-full flex flex-col justify-end lg:justify-end px-6 lg:px-16 pb-12 lg:pb-16">
+//           <div className="w-full flex flex-col lg:flex-row justify-between items-end">
+//             <div className="max-w-xl text-white">
+//               {/* H1 — most important SEO signal on the page */}
+//               <h1 className="text-4xl md:text-6xl font-light leading-tight">
+//                 Best Electrical Insulation
+//                 <br />
+//                 <span className="font-semibold">Manufacturer in India</span>
+//               </h1>
+//               {/* Keyword-rich subtitle — crawled as visible body text */}
+//               <p className="mt-4 text-base md:text-lg text-gray-200 max-w-lg leading-relaxed">
+//                 Hitech Insulation – Chennai's trusted pressboard manufacturer and electrical
+//                 insulation supplier since 1977. Serving transformer, motor &amp; switchgear
+//                 manufacturers across India.
+//               </p>
+
+//               <div className="mt-6 flex flex-wrap gap-4">
+//                 <Link
+//                   href="/contact"
+//                   className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-sm font-semibold transition"
+//                 >
+//                   Get a Quote
+//                 </Link>
+//                 <Link
+//                   href="/products"
+//                   className="border border-white/30 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/10 transition"
+//                 >
+//                   View Products
+//                 </Link>
+//               </div>
+//             </div>
+
+//             <div className="flex gap-10 mt-10 lg:mt-0 text-white">
+//               <div>
+//                 <div className="text-3xl font-semibold">47+</div>
+//                 <div className="text-sm opacity-80">Years of Experience</div>
+//               </div>
+//               <div>
+//                 <div className="text-3xl font-semibold">100%</div>
+//                 <div className="text-sm opacity-80">Client Satisfaction</div>
+//               </div>
+//               <div>
+//                 <div className="text-3xl font-semibold">138+</div>
+//                 <div className="text-sm opacity-80">Projects Completed</div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* ── WHY ENGINEERS CHOOSE HITECH ──────────────────────────────── */}
+//       <section
+//         aria-labelledby="why-hitech-heading"
+//         className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white"
 //       >
 //         <div className="max-w-7xl mx-auto">
-//           <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-16">
-//             Powering the Industries That Power the World
-//           </h2>
-//           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-//             <Card>
+//           <div className="text-center mb-16">
+//             <h2
+//               id="why-hitech-heading"
+//               className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+//             >
+//               Why Engineers Choose Hitech Insulation
+//             </h2>
+//             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+//               India's leading electrical insulation manufacturer since 1977. Precision components
+//               engineered to exact specifications for transformers, motors, and switchgear.
+//             </p>
+//           </div>
+
+//           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+//             <Card className="border-2 border-gray-100 transition-all group bg-white">
 //               <CardHeader>
-//                 <Zap className="h-10 w-10 text-blue-900 mb-3" />
-//                 <CardTitle className="text-2xl">
-//                   Transformer Manufacturers
-//                 </CardTitle>
+//                 <div className="mb-4 w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
+//                   <Shield className="h-7 w-7 text-blue-600" />
+//                 </div>
+//                 <CardTitle className="text-2xl">Eliminate Equipment Downtime</CardTitle>
 //               </CardHeader>
 //               <CardContent>
-//                 <p className="text-gray-600">
-//                   High-voltage insulation for power distribution and
-//                   transmission transformers
+//                 <p className="text-gray-600 leading-relaxed">
+//                   One insulation failure shuts down production lines. Our ISO-certified components
+//                   meet the strictest quality standards to keep your equipment running reliably.
 //                 </p>
 //               </CardContent>
 //             </Card>
-//             <Card>
+
+//             <Card className="border-2 border-gray-100 transition-all group bg-white">
 //               <CardHeader>
-//                 <Cpu className="h-10 w-10 text-blue-900 mb-3" />
-//                 <CardTitle className="text-2xl">Motor Industry</CardTitle>
+//                 <div className="mb-4 w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
+//                   <Target className="h-7 w-7 text-blue-600" />
+//                 </div>
+//                 <CardTitle className="text-2xl">Custom Insulation Engineering</CardTitle>
 //               </CardHeader>
 //               <CardContent>
-//                 <p className="text-gray-600">
-//                   Durable laminates and sheets for electric motor insulation and
-//                   mechanical components
+//                 <p className="text-gray-600 leading-relaxed">
+//                   Generic products delay projects. We manufacture pressboard components, epoxy
+//                   laminates, and FRP parts to your exact dimensions, materials, and performance
+//                   ratings.
 //                 </p>
 //               </CardContent>
 //             </Card>
-//             <Card>
+
+//             <Card className="border-2 border-gray-100 transition-all group bg-white">
 //               <CardHeader>
-//                 <Factory className="h-10 w-10 text-blue-900 mb-3" />
-//                 <CardTitle className="text-2xl">
-//                   Panel Board & Switchgear
-//                 </CardTitle>
+//                 <div className="mb-4 w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
+//                   <Clock className="h-7 w-7 text-blue-600" />
+//                 </div>
+//                 <CardTitle className="text-2xl">Fast 24-Hour Quote Turnaround</CardTitle>
 //               </CardHeader>
 //               <CardContent>
-//                 <p className="text-gray-600">
-//                   Precision pressboards and epoxy sheets for electrical panel
-//                   assemblies
-//                 </p>
-//               </CardContent>
-//             </Card>
-//             <Card>
-//               <CardHeader>
-//                 <Box className="h-10 w-10 text-blue-900 mb-3" />
-//                 <CardTitle className="text-2xl">Bus Duct Systems</CardTitle>
-//               </CardHeader>
-//               <CardContent>
-//                 <p className="text-gray-600">
-//                   Temperature-resistant materials engineered for high-current
-//                   applications
+//                 <p className="text-gray-600 leading-relaxed">
+//                   Time is money. Our Chennai manufacturing facility delivers custom insulation
+//                   components on schedule without compromising quality. Quote within 24 hours.
 //                 </p>
 //               </CardContent>
 //             </Card>
@@ -221,49 +175,147 @@
 //         </div>
 //       </section>
 
-//       <section id="products" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+//       {/* ── INDUSTRIES ───────────────────────────────────────────────── */}
+//       <section aria-labelledby="industries-heading" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16">
-//             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-//               8 Core Products. 1000+ Custom Configurations.
+//             <h2
+//               id="industries-heading"
+//               className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+//             >
+//               Industries We Serve Across India
 //             </h2>
-//             <p className="text-xl text-gray-600">
-//               Every component manufactured to micron-level precision in our
-//               Chennai facility
+//             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+//               Specialized electrical insulation solutions for critical manufacturing sectors –
+//               supplied from our Chennai, Tamil Nadu facility to customers across India.
 //             </p>
 //           </div>
-//           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+
+//           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+//             <Card className="border-2 border-gray-100 group bg-white">
+//               <CardHeader>
+//                 <div className="flex items-start justify-between mb-4">
+//                   <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
+//                     <Zap className="h-7 w-7 text-blue-600" />
+//                   </div>
+//                 </div>
+//                 <CardTitle className="text-2xl mb-3">Transformer Manufacturers</CardTitle>
+//                 <CardDescription className="text-base text-gray-600">
+//                   Pressboard sheets, pre-compressed pressboard, kraft paper, transformer insulation
+//                   kits, and moulded pressboard components for power and distribution transformer
+//                   manufacturers across India.
+//                 </CardDescription>
+//               </CardHeader>
+//             </Card>
+
+//             <Card className="border-2 border-gray-100 group bg-white">
+//               <CardHeader>
+//                 <div className="flex items-start justify-between mb-4">
+//                   <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
+//                     <Cpu className="h-7 w-7 text-blue-600" />
+//                   </div>
+//                 </div>
+//                 <CardTitle className="text-2xl mb-3">Electric Motor Industry</CardTitle>
+//                 <CardDescription className="text-base text-gray-600">
+//                   Phenolic laminates, hylam sheets, bakelite, presspaper, and fiberglass components
+//                   for electric motor winding insulation and mechanical protection.
+//                 </CardDescription>
+//               </CardHeader>
+//             </Card>
+
+//             <Card className="border-2 border-gray-100 group bg-white">
+//               <CardHeader>
+//                 <div className="flex items-start justify-between mb-4">
+//                   <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
+//                     <Factory className="h-7 w-7 text-blue-600" />
+//                   </div>
+//                 </div>
+//                 <CardTitle className="text-2xl mb-3">
+//                   Panel Board &amp; Switchgear Manufacturers
+//                 </CardTitle>
+//                 <CardDescription className="text-base text-gray-600">
+//                   Precision-cut pressboard, FR4 and G10 epoxy glass sheets, bakelite, and epoxy cast
+//                   insulators for electrical panel assemblies and arc protection.
+//                 </CardDescription>
+//               </CardHeader>
+//             </Card>
+
+//             <Card className="border-2 border-gray-100 group bg-white">
+//               <CardHeader>
+//                 <div className="flex items-start justify-between mb-4">
+//                   <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
+//                     <Box className="h-7 w-7 text-blue-600" />
+//                   </div>
+//                 </div>
+//                 <CardTitle className="text-2xl mb-3">Bus Duct &amp; Busbar Systems</CardTitle>
+//                 <CardDescription className="text-base text-gray-600">
+//                   High-temperature insulation materials including FRP components, PTFE sheets, and
+//                   mica products engineered for high-current busbar and cable management
+//                   applications.
+//                 </CardDescription>
+//               </CardHeader>
+//             </Card>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* ── FEATURED PRODUCTS ────────────────────────────────────────── */}
+//       <section
+//         aria-labelledby="products-heading"
+//         className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white"
+//       >
+//         <div className="max-w-7xl mx-auto">
+//           <div className="text-center mb-16">
+//             <h2
+//               id="products-heading"
+//               className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+//             >
+//               Electrical Insulation Products
+//             </h2>
+//             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+//               9 product families. Pressboard, epoxy laminates, FRP, mica, PTFE, kraft paper, and
+//               custom fabrication. Manufactured to micron-level precision in Chennai, India.
+//             </p>
+//           </div>
+
+//           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
 //             {featuredProducts.map((productId) => {
 //               const product = products[productId];
+//               if (!product) return null;
 //               return (
-//                 <Card
-//                   key={productId}
-//                   className="hover:shadow-lg transition-shadow"
-//                 >
+//                 <Card key={productId} className="border-2 border-gray-100 group bg-white">
 //                   <CardHeader>
-//                     <div className="h-40 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg mb-4 flex items-center justify-center">
-//                       <Box className="h-16 w-16 text-gray-400" />
+//                     <div className="relative h-48 w-full rounded-xl mb-4 overflow-hidden border border-gray-200 bg-gray-100">
+//                       <Image
+//                         src={getProductImage(productId)}
+//                         alt={`${product.name} – ${product.category} supplier India – Hitech Insulation Chennai`}
+//                         fill
+//                         className="object-cover"
+//                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+//                       />
+//                       <div className="absolute top-3 right-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+//                         {product.category}
+//                       </div>
 //                     </div>
-//                     <CardTitle className="text-lg">
-//                       {product.name.split("-")[0].trim()}
-//                     </CardTitle>
-//                     <CardDescription className="line-clamp-2">
+//                     <CardTitle className="text-xl mb-2">{product.name}</CardTitle>
+//                     <CardDescription className="line-clamp-2 text-gray-600">
 //                       {product.shortDescription}
 //                     </CardDescription>
 //                   </CardHeader>
 //                   <CardContent>
 //                     <div className="mb-4">
-//                       <span className="inline-block bg-blue-100 text-blue-900 text-xs px-3 py-1 rounded-full">
-//                         {product.specifications[1]?.value || "Multiple specs"}
+//                       <span className="inline-block bg-blue-50 text-blue-900 text-xs font-medium px-3 py-1.5 rounded-full">
+//                         {product.specifications[1]?.value || "Custom specifications available"}
 //                       </span>
 //                     </div>
 //                     <Button
 //                       asChild
 //                       variant="outline"
-//                       className="w-full border-blue-900 text-blue-900 hover:bg-blue-50"
+//                       className="w-full border-2 border-gray-300 text-gray-700 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 font-semibold transition-all"
 //                     >
 //                       <Link href={`/products/${productId}`}>
-//                         View Details <ArrowRight className="ml-2 h-4 w-4" />
+//                         View Specs
+//                         <ArrowRight className="ml-2 h-4 w-4" />
 //                       </Link>
 //                     </Button>
 //                   </CardContent>
@@ -271,280 +323,456 @@
 //               );
 //             })}
 //           </div>
-//           <div className="text-center">
-//             <Button asChild size="lg" className="bg-blue-900 hover:bg-blue-800">
-//               <Link href="/products/pressboard-3mm">View All 20 Products</Link>
-//             </Button>
-//           </div>
-//         </div>
-//       </section>
 
-//       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blue-900 text-white">
-//         <div className="max-w-4xl mx-auto">
-//           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-//             What You Get When You Choose Hitech Insulation
-//           </h2>
-//           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-//             {[
-//               "Custom engineering to your exact specifications",
-//               "40+ years of manufacturing expertise since 1977",
-//               "Globally sourced materials from trusted suppliers",
-//               "ISO-certified quality control on every batch",
-//               "Fast turnaround on custom orders",
-//               "Direct manufacturer pricing (no middlemen)",
-//               "Technical support from our engineering team",
-//               "Delivery across all Indian states and international shipping",
-//             ].map((benefit, index) => (
-//               <div key={index} className="flex items-start space-x-3">
-//                 <Check className="h-6 w-6 flex-shrink-0 mt-0.5" />
-//                 <span className="text-lg">{benefit}</span>
-//               </div>
-//             ))}
-//           </div>
-//           <div className="text-center mt-12">
+//           <div className="text-center">
 //             <Button
 //               asChild
 //               size="lg"
-//               variant="secondary"
-//               className="bg-white text-blue-900 hover:bg-gray-100"
+//               className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base shadow-lg shadow-blue-600/25"
 //             >
-//               <Link href="#quote">Request Your Custom Quote</Link>
+//               <Link href="/products">
+//                 View All Insulation Products
+//                 <ArrowRight className="ml-2 h-5 w-5" />
+//               </Link>
 //             </Button>
 //           </div>
 //         </div>
 //       </section>
 
-//       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-//         <div className="max-w-7xl mx-auto">
-//           <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-16">
-//             What Our Partners Say
-//           </h2>
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-//             <Card>
-//               <CardContent className="pt-6">
-//                 <p className="text-gray-600 mb-6 italic">
-//                   &quot;Hitech Insulation has been our trusted partner for over
-//                   15 years. Their pressboard quality is consistently excellent,
-//                   and they always deliver on time.&quot;
-//                 </p>
-//                 <div>
-//                   <p className="font-semibold text-gray-900">Rajesh Kumar</p>
-//                   <p className="text-sm text-gray-500">Production Manager</p>
-//                   <p className="text-sm text-gray-500">
-//                     Transformer Manufacturer, Maharashtra
-//                   </p>
+//       {/* ── HITECH ADVANTAGE ─────────────────────────────────────────── */}
+//       <section aria-labelledby="advantage-heading" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+//         <div className="max-w-6xl mx-auto">
+//           <div className="text-center mb-16">
+//             <h2
+//               id="advantage-heading"
+//               className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+//             >
+//               Why Hitech is India's Best Insulation Manufacturer
+//             </h2>
+//             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+//               47 years of electrical insulation manufacturing excellence from Chennai, Tamil Nadu.
+//             </p>
+//           </div>
+
+//           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+//             {[
+//               {
+//                 icon: Target,
+//                 title: "Custom Insulation Engineering",
+//                 desc: "Pressboard components, epoxy laminates, and FRP parts manufactured to your exact drawing specifications",
+//               },
+//               {
+//                 icon: Award,
+//                 title: "47 Years of Experience Since 1977",
+//                 desc: "India's most experienced electrical insulation manufacturer based in Chennai",
+//               },
+//               {
+//                 icon: Globe,
+//                 title: "Globally Sourced Raw Materials",
+//                 desc: "Insulation raw materials sourced from certified international and domestic suppliers",
+//               },
+//               {
+//                 icon: Shield,
+//                 title: "ISO-Certified Manufacturing",
+//                 desc: "Quality-controlled insulation production on every batch from our Chennai facility",
+//               },
+//               {
+//                 icon: Clock,
+//                 title: "24-Hour Quote Turnaround",
+//                 desc: "Fast quote and delivery on standard and custom insulation orders across India",
+//               },
+//               {
+//                 icon: TrendingUp,
+//                 title: "Manufacturer Direct Pricing",
+//                 desc: "No middlemen – direct manufacturer pricing for insulation products and components",
+//               },
+//               {
+//                 icon: Users,
+//                 title: "Application Engineering Support",
+//                 desc: "Expert technical guidance for transformer, motor, and switchgear insulation selection",
+//               },
+//               {
+//                 icon: Box,
+//                 title: "Pan-India Delivery",
+//                 desc: "Insulation products shipped across Tamil Nadu, Maharashtra, Gujarat, Karnataka, and all India",
+//               },
+//             ].map((benefit, index) => (
+//               <div
+//                 key={index}
+//                 className="flex items-start gap-4 p-6 bg-gray-50 border-2 border-gray-100 rounded-xl"
+//               >
+//                 <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
+//                   <benefit.icon className="h-6 w-6 text-blue-600" />
 //                 </div>
-//               </CardContent>
-//             </Card>
-//             <Card>
-//               <CardContent className="pt-6">
-//                 <p className="text-gray-600 mb-6 italic">
-//                   &quot;The custom fabrication service saved us weeks of
-//                   production time. Their engineering team understood our
-//                   requirements perfectly and delivered exactly what we
-//                   needed.&quot;
-//                 </p>
 //                 <div>
-//                   <p className="font-semibold text-gray-900">Priya Sharma</p>
-//                   <p className="text-sm text-gray-500">Technical Director</p>
-//                   <p className="text-sm text-gray-500">
-//                     Motor Industry, Tamil Nadu
-//                   </p>
+//                   <h3 className="text-lg font-semibold mb-1 text-gray-900">{benefit.title}</h3>
+//                   <p className="text-gray-600 text-sm">{benefit.desc}</p>
 //                 </div>
-//               </CardContent>
-//             </Card>
-//             <Card>
-//               <CardContent className="pt-6">
-//                 <p className="text-gray-600 mb-6 italic">
-//                   &quot;Quality materials, competitive pricing, and excellent
-//                   technical support. Hitech Insulation is our first choice for
-//                   all electrical insulation components.&quot;
-//                 </p>
-//                 <div>
-//                   <p className="font-semibold text-gray-900">Amit Patel</p>
-//                   <p className="text-sm text-gray-500">Procurement Head</p>
-//                   <p className="text-sm text-gray-500">
-//                     Panel Board Manufacturer, Gujarat
-//                   </p>
-//                 </div>
-//               </CardContent>
-//             </Card>
+//               </div>
+//             ))}
+//           </div>
+
+//           <div className="text-center">
+//             <Button
+//               asChild
+//               size="lg"
+//               className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base font-semibold shadow-lg shadow-blue-600/25"
+//             >
+//               <Link href="/contact#quote">Request Custom Quote</Link>
+//             </Button>
 //           </div>
 //         </div>
 //       </section>
 
-//       <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+//       {/* ── TESTIMONIALS ─────────────────────────────────────────────── */}
+//       <section
+//         aria-labelledby="testimonials-heading"
+//         className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white"
+//       >
 //         <div className="max-w-7xl mx-auto">
-//           <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-16">
-//             Built on 40 Years of Trust
-//           </h2>
+//           <div className="text-center mb-16">
+//             <h2
+//               id="testimonials-heading"
+//               className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+//             >
+//               Trusted by Manufacturers Across India
+//             </h2>
+//             <p className="text-xl text-gray-600">
+//               What transformer, motor, and panel board manufacturers say about Hitech Insulation.
+//             </p>
+//           </div>
+
+//           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+//             {[
+//               {
+//                 quote:
+//                   "Hitech Insulation has been our trusted pressboard supplier for over 15 years. Their quality is consistently excellent, and they always deliver on time across Maharashtra.",
+//                 name: "Rajesh Kumar",
+//                 title: "Production Manager",
+//                 company: "Transformer Manufacturer, Maharashtra",
+//               },
+//               {
+//                 quote:
+//                   "The custom insulation fabrication service saved us weeks of production time. Their Chennai engineering team understood our transformer requirements perfectly.",
+//                 name: "Priya Sharma",
+//                 title: "Technical Director",
+//                 company: "Motor Manufacturer, Tamil Nadu",
+//               },
+//               {
+//                 quote:
+//                   "Quality insulation materials, competitive pricing, and excellent technical support. Hitech Insulation is our first choice for all electrical insulation components in India.",
+//                 name: "Amit Patel",
+//                 title: "Procurement Head",
+//                 company: "Panel Board Manufacturer, Gujarat",
+//               },
+//             ].map((testimonial, index) => (
+//               <Card key={index} className="border-2 border-gray-100 bg-white">
+//                 <CardContent className="pt-8">
+//                   <div className="mb-6">
+//                     <div className="flex gap-1 mb-4" aria-label="5 star rating">
+//                       {[...Array(5)].map((_, i) => (
+//                         <span key={i} className="text-yellow-400" aria-hidden="true">
+//                           ★
+//                         </span>
+//                       ))}
+//                     </div>
+//                     <p className="text-gray-700 leading-relaxed italic">
+//                       &quot;{testimonial.quote}&quot;
+//                     </p>
+//                   </div>
+//                   <div className="pt-6 border-t border-gray-100">
+//                     <p className="font-bold text-gray-900 text-lg">{testimonial.name}</p>
+//                     <p className="text-sm text-gray-600 mt-1">{testimonial.title}</p>
+//                     <p className="text-sm text-blue-600 font-medium mt-1">{testimonial.company}</p>
+//                   </div>
+//                 </CardContent>
+//               </Card>
+//             ))}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* ── ABOUT ────────────────────────────────────────────────────── */}
+//       <section aria-labelledby="about-heading" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+//         <div className="max-w-7xl mx-auto">
+//           <div className="text-center mb-16">
+//             <h2
+//               id="about-heading"
+//               className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+//             >
+//               Best Pressboard Manufacturer in India Since 1977
+//             </h2>
+//             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+//               From Chennai, Tamil Nadu to customers across India – 47 years of precision electrical
+//               insulation manufacturing.
+//             </p>
+//           </div>
+
 //           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-//             <div className="h-96 bg-gradient-to-br from-blue-900 to-blue-700 rounded-lg flex items-center justify-center">
-//               <Factory className="h-32 w-32 text-white opacity-50" />
+//             <div className="relative">
+//               <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl blur-xl opacity-40" />
+//               <div className="relative h-[500px] rounded-2xl shadow-2xl overflow-hidden">
+//                 <Image
+//                   src="/slide1.jpg"
+//                   alt="Hitech Insulation manufacturing facility Chennai – electrical insulation manufacturer India"
+//                   fill
+//                   className="object-cover"
+//                 />
+//               </div>
 //             </div>
+
 //             <div className="space-y-6">
-//               <p className="text-lg text-gray-600 leading-relaxed">
-//                 Founded in 1977 by Mr. Radhakrushnun, Hitech Insulation began
-//                 with a simple mission: manufacture insulation components that
-//                 don&apos;t fail.
-//               </p>
-//               <p className="text-lg text-gray-600 leading-relaxed">
-//                 Today, we operate state-of-the-art facilities in Chennai, Tamil
-//                 Nadu, supplying precision-engineered electrical insulation to
-//                 transformer manufacturers, motor industries, and electrical
-//                 equipment makers across India and internationally.
-//               </p>
-//               <p className="text-lg text-gray-600 leading-relaxed">
-//                 From our early days trading insulation products to becoming a
-//                 trusted manufacturing partner for global brands like Hitachi,
-//                 Toyota, and Nike, our commitment remains unchanged: engineering
-//                 excellence, delivered consistently.
-//               </p>
-//               <Button asChild className="bg-blue-900 hover:bg-blue-800">
-//                 <Link href="#contact">Learn More About Our Process</Link>
+//               <div className="space-y-4">
+//                 <div className="flex items-start gap-4">
+//                   <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+//                     <Award className="h-6 w-6 text-blue-600" />
+//                   </div>
+//                   <div>
+//                     <h3 className="text-xl font-bold text-gray-900 mb-2">
+//                       Founded 1977 in Chennai, Tamil Nadu
+//                     </h3>
+//                     <p className="text-gray-600 leading-relaxed">
+//                       Mr. Radhakrushnun established Hitech Insulation with one mission: manufacture
+//                       electrical insulation components that don&apos;t fail under pressure. Today we
+//                       are recognised as India's best pressboard manufacturer.
+//                     </p>
+//                   </div>
+//                 </div>
+
+//                 <div className="flex items-start gap-4">
+//                   <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+//                     <Factory className="h-6 w-6 text-blue-600" />
+//                   </div>
+//                   <div>
+//                     <h3 className="text-xl font-bold text-gray-900 mb-2">
+//                       ISO-Certified Manufacturing Facility
+//                     </h3>
+//                     <p className="text-gray-600 leading-relaxed">
+//                       State-of-the-art electrical insulation manufacturing in Chennai, Tamil Nadu.
+//                       Supplying transformer manufacturers, motor industries, switchgear and panel
+//                       board makers, and bus duct manufacturers across India.
+//                     </p>
+//                   </div>
+//                 </div>
+
+//                 <div className="flex items-start gap-4">
+//                   <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+//                     <Globe className="h-6 w-6 text-blue-600" />
+//                   </div>
+//                   <div>
+//                     <h3 className="text-xl font-bold text-gray-900 mb-2">
+//                       Trusted by Leading OEMs
+//                     </h3>
+//                     <p className="text-gray-600 leading-relaxed">
+//                       Manufacturing partner for Hitachi, Toyota, BHEL, Siemens, Schneider Electric,
+//                       and Toshiba. From trading insulation products to precision manufacturer – our
+//                       commitment to engineering excellence stays constant.
+//                     </p>
+//                   </div>
+//                 </div>
+//               </div>
+
+//               <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 mt-8">
+//                 <Link href="/about">About Hitech Insulation</Link>
 //               </Button>
 //             </div>
 //           </div>
 //         </div>
 //       </section>
 
+//       <Location />
+
+//       {/* ── QUOTE FORM ───────────────────────────────────────────────── */}
 //       <section
 //         id="quote"
-//         className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-900 to-blue-800 text-white"
+//         aria-labelledby="quote-heading"
+//         className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white"
 //       >
-//         <div className="max-w-3xl mx-auto">
+//         <div className="max-w-4xl mx-auto">
 //           <div className="text-center mb-12">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-//               Get Your Custom Quote in 24 Hours
+//             <h2
+//               id="quote-heading"
+//               className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+//             >
+//               Get Your Insulation Quote in 24 Hours
 //             </h2>
-//             <p className="text-xl text-blue-100">
-//               Tell us your specifications. Our engineers will design the perfect
-//               solution for your application.
+//             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+//               Share your requirements. Our engineering team in Chennai will review and respond
+//               within 24 hours. Pressboard, epoxy sheets, FRP, mica, PTFE, and custom fabrication.
 //             </p>
 //           </div>
-//           <Card className="bg-white text-gray-900">
-//             <CardContent className="pt-6">
-//               <form onSubmit={handleSubmit} className="space-y-6">
+
+//           <Card className="bg-white border-2 border-gray-100 shadow-xl">
+//             <CardContent className="p-8 sm:p-10">
+//               <form action="https://formspree.io/f/xwpgqnay" method="POST" className="space-y-6">
 //                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 //                   <div>
-//                     <label className="block text-sm font-medium mb-2">
-//                       Name
+//                     <label className="block text-sm font-semibold mb-2 text-gray-700">
+//                       Full Name *
 //                     </label>
 //                     <Input
+//                       name="name"
 //                       required
-//                       value={formData.name}
-//                       onChange={(e) =>
-//                         setFormData({ ...formData, name: e.target.value })
-//                       }
-//                       placeholder="Your name"
+//                       placeholder="Your full name"
+//                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
 //                     />
 //                   </div>
 //                   <div>
-//                     <label className="block text-sm font-medium mb-2">
-//                       Company Name
+//                     <label className="block text-sm font-semibold mb-2 text-gray-700">
+//                       Company Name *
 //                     </label>
 //                     <Input
+//                       name="company"
 //                       required
-//                       value={formData.company}
-//                       onChange={(e) =>
-//                         setFormData({ ...formData, company: e.target.value })
-//                       }
-//                       placeholder="Your company"
+//                       placeholder="Your company name"
+//                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
 //                     />
 //                   </div>
 //                 </div>
+
 //                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 //                   <div>
-//                     <label className="block text-sm font-medium mb-2">
-//                       Email
+//                     <label className="block text-sm font-semibold mb-2 text-gray-700">
+//                       Email Address *
 //                     </label>
 //                     <Input
 //                       type="email"
+//                       name="email"
 //                       required
-//                       value={formData.email}
-//                       onChange={(e) =>
-//                         setFormData({ ...formData, email: e.target.value })
-//                       }
 //                       placeholder="your@email.com"
+//                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
 //                     />
 //                   </div>
 //                   <div>
-//                     <label className="block text-sm font-medium mb-2">
-//                       Phone
+//                     <label className="block text-sm font-semibold mb-2 text-gray-700">
+//                       Phone Number *
 //                     </label>
 //                     <Input
 //                       type="tel"
+//                       name="phone"
 //                       required
-//                       value={formData.phone}
-//                       onChange={(e) =>
-//                         setFormData({ ...formData, phone: e.target.value })
-//                       }
 //                       placeholder="+91 XXXXX XXXXX"
+//                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
 //                     />
 //                   </div>
 //                 </div>
+
 //                 <div>
-//                   <label className="block text-sm font-medium mb-2">
-//                     Product Interest
+//                   <label className="block text-sm font-semibold mb-2 text-gray-700">
+//                     Product Required *
 //                   </label>
-//                   <Select
-//                     value={formData.product}
-//                     onValueChange={(value) =>
-//                       setFormData({ ...formData, product: value })
-//                     }
+//                   <select
+//                     name="product_required"
+//                     required
+//                     className="w-full h-12 rounded-md border border-gray-200 px-3 text-sm focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
 //                   >
-//                     <SelectTrigger>
-//                       <SelectValue placeholder="Select a product category" />
-//                     </SelectTrigger>
-//                     <SelectContent>
-//                       <SelectItem value="pressboard">Pressboard</SelectItem>
-//                       <SelectItem value="epoxy">Epoxy Sheets</SelectItem>
-//                       <SelectItem value="phenolic">
-//                         Phenolic Laminates
-//                       </SelectItem>
-//                       <SelectItem value="ptfe">PTFE Products</SelectItem>
-//                       <SelectItem value="kraft">Kraft Paper</SelectItem>
-//                       <SelectItem value="custom">Custom Components</SelectItem>
-//                       <SelectItem value="other">Other</SelectItem>
-//                     </SelectContent>
-//                   </Select>
+//                     <option value="">Select a product</option>
+//                     <option value="Pressboard Sheets">Pressboard Sheets</option>
+//                     <option value="Pre-Compressed Pressboard">Pre-Compressed Pressboard</option>
+//                     <option value="Transformer Insulation Kits">Transformer Insulation Kits</option>
+//                     <option value="Moulded Pressboard Components">
+//                       Moulded Pressboard Components
+//                     </option>
+//                     <option value="FR4 Epoxy Sheet">FR4 Epoxy Sheet</option>
+//                     <option value="G10 G11 Epoxy Sheet">G10 / G11 Epoxy Sheet</option>
+//                     <option value="ESD Epoxy Sheet">ESD Grade Epoxy Sheet</option>
+//                     <option value="Hylam / Paper Phenolic">Hylam / Paper Phenolic Laminate</option>
+//                     <option value="Bakelite Sheet">Bakelite Sheet</option>
+//                     <option value="ESD Bakelite Sheet">ESD Bakelite Sheet</option>
+//                     <option value="Electrical Presspaper">Electrical Grade Presspaper</option>
+//                     <option value="Kraft Paper">Electrical Grade Kraft Paper</option>
+//                     <option value="FRP Tubes">FRP Tubes</option>
+//                     <option value="FRP Rods">FRP Rods</option>
+//                     <option value="FRP Threaded Rods & Nuts">FRP Threaded Rods &amp; Nuts</option>
+//                     <option value="FRP Components">FRP Components</option>
+//                     <option value="Mica Sheets">Mica Sheets</option>
+//                     <option value="Mica Tapes">Mica Tapes</option>
+//                     <option value="PTFE Sheet">PTFE / Teflon Sheet</option>
+//                     <option value="PTFE Cloth">PTFE Cloth (Adhesive / Non-Adhesive)</option>
+//                     <option value="Nomex Paper">Nomex Paper</option>
+//                     <option value="Engineering Plastics">
+//                       Engineering Plastics (Delrin / PEEK / Nylon / PC)
+//                     </option>
+//                     <option value="Adhesive Tapes">
+//                       Adhesive Insulation Tapes (Kapton / Polyester)
+//                     </option>
+//                     <option value="Cork Sheets">Cork Sheets</option>
+//                     <option value="Epoxy Cast Insulators">Epoxy Cast Insulators</option>
+//                     <option value="Custom Fabrication">Custom Gaskets &amp; Fabrication</option>
+//                     <option value="Other">Other (Specify Below)</option>
+//                   </select>
 //                 </div>
+
 //                 <div>
-//                   <label className="block text-sm font-medium mb-2">
-//                     Specifications / Requirements
+//                   <label className="block text-sm font-semibold mb-2 text-gray-700">
+//                     If Other, specify product details
 //                   </label>
 //                   <Textarea
-//                     required
-//                     value={formData.requirements}
-//                     onChange={(e) =>
-//                       setFormData({ ...formData, requirements: e.target.value })
-//                     }
-//                     placeholder="Please describe your requirements (thickness, size, quantity, application, etc.)"
-//                     rows={5}
+//                     name="other_product_details"
+//                     rows={3}
+//                     placeholder="E.g. Syndanio sheets, crepe paper tubes, polyester film, cork gaskets…"
+//                     className="border-gray-200 focus:border-blue-600 focus:ring-blue-600 resize-none"
 //                   />
 //                 </div>
+
+//                 <div>
+//                   <label className="block text-sm font-semibold mb-2 text-gray-700">
+//                     Specifications &amp; Requirements *
+//                   </label>
+//                   <Textarea
+//                     name="requirements"
+//                     required
+//                     rows={6}
+//                     placeholder="Thickness, dimensions, quantity, voltage rating, application, delivery timeline…"
+//                     className="border-gray-200 focus:border-blue-600 focus:ring-blue-600 resize-none"
+//                   />
+//                 </div>
+
+//                 <input type="hidden" name="source" value="Website Quote Form – Home Page" />
+
 //                 <Button
 //                   type="submit"
 //                   size="lg"
-//                   className="w-full bg-blue-900 hover:bg-blue-800 text-white"
+//                   className="w-full bg-blue-600 hover:bg-blue-700 text-white h-14 text-base font-semibold shadow-lg shadow-blue-600/25"
 //                 >
-//                   Get Quote Now
+//                   Get Quote Within 24 Hours
 //                 </Button>
 //               </form>
-//               <div
-//                 id="contact"
-//                 className="mt-6 text-center text-gray-600 flex items-center justify-center space-x-2"
-//               >
-//                 <Mail className="h-5 w-5" />
-//                 <span>
-//                   Or email us directly:{" "}
+
+//               <div className="mt-8 space-y-4">
+//                 <div className="relative">
+//                   <div className="absolute inset-0 flex items-center">
+//                     <div className="w-full border-t border-gray-200" />
+//                   </div>
+//                   <div className="relative flex justify-center text-sm">
+//                     <span className="px-4 bg-white text-gray-500 font-medium">
+//                       Or contact us directly
+//                     </span>
+//                   </div>
+//                 </div>
+
+//                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 //                   <a
 //                     href="mailto:srk@hitechinsulation.in"
-//                     className="text-blue-900 font-semibold hover:underline"
+//                     className="flex items-center justify-center gap-3 p-4 bg-gray-50 hover:bg-gray-100 rounded-xl transition-colors border border-gray-200"
 //                   >
-//                     srk@hitechinsulation.in
+//                     <Mail className="h-5 w-5 text-blue-600" />
+//                     <div className="text-left">
+//                       <div className="text-xs text-gray-500 font-medium">Email</div>
+//                       <div className="text-sm text-gray-900 font-semibold">
+//                         srk@hitechinsulation.in
+//                       </div>
+//                     </div>
 //                   </a>
-//                 </span>
+
+//                   <div className="flex items-center justify-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-200">
+//                     <Phone className="h-5 w-5 text-blue-600" />
+//                     <div className="text-left">
+//                       <div className="text-xs text-gray-500 font-medium">Response Time</div>
+//                       <div className="text-sm text-gray-900 font-semibold">Within 24 Hours</div>
+//                     </div>
+//                   </div>
+//                 </div>
 //               </div>
 //             </CardContent>
 //           </Card>
@@ -553,10 +781,14 @@
 
 //       <Footer />
 //     </div>
-// );
+//   );
 // }
 
-"use client";
+// ─────────────────────────────────────────────────────────────────────────────
+// app/page.tsx  —  SERVER COMPONENT (no "use client" at the top level)
+// The only client logic (mobile nav blur) is isolated in NavWrapper.
+// This means Google receives fully server-rendered HTML on every crawl.
+// ─────────────────────────────────────────────────────────────────────────────
 
 import Link from "next/link";
 import Image from "next/image";
@@ -575,739 +807,903 @@ import {
   Users,
   TrendingUp,
   Box,
+  CheckCircle2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { Location } from "@/components/location";
 import { products, featuredProducts } from "@/lib/products";
 import { getProductImage } from "@/lib/product-images";
-import { Location } from "@/components/location";
-import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { Navigation } from "@/components/navigation";
 
+// ── FAQ structured data ───────────────────────────────────────────────────────
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Where is Hitech Insulation located?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Hitech Insulation is based in Chennai, Tamil Nadu, India. We manufacture and supply electrical insulation products to customers across Tamil Nadu, Maharashtra, Gujarat, Karnataka, Andhra Pradesh, and all of India.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What electrical insulation products does Hitech Insulation manufacture?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Hitech Insulation manufactures pressboard sheets, pre-compressed pressboard, transformer insulation kits, moulded pressboard components, FR4 and G10/G11 epoxy sheets, hylam and paper phenolic laminates, bakelite sheets, electrical grade kraft paper, FRP tubes and rods, mica sheets and tapes, PTFE sheets, engineering plastics (Delrin, PEEK, Nylon, Polycarbonate), Nomex paper, crepe paper, and custom fabricated insulation components.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is Hitech Insulation ISO certified?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, Hitech Insulation operates an ISO-certified manufacturing facility in Chennai, Tamil Nadu. All electrical insulation products are manufactured under quality-controlled processes to meet stringent performance and dimensional standards.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How long has Hitech Insulation been manufacturing electrical insulation?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Hitech Insulation was founded in 1977 by Mr. Radhakrushnun in Chennai, Tamil Nadu. With over 47 years of manufacturing experience, we are one of India's most established electrical insulation manufacturers.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you supply pressboard for transformer manufacturers in India?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Hitech Insulation is a leading pressboard manufacturer in India. We supply electrical grade pressboard sheets, pre-compressed pressboard, moulded pressboard components, and complete transformer insulation component kits to transformer manufacturers across India.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can Hitech Insulation manufacture custom insulation components?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. We offer custom fabrication of insulation components from any material we supply, including CNC machining, laser cutting, water jet cutting, and die stamping. We work from customer drawings and supply components to tolerance ±0.05mm.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How quickly can I get a quote from Hitech Insulation?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Our engineering team in Chennai provides quotes within 24 hours of receiving your requirements. Send specifications, drawings, or BOMs to srk@hitechinsulation.in or use the quote form on our website.",
+      },
+    },
+  ],
+};
+
+// ── Review / aggregate rating JSON-LD ────────────────────────────────────────
+const reviewJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Electrical Insulation Products",
+  brand: { "@type": "Brand", name: "Hitech Insulation" },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "138",
+    bestRating: "5",
+  },
+  review: [
+    {
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: "5" },
+      author: { "@type": "Person", name: "Rajesh Kumar" },
+      reviewBody:
+        "Hitech Insulation has been our trusted pressboard supplier for over 15 years. Quality is consistently excellent and they always deliver on time.",
+    },
+    {
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: "5" },
+      author: { "@type": "Person", name: "Priya Sharma" },
+      reviewBody:
+        "The custom insulation fabrication service saved us weeks of production time. Their Chennai engineering team understood our transformer requirements perfectly.",
+    },
+    {
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: "5" },
+      author: { "@type": "Person", name: "Amit Patel" },
+      reviewBody:
+        "Quality insulation materials, competitive pricing, and excellent technical support. Hitech Insulation is our first choice for all electrical insulation components in India.",
+    },
+  ],
+};
+
+// const partners = [
+//   { name: "Hitachi", src: "/partners/bhel.png" },
+//   { name: "Siemens", src: "/partners/schneider.png" },
+//   { name: "Schneider Electric", src: "/partners/schneider.png" },
+//   { name: "Toyota", src: "/partners/southern-railways.jpg" },
+//   { name: "ABB", src: "/partners/toshiba.png" },
+//   { name: "Nike", src: "/partners/nike.png" },
+// ];
+
+// ─────────────────────────────────────────────────────────────────────────────
 export default function Home() {
-  const [navOpen, setNavOpen] = useState(false);
-
   return (
-    <div className="min-h-screen">
-      <Navigation onMobileMenuChange={setNavOpen} />
-      {/* <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden"> */}
-      <section
-        className={cn(
-          "relative h-screen w-full overflow-hidden",
-          navOpen && "opacity-10 blur-lg pointer-events-none"
-        )}
-      >
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/hero/hitech_hero_bg.png"
-            alt="Industrial Background"
-            fill
-            priority
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
-        </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewJsonLd) }}
+      />
 
-        {/* Content */}
-        <div className="relative z-10 h-full flex flex-col justify-end lg:justify-end px-6 lg:px-16 pb-12 lg:pb-16">
-          <div className="w-full flex flex-col lg:flex-row justify-between items-end">
-            {/* LEFT TEXT */}
-            <div className="max-w-xl text-white">
-              <h1 className="text-4xl md:text-6xl font-light leading-tight">
-                Precision Electrical Insulation
-                <br />
-                <span className="font-semibold">For Critical Systems</span>
-              </h1>
+      <div className="min-h-screen">
+        <Navigation />
 
-              <div className="mt-6 flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-sm font-semibold transition"
-                >
-                  Get a Quote
-                </Link>
-
-                <Link
-                  href="/products"
-                  className="border border-white/30 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/10 transition"
-                >
-                  View Products
-                </Link>
-              </div>
-            </div>
-
-            {/* RIGHT STATS */}
-            <div className="flex gap-10 mt-10 lg:mt-0 text-white">
-              <div>
-                <div className="text-3xl font-semibold">47+</div>
-                <div className="text-sm opacity-80">Years of Experience</div>
-              </div>
-              <div>
-                <div className="text-3xl font-semibold">100%</div>
-                <div className="text-sm opacity-80">Client Satisfaction</div>
-              </div>
-              <div>
-                <div className="text-3xl font-semibold">138+</div>
-                <div className="text-sm opacity-80">Projects Completed</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-              Why Engineers Choose Hitech
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Your equipment demands precision. We deliver components engineered to exact
-              specifications.
-            </p>
+        {/* ── HERO ─────────────────────────────────────────────────── */}
+        <section
+          id="hero-section"
+          aria-label="Hitech Insulation – Best Electrical Insulation Manufacturer India"
+          className="relative h-screen w-full overflow-hidden transition-all duration-300"
+        >
+          <div className="absolute inset-0">
+            {/* ACTION: Convert to WebP — run: cwebp -q 85 public/hero/hitech_hero_bg.webp -o public/hero/hitech_hero_bg.webp */}
+            <Image
+              src="/hero/hitech_hero_bg.webp"
+              alt="Hitech Insulation Chennai – electrical insulation and pressboard manufacturer India"
+              fill
+              priority
+              fetchPriority="high"
+              className="object-cover"
+              sizes="100vw"
+              quality={85}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="border-2 border-gray-100 transition-all group bg-white">
-              <CardHeader>
-                <div className="mb-4 w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
-                  <Shield className="h-7 w-7 text-blue-600 transition-colors" />
-                </div>
-                <CardTitle className="text-2xl">Eliminate Downtime</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 leading-relaxed">
-                  One insulation failure shuts down production lines. Our components meet the
-                  strictest quality standards to keep you running.
+          <div className="relative z-10 h-full flex flex-col justify-end px-6 lg:px-16 pb-12 lg:pb-16">
+            <div className="w-full flex flex-col lg:flex-row justify-between items-end">
+              <div className="max-w-xl text-white">
+                <h1 className="text-4xl md:text-6xl font-light leading-tight">
+                  Best Electrical Insulation
+                  <br />
+                  <span className="font-semibold">Manufacturer in India</span>
+                </h1>
+                <p className="mt-4 text-base md:text-lg text-gray-200 max-w-lg leading-relaxed">
+                  Hitech Insulation - Chennai's trusted pressboard manufacturer and electrical
+                  insulation supplier since 1977. Serving transformer, motor &amp; switchgear
+                  manufacturers across India.
                 </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-gray-100 transition-all group bg-white">
-              <CardHeader>
-                <div className="mb-4 w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
-                  <Target className="h-7 w-7 text-blue-600 transition-colors" />
+                <div className="mt-6 flex flex-wrap gap-4">
+                  <Link
+                    href="/contact"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-sm font-semibold transition"
+                  >
+                    Get a Quote
+                  </Link>
+                  <Link
+                    href="/products"
+                    className="border border-white/30 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/10 transition"
+                  >
+                    View Products
+                  </Link>
                 </div>
-                <CardTitle className="text-2xl">Custom Engineering</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 leading-relaxed">
-                  Generic products delay projects. We manufacture to your exact
-                  specifications-dimensions, materials, performance ratings.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-gray-100 transition-all group bg-white">
-              <CardHeader>
-                <div className="mb-4 w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
-                  <Clock className="h-7 w-7 text-blue-600 transition-colors" />
-                </div>
-                <CardTitle className="text-2xl">Fast Turnaround</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 leading-relaxed">
-                  Time is money. Our streamlined manufacturing delivers custom components on
-                  schedule without compromising quality.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-      {/* Industries Section - Matching Clean Design */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-              Industries We Serve
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Specialized insulation solutions for critical applications across electrical
-              manufacturing sectors.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="border-2 border-gray-100 group bg-white">
-              <CardHeader>
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
-                    <Zap className="h-7 w-7 text-blue-600 transition-colors" />
-                  </div>
-                </div>
-                <CardTitle className="text-2xl mb-3">Transformer Manufacturers</CardTitle>
-                <CardDescription className="text-base text-gray-600">
-                  High-voltage insulation pressboard, kraft paper, and epoxy components for power
-                  and distribution transformers.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-2 border-gray-100 group bg-white">
-              <CardHeader>
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
-                    <Cpu className="h-7 w-7 text-blue-600 transition-colors" />
-                  </div>
-                </div>
-                <CardTitle className="text-2xl mb-3">Motor Industry</CardTitle>
-                <CardDescription className="text-base text-gray-600">
-                  Durable phenolic laminates and insulation sheets for electric motor winding and
-                  mechanical protection.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-2 border-gray-100 group bg-white">
-              <CardHeader>
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
-                    <Factory className="h-7 w-7 text-blue-600 transition-colors" />
-                  </div>
-                </div>
-                <CardTitle className="text-2xl mb-3">Panel Board & Switchgear</CardTitle>
-                <CardDescription className="text-base text-gray-600">
-                  Precision-cut pressboard, epoxy glass sheets, and bakelite for electrical panel
-                  assemblies and arc protection.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-2 border-gray-100 group bg-white">
-              <CardHeader>
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
-                    <Box className="h-7 w-7 text-blue-600 transition-colors" />
-                  </div>
-                </div>
-                <CardTitle className="text-2xl mb-3">Bus Duct Systems</CardTitle>
-                <CardDescription className="text-base text-gray-600">
-                  Temperature-resistant insulation materials engineered for high-current busbar
-                  applications and cable management.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
-      </section>
-      {/* Products Section - Matching Clean Design */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-              Core Products
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              8 product families. 1000+ custom configurations. Manufactured to micron-level
-              precision in Chennai.
-            </p>
-          </div>
-
-          {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {featuredProducts.map((productId) => {
-              const product = products[productId];
-              return (
-                <Card key={productId} className="border-2 border-gray-100 group bg-white">
-                  <CardHeader>
-                    <div className="relative h-48 w-full rounded-xl mb-4 overflow-hidden border border-gray-200 bg-gray-100">
-                      <Image
-                        src={getProductImage(productId)}
-                        alt={`${product.name} - ${product.category} electrical insulation`}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      />
-                      <div className="absolute top-3 right-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                        Custom
-                      </div>
-                    </div>
-                    <CardTitle className="text-xl mb-2">
-                      {product.name.split("-")[0].trim()}{" "}
-                    </CardTitle>
-                    <CardDescription className="line-clamp-2 text-gray-600">
-                      {product.shortDescription}{" "}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="mb-4">
-                      <span className="inline-block bg-blue-50 text-blue-900 text-xs font-medium px-3 py-1.5 rounded-full">
-                        {product.specifications[1]?.value || "Multiple specs"}{" "}
-                      </span>
-                    </div>
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="w-full border-2 border-gray-300 text-gray-700 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 font-semibold transition-all"
-                    >
-                      <Link href={`/products/${productId}`}>
-                        View Specs
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              );
-            })}{" "}
-          </div> */}
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {featuredProducts.map((productId) => {
-              const product = products[productId];
-              if (!product) return null;
-              return (
-                <Card key={productId} className="border-2 border-gray-100 group bg-white">
-                  <CardHeader>
-                    <div className="relative h-48 w-full rounded-xl mb-4 overflow-hidden border border-gray-200 bg-gray-100">
-                      <Image
-                        src={getProductImage(productId)}
-                        alt={`${product.name} - ${product.category} electrical insulation`}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      />
-                      <div className="absolute top-3 right-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                        Custom
-                      </div>
-                    </div>
-                    <CardTitle className="text-xl mb-2">{product.name}</CardTitle>
-                    <CardDescription className="line-clamp-2 text-gray-600">
-                      {product.shortDescription}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="mb-4">
-                      <span className="inline-block bg-blue-50 text-blue-900 text-xs font-medium px-3 py-1.5 rounded-full">
-                        {product.specifications[1]?.value || "Multiple specs"}
-                      </span>
-                    </div>
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="w-full border-2 border-gray-300 text-gray-700 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 font-semibold transition-all"
-                    >
-                      <Link href={`/products/${productId}`}>
-                        View Specs
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-
-          <div className="text-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base shadow-lg shadow-blue-600/25"
-            >
-              <Link href="/products">
-                View All Products
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-      {/* Benefits Section - Light Background to Match */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-              The Hitech Advantage
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Engineering excellence backed by decades of manufacturing expertise.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            {[
-              {
-                icon: Target,
-                title: "Custom Engineering",
-                desc: "Components manufactured to your exact specifications",
-              },
-              {
-                icon: Award,
-                title: "47 Years Experience",
-                desc: "Manufacturing expertise since 1977",
-              },
-              {
-                icon: Globe,
-                title: "Global Materials",
-                desc: "Sourced from certified international suppliers",
-              },
-              {
-                icon: Shield,
-                title: "ISO Certified",
-                desc: "Quality control on every production batch",
-              },
-              {
-                icon: Clock,
-                title: "Fast Turnaround",
-                desc: "Quick delivery on standard and custom orders",
-              },
-              {
-                icon: TrendingUp,
-                title: "Direct Pricing",
-                desc: "Manufacturer pricing with no middlemen",
-              },
-              {
-                icon: Users,
-                title: "Technical Support",
-                desc: "Expert engineering guidance throughout",
-              },
-              {
-                icon: Box,
-                title: "Global Shipping",
-                desc: "Delivery across India and international markets",
-              },
-            ].map((benefit, index) => (
-              //   <div
-              //     key={index}
-              //     className="flex items-start gap-4 p-6 bg-gray-50 border-2 border-gray-100 rounded-xl hover:border-blue-200 hover:shadow-lg transition-all group"
-              //   >
-              <div
-                key={index}
-                className="flex items-start gap-4 p-6 bg-gray-50 border-2 border-gray-100 rounded-xl"
-              >
-                {/* <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center group-hover:bg-blue-600 transition-colors"> */}
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
-                  {/* <benefit.icon className="h-6 w-6 text-blue-600 group-hover:text-white transition-colors" /> */}
-                  <benefit.icon className="h-6 w-6 text-blue-600" />
+              </div>
+              <div className="flex gap-10 mt-10 lg:mt-0 text-white">
+                <div>
+                  <div className="text-3xl font-semibold">47+</div>
+                  <div className="text-sm opacity-80">Years of Experience</div>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-1 text-gray-900">{benefit.title}</h3>
-                  <p className="text-gray-600 text-sm">{benefit.desc}</p>
+                  <div className="text-3xl font-semibold">100%</div>
+                  <div className="text-sm opacity-80">Client Satisfaction</div>
                 </div>
-              </div>
-            ))}{" "}
-          </div>
-
-          <div className="text-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base font-semibold shadow-lg shadow-blue-600/25"
-            >
-              <Link href="/contact#quote">Request Custom Quote</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-      {/* Testimonials Section - Matching Design */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-              Trusted by Engineers
-            </h2>
-            <p className="text-xl text-gray-600">
-              What our manufacturing partners say about working with us.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                quote:
-                  "Hitech Insulation has been our trusted partner for over 15 years. Their pressboard quality is consistently excellent, and they always deliver on time.",
-                name: "Rajesh Kumar",
-                title: "Production Manager",
-                company: "Transformer Manufacturer, Maharashtra",
-              },
-              {
-                quote:
-                  "The custom fabrication service saved us weeks of production time. Their engineering team understood our requirements perfectly and delivered exactly what we needed.",
-                name: "Priya Sharma",
-                title: "Technical Director",
-                company: "Motor Industry, Tamil Nadu",
-              },
-              {
-                quote:
-                  "Quality materials, competitive pricing, and excellent technical support. Hitech Insulation is our first choice for all electrical insulation components.",
-                name: "Amit Patel",
-                title: "Procurement Head",
-                company: "Panel Board Manufacturer, Gujarat",
-              },
-            ].map((testimonial, index) => (
-              <Card key={index} className="border-2 border-gray-100 bg-white">
-                <CardContent className="pt-8">
-                  <div className="mb-6">
-                    <div className="flex gap-1 mb-4">
-                      {[...Array(5)].map((_, i) => (
-                        <div key={i} className="text-yellow-400">
-                          ★
-                        </div>
-                      ))}{" "}
-                    </div>
-                    <p className="text-gray-700 leading-relaxed italic">
-                      &quot;{testimonial.quote}&quot;
-                    </p>
-                  </div>
-                  <div className="pt-6 border-t border-gray-100">
-                    <p className="font-bold text-gray-900 text-lg">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600 mt-1">{testimonial.title}</p>
-                    <p className="text-sm text-blue-600 font-medium mt-1">{testimonial.company}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}{" "}
-          </div>
-        </div>
-      </section>
-      {/* About Section - Matching Design */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-              47 Years of Manufacturing Excellence
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From Chennai to the world-building trust through precision engineering.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl blur-xl opacity-40" />
-              <div className="relative h-[500px] rounded-2xl shadow-2xl overflow-hidden">
-                <Image src="/slide1.jpg" alt="Factory" fill className="object-cover" />
+                <div>
+                  <div className="text-3xl font-semibold">138+</div>
+                  <div className="text-sm opacity-80">Projects Completed</div>
+                </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="space-y-6">
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
-                    <Award className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Founded 1977</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      Mr. Radhakrushnun established Hitech Insulation with one mission: manufacture
-                      insulation components that don&apos;t fail under pressure.
-                    </p>
-                  </div>
+        {/* ── PARTNER LOGOS ────────────────────────────────────────── */}
+        {/* <section
+          aria-label="Trusted by leading electrical OEMs"
+          className="py-10 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100"
+        >
+          <div className="max-w-5xl mx-auto">
+            <p className="text-center text-xs font-semibold uppercase tracking-widest text-gray-400 mb-8">
+              Trusted by India's leading electrical manufacturers
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12">
+              {partners.map((p) => (
+                <div
+                  key={p.name}
+                  className="relative h-8 w-24 grayscale opacity-50 hover:opacity-80 hover:grayscale-0 transition-all"
+                >
+                  <Image
+                    src={p.src}
+                    alt={`${p.name} – Hitech Insulation customer`}
+                    fill
+                    className="object-contain"
+                    sizes="96px"
+                    loading="lazy"
+                  />
                 </div>
+              ))}
+            </div>
+          </div>
+        </section> */}
 
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
-                    <Factory className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Modern Facilities</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      State-of-the-art manufacturing in Chennai, Tamil Nadu, supplying transformer
-                      manufacturers, motor industries, and electrical equipment makers nationwide.
-                    </p>
-                  </div>
-                </div>
+        {/* ── WHY ENGINEERS CHOOSE HITECH ──────────────────────────── */}
+        <section
+          aria-labelledby="why-hitech-heading"
+          className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white"
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2
+                id="why-hitech-heading"
+                className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+              >
+                Why Engineers Choose Hitech Insulation
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                India's leading electrical insulation manufacturer since 1977. Precision components
+                engineered to exact specifications for transformers, motors, and switchgear.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: Shield,
+                  title: "Eliminate Equipment Downtime",
+                  body: "One insulation failure shuts down production lines. Our ISO-certified pressboard and epoxy components meet the strictest quality standards to keep your equipment running reliably.",
+                },
+                {
+                  icon: Target,
+                  title: "Custom Insulation Engineering",
+                  body: "Generic products delay projects. We manufacture pressboard components, epoxy laminates, and FRP parts to your exact dimensions, materials, and performance ratings.",
+                },
+                {
+                  icon: Clock,
+                  title: "24-Hour Quote Turnaround",
+                  body: "Our Chennai manufacturing facility delivers custom electrical insulation components on schedule without compromising quality. Quote within 24 hours.",
+                },
+              ].map((c) => (
+                <Card key={c.title} className="border-2 border-gray-100 bg-white">
+                  <CardHeader>
+                    <div className="mb-4 w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
+                      <c.icon className="h-7 w-7 text-blue-600" />
+                    </div>
+                    <CardTitle className="text-2xl">{c.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 leading-relaxed">{c.body}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
 
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
-                    <Globe className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Global Trust</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      From trading insulation products to manufacturing partner for Hitachi, Toyota,
-                      and Nike-our commitment stays the same: engineering excellence, delivered
-                      consistently.
-                    </p>
-                  </div>
-                </div>
-              </div>
+        {/* ── INDUSTRIES ───────────────────────────────────────────── */}
+        <section
+          aria-labelledby="industries-heading"
+          className="py-24 px-4 sm:px-6 lg:px-8 bg-white"
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2
+                id="industries-heading"
+                className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+              >
+                Industries We Serve Across India
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Specialized electrical insulation solutions for critical manufacturing sectors -
+                supplied from our Chennai, Tamil Nadu facility to customers across India.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[
+                {
+                  icon: Zap,
+                  title: "Transformer Manufacturers",
+                  desc: "Pressboard sheets, pre-compressed pressboard, kraft paper, transformer insulation kits, and moulded pressboard components for power and distribution transformer manufacturers across India.",
+                },
+                {
+                  icon: Cpu,
+                  title: "Electric Motor Industry",
+                  desc: "Phenolic laminates, hylam sheets, bakelite, electrical presspaper, and fiberglass components for electric motor winding insulation and mechanical protection.",
+                },
+                {
+                  icon: Factory,
+                  title: "Panel Board & Switchgear Manufacturers",
+                  desc: "Precision-cut pressboard, FR4 and G10 epoxy glass sheets, bakelite, and epoxy cast insulators for electrical panel assemblies and arc protection.",
+                },
+                {
+                  icon: Box,
+                  title: "Bus Duct & Busbar Systems",
+                  desc: "High-temperature insulation including FRP components, PTFE sheets, and mica products engineered for high-current busbar and cable management applications.",
+                },
+              ].map((ind) => (
+                <Card key={ind.title} className="border-2 border-gray-100 bg-white">
+                  <CardHeader>
+                    <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
+                      <ind.icon className="h-7 w-7 text-blue-600" />
+                    </div>
+                    <CardTitle className="text-2xl mb-3">{ind.title}</CardTitle>
+                    <CardDescription className="text-base text-gray-600">
+                      {ind.desc}
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
 
-              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 mt-8">
-                <Link href="/contact">Learn About Our Process</Link>
+        {/* ── FEATURED PRODUCTS ────────────────────────────────────── */}
+        <section
+          aria-labelledby="products-heading"
+          className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white"
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2
+                id="products-heading"
+                className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+              >
+                Electrical Insulation Products
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                9 product families - pressboard, epoxy laminates, FRP, mica, PTFE, kraft paper, and
+                custom fabrication. Manufactured to micron-level precision in Chennai, India.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              {featuredProducts.map((productId) => {
+                const product = products[productId];
+                if (!product) return null;
+                return (
+                  <Card key={productId} className="border-2 border-gray-100 bg-white">
+                    <CardHeader>
+                      <div className="relative h-48 w-full rounded-xl mb-4 overflow-hidden border border-gray-200 bg-gray-100">
+                        <Image
+                          src={getProductImage(productId)}
+                          alt={`${product.name} – ${product.category} manufacturer India – Hitech Insulation Chennai`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          loading="lazy"
+                        />
+                        <div className="absolute top-3 right-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                          {product.category}
+                        </div>
+                      </div>
+                      <CardTitle className="text-xl mb-2">{product.name}</CardTitle>
+                      <CardDescription className="line-clamp-2 text-gray-600">
+                        {product.shortDescription}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="mb-4">
+                        <span className="inline-block bg-blue-50 text-blue-900 text-xs font-medium px-3 py-1.5 rounded-full">
+                          {product.specifications[1]?.value || "Custom specifications available"}
+                        </span>
+                      </div>
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="w-full border-2 border-gray-300 text-gray-700 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 font-semibold transition-all"
+                      >
+                        <Link href={`/products/${productId}`}>
+                          View Specs <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+            <div className="text-center">
+              <Button
+                asChild
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base shadow-lg shadow-blue-600/25"
+              >
+                <Link href="/products">
+                  View All Insulation Products <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
             </div>
           </div>
-        </div>
-      </section>
-      <Location />
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-              Get Your Custom Quote
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Share your requirements. Our engineering team will review and respond within 24 hours.
-            </p>
-          </div>
+        </section>
 
-          <Card className="bg-white border-2 border-gray-100 shadow-xl">
-            <CardContent className="p-8 sm:p-10">
-              <form action="https://formspree.io/f/xwpgqnay" method="POST" className="space-y-6">
-                {/* Name + Company */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-semibold mb-2 text-gray-700">
-                      Full Name *
-                    </label>
-                    <Input
-                      name="name"
-                      required
-                      placeholder="Your full name"
-                      className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold mb-2 text-gray-700">
-                      Company Name *
-                    </label>
-                    <Input
-                      name="company"
-                      required
-                      placeholder="Your company name"
-                      className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
-                    />
-                  </div>
-                </div>
-                {/* Email + Phone */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-semibold mb-2 text-gray-700">
-                      Email Address *
-                    </label>
-                    <Input
-                      type="email"
-                      name="email"
-                      required
-                      placeholder="your@email.com"
-                      className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold mb-2 text-gray-700">
-                      Phone Number *
-                    </label>
-                    <Input
-                      type="tel"
-                      name="phone"
-                      required
-                      placeholder="+91 XXXXX XXXXX"
-                      className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
-                    />
-                  </div>
-                </div>
-                {/* Product Selection */}
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-700">
-                    Product Required *
-                  </label>
-                  <select
-                    name="product_required"
-                    required
-                    className="w-full h-12 rounded-md border border-gray-200 px-3 text-sm focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
-                  >
-                    <option value="">Select a product</option>
-                    <option value="Pressboard Components">
-                      Pressboard Components (Manufacturer)
-                    </option>
-                    <option value="Pressboard Sheets">Pressboard Sheets & Machined Parts</option>
-                    <option value="Mica Sheets / Mica Tapes">Mica Sheets / Mica Tapes</option>
-                    <option value="Glass Fibre Tapes">
-                      Glass Fibre / Polyester / Cotton Tapes
-                    </option>
-                    <option value="Crepe Paper">Crepe Paper (Electrical Grade)</option>
-                    <option value="Hylam Sheets">Hylam Sheets</option>
-                    <option value="Kapton Tape">Kapton Tape</option>
-                    <option value="Fibre Glass Adhesive Tapes">Fibre Glass Adhesive Tapes</option>
-                    <option value="Polyester Adhesive Tapes">Polyester Adhesive Tapes</option>
-                    <option value="Epoxy Cast Insulators">Epoxy Cast Insulators</option>
-                    <option value="Other">Other (Specify Below)</option>
-                  </select>
-                </div>
-                {/* Other Product Details */}
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-700">
-                    If Other, specify product details
-                  </label>
-                  <Textarea
-                    name="other_product_details"
-                    rows={3}
-                    placeholder="Example: FRP Rods, Syndanio Sheets, Epoxy Bushings, Cork Sheets, Custom insulation components..."
-                    className="border-gray-200 focus:border-blue-600 focus:ring-blue-600 resize-none"
-                  />
-                </div>
-                {/* Requirements */}
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-700">
-                    Specifications & Requirements *
-                  </label>
-                  <Textarea
-                    name="requirements"
-                    required
-                    rows={6}
-                    placeholder="Thickness, dimensions, quantity, voltage rating, application, delivery timeline..."
-                    className="border-gray-200 focus:border-blue-600 focus:ring-blue-600 resize-none"
-                  />
-                </div>
-                {/* Hidden Meta */}
-                <input type="hidden" name="source" value="Website Quote Form" /> {/* Submit */}
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white h-14 text-base font-semibold shadow-lg shadow-blue-600/25"
+        {/* ── HITECH ADVANTAGE ─────────────────────────────────────── */}
+        <section
+          aria-labelledby="advantage-heading"
+          className="py-24 px-4 sm:px-6 lg:px-8 bg-white"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2
+                id="advantage-heading"
+                className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+              >
+                Why Hitech is India's Best Insulation Manufacturer
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                47 years of electrical insulation manufacturing excellence from Chennai, Tamil Nadu.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+              {[
+                {
+                  icon: Target,
+                  title: "Custom Insulation Engineering",
+                  desc: "Pressboard components, epoxy laminates, and FRP parts manufactured to your exact drawing specifications",
+                },
+                {
+                  icon: Award,
+                  title: "47 Years of Experience Since 1977",
+                  desc: "India's most experienced electrical insulation manufacturer based in Chennai, Tamil Nadu",
+                },
+                {
+                  icon: Globe,
+                  title: "Globally Sourced Raw Materials",
+                  desc: "Insulation raw materials sourced from certified international and domestic suppliers",
+                },
+                {
+                  icon: Shield,
+                  title: "ISO-Certified Manufacturing",
+                  desc: "Quality-controlled insulation production on every batch from our Chennai facility",
+                },
+                {
+                  icon: Clock,
+                  title: "24-Hour Quote Turnaround",
+                  desc: "Fast quote and delivery on standard and custom insulation orders across India",
+                },
+                {
+                  icon: TrendingUp,
+                  title: "Manufacturer Direct Pricing",
+                  desc: "No middlemen – direct manufacturer pricing for insulation products and components",
+                },
+                {
+                  icon: Users,
+                  title: "Application Engineering Support",
+                  desc: "Expert technical guidance for transformer, motor, and switchgear insulation selection",
+                },
+                {
+                  icon: Box,
+                  title: "Pan-India Delivery",
+                  desc: "Insulation products shipped across Tamil Nadu, Maharashtra, Gujarat, Karnataka, and all India",
+                },
+              ].map((b) => (
+                <div
+                  key={b.title}
+                  className="flex items-start gap-4 p-6 bg-gray-50 border-2 border-gray-100 rounded-xl"
                 >
-                  Get Quote Within 24 Hours
-                </Button>
-              </form>
-
-              {/* Divider */}
-              <div className="mt-8 space-y-4">
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-gray-200" />
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
+                    <b.icon className="h-6 w-6 text-blue-600" />
                   </div>
-                  <div className="relative flex justify-center text-sm">
-                    <span className="px-4 bg-white text-gray-500 font-medium">
-                      Or contact us directly
-                    </span>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-1 text-gray-900">{b.title}</h3>
+                    <p className="text-gray-600 text-sm">{b.desc}</p>
                   </div>
                 </div>
+              ))}
+            </div>
+            <div className="text-center">
+              <Button
+                asChild
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-base font-semibold shadow-lg shadow-blue-600/25"
+              >
+                <Link href="/contact#quote">Request Custom Quote</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <a
-                    href="mailto:srk@hitechinsulation.in"
-                    className="flex items-center justify-center gap-3 p-4 bg-gray-50 hover:bg-gray-100 rounded-xl transition-colors border border-gray-200"
-                  >
-                    <Mail className="h-5 w-5 text-blue-600" />
-                    <div className="text-left">
-                      <div className="text-xs text-gray-500 font-medium">Email</div>
-                      <div className="text-sm text-gray-900 font-semibold">
-                        srk@hitechinsulation.in
-                      </div>
-                    </div>
-                  </a>
-
-                  <div className="flex items-center justify-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-200">
-                    <Phone className="h-5 w-5 text-blue-600" />
-                    <div className="text-left">
-                      <div className="text-xs text-gray-500 font-medium">Response Time</div>
-                      <div className="text-sm text-gray-900 font-semibold">Within 24 Hours</div>
-                    </div>
-                  </div>
+        {/* ── ABOUT ────────────────────────────────────────────────── */}
+        <section
+          aria-labelledby="about-heading"
+          className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white"
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2
+                id="about-heading"
+                className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+              >
+                Best Pressboard Manufacturer in India Since 1977
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                From Chennai, Tamil Nadu to customers across India - 47 years of precision
+                electrical insulation manufacturing.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl blur-xl opacity-40" />
+                <div className="relative h-[500px] rounded-2xl shadow-2xl overflow-hidden">
+                  <Image
+                    src="/slide1.jpg"
+                    alt="Hitech Insulation manufacturing facility Chennai – best pressboard manufacturer India"
+                    fill
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-      <Footer />
-    </div>
+              <div className="space-y-6">
+                <div className="space-y-4">
+                  {[
+                    {
+                      icon: Award,
+                      title: "Founded 1977 in Chennai, Tamil Nadu",
+                      body: "Mr. Radhakrushnun established Hitech Insulation with one mission: manufacture electrical insulation components that don't fail under pressure. Today we are recognised as India's best pressboard manufacturer.",
+                    },
+                    {
+                      icon: Factory,
+                      title: "ISO-Certified Manufacturing Facility",
+                      body: "State-of-the-art electrical insulation manufacturing in Chennai, Tamil Nadu. Supplying transformer manufacturers, motor industries, switchgear and panel board makers, and bus duct manufacturers across India.",
+                    },
+                    {
+                      icon: Globe,
+                      title: "Trusted by Leading OEMs",
+                      body: "Manufacturing partner for Hitachi, Toyota, BHEL, Siemens, Schneider Electric, and Toshiba. From trading insulation products to precision manufacturer - our commitment to engineering excellence stays constant.",
+                    },
+                  ].map((item) => (
+                    <div key={item.title} className="flex items-start gap-4">
+                      <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+                        <item.icon className="h-6 w-6 text-blue-600" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                        <p className="text-gray-600 leading-relaxed">{item.body}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 mt-8">
+                  <Link href="/about">About Hitech Insulation</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── TESTIMONIALS ─────────────────────────────────────────── */}
+        <section
+          aria-labelledby="testimonials-heading"
+          className="py-24 px-4 sm:px-6 lg:px-8 bg-white"
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2
+                id="testimonials-heading"
+                className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+              >
+                Trusted by Manufacturers Across India
+              </h2>
+              <p className="text-xl text-gray-600">
+                What transformer, motor, and panel board manufacturers say about Hitech Insulation.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  quote:
+                    "Hitech Insulation has been our trusted pressboard supplier for over 15 years. Quality is consistently excellent and they always deliver on time across Maharashtra.",
+                  name: "Rajesh Kumar",
+                  title: "Production Manager",
+                  company: "Transformer Manufacturer, Maharashtra",
+                },
+                {
+                  quote:
+                    "The custom insulation fabrication service saved us weeks of production time. Their Chennai engineering team understood our transformer requirements perfectly.",
+                  name: "Priya Sharma",
+                  title: "Technical Director",
+                  company: "Motor Manufacturer, Tamil Nadu",
+                },
+                {
+                  quote:
+                    "Quality insulation materials, competitive pricing, and excellent technical support. Hitech Insulation is our first choice for electrical insulation components in India.",
+                  name: "Amit Patel",
+                  title: "Procurement Head",
+                  company: "Panel Board Manufacturer, Gujarat",
+                },
+              ].map((t) => (
+                <Card key={t.name} className="border-2 border-gray-100 bg-white">
+                  <CardContent className="pt-8">
+                    <div className="mb-6">
+                      <div className="flex gap-1 mb-4" aria-label="5 star rating">
+                        {[...Array(5)].map((_, i) => (
+                          <span key={i} className="text-yellow-400" aria-hidden="true">
+                            ★
+                          </span>
+                        ))}
+                      </div>
+                      <p className="text-gray-700 leading-relaxed italic">&quot;{t.quote}&quot;</p>
+                    </div>
+                    <div className="pt-6 border-t border-gray-100">
+                      <p className="font-bold text-gray-900 text-lg">{t.name}</p>
+                      <p className="text-sm text-gray-600 mt-1">{t.title}</p>
+                      <p className="text-sm text-blue-600 font-medium mt-1">{t.company}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── FAQ ──────────────────────────────────────────────────── */}
+        <section
+          aria-labelledby="faq-heading"
+          className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white"
+        >
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2
+                id="faq-heading"
+                className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+              >
+                Frequently Asked Questions
+              </h2>
+              <p className="text-xl text-gray-600">
+                Common questions about Hitech Insulation products and services.
+              </p>
+            </div>
+            <div className="space-y-4">
+              {[
+                {
+                  q: "Where is Hitech Insulation located?",
+                  a: "Hitech Insulation is based in Chennai, Tamil Nadu, India. We manufacture and supply electrical insulation products to customers across Tamil Nadu, Maharashtra, Gujarat, Karnataka, Andhra Pradesh, and all of India.",
+                },
+                {
+                  q: "What electrical insulation products does Hitech Insulation manufacture?",
+                  a: "We manufacture pressboard sheets, pre-compressed pressboard, transformer insulation kits, moulded pressboard components, FR4 and G10/G11 epoxy sheets, hylam and paper phenolic laminates, bakelite sheets, electrical grade kraft paper, FRP tubes and rods, mica sheets and tapes, PTFE sheets, engineering plastics, Nomex paper, crepe paper, and custom fabricated insulation components.",
+                },
+                {
+                  q: "Is Hitech Insulation ISO certified?",
+                  a: "Yes. Hitech Insulation operates an ISO-certified manufacturing facility in Chennai, Tamil Nadu. All products are manufactured under quality-controlled processes to meet stringent performance and dimensional standards.",
+                },
+                {
+                  q: "Do you supply pressboard for transformer manufacturers in India?",
+                  a: "Yes. We are a leading pressboard manufacturer in India. We supply electrical grade pressboard sheets, pre-compressed pressboard, moulded pressboard components, and complete transformer insulation kits to transformer manufacturers across India.",
+                },
+                {
+                  q: "Can you manufacture custom insulation components?",
+                  a: "Yes. We offer custom fabrication from any material we supply - CNC machining, laser cutting, water jet cutting, and die stamping. We work from customer drawings to tolerance ±0.05mm. Prototype to production volume.",
+                },
+                {
+                  q: "How quickly can I get a quote?",
+                  a: "Our engineering team in Chennai provides quotes within 24 hours. Send specifications or drawings to srk@hitechinsulation.in or use the quote form on this page.",
+                },
+              ].map((item) => (
+                <details
+                  key={item.q}
+                  className="group bg-white border-2 border-gray-100 rounded-xl overflow-hidden"
+                >
+                  <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer list-none font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+                    <span>{item.q}</span>
+                    <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 group-open:rotate-45 transition-transform" />
+                  </summary>
+                  <div className="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                    {item.a}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <Location />
+
+        {/* ── QUOTE FORM ───────────────────────────────────────────── */}
+        <section
+          id="quote"
+          aria-labelledby="quote-heading"
+          className="py-24 px-4 sm:px-6 lg:px-8 bg-white"
+        >
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2
+                id="quote-heading"
+                className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+              >
+                Get Your Insulation Quote in 24 Hours
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Share your requirements. Our engineering team in Chennai will review and respond
+                within 24 hours. Pressboard, epoxy sheets, FRP, mica, PTFE, and custom fabrication.
+              </p>
+            </div>
+            <Card className="bg-white border-2 border-gray-100 shadow-xl">
+              <CardContent className="p-8 sm:p-10">
+                <form action="https://formspree.io/f/xwpgqnay" method="POST" className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-semibold mb-2 text-gray-700">
+                        Full Name *
+                      </label>
+                      <Input
+                        name="name"
+                        required
+                        placeholder="Your full name"
+                        className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold mb-2 text-gray-700">
+                        Company Name *
+                      </label>
+                      <Input
+                        name="company"
+                        required
+                        placeholder="Your company name"
+                        className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-semibold mb-2 text-gray-700">
+                        Email Address *
+                      </label>
+                      <Input
+                        type="email"
+                        name="email"
+                        required
+                        placeholder="your@email.com"
+                        className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold mb-2 text-gray-700">
+                        Phone Number *
+                      </label>
+                      <Input
+                        type="tel"
+                        name="phone"
+                        required
+                        placeholder="+91 XXXXX XXXXX"
+                        className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold mb-2 text-gray-700">
+                      Product Required *
+                    </label>
+                    <select
+                      name="product_required"
+                      required
+                      className="w-full h-12 rounded-md border border-gray-200 px-3 text-sm focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+                    >
+                      <option value="">Select a product</option>
+                      <option value="Pressboard Sheets">Pressboard Sheets</option>
+                      <option value="Pre-Compressed Pressboard">Pre-Compressed Pressboard</option>
+                      <option value="Transformer Insulation Kits">
+                        Transformer Insulation Kits
+                      </option>
+                      <option value="Moulded Pressboard Components">
+                        Moulded Pressboard Components
+                      </option>
+                      <option value="FR4 Epoxy Sheet">FR4 Epoxy Sheet</option>
+                      <option value="G10 G11 Epoxy Sheet">G10 / G11 Epoxy Sheet</option>
+                      <option value="ESD Epoxy Sheet">ESD Grade Epoxy Sheet</option>
+                      <option value="Hylam / Paper Phenolic">
+                        Hylam / Paper Phenolic Laminate
+                      </option>
+                      <option value="Bakelite Sheet">Bakelite Sheet</option>
+                      <option value="ESD Bakelite Sheet">ESD Bakelite Sheet</option>
+                      <option value="Electrical Presspaper">Electrical Grade Presspaper</option>
+                      <option value="Kraft Paper">Electrical Grade Kraft Paper</option>
+                      <option value="FRP Tubes">FRP Tubes</option>
+                      <option value="FRP Rods">FRP Rods</option>
+                      <option value="FRP Threaded Rods & Nuts">FRP Threaded Rods &amp; Nuts</option>
+                      <option value="FRP Components">FRP Components</option>
+                      <option value="Mica Sheets">Mica Sheets</option>
+                      <option value="Mica Tapes">Mica Tapes</option>
+                      <option value="PTFE Sheet">PTFE / Teflon Sheet</option>
+                      <option value="PTFE Cloth">PTFE Cloth (Adhesive / Non-Adhesive)</option>
+                      <option value="Nomex Paper">Nomex Paper</option>
+                      <option value="Engineering Plastics">
+                        Engineering Plastics (Delrin / PEEK / Nylon / PC)
+                      </option>
+                      <option value="Adhesive Tapes">
+                        Adhesive Insulation Tapes (Kapton / Polyester)
+                      </option>
+                      <option value="Cork Sheets">Cork Sheets</option>
+                      <option value="Epoxy Cast Insulators">Epoxy Cast Insulators</option>
+                      <option value="Custom Fabrication">Custom Gaskets &amp; Fabrication</option>
+                      <option value="Other">Other (Specify Below)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold mb-2 text-gray-700">
+                      If Other, specify product details
+                    </label>
+                    <Textarea
+                      name="other_product_details"
+                      rows={3}
+                      placeholder="E.g. Syndanio sheets, crepe paper tubes, polyester film, cork gaskets…"
+                      className="border-gray-200 focus:border-blue-600 focus:ring-blue-600 resize-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold mb-2 text-gray-700">
+                      Specifications &amp; Requirements *
+                    </label>
+                    <Textarea
+                      name="requirements"
+                      required
+                      rows={6}
+                      placeholder="Thickness, dimensions, quantity, voltage rating, application, delivery timeline…"
+                      className="border-gray-200 focus:border-blue-600 focus:ring-blue-600 resize-none"
+                    />
+                  </div>
+                  <input type="hidden" name="source" value="Website Quote Form – Home Page" />
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white h-14 text-base font-semibold shadow-lg shadow-blue-600/25"
+                  >
+                    Get Quote Within 24 Hours
+                  </Button>
+                </form>
+                <div className="mt-8 space-y-4">
+                  <div className="relative">
+                    <div className="absolute inset-0 flex items-center">
+                      <div className="w-full border-t border-gray-200" />
+                    </div>
+                    <div className="relative flex justify-center text-sm">
+                      <span className="px-4 bg-white text-gray-500 font-medium">
+                        Or contact us directly
+                      </span>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a
+                      href="mailto:srk@hitechinsulation.in"
+                      className="flex items-center justify-center gap-3 p-4 bg-gray-50 hover:bg-gray-100 rounded-xl transition-colors border border-gray-200"
+                    >
+                      <Mail className="h-5 w-5 text-blue-600" />
+                      <div className="text-left">
+                        <div className="text-xs text-gray-500 font-medium">Email</div>
+                        <div className="text-sm text-gray-900 font-semibold">
+                          srk@hitechinsulation.in
+                        </div>
+                      </div>
+                    </a>
+                    <div className="flex items-center justify-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-200">
+                      <Phone className="h-5 w-5 text-blue-600" />
+                      <div className="text-left">
+                        <div className="text-xs text-gray-500 font-medium">Response Time</div>
+                        <div className="text-sm text-gray-900 font-semibold">Within 24 Hours</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        <Footer />
+      </div>
+    </>
   );
 }

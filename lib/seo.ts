@@ -1,304 +1,364 @@
-// import type { Metadata } from "next";
-
-// const siteUrl = "https://www.hitechinsulation.in";
-
-// type SeoKey =
-//   | "default"
-//   | "home"
-//   | "products"
-//   | "productDetails"
-//   | "about"
-//   | "industries"
-//   | "contact";
-
-// interface SeoEntry {
-//   title: string;
-//   description: string;
-//   keywords: string[];
-//   path: string;
-//   image?: string;
-// }
-
-// export const seoConfig: Record<SeoKey, SeoEntry> = {
-//   default: {
-//     title: "Hitech Insulation | Best Electrical Insulation Manufacturer in India",
-//     description:
-//       "Hitech Insulation is India’s most trusted manufacturer of pressboard, epoxy laminates, PTFE products, and custom transformer insulation kits from Chennai since 1977.",
-//     keywords: [
-//       "best electrical insulation manufacturer india",
-//       "transformer insulation materials india",
-//       "pressboard supplier chennai",
-//       "epoxy fiberglass sheets manufacturer",
-//       "ptfe insulation components india",
-//       "custom transformer kits india",
-//     ],
-//     path: "/",
-//   },
-//   home: {
-//     title: "Premium Electrical Insulation Components Made in India | Hitech Insulation",
-//     description:
-//       "Buy precision pressboard, epoxy sheets, phenolic laminates, and PTFE components directly from India’s top insulation manufacturer trusted by OEMs nationwide.",
-//     keywords: [
-//       "electrical insulation manufacturer india",
-//       "pressboard supplier india",
-//       "epoxy sheet manufacturer chennai",
-//       "phenolic laminates india",
-//       "ptfe components india",
-//       "transformer insulation india",
-//     ],
-//     path: "/",
-//   },
-//   products: {
-//     title: "Electrical Insulation Products Catalog India | Hitech Insulation",
-//     description:
-//       "Browse 20+ electrical insulation products engineered for transformers, motors, and switchgear. Manufactured in Chennai and shipped pan-India within committed lead times.",
-//     keywords: [
-//       "electrical insulation products india",
-//       "transformer insulation catalog",
-//       "pressboard sheets india",
-//       "epoxy laminates india",
-//       "insulation materials supplier india",
-//     ],
-//     path: "/products",
-//   },
-//   productDetails: {
-//     title: "Transformer-Grade Insulation Products | Hitech Insulation India",
-//     description:
-//       "Detailed specifications, applications, and engineering guidance for India’s most reliable transformer insulation components.",
-//     keywords: [
-//       "transformer insulation specifications india",
-//       "buy pressboard india",
-//       "electrical insulation supplier india",
-//       "custom insulation machining india",
-//     ],
-//     path: "/products",
-//   },
-//   about: {
-//     title: "About Hitech Insulation | India’s Leading Electrical Insulation Partner",
-//     description:
-//       "Discover our 47-year manufacturing legacy, ISO-certified processes, and why India’s best OEMs trust Hitech Insulation for mission-critical projects.",
-//     keywords: [
-//       "about hitech insulation",
-//       "electrical insulation company india",
-//       "iso certified insulation manufacturer",
-//       "chennai insulation factory",
-//     ],
-//     path: "/about",
-//   },
-//   industries: {
-//     title: "Industries We Serve | Transformer, Motor & Switchgear Insulation India",
-//     description:
-//       "Insulation programs engineered for transformer OEMs, motor manufacturers, switchgear, bus duct, and high-temperature equipment builders across India.",
-//     keywords: [
-//       "transformer insulation india",
-//       "motor insulation supplier india",
-//       "switchgear insulation components india",
-//       "bus duct insulation india",
-//     ],
-//     path: "/industries",
-//   },
-//   contact: {
-//     title: "Contact Hitech Insulation India | Fast Quotes & Engineering Support",
-//     description:
-//       "Send RFQs, drawings, and BOMs for transformer insulation materials. Chennai-based team responds within 24 hours with the best solutions in India.",
-//     keywords: [
-//       "contact insulation manufacturer india",
-//       "rfq transformer insulation india",
-//       "buy insulation pressboard chennai",
-//       "best insulation supplier india",
-//     ],
-//     path: "/contact",
-//   },
-// };
-
-// export function getSeoMetadata(
-//   key: SeoKey,
-//   overrides: Partial<SeoEntry> = {}
-// ): Metadata {
-//   const base = seoConfig[key] ?? seoConfig.default;
-//   const merged: SeoEntry = { ...base, ...overrides };
-//   const canonical = new URL(merged.path, siteUrl).toString();
-//   const ogImage = merged.image ? new URL(merged.image, siteUrl).toString() : undefined;
-
-//   return {
-//     title: merged.title,
-//     description: merged.description,
-//     keywords: merged.keywords,
-//     alternates: {
-//       canonical,
-//     },
-//     openGraph: {
-//       title: merged.title,
-//       description: merged.description,
-//       url: canonical,
-//       siteName: "Hitech Insulation",
-//       locale: "en_IN",
-//       type: "website",
-//       ...(ogImage ? { images: [{ url: ogImage, alt: merged.title }] } : {}),
-//     },
-//     twitter: {
-//       card: "summary_large_image",
-//       title: merged.title,
-//       description: merged.description,
-//       ...(ogImage ? { images: [ogImage] } : {}),
-//     },
-//   };
-// }
-
 import type { Metadata } from "next";
 
-const siteUrl = "https://www.hitechinsulation.in";
+const BASE_URL = "https://www.hitechinsulation.in";
 
-type SeoKey =
-  | "default"
-  | "home"
-  | "products"
-  | "productDetails"
-  | "about"
-  | "industries"
-  | "contact";
+const BRAND = "Hitech Insulation";
+const FOUNDED = "1977";
 
-interface SeoEntry {
+const CORE_KEYWORDS = [
+  // Brand + location
+  "Hitech Insulation Chennai",
+  "Hitech Insulation Tamil Nadu",
+  "hitech insulation india",
+
+  // Best-in-class head terms
+  "best electrical insulation company india",
+  "best electrical insulation manufacturer chennai",
+  "electrical insulation manufacturer india",
+  "electrical insulation supplier chennai",
+  "electrical insulation company tamil nadu",
+
+  // Pressboard — primary manufacturing focus
+  "pressboard manufacturer india",
+  "best pressboard manufacturer india",
+  "pressboard manufacturer chennai",
+  "pressboard supplier tamil nadu",
+  "electrical grade pressboard india",
+  "transformer pressboard manufacturer india",
+  "pre compressed pressboard india",
+
+  // Transformer insulation
+  "transformer insulation manufacturer india",
+  "transformer insulation supplier chennai",
+  "transformer insulation components india",
+  "transformer insulation kits manufacturer india",
+
+  // Supporting categories
+  "epoxy sheet supplier india",
+  "FR4 sheet manufacturer india",
+  "phenolic laminate supplier india",
+  "hylam sheet supplier india",
+  "FRP components manufacturer india",
+  "mica sheet supplier india",
+  "kraft paper transformer insulation india",
+  "PTFE sheet supplier india",
+];
+
+type PageKey = "home" | "products" | "about" | "industries" | "contact" | "productDetails";
+
+interface SeoPage {
   title: string;
   description: string;
   keywords: string[];
-  path: string;
-  image?: string;
+  ogImage?: string;
+  canonical?: string;
 }
 
-export const seoConfig: Record<SeoKey, SeoEntry> = {
-  default: {
-    title: "Hitech Insulation | Electrical Insulation Manufacturer in Tamil Nadu, India",
-    description:
-      "Hitech Insulation is a Chennai-based electrical insulation manufacturer supplying pressboard, epoxy laminates, PTFE, phenolic sheets, and custom transformer insulation kits across Tamil Nadu, India, and global export markets since 1977.",
-    keywords: [
-      "electrical insulation manufacturer tamil nadu",
-      "electrical insulation manufacturer india",
-      "transformer insulation supplier chennai",
-      "pressboard manufacturer tamil nadu",
-      "epoxy laminate manufacturer india",
-      "ptfe insulation components india",
-      "custom transformer insulation kits",
-      "electrical insulation exporter india",
-    ],
-    path: "/",
-  },
-
+const pages: Record<PageKey, SeoPage> = {
   home: {
-    title: "Electrical Insulation Manufacturer in Chennai, Tamil Nadu | Hitech Insulation",
+    title:
+      "Hitech Insulation | Best Electrical Insulation Manufacturer in Chennai, India Since 1977",
     description:
-      "ISO-certified electrical insulation manufacturer in Chennai supplying pressboard, epoxy sheets, phenolic laminates, kraft paper, PTFE products, and custom insulation components across India and worldwide.",
+      "Hitech Insulation is India's trusted electrical insulation manufacturer based in Chennai, Tamil Nadu. Supplying pressboard, pre-compressed pressboard, transformer insulation kits, FR4 epoxy sheets, kraft paper, mica sheets, FRP components, and PTFE products since 1977. ISO-certified. 24-hour quote turnaround. Serving transformer, motor, and switchgear manufacturers across India.",
     keywords: [
-      "electrical insulation manufacturer chennai",
-      "insulation factory tamil nadu",
-      "pressboard supplier india",
-      "epoxy sheet manufacturer india",
-      "phenolic laminates supplier india",
-      "transformer insulation india",
-      "electrical insulation exporter",
+      ...CORE_KEYWORDS,
+      "electrical insulation manufacturer since 1977",
+      "ISO certified insulation manufacturer india",
+      "transformer insulation components chennai",
+      "custom insulation fabrication india",
+      "insulation components for motors india",
+      "switchgear insulation supplier india",
+      "electrical insulation manufacturer tamil nadu",
+      "best insulation company tamil nadu",
+      "pressboard sheets india",
+      "moulded pressboard components india",
     ],
-    path: "/",
+    ogImage: "/hero/hitech_hero_bg.webp",
+    canonical: BASE_URL,
   },
 
   products: {
-    title: "Electrical Insulation Products | Pressboard, Epoxy, PTFE & Phenolics India",
+    title:
+      "Electrical Insulation Products | Pressboard, Epoxy Sheets, FR4, Mica, FRP | Hitech Insulation India",
     description:
-      "Explore electrical insulation products manufactured in Chennai including pressboard sheets, epoxy glass laminates, phenolic sheets, PTFE components, kraft paper, and custom machined insulation parts supplied across India and overseas.",
+      "Complete electrical insulation product catalog from Hitech Insulation, Chennai. Pressboard sheets, pre-compressed pressboard, transformer insulation kits, moulded pressboard components, FR4/G10/G11 epoxy sheets, hylam, bakelite, kraft paper, FRP tubes/rods, mica sheets, PTFE, Nomex, and custom fabrication. ISO-certified manufacturer. Get quote in 24 hours.",
     keywords: [
-      "electrical insulation products india",
-      "pressboard sheets manufacturer",
-      "epoxy fiberglass sheets india",
-      "phenolic insulation sheets",
-      "ptfe insulation products india",
-      "industrial insulation supplier india",
+      ...CORE_KEYWORDS,
+      "electrical insulation products catalog india",
+      "pressboard sheets manufacturer india",
+      "FR4 epoxy sheet supplier india",
+      "G10 G11 epoxy laminate india",
+      "hylam sheet manufacturer india",
+      "bakelite sheet supplier india",
+      "FRP tubes rods india",
+      "mica sheet supplier chennai",
+      "kraft paper transformer india",
+      "nomex paper india",
+      "PTFE sheet supplier india",
+      "ESD epoxy sheet india",
+      "custom insulation gaskets india",
+      "insulation products transformer motor switchgear india",
     ],
-    path: "/products",
-  },
-
-  productDetails: {
-    title: "Transformer Grade Electrical Insulation | Specifications & Applications",
-    description:
-      "Detailed specifications, applications, and engineering support for transformer-grade electrical insulation materials manufactured in India and supplied globally.",
-    keywords: [
-      "transformer insulation materials india",
-      "pressboard specifications",
-      "epoxy insulation sheets",
-      "custom electrical insulation machining",
-      "transformer insulation exporter",
-    ],
-    path: "/products",
+    ogImage: "/hero/product_hero.jpg",
+    canonical: `${BASE_URL}/products`,
   },
 
   about: {
-    title: "About Hitech Insulation | 47 Years of Electrical Insulation Manufacturing",
+    title:
+      "About Hitech Insulation | Electrical Insulation Manufacturer Since 1977 | Chennai, India",
     description:
-      "Founded in 1977, Hitech Insulation is a Chennai-based ISO-certified electrical insulation manufacturer trusted by transformer, motor, and switchgear OEMs across India and international markets.",
+      "Hitech Insulation was founded in 1977 in Chennai, Tamil Nadu by Mr. Radhakrushnun. Over 47 years we have grown from an insulation trading company to a precision manufacturer supplying transformer, motor, and switchgear manufacturers across India. ISO-certified manufacturing facility. Trusted by leading electrical OEMs.",
     keywords: [
-      "about hitech insulation",
-      "electrical insulation manufacturer chennai",
-      "iso certified insulation factory india",
-      "transformer insulation company india",
-      "insulation manufacturer tamil nadu",
+      ...CORE_KEYWORDS,
+      "about hitech insulation chennai",
+      "electrical insulation company history india",
+      "insulation manufacturer founded 1977",
+      "ISO certified electrical insulation india",
+      "transformer insulation manufacturer tamil nadu",
+      "electrical insulation OEM supplier india",
+      "precision insulation manufacturer chennai",
+      "insulation manufacturing company chennai",
     ],
-    path: "/about",
+    ogImage: "/hero/about_hero.jpg",
+    canonical: `${BASE_URL}/about`,
   },
 
   industries: {
-    title: "Industries Served | Transformer, Motor & Switchgear Insulation India",
+    title: "Industries Served | Transformer, Motor, Switchgear Insulation Supplier India | Hitech",
     description:
-      "Electrical insulation solutions engineered for transformer manufacturers, motor industries, switchgear OEMs, bus duct systems, and high-voltage equipment builders across India and export markets.",
+      "Hitech Insulation supplies precision electrical insulation to transformer manufacturers, motor industries, panel board and switchgear manufacturers, and bus duct system builders across India. Serving OEMs including Hitachi, Toyota, BHEL, Siemens, Schneider Electric, and Toshiba from our Chennai facility.",
     keywords: [
-      "transformer insulation supplier india",
-      "motor insulation materials",
-      "switchgear insulation components",
-      "bus duct insulation manufacturer",
-      "high voltage insulation india",
+      ...CORE_KEYWORDS,
+      "transformer manufacturer insulation supplier india",
+      "motor insulation supplier india",
+      "switchgear insulation supplier india",
+      "panel board insulation manufacturer india",
+      "bus duct insulation india",
+      "electrical OEM insulation supplier india",
+      "BHEL insulation supplier",
+      "Siemens insulation supplier india",
+      "industrial insulation manufacturer chennai",
+      "electrical equipment insulation india",
     ],
-    path: "/industries",
+    ogImage: "/hero/product_hero.jpg",
+    canonical: `${BASE_URL}/industries`,
   },
 
   contact: {
-    title: "Contact Electrical Insulation Manufacturer | Chennai, India | Hitech",
+    title: "Contact Hitech Insulation | Get Quote for Electrical Insulation | Chennai, India",
     description:
-      "Send RFQs, drawings, and BOMs for electrical insulation materials. Chennai-based manufacturing team serving Tamil Nadu, all India, and global export customers with fast engineering support.",
+      "Contact Hitech Insulation in Chennai, Tamil Nadu for electrical insulation products and custom fabrication. Get a quote within 24 hours for pressboard, epoxy sheets, transformer insulation kits, FRP components, and more. Email: srk@hitechinsulation.in. ISO-certified manufacturer since 1977.",
     keywords: [
-      "contact insulation manufacturer chennai",
-      "rfq electrical insulation india",
-      "transformer insulation supplier tamil nadu",
-      "custom insulation manufacturer india",
-      "electrical insulation exporter india",
+      ...CORE_KEYWORDS,
+      "contact hitech insulation chennai",
+      "electrical insulation quote india",
+      "get insulation quote chennai",
+      "pressboard quote india",
+      "transformer insulation supplier contact india",
+      "electrical insulation manufacturer contact chennai",
+      "insulation fabrication quote india",
+      "24 hour quote insulation india",
     ],
-    path: "/contact",
+    ogImage: "/hero/contact_hero.jpg",
+    canonical: `${BASE_URL}/contact`,
+  },
+
+  // Inside the pages Record in the new seo.ts, add:
+  productDetails: {
+    title:
+      "Electrical Insulation Product | Specifications & Applications | Hitech Insulation India",
+    description:
+      "Detailed specifications, applications, and engineering data for electrical insulation products manufactured in Chennai, India. Pressboard, epoxy laminates, FRP, mica, PTFE, and more. Get a quote in 24 hours.",
+    keywords: [
+      "electrical insulation product specifications india",
+      "transformer insulation material india",
+      "pressboard specifications india",
+      "epoxy insulation sheet specifications",
+      "custom electrical insulation india",
+      "electrical insulation manufacturer chennai",
+    ],
+    ogImage: "/hero/product_hero.jpg",
+    canonical: `${BASE_URL}/products`,
   },
 };
 
-export function getSeoMetadata(key: SeoKey, overrides: Partial<SeoEntry> = {}): Metadata {
-  const base = seoConfig[key] ?? seoConfig.default;
-  const merged: SeoEntry = { ...base, ...overrides };
-  const canonical = new URL(merged.path, siteUrl).toString();
-  const ogImage = merged.image ? new URL(merged.image, siteUrl).toString() : undefined;
+export function getSeoMetadata(page: PageKey): Metadata {
+  const p = pages[page];
 
   return {
-    title: merged.title,
-    description: merged.description,
-    keywords: merged.keywords,
+    title: p.title,
+    description: p.description,
+    keywords: p.keywords.join(", "),
+    authors: [{ name: BRAND, url: BASE_URL }],
+    creator: BRAND,
+    publisher: BRAND,
+    category: "Electrical Insulation Manufacturing",
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
+    },
     alternates: {
-      canonical,
+      canonical: p.canonical ?? BASE_URL,
     },
     openGraph: {
-      title: merged.title,
-      description: merged.description,
-      url: canonical,
-      siteName: "Hitech Insulation",
-      locale: "en_IN",
       type: "website",
-      ...(ogImage ? { images: [{ url: ogImage, alt: merged.title }] } : {}),
+      locale: "en_IN",
+      url: p.canonical ?? BASE_URL,
+      siteName: BRAND,
+      title: p.title,
+      description: p.description,
+      images: [
+        {
+          url: p.ogImage ?? "/hero/hitech_hero_bg.webp",
+          width: 1200,
+          height: 630,
+          alt: `${BRAND} – Electrical Insulation Manufacturer, Chennai`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
-      title: merged.title,
-      description: merged.description,
-      ...(ogImage ? { images: [ogImage] } : {}),
+      title: p.title,
+      description: p.description,
+      images: [p.ogImage ?? "/hero/hitech_hero_bg.webp"],
+      creator: "@hitechinsulation",
     },
+    other: {
+      // Additional meta for local SEO
+      "geo.region": "IN-TN",
+      "geo.placename": "Chennai",
+      "geo.position": "13.0827;80.2707",
+      ICBM: "13.0827, 80.2707",
+    },
+  };
+}
+
+/**
+ * JSON-LD structured data for the organisation.
+ * Add this to layout.tsx via <script> tag for rich results.
+ */
+export const organisationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: BRAND,
+  alternateName: "Hitech Insulation Chennai",
+  url: BASE_URL,
+  logo: `${BASE_URL}/HITECHINSULATION.png`,
+  foundingDate: FOUNDED,
+  description:
+    "Hitech Insulation is a leading electrical insulation manufacturer based in Chennai, Tamil Nadu, India. Established in 1977, we manufacture and supply pressboard, transformer insulation kits, epoxy sheets, FRP components, mica products, and custom insulation fabrication to transformer, motor, and switchgear manufacturers across India.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Chennai",
+    addressRegion: "Tamil Nadu",
+    addressCountry: "IN",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "srk@hitechinsulation.in",
+    contactType: "sales",
+    areaServed: "IN",
+    availableLanguage: ["English", "Tamil"],
+  },
+  sameAs: [],
+  knowsAbout: [
+    "Electrical Insulation",
+    "Transformer Insulation",
+    "Pressboard Manufacturing",
+    "Epoxy Laminates",
+    "FRP Components",
+    "Mica Products",
+    "PTFE Products",
+    "Custom Insulation Fabrication",
+  ],
+};
+
+/**
+ * JSON-LD for local business — critical for Chennai/Tamil Nadu local search ranking.
+ */
+export const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${BASE_URL}/#localbusiness`,
+  name: BRAND,
+  image: `${BASE_URL}/HITECHINSULATION.png`,
+  url: BASE_URL,
+  telephone: "",
+  email: "srk@hitechinsulation.in",
+  foundingDate: FOUNDED,
+  description:
+    "Best electrical insulation manufacturer in Chennai, India. Supplying pressboard, transformer insulation components, epoxy sheets, FRP products, and custom fabrication since 1977.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Chennai",
+    addressRegion: "Tamil Nadu",
+    postalCode: "",
+    addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 13.0827,
+    longitude: 80.2707,
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "09:00",
+    closes: "18:00",
+  },
+  priceRange: "$$",
+  areaServed: [
+    { "@type": "State", name: "Tamil Nadu" },
+    { "@type": "State", name: "Maharashtra" },
+    { "@type": "State", name: "Gujarat" },
+    { "@type": "State", name: "Karnataka" },
+    { "@type": "State", name: "Andhra Pradesh" },
+    { "@type": "Country", name: "India" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Electrical Insulation Products",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Product", name: "Electrical Grade Pressboard" },
+      },
+      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Pre-Compressed Pressboard" } },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Product", name: "Transformer Insulation Kits" },
+      },
+      { "@type": "Offer", itemOffered: { "@type": "Product", name: "FR4 Epoxy Sheets" } },
+      { "@type": "Offer", itemOffered: { "@type": "Product", name: "FRP Tubes and Rods" } },
+      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Mica Sheets and Tapes" } },
+      { "@type": "Offer", itemOffered: { "@type": "Product", name: "PTFE Teflon Sheets" } },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Product", name: "Custom Insulation Fabrication" },
+      },
+    ],
+  },
+};
+
+/**
+ * JSON-LD breadcrumb helper — use on product and sub-pages.
+ */
+export function breadcrumbJsonLd(crumbs: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((crumb, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: crumb.name,
+      item: crumb.url,
+    })),
   };
 }

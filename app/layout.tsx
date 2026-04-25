@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
-import { getSeoMetadata } from "@/lib/seo";
+import { getSeoMetadata, organisationJsonLd, localBusinessJsonLd } from "@/lib/seo";
 import ProgressBar from "@/components/ProgressBar";
 
 const inter = Inter({
@@ -29,6 +29,11 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.json",
+  // Verification tags — add your actual codes when you have them
+  verification: {
+    google: "YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE",
+    // bing: "YOUR_BING_VERIFICATION_CODE",
+  },
 };
 
 export const viewport: Viewport = {
@@ -41,6 +46,18 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+      <head>
+        {/* Organisation structured data — tells Google who you are */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organisationJsonLd) }}
+        />
+        {/* Local Business structured data — critical for Chennai/Tamil Nadu local ranking */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
+      </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <ProgressBar />
         {children}

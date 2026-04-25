@@ -16,7 +16,6 @@ import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { allProducts as products } from "@/lib/products";
 import { getProductImage } from "@/lib/product-images";
-import { resolveProductSeo } from "@/lib/product-seo";
 import { getSeoMetadata } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -35,17 +34,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = products[slug];
   if (!product) {
-    return getSeoMetadata("default");
+    return getSeoMetadata("productDetails");
   }
 
-  return getSeoMetadata("productDetails", resolveProductSeo(slug, product));
+  return getSeoMetadata("productDetails");
 }
 
-export default async function ProductPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const product = products[slug];
 

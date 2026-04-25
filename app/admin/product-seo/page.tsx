@@ -118,7 +118,10 @@ export default function ProductSeoDashboard() {
                               {product.category}
                             </Badge>
                             {hasOverride && (
-                              <Badge variant="outline" className="ml-2 border-blue-500 text-blue-700">
+                              <Badge
+                                variant="outline"
+                                className="ml-2 border-blue-500 text-blue-700"
+                              >
                                 Override
                               </Badge>
                             )}
