@@ -800,24 +800,23 @@ import {
   Factory,
   Cpu,
   Zap,
-  Mail,
-  Phone,
   Award,
   Globe,
   Users,
   TrendingUp,
   Box,
   CheckCircle2,
+  Mail,
+  Phone,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Footer } from "@/components/footer";
 import { Location } from "@/components/location";
 import { products, featuredProducts } from "@/lib/products";
 import { getProductImage } from "@/lib/product-images";
 import { Navigation } from "@/components/navigation";
+import { QuoteForm } from "@/components/forms/QuoteForm";
 
 // ── FAQ structured data ───────────────────────────────────────────────────────
 const faqJsonLd = {
@@ -1532,7 +1531,7 @@ export default function Home() {
             </div>
             <Card className="bg-white border-2 border-gray-100 shadow-xl">
               <CardContent className="p-8 sm:p-10">
-                <form action="https://formspree.io/f/xwpgqnay" method="POST" className="space-y-6">
+                {/* <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-semibold mb-2 text-gray-700">
@@ -1659,11 +1658,25 @@ export default function Home() {
                   <Button
                     type="submit"
                     size="lg"
+                    disabled={loading}
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white h-14 text-base font-semibold shadow-lg shadow-blue-600/25"
                   >
-                    Get Quote Within 24 Hours
+                    {loading ? "Submitting..." : "Get Quote Within 24 Hours"}
                   </Button>
-                </form>
+                  {success && (
+                    <div className="rounded-lg border border-green-200 bg-green-50 p-4 text-green-700">
+                      ✅ Thank you! Your enquiry has been submitted successfully. Our engineering
+                      team will contact you within 24 hours.
+                    </div>
+                  )}
+
+                  {error && (
+                    <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-700">
+                      {error}
+                    </div>
+                  )}
+                </form> */}
+                <QuoteForm />
                 <div className="mt-8 space-y-4">
                   <div className="relative">
                     <div className="absolute inset-0 flex items-center">

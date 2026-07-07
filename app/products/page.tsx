@@ -154,10 +154,7 @@ export default function ProductsPage() {
                 "Products engineered for real-world transformer, motor, switchgear, and bus duct environments.",
             },
           ].map((feature) => (
-            <Card
-              key={feature.title}
-              className="border-2 border-gray-100 hover:border-blue-200 hover:shadow-lg transition-all"
-            >
+            <Card key={feature.title} className="border-2 border-gray-100">
               <CardHeader>
                 <div className="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
                   <feature.icon className="h-7 w-7 text-blue-600" />
@@ -198,11 +195,7 @@ export default function ProductsPage() {
                       {group.items.length > 1 ? "s" : ""}
                     </p>
                   </div>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="border-gray-200 hover:border-blue-600 hover:text-blue-600"
-                  >
+                  <Button asChild variant="outline" className="border-gray-200">
                     <Link href="/contact">
                       Request Samples <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
@@ -213,7 +206,7 @@ export default function ProductsPage() {
                   {group.items.map((product) => (
                     <Card
                       key={product.id}
-                      className="h-full border-2 border-gray-200 hover:border-blue-300 hover:shadow-xl transition-all flex flex-col"
+                      className="h-full border-2 border-gray-200  flex flex-col"
                     >
                       <CardHeader>
                         <div className="relative h-44 w-full rounded-xl mb-4 overflow-hidden border border-gray-200 bg-gray-100">
@@ -252,7 +245,7 @@ export default function ProductsPage() {
                             asChild
                             variant="outline"
                             size="sm"
-                            className="border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600"
+                            className="border-2 border-gray-300 "
                           >
                             <Link href="/contact">
                               Quote <ArrowRight className="ml-1 h-3 w-3" />

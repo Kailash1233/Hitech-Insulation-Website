@@ -130,10 +130,7 @@ export default function IndustriesPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {industries.map((industry) => (
-            <Card
-              key={industry.title}
-              className="border-2 border-gray-100 hover:border-blue-200 hover:shadow-xl transition-all flex flex-col"
-            >
+            <Card key={industry.title} className="border-2 border-gray-100  flex flex-col">
               <CardHeader>
                 <div className="flex items-start justify-between gap-4">
                   <div>

@@ -233,7 +233,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/products/pressboard-3mm"
+                  href="/products/pre-compressed-pressboard"
                   className="text-gray-400 hover:text-white transition-colors flex items-center group"
                 >
                   Pressboard
@@ -241,7 +241,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/products/fr4-epoxy-sheet"
+                  href="/products/g10-epoxy-sheet"
                   className="text-gray-400 hover:text-white transition-colors flex items-center group"
                 >
                   Epoxy Sheets
@@ -325,6 +325,16 @@ export function Footer() {
               </li>
             </ul>
           </div>
+        </div>
+
+        <div className="border-t border-gray-800 pt-8 pb-12 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-gray-500 leading-7 text-center max-w-6xl mx-auto">
+            Hitech Insulation is a leading manufacturer and supplier of electrical insulation
+            materials including Pressboard, Nomex Paper, Kraft Paper, FR4 Epoxy Sheets, Bakelite
+            Sheets, PTFE Sheets, FRP Components, Mica Products, Polyester Films, Transformer
+            Insulation Kits and Custom Electrical Insulation Components serving transformer,
+            switchgear, motor, generator and electrical equipment manufacturers across India.
+          </p>
         </div>
 
         {/* Bottom Bar */}
