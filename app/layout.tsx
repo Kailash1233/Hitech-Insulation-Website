@@ -66,6 +66,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     })(window,document,'script','dataLayer','GTM-TP5LG62M');
   `}
         </Script>
+
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-DM4PTK805J"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+
+            gtag('config', 'G-DM4PTK805J');
+          `}
+        </Script>
+
       </head>
 
       <body className="font-sans antialiased" suppressHydrationWarning>
