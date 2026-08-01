@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { products } from "./products";
 
 const BASE_URL = "https://www.hitechinsulation.in";
 
@@ -323,28 +324,15 @@ export const localBusinessJsonLd = {
     { "@type": "Country", name: "India" },
   ],
   hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Electrical Insulation Products",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Product", name: "Electrical Grade Pressboard" },
-      },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Pre-Compressed Pressboard" } },
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Product", name: "Transformer Insulation Kits" },
-      },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "FR4 Epoxy Sheets" } },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "FRP Tubes and Rods" } },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Mica Sheets and Tapes" } },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "PTFE Teflon Sheets" } },
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Product", name: "Custom Insulation Fabrication" },
-      },
-    ],
-  },
+  "@type": "OfferCatalog",
+  name: "Electrical Insulation Products",
+  itemListElement: Object.values(products).map((product, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: product.name,
+    url: `${BASE_URL}/products/${product.id}`,
+  })),
+},
 };
 
 /**
