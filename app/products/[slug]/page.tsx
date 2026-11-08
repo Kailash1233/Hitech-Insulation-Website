@@ -18,6 +18,7 @@ import { allProducts as products } from "@/lib/products";
 import { getProductImage } from "@/lib/product-images";
 import { breadcrumbJsonLd, faqJsonLd, getProductMetadata, getSeoMetadata, productJsonLd } from "@/lib/seo";
 import { SITE } from "@/lib/site";
+import { WhatsappEnquiryButton } from "@/components/whatsapp-button";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -116,8 +117,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     priority
                   />
                 </div>
-                <div className="flex gap-4">
-                  <Button size="lg" asChild className="flex-1 bg-blue-600 hover:bg-blue-700">
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button size="lg" asChild className="sm:flex-1 bg-blue-600 hover:bg-blue-700">
                     <Link href="/contact">Request Custom Quote</Link>
                   </Button>
                   <Button
@@ -132,6 +133,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     </a>
                   </Button>
                 </div>
+                <WhatsappEnquiryButton
+                  productName={product.name}
+                  path={`/products/${product.id}`}
+                  className="mt-4 w-full"
+                />
               </div>
             </div>
 
@@ -213,6 +219,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     <Button asChild className="bg-blue-600 hover:bg-blue-700">
                       <Link href="/contact">Request Quote</Link>
                     </Button>
+                    <WhatsappEnquiryButton
+                      productName={product.name}
+                      path={`/products/${product.id}`}
+                      className="h-10"
+                    />
                     <Button variant="outline" asChild>
                       <a href="mailto:srk@hitechinsulation.in">
                         <Mail className="mr-2 h-4 w-4" />

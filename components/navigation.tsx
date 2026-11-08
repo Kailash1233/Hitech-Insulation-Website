@@ -15,6 +15,10 @@ export function Navigation({ onMobileMenuChange }: NavigationProps) {
   const [scrolled, setScrolled] = useState(false);
 
   const pathname = usePathname();
+  // Pages with a light (white) top section have no dark hero behind the navbar, so the
+  // white-on-transparent style is invisible there — always use the solid style instead.
+  const hasLightTop = /^\/products\/[^/]+/.test(pathname);
+  const solid = scrolled || hasLightTop;
 
   /* Scroll detection */
   useEffect(() => {
@@ -57,7 +61,6 @@ export function Navigation({ onMobileMenuChange }: NavigationProps) {
           {/* LOGO */}
           <Link href="/" className="relative w-32 h-10 flex-shrink-0">
             <Image
-              // src={scrolled ? "/HITECHINSULATION.png" : "/HITECHINSULATION-white.png"}
               src="/HITECHINSULATION-white.png"
               alt="Hitech Insulation Logo"
               fill
@@ -70,7 +73,7 @@ export function Navigation({ onMobileMenuChange }: NavigationProps) {
           <div
             className={cn(
               "hidden lg:flex items-center gap-1 px-4 py-2 rounded-full transition-all duration-500",
-              scrolled
+              solid
                 ? "bg-white/90 backdrop-blur-xl shadow-md border border-gray-200"
                 : "bg-white/20 backdrop-blur-md border border-white/20"
             )}
@@ -87,7 +90,7 @@ export function Navigation({ onMobileMenuChange }: NavigationProps) {
                     "text-sm font-medium px-4 py-1.5 rounded-full transition-all",
                     isActive
                       ? "bg-blue-700 text-white"
-                      : scrolled
+                      : solid
                         ? "text-gray-700 hover:text-blue-600"
                         : "text-white hover:text-white/80"
                   )}
@@ -105,7 +108,7 @@ export function Navigation({ onMobileMenuChange }: NavigationProps) {
               href="/contact"
               className={cn(
                 "hidden md:inline-flex px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300",
-                scrolled
+                solid
                   ? "bg-blue-700 text-white hover:bg-blue-800"
                   : "bg-white text-gray-900 hover:bg-gray-100"
               )}
@@ -119,26 +122,26 @@ export function Navigation({ onMobileMenuChange }: NavigationProps) {
               aria-label="Open menu"
               className={cn(
                 "lg:hidden flex h-10 w-10 items-center justify-center rounded-lg backdrop-blur-md border transition-all",
-                scrolled ? "bg-gray-100 border-gray-200" : "bg-white/20 border-white/20"
+                solid ? "bg-gray-100 border-gray-200" : "bg-white/20 border-white/20"
               )}
             >
               <div className="flex flex-col justify-center gap-[5px]">
                 <span
                   className={cn(
                     "block h-0.5 w-5 rounded transition-all",
-                    scrolled ? "bg-gray-800" : "bg-white"
+                    solid ? "bg-gray-800" : "bg-white"
                   )}
                 />
                 <span
                   className={cn(
                     "block h-0.5 w-5 rounded transition-all",
-                    scrolled ? "bg-gray-800" : "bg-white"
+                    solid ? "bg-gray-800" : "bg-white"
                   )}
                 />
                 <span
                   className={cn(
                     "block h-0.5 w-5 rounded transition-all",
-                    scrolled ? "bg-gray-800" : "bg-white"
+                    solid ? "bg-gray-800" : "bg-white"
                   )}
                 />
               </div>

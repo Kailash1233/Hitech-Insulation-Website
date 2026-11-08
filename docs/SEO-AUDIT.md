@@ -60,16 +60,15 @@ Competitive landscape (from IndiaMART / TradeIndia search results): pressboard r
 9. **Backlinks**: industry associations (IEEMA membership listing), transformer OEM vendor lists, Guindy Industrial Estate association, supplier pages of customers, trade-show exhibitor pages (ELECRAMA).
 10. **Content** (1 article per month, linked to `/pressboard`): "Pressboard grades explained", "How to specify transformer insulation kits", "Pressboard moisture & drying", "Pressboard vs presspaper vs kraft paper".
 
-## 5. Items the owner must confirm (content accuracy)
+## 5. Content decisions (confirmed with owner)
 
-- Founding year: most pages say **1977**, but the About timeline starts in **1974 at Parrys**. Pick one.
-- Founder name spelling: "Mr. Radhakrushnun".
-- Homepage testimonials (Rajesh Kumar / Priya Sharma / Amit Patel) and the "100% client satisfaction" and "138+ projects" stats: replace with real, attributable quotes and figures.
-- "Manufacturing partner for Hitachi, Toyota, BHEL, Siemens, Schneider, Toshiba": keep only names you can prove (written permission is best).
-- ISO certificate number / standard (e.g. ISO 9001:2015). Show it on the site once confirmed.
-- FR4 epoxy: the product was removed from the catalogue but is still mentioned in text. Is it still supplied?
-- Exact Google Maps coordinates for Guindy (currently approximate in `lib/site.ts`), and the GBP's long Maps URL (better than the share link for schema).
-- Pressboard thickness range and any standard you comply with (IEC 60641 / IS 1576). These can be added to the specs.
+- Founded **1977** (1974 at Parrys was trading only) – founder **Mr. Radhakrushnun**.
+- Client names in text are real; **client logos will not be shown**.
+- The old invented testimonials were removed. The homepage review section now shows only real Google reviews from `lib/testimonials.ts` and stays hidden while that list is empty.
+- Pressboard thickness stays "custom thickness on request".
+- Hosting: **Vercel** (Cloudflare is DNS only). The apex → www redirect is handled by Vercel's domain settings and the app; don't add a www → apex rule in Cloudflare.
+- Still to confirm: ISO certificate details, FR4 availability, exact Maps coordinates, social profile URLs.
+- NAP clean-up: a Dial4trade listing shows an old address (11 Francis Joseph Street, Chennai). Update it, or ask for it to be removed, so every listing shows the Guindy address.
 
 ## 6. Not verified in this audit
 

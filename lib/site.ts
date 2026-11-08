@@ -33,7 +33,7 @@ export const SITE = {
    * Add the real Instagram / Facebook / LinkedIn / YouTube URLs once the pages exist.
    */
   profiles: {
-    googleBusiness: "https://share.google/4r8dkvXuKuw8U0ct4",
+    googleBusiness: "https://maps.app.goo.gl/p5W4zwxsRZSYsfNB7",
     indiamart: "https://www.indiamart.com/hi-techinsulation/profile.html",
     justdial:
       "https://www.justdial.com/Chennai/Hi-tech-Insulation-Near-Spar-Banner-Shop-Guindy/044PXX44-XX44-201015124620-E1A9_BZDET",

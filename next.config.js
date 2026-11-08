@@ -39,7 +39,7 @@ const nextConfig = {
     return [
       // Only image files — /products/<slug> pages share this prefix and must NOT be cached long.
       {
-        source: '/:dir(products|hero|partners)/:file([^/]+\\.(?:jpg|jpeg|png|webp|avif|svg))',
+        source: '/:dir(products|hero)/:file([^/]+\\.(?:jpg|jpeg|png|webp|avif|svg))',
         headers: [staticAssetCache],
       },
       {

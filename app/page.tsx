@@ -26,6 +26,7 @@ import { getProductImage } from "@/lib/product-images";
 import { Navigation } from "@/components/navigation";
 import { QuoteForm } from "@/components/forms/QuoteForm";
 import { faqJsonLd } from "@/lib/seo";
+import { testimonials } from "@/lib/testimonials";
 import { SITE, fullAddress, yearsInBusiness } from "@/lib/site";
 
 // ── FAQs (rendered on the page AND emitted as FAQPage schema for AEO / AI answers) ──
@@ -481,70 +482,60 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── TESTIMONIALS ─────────────────────────────────────────── */}
-        <section
-          aria-labelledby="testimonials-heading"
-          className="py-24 px-4 sm:px-6 lg:px-8 bg-white"
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2
-                id="testimonials-heading"
-                className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
-              >
-                Trusted by Manufacturers Across India
-              </h2>
-              <p className="text-xl text-gray-600">
-                What transformer, motor, and panel board manufacturers say about Hitech Insulation.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  quote:
-                    "Hitech Insulation has been our trusted pressboard supplier for over 15 years. Quality is consistently excellent and they always deliver on time across Maharashtra.",
-                  name: "Rajesh Kumar",
-                  title: "Production Manager",
-                  company: "Transformer Manufacturer, Maharashtra",
-                },
-                {
-                  quote:
-                    "The custom insulation fabrication service saved us weeks of production time. Their Chennai engineering team understood our transformer requirements perfectly.",
-                  name: "Priya Sharma",
-                  title: "Technical Director",
-                  company: "Motor Manufacturer, Tamil Nadu",
-                },
-                {
-                  quote:
-                    "Quality insulation materials, competitive pricing, and excellent technical support. Hitech Insulation is our first choice for electrical insulation components in India.",
-                  name: "Amit Patel",
-                  title: "Procurement Head",
-                  company: "Panel Board Manufacturer, Gujarat",
-                },
-              ].map((t) => (
-                <Card key={t.name} className="border-2 border-gray-100 bg-white">
-                  <CardContent className="pt-8">
-                    <div className="mb-6">
-                      <div className="flex gap-1 mb-4" aria-label="5 star rating">
-                        {[...Array(5)].map((_, i) => (
-                          <span key={i} className="text-yellow-400" aria-hidden="true">
-                            ★
-                          </span>
-                        ))}
+        {/* ── TESTIMONIALS (real Google reviews only – see lib/testimonials.ts) ── */}
+        {testimonials.length > 0 && (
+          <section
+            aria-labelledby="testimonials-heading"
+            className="py-24 px-4 sm:px-6 lg:px-8 bg-white"
+          >
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  id="testimonials-heading"
+                  className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+                >
+                  Trusted by Manufacturers Across India
+                </h2>
+                <p className="text-xl text-gray-600">
+                  What our customers say about Hitech Insulation on Google.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {testimonials.map((t) => (
+                  <Card key={t.name} className="border-2 border-gray-100 bg-white">
+                    <CardContent className="pt-8">
+                      <div className="mb-6">
+                        <div className="flex gap-1 mb-4" aria-label="5 star rating">
+                          {[...Array(5)].map((_, i) => (
+                            <span key={i} className="text-yellow-400" aria-hidden="true">
+                              ★
+                            </span>
+                          ))}
+                        </div>
+                        <p className="text-gray-700 leading-relaxed italic">&quot;{t.quote}&quot;</p>
                       </div>
-                      <p className="text-gray-700 leading-relaxed italic">&quot;{t.quote}&quot;</p>
-                    </div>
-                    <div className="pt-6 border-t border-gray-100">
-                      <p className="font-bold text-gray-900 text-lg">{t.name}</p>
-                      <p className="text-sm text-gray-600 mt-1">{t.title}</p>
-                      <p className="text-sm text-blue-600 font-medium mt-1">{t.company}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                      <div className="pt-6 border-t border-gray-100">
+                        <p className="font-bold text-gray-900 text-lg">{t.name}</p>
+                        {t.detail && <p className="text-sm text-gray-600 mt-1">{t.detail}</p>}
+                        <p className="text-sm text-blue-600 font-medium mt-1">{t.source}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+              <div className="text-center mt-10">
+                <a
+                  href={SITE.profiles.googleBusiness}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 font-semibold underline"
+                >
+                  Read all reviews on Google
+                </a>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* ── FAQ ──────────────────────────────────────────────────── */}
         <section
