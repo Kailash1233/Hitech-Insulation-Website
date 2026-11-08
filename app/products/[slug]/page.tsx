@@ -16,7 +16,13 @@ import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { allProducts as products } from "@/lib/products";
 import { getProductImage } from "@/lib/product-images";
-import { breadcrumbJsonLd, faqJsonLd, getProductMetadata, getSeoMetadata, productJsonLd } from "@/lib/seo";
+import {
+  breadcrumbJsonLd,
+  faqJsonLd,
+  getProductMetadata,
+  getSeoMetadata,
+  productJsonLd,
+} from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import { WhatsappEnquiryButton } from "@/components/whatsapp-button";
 import { notFound } from "next/navigation";
@@ -206,31 +212,39 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </div>
               </div>
 
-              <Card className="bg-blue-50 border-blue-200">
+              <Card className="w-full border-blue-200 bg-blue-50 shadow-sm">
                 <CardContent className="pt-6">
                   <h3 className="text-lg font-bold text-gray-900 mb-2">
                     Need Custom Specifications?
                   </h3>
-                  <p className="text-gray-600 mb-4">
+
+                  <p className="text-gray-600 mb-5 max-w-2xl">
                     Our engineering team can customize this product to your exact requirements. Get
                     in touch for a detailed quote.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Button asChild className="bg-blue-600 hover:bg-blue-700">
+
+                  <div className="flex flex-wrap items-center gap-3">
+                    <Button
+                      asChild
+                      className="h-10 bg-blue-600 hover:bg-blue-700 whitespace-nowrap"
+                    >
                       <Link href="/contact">Request Quote</Link>
                     </Button>
+
                     <WhatsappEnquiryButton
                       productName={product.name}
                       path={`/products/${product.id}`}
-                      className="h-10"
+                      className="h-10 whitespace-nowrap"
                     />
-                    <Button variant="outline" asChild>
+
+                    <Button variant="outline" asChild className="h-10 bg-white whitespace-nowrap">
                       <a href="mailto:srk@hitechinsulation.in">
                         <Mail className="mr-2 h-4 w-4" />
                         Email Technical Team
                       </a>
                     </Button>
-                    <Button variant="outline" asChild>
+
+                    <Button variant="outline" asChild className="h-10 bg-white whitespace-nowrap">
                       <a href={SITE.phoneHref}>
                         <Phone className="mr-2 h-4 w-4" />
                         {SITE.phoneDisplay}
