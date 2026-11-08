@@ -13,6 +13,12 @@ export interface Product {
   relatedProducts: string[];
   /** Buyer questions shown on the product page and emitted as FAQPage schema (AEO). */
   faqs?: { q: string; a: string }[];
+  /**
+   * Optional published "starting from" price (INR, excl. GST). When set, the product page
+   * emits Product + Offer schema and becomes eligible for price rich results in Google.
+   * unitCode is a UN/CEFACT code: KGM = kilogram (default), C62 = piece, MTR = metre.
+   */
+  priceFrom?: { amount: number; unitCode?: string; unitText?: string };
 }
 
 export const products: Record<string, Product> = {

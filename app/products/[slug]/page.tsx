@@ -58,8 +58,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     .filter(Boolean);
 
   const isPressboard = product.category === "Pressboard";
+  const productSchema = productJsonLd(product);
   const jsonLd = [
-    productJsonLd(product),
+    ...(productSchema ? [productSchema] : []),
     breadcrumbJsonLd([
       { name: "Home", path: "/" },
       { name: "Products", path: "/products" },

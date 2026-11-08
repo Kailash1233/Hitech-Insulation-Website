@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { products, type Product } from "./products";
+import type { Product } from "./products";
 import { getProductImage } from "./product-images";
 import { SITE, sameAsLinks, yearsInBusiness } from "./site";
 
@@ -337,18 +337,6 @@ export const siteJsonLd = {
         { "@type": "Country", name: "India" },
       ],
       sameAs: sameAsLinks,
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "Electrical Insulation Products",
-        itemListElement: Object.values(products).map((product) => ({
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Product",
-            name: product.name,
-            url: `${BASE_URL}/products/${product.id}`,
-          },
-        })),
-      },
     },
     {
       "@type": "WebSite",
@@ -374,15 +362,26 @@ export function breadcrumbJsonLd(crumbs: { name: string; path: string }[]) {
   };
 }
 
+/**
+ * Product schema is ONLY emitted for products that have a published starting price.
+ * Google treats any `Product` without `offers`, `review` or `aggregateRating` as an invalid
+ * Product snippet (critical issue in Search Console), and B2B quote-only items have none of
+ * these. Add `priceFrom` to a product in lib/products.ts to make it eligible for price
+ * rich results; until then the page relies on Breadcrumb + FAQ schema and on-page content.
+ */
 export function productJsonLd(product: Product) {
+  if (!product.priceFrom) return null;
+  const url = `${BASE_URL}/products/${product.id}`;
+  const { amount, unitCode = "KGM", unitText = "kg" } = product.priceFrom;
+
   return {
     "@context": "https://schema.org",
     "@type": "Product",
-    "@id": `${BASE_URL}/products/${product.id}#product`,
+    "@id": `${url}#product`,
     name: product.name,
     description: [product.shortDescription, ...product.description].join(" "),
     image: `${BASE_URL}${getProductImage(product.id)}`,
-    url: `${BASE_URL}/products/${product.id}`,
+    url,
     category: product.category,
     brand: { "@type": "Brand", name: BRAND },
     manufacturer: { "@id": ORG_ID },
@@ -392,6 +391,23 @@ export function productJsonLd(product: Product) {
       name: spec.label,
       value: spec.value,
     })),
+    offers: {
+      "@type": "Offer",
+      url,
+      price: amount,
+      priceCurrency: "INR",
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+      seller: { "@id": ORG_ID },
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: amount,
+        priceCurrency: "INR",
+        unitCode,
+        unitText,
+        valueAddedTaxIncluded: false,
+      },
+    },
   };
 }
 
