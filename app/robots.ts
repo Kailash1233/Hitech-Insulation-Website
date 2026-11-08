@@ -1,20 +1,28 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
+import { SITE } from "@/lib/site";
+
+/**
+ * Everything public is crawlable. AI / answer-engine crawlers are explicitly allowed so the
+ * business can be cited in ChatGPT, Perplexity, Gemini, Copilot and Google AI Overviews (GEO).
+ */
+const AI_CRAWLERS = [
+  "GPTBot",
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "PerplexityBot",
+  "ClaudeBot",
+  "Claude-SearchBot",
+  "Google-Extended",
+  "Applebot-Extended",
+  "Bingbot",
+];
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      {
-        userAgent: "*",
-        allow: "/",
-        disallow: ["/api/", "/admin/"],
-      },
-      {
-        userAgent: "Googlebot",
-        allow: "/",
-        disallow: ["/api/", "/admin/"],
-      },
+      { userAgent: "*", allow: "/", disallow: ["/api/"] },
+      { userAgent: AI_CRAWLERS, allow: "/" },
     ],
-    sitemap: "https://www.hitechinsulation.in/sitemap.xml",
-    host: "https://www.hitechinsulation.in",
+    sitemap: `${SITE.url}/sitemap.xml`,
   };
 }

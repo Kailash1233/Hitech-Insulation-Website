@@ -75,7 +75,7 @@ export default function IndustriesPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/hero-bg.png"
+            src="/hero-bg.webp"
             alt="Electrical insulation applications across industries"
             fill
             priority

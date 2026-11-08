@@ -1,7 +1,8 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
-import { getSeoMetadata, organisationJsonLd, localBusinessJsonLd } from "@/lib/seo";
+import { getSeoMetadata, siteJsonLd } from "@/lib/seo";
+import { SITE } from "@/lib/site";
 import ProgressBar from "@/components/ProgressBar";
 import Script from "next/script";
 
@@ -9,19 +10,42 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
+  // Inter is a variable font: omitting `weight` ships ONE file that covers every weight.
 });
 
 const poppins = Poppins({
   subsets: ["latin"],
   variable: "--font-poppins",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   ...getSeoMetadata("home"),
-  metadataBase: new URL("https://www.hitechinsulation.in"),
+  metadataBase: new URL(SITE.url),
+  applicationName: SITE.name,
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
+  publisher: SITE.name,
+  category: "Electrical Insulation Manufacturing",
+  formatDetection: { telephone: true, email: true, address: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  other: {
+    "geo.region": SITE.address.regionCode,
+    "geo.placename": `Guindy, ${SITE.address.locality}`,
+    "geo.position": `${SITE.geo.latitude};${SITE.geo.longitude}`,
+    ICBM: `${SITE.geo.latitude}, ${SITE.geo.longitude}`,
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -30,10 +54,14 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.json",
-  // Verification tags — add your actual codes when you have them
-  // verification: {
-  //   google: "YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE",
-  // },
+  // Search Console / Bing Webmaster verification — set the env vars in Cloudflare if you
+  // verify via HTML tag (not needed if the domain is verified via DNS).
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : undefined,
+  },
 };
 
 export const viewport: Viewport = {
@@ -45,16 +73,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en-IN" className={`${inter.variable} ${poppins.variable}`}>
       <head>
+        {/* Organization + LocalBusiness + WebSite graph — local ranking & AI answer engines */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organisationJsonLd) }}
-        />
-        {/* Local Business structured data — critical for Chennai/Tamil Nadu local ranking */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
 
         <Script id="google-tag-manager" strategy="afterInteractive">

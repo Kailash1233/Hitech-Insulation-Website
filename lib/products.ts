@@ -11,9 +11,74 @@ export interface Product {
   applications: string[];
   benefits: string[];
   relatedProducts: string[];
+  /** Buyer questions shown on the product page and emitted as FAQPage schema (AEO). */
+  faqs?: { q: string; a: string }[];
 }
 
 export const products: Record<string, Product> = {
+  pressboard: {
+    id: "pressboard",
+    name: "Electrical Grade Pressboard Sheets",
+    category: "Pressboard",
+    shortDescription:
+      "Electrical grade cellulose pressboard sheets for solid insulation in oil-immersed power and distribution transformers",
+    description: [
+      "Electrical grade pressboard (also called transformer board or presspahn board) is a solid insulation material made from high-purity, long-fibre cellulose pulp. It is the primary solid insulation used inside oil-immersed power and distribution transformers.",
+      "Pressboard is used as barriers, spacers, cylinders, end rings and structural insulation. Its porous fibre structure absorbs transformer oil completely, and the oil-impregnated board gives high dielectric strength over the life of the transformer.",
+      "Hitech Insulation supplies pressboard as full sheets, cut-to-size strips and blanks, or as finished machined and moulded components made to customer drawings in our Chennai units. Uniform density, low shrinkage and consistent thickness keep electrical clearances and winding heights accurate.",
+      "We supply transformer manufacturers, repairers and OEMs in Tamil Nadu, across South and North India, and export to overseas customers.",
+    ],
+    specifications: [
+      { label: "Base Material", value: "High-purity cellulose fibres (electrical grade)" },
+      { label: "Thickness", value: "Standard sheet thicknesses; custom thickness on request" },
+      { label: "Density", value: "0.9 – 1.2 g/cm³" },
+      { label: "Dielectric Strength (in oil)", value: "≥ 15 kV/mm" },
+      { label: "Operating Temperature Class", value: "Class A – 105°C" },
+      { label: "Moisture Content", value: "≤ 6%" },
+      { label: "Oil Compatibility", value: "Excellent (mineral transformer oil)" },
+      { label: "Surface Finish", value: "Smooth / calendered" },
+      { label: "Supply Form", value: "Full sheets, cut-to-size, strips, machined components" },
+      { label: "Processing Options", value: "Cutting, punching, CNC machining, drilling, bonding" },
+    ],
+    applications: [
+      "Solid insulation barriers in power and distribution transformers",
+      "Phase and winding separation, cylinders and wraps",
+      "Radial spacers, axial strips and support blocks",
+      "End rings and yoke insulation",
+      "Lead and bushing insulation supports",
+    ],
+    benefits: [
+      "High dielectric strength after oil impregnation",
+      "Good mechanical rigidity with low deformation",
+      "Uniform thickness for reliable electrical clearances",
+      "Compatible with standard transformer insulation systems",
+      "Easily machined into custom transformer components",
+    ],
+    relatedProducts: [
+      "pre-compressed-pressboard",
+      "moulded-pressboard-components",
+      "transformer-insulation-kits",
+    ],
+    faqs: [
+      {
+        q: "What is electrical grade pressboard used for?",
+        a: "Electrical grade pressboard is the main solid insulation inside oil-filled transformers. It is used for barriers, cylinders, spacers, strips, end rings and support blocks between windings and between windings and the core.",
+      },
+      {
+        q: "What is the difference between pressboard and pre-compressed pressboard?",
+        a: "Standard pressboard is made in thinner sheets and is easier to bend and form. Pre-compressed pressboard is pressed to a higher density, so it shrinks less and carries more mechanical load. It is used for thick spacers, blocks and clamping rings in larger transformers.",
+      },
+      {
+        q: "Can Hitech Insulation cut pressboard to size or machine components?",
+        a: "Yes. We supply full sheets, cut-to-size blanks and strips, and finished machined or moulded pressboard components made to your drawings at our units in Guindy and Kundrathur, Chennai.",
+      },
+      {
+        q: "Do you supply pressboard outside Tamil Nadu and outside India?",
+        a: "Yes. We supply transformer manufacturers across India, including North India, and we export. Send your drawing or bill of materials to srk@hitechinsulation.in or call +91 90032 88146 for a quote within 24 hours.",
+      },
+    ],
+  },
+
   "pre-compressed-pressboard": {
     id: "pre-compressed-pressboard",
     name: "Pre-Compressed Pressboard",
@@ -53,9 +118,27 @@ export const products: Record<string, Product> = {
       "Ideal for thick and precision-machined components",
     ],
     relatedProducts: [
-      "pressboard-3mm",
+      "pressboard",
       "transformer-insulation-kits",
       "moulded-pressboard-components",
+    ],
+    faqs: [
+      {
+        q: "What is pre-compressed pressboard?",
+        a: "Pre-compressed pressboard is electrical grade cellulose pressboard that has been compressed under heat and pressure to a higher density. It has very low shrinkage and high mechanical strength, so it is used for load-bearing transformer insulation.",
+      },
+      {
+        q: "Where is pre-compressed pressboard used in a transformer?",
+        a: "It is used for winding support blocks, clamping rings, spacers, pressure rings, lead supports and other thick, load-bearing parts that must hold winding height and withstand short-circuit forces.",
+      },
+      {
+        q: "What thickness of pre-compressed pressboard is available?",
+        a: "Hitech Insulation supplies pre-compressed pressboard from 3 mm to 75 mm as sheets and blocks, and as CNC-machined components made to customer drawings.",
+      },
+      {
+        q: "How do I get a price for pre-compressed pressboard?",
+        a: "Pre-compressed pressboard is priced by grade, thickness, quantity and machining. Share your drawing, thickness and quantity at srk@hitechinsulation.in or +91 90032 88146 and our Chennai team will quote within 24 hours.",
+      },
     ],
   },
 
@@ -92,7 +175,7 @@ export const products: Record<string, Product> = {
       "Faster shop floor assembly",
     ],
     relatedProducts: [
-      "pressboard-3mm",
+      "pressboard",
       "pre-compressed-pressboard",
       "moulded-pressboard-components",
     ],
@@ -136,49 +219,11 @@ export const products: Record<string, Product> = {
       "Better dielectric reliability in high-stress zones",
       "Reduced number of individual insulation parts",
     ],
-    relatedProducts: ["pressboard-3mm", "pre-compressed-pressboard", "transformer-insulation-kits"],
+    relatedProducts: ["pressboard", "pre-compressed-pressboard", "transformer-insulation-kits"],
   },
 
   /* ===================== EPOXY SHEETS ===================== */
 
-  // "fr4-epoxy-sheet": {
-  //   id: "fr4-epoxy-sheet",
-  //   name: "Fiberglass Epoxy Sheet – FR4 General Purpose Grade",
-  //   category: "Epoxy Sheets",
-  //   shortDescription:
-  //     "Flame retardant fiberglass epoxy laminate sheets for electrical insulation and structural applications",
-  //   description: [
-  //     "FR4 fiberglass epoxy sheets are the industry standard for electrical insulation and mechanical structural applications. Composed of woven fiberglass cloth impregnated with epoxy resin, this material offers excellent mechanical strength, dimensional stability, and electrical insulation performance.",
-  //     "FR4 sheets meet international standards and are widely used in the manufacture of printed circuit boards, electrical insulation components, and structural mechanical parts that require a high strength-to-weight ratio.",
-  //     "Available in multiple thicknesses and sheet sizes, FR4 can be machined, drilled, punched, and laser cut to produce custom components for specific application requirements.",
-  //   ],
-  //   specifications: [
-  //     { label: "Material", value: "Woven fiberglass cloth + Epoxy resin" },
-  //     { label: "Grade", value: "FR4 (Flame Retardant)" },
-  //     { label: "Thickness Range", value: "0.5 mm – 100 mm" },
-  //     { label: "Tensile Strength", value: "≥ 340 MPa" },
-  //     { label: "Dielectric Strength", value: "≥ 16 kV/mm" },
-  //     { label: "Temperature Rating", value: "-40°C to 130°C" },
-  //     { label: "Standard Sheet Sizes", value: "1020 × 1220 mm, 1020 × 2040 mm" },
-  //     { label: "Colour", value: "Green / Natural" },
-  //     { label: "Fabrication Options", value: "CNC machining, laser cutting, drilling, punching" },
-  //   ],
-  //   applications: [
-  //     "Printed circuit board substrates",
-  //     "Electrical insulation barriers and panels",
-  //     "Motor and generator insulation",
-  //     "Structural components for electrical equipment",
-  //     "Test fixtures and jigs",
-  //   ],
-  //   benefits: [
-  //     "Excellent electrical insulation properties",
-  //     "High mechanical strength and rigidity",
-  //     "Flame retardant – meets FR4 classification",
-  //     "Easy to machine and fabricate",
-  //     "Wide availability in multiple thicknesses",
-  //   ],
-  //   relatedProducts: ["g10-epoxy-sheet", "esd-epoxy-sheet", "paper-phenolic"],
-  // },
 
   "g10-epoxy-sheet": {
     id: "g10-epoxy-sheet",
@@ -217,7 +262,7 @@ export const products: Record<string, Product> = {
       "Excellent performance under extreme mechanical conditions",
       "Suitable for precision machined components",
     ],
-    relatedProducts: ["fr4-epoxy-sheet", "esd-epoxy-sheet", "paper-phenolic"],
+    relatedProducts: ["bakelite-sheet", "esd-epoxy-sheet", "paper-phenolic"],
   },
 
   "esd-epoxy-sheet": {
@@ -256,7 +301,7 @@ export const products: Record<string, Product> = {
       "Dimensionally stable for precision components",
       "Easily fabricated using standard machining methods",
     ],
-    relatedProducts: ["fr4-epoxy-sheet", "g10-epoxy-sheet", "bakelite-sheet"],
+    relatedProducts: ["paper-phenolic", "g10-epoxy-sheet", "bakelite-sheet"],
   },
 
   /* ===================== PHENOLIC LAMINATES ===================== */
@@ -297,7 +342,7 @@ export const products: Record<string, Product> = {
       "Readily available in multiple thicknesses",
       "Suitable for high-volume production requirements",
     ],
-    relatedProducts: ["bakelite-sheet", "esd-bakelite-sheet", "fr4-epoxy-sheet"],
+    relatedProducts: ["bakelite-sheet", "esd-bakelite-sheet", "g10-epoxy-sheet"],
   },
 
   "bakelite-sheet": {
@@ -335,7 +380,7 @@ export const products: Record<string, Product> = {
       "Cost-effective for diverse applications",
       "Good machinability and fabrication characteristics",
     ],
-    relatedProducts: ["paper-phenolic", "esd-bakelite-sheet", "fr4-epoxy-sheet"],
+    relatedProducts: ["paper-phenolic", "esd-bakelite-sheet", "g10-epoxy-sheet"],
   },
 
   "esd-bakelite-sheet": {
@@ -415,7 +460,7 @@ export const products: Record<string, Product> = {
       "Diamond-dotted variant prevents layer movement under fault conditions",
       "Compatible with transformer oils and epoxy resin systems",
     ],
-    relatedProducts: ["kraft-paper", "pressboard-3mm", "pre-compressed-pressboard"],
+    relatedProducts: ["kraft-paper", "pressboard", "pre-compressed-pressboard"],
   },
 
   "kraft-paper": {
@@ -453,7 +498,7 @@ export const products: Record<string, Product> = {
       "Low moisture content for improved insulation reliability",
       "Available in custom slit widths for specific winding requirements",
     ],
-    relatedProducts: ["presspaper", "pressboard-3mm", "pre-compressed-pressboard"],
+    relatedProducts: ["presspaper", "pressboard", "pre-compressed-pressboard"],
   },
 
   /* ===================== FRP PRODUCTS ===================== */
@@ -1150,7 +1195,7 @@ export const products: Record<string, Product> = {
       "Manufactured to custom drawings and specifications",
       "Suitable for both indoor and outdoor installations",
     ],
-    relatedProducts: ["fr4-epoxy-sheet", "g10-epoxy-sheet", "custom-gaskets"],
+    relatedProducts: ["esd-epoxy-sheet", "g10-epoxy-sheet", "custom-gaskets"],
   },
 
   "crepe-paper-range": {
@@ -1186,7 +1231,7 @@ export const products: Record<string, Product> = {
       "Multiple variants for different insulation system requirements",
       "Compatible with standard transformer oil insulation systems",
     ],
-    relatedProducts: ["kraft-paper", "presspaper", "pressboard-3mm"],
+    relatedProducts: ["kraft-paper", "presspaper", "pressboard"],
   },
 
   "nomex-paper": {
@@ -1333,7 +1378,7 @@ export const products: Record<string, Product> = {
       "Single-source solution from raw material to finished part",
       "Reduces in-house cutting, machining, and material wastage",
     ],
-    relatedProducts: ["transformer-insulation-kits", "fr4-epoxy-sheet", "ptfe-sheet"],
+    relatedProducts: ["transformer-insulation-kits", "g10-epoxy-sheet", "ptfe-sheet"],
   },
 };
 
@@ -1350,63 +1395,15 @@ export const productCategories = [
 ];
 
 export const featuredProducts = [
-  // "pressboard-3mm",
+  "pressboard",
   "pre-compressed-pressboard",
-  "fr4-epoxy-sheet",
+  "transformer-insulation-kits",
+  "moulded-pressboard-components",
   "g10-epoxy-sheet",
   "paper-phenolic",
   "kraft-paper",
-  "frp-tubes",
   "mica-sheets",
 ];
-
-// Product image mapping - maps product IDs to curated image paths in /public/products
-export const productImages: Record<string, string> = {
-  // "pressboard-3mm": "/products/pressboardsheet-2.jpg",
-  "pre-compressed-pressboard": "/products/precompressed-pressboard.jpg",
-  "transformer-insulation-kits": "/products/transformer-insulation-kits.png",
-  "moulded-pressboard-components": "/products/mouldable-press-boards.jpg",
-  // "fr4-epoxy-sheet": "/products/fr4-fiberglass-sheet-color-options.jpg",
-  "g10-epoxy-sheet": "/products/epoxy-glass-fabric-570x400.jpg",
-  "esd-epoxy-sheet": "/products/fr4-fiberglass-sheet-color-options.jpg",
-  "paper-phenolic": "/products/hylam-sheets-1.jpg",
-  "bakelite-sheet": "/products/bakelite-sheets.jpg",
-  "esd-bakelite-sheet": "/products/bakelite-sheets.jpg",
-  presspaper: "/products/electrical-grade-press-paper.webp",
-  "kraft-paper": "/products/electrical-grade-kraft-paper.jpg",
-  "frp-tubes": "/products/fiberglass-tube-2-5mm-500x500.webp",
-  "frp-rods": "/products/frp-components-500x500.webp",
-  "frp-threaded-rods": "/products/fgthreaded-2.jpg",
-  "frp-components": "/products/frp-components-500x500.webp",
-  "mica-sheets": "/products/mica-natural-phlogopite-sheets.jpg",
-  "mica-tape": "/products/Resin-Rich-Glass-Mica-Tape.jpg",
-  "polycarbonate-sheet": "/products/pressboardsheet-2-570x400.jpg",
-  "acrylic-sheet": "/products/pressboardsheet-2-570x400.jpg",
-  "delrin-sheet": "/products/delrin-sheets.webp",
-  "pp-sheet": "/products/pressboardsheet-2-570x400.jpg",
-  "nylon-sheet-rod": "/products/pressboardsheet-2-570x400.jpg",
-  "peek-sheet-rod": "/products/pressboardsheet-2-570x400.jpg",
-  "ptfe-sheet": "/products/ptfe-sheet-virgin-500x500.webp",
-  "ptfe-cloth-non-adhesive": "/products/non-adhesive-teflon-cloth.png",
-  "ptfe-cloth-adhesive": "/products/ptfe-cloth-adhesive-500x500.webp",
-  "glass-fibre-tapes": "/products/fibre-glass-tapes.jpg",
-  "adhesive-tapes": "/products/adhesive-tapes.jpg",
-  "cork-sheets": "/products/corksheets.jpg",
-  "epoxy-cast-insulators": "/products/33kv-epoxy-cast-insulator-546.jpg",
-  "crepe-paper-range": "/products/crepe-paper-tubes-1.jpg",
-  "nomex-paper": "/products/nomex-paper-aramid-paper-500x500.webp",
-  "polyester-film": "/products/electrical-insulation-polyester-film.jpg",
-  "syndanio-sheets": "/products/SYNDANIO-SHEET.jpeg",
-  "custom-gaskets": "/products/custom-gaskets.jpg",
-};
-
-// Fallback image for products without specific images
-export const defaultProductImage = "/products/pressboardsheet-2-570x400.jpg";
-
-// Get product image with fallback
-export function getProductImage(productId: string): string {
-  return productImages[productId] || defaultProductImage;
-}
 
 // Alias kept for backwards compatibility with existing page imports
 export const allProducts: Record<string, Product> = products;

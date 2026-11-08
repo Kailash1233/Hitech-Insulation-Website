@@ -1,469 +1,3 @@
-// "use client";
-
-// import { useState } from "react";
-// import { Navigation } from "@/components/navigation";
-// import { Footer } from "@/components/footer";
-// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-// import { Button } from "@/components/ui/button";
-// import { Input } from "@/components/ui/input";
-// import { Textarea } from "@/components/ui/textarea";
-// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-// import { Mail, Phone, MapPin, Clock, ArrowRight } from "lucide-react";
-
-// export default function ContactPage() {
-//   const [formData, setFormData] = useState({
-//     name: "",
-//     company: "",
-//     email: "",
-//     phone: "",
-//     product: "",
-//     requirements: "",
-//   });
-
-//   const handleSubmit = (event: React.FormEvent) => {
-//     event.preventDefault();
-//     alert("Thank you! Our team will contact you within 24 hours.");
-//     setFormData({
-//       name: "",
-//       company: "",
-//       email: "",
-//       phone: "",
-//       product: "",
-//       requirements: "",
-//     });
-//   };
-
-//   return (
-//     <div className="min-h-screen bg-white">
-//       <Navigation />
-
-//       <section className="pt-32 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white text-center">
-//         <div className="max-w-4xl mx-auto space-y-6">
-//           <p className="text-sm font-semibold text-blue-600 uppercase tracking-[0.4em]">
-//             Contact Us
-//           </p>
-//           <h1 className="font-display text-4xl sm:text-5xl font-bold text-gray-900">
-//             Talk To Our Engineering & Sales Team
-//           </h1>
-//           <p className="text-lg text-gray-600">
-//             Send us your drawings, specifications, or requirement summary. We&apos;ll respond with technical guidance and pricing within 24 hours.
-//           </p>
-//         </div>
-//       </section>
-
-//       <section id="quote" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-//         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
-//           <Card className="border-2 border-gray-100 shadow-lg">
-//             <CardHeader>
-//               <CardTitle className="text-2xl text-gray-900">Request A Custom Quote</CardTitle>
-//               <p className="text-sm text-gray-500">
-//                 Provide as much detail as possible-materials, dimensions, voltage class, quantity, delivery timelines.
-//               </p>
-//             </CardHeader>
-//             <CardContent>
-//               <form onSubmit={handleSubmit} className="space-y-6">
-//                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-//                   <div>
-//                     <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
-//                     <Input
-//                       required
-//                       value={formData.name}
-//                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-//                       placeholder="Your name"
-//                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
-//                     />
-//                   </div>
-//                   <div>
-//                     <label className="block text-sm font-semibold text-gray-700 mb-2">Company *</label>
-//                     <Input
-//                       required
-//                       value={formData.company}
-//                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-//                       placeholder="Manufacturer / OEM"
-//                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
-//                     />
-//                   </div>
-//                 </div>
-
-//                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-//                   <div>
-//                     <label className="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
-//                     <Input
-//                       required
-//                       type="email"
-//                       value={formData.email}
-//                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-//                       placeholder="you@company.com"
-//                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
-//                     />
-//                   </div>
-//                   <div>
-//                     <label className="block text-sm font-semibold text-gray-700 mb-2">Phone *</label>
-//                     <Input
-//                       required
-//                       type="tel"
-//                       value={formData.phone}
-//                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-//                       placeholder="+91 XXXXX XXXXX"
-//                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
-//                     />
-//                   </div>
-//                 </div>
-
-//                 <div>
-//                   <label className="block text-sm font-semibold text-gray-700 mb-2">Product Category *</label>
-//                   <Select
-//                     value={formData.product}
-//                     onValueChange={(value) => setFormData({ ...formData, product: value })}
-//                   >
-//                     <SelectTrigger className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600">
-//                       <SelectValue placeholder="Select a category" />
-//                     </SelectTrigger>
-//                     <SelectContent>
-//                       <SelectItem value="pressboard">Pressboard & Kraft Paper</SelectItem>
-//                       <SelectItem value="epoxy">Epoxy / FR4 / G10</SelectItem>
-//                       <SelectItem value="phenolic">Bakelite / Phenolic</SelectItem>
-//                       <SelectItem value="ptfe">PTFE / Engineering Plastics</SelectItem>
-//                       <SelectItem value="thermal">Thermal Insulation</SelectItem>
-//                       <SelectItem value="custom">Custom Assemblies</SelectItem>
-//                     </SelectContent>
-//                   </Select>
-//                 </div>
-
-//                 <div>
-//                   <label className="block text-sm font-semibold text-gray-700 mb-2">Specifications *</label>
-//                   <Textarea
-//                     required
-//                     rows={6}
-//                     value={formData.requirements}
-//                     onChange={(e) => setFormData({ ...formData, requirements: e.target.value })}
-//                     placeholder="Dimensions, thickness, material, drawings link, voltage class, quantity..."
-//                     className="border-gray-200 focus:border-blue-600 focus:ring-blue-600"
-//                   />
-//                 </div>
-
-//                 <Button
-//                   type="submit"
-//                   size="lg"
-//                   className="w-full bg-blue-600 hover:bg-blue-700 h-14 text-base font-semibold"
-//                 >
-//                   Submit Request <ArrowRight className="ml-2 h-5 w-5" />
-//                 </Button>
-//               </form>
-//             </CardContent>
-//           </Card>
-
-//           <div className="space-y-6">
-//             <Card className="border-2 border-gray-100">
-//               <CardHeader>
-//                 <CardTitle className="text-2xl text-gray-900">Reach Us Directly</CardTitle>
-//               </CardHeader>
-//               <CardContent className="space-y-5 text-gray-600">
-//                 <div className="flex items-start gap-4">
-//                   <Mail className="h-5 w-5 text-blue-600 mt-1" />
-//                   <div>
-//                     <p className="text-sm font-semibold text-gray-500 uppercase">Email</p>
-//                     <a href="mailto:srk@hitechinsulation.in" className="text-lg text-blue-700 font-semibold">
-//                       srk@hitechinsulation.in
-//                     </a>
-//                     <p className="text-sm text-gray-500">Send drawings, BOM, or RFQ files</p>
-//                   </div>
-//                 </div>
-
-//                 <div className="flex items-start gap-4">
-//                   <Phone className="h-5 w-5 text-blue-600 mt-1" />
-//                   <div>
-//                     <p className="text-sm font-semibold text-gray-500 uppercase">Phone</p>
-//                     <p className="text-lg text-gray-900 font-semibold">+91 90032 88146</p>
-//                     <p className="text-sm text-gray-500">Mon - Sat • 9:30 AM to 6:30 PM IST</p>
-//                   </div>
-//                 </div>
-
-//                 <div className="flex items-start gap-4">
-//                   <MapPin className="h-5 w-5 text-blue-600 mt-1" />
-//                   <div>
-//                     <p className="text-sm font-semibold text-gray-500 uppercase">Factory</p>
-//                     <p className="text-lg text-gray-900 font-semibold">Chennai, Tamil Nadu</p>
-//                     <p className="text-sm text-gray-500">
-//                       7/4 Industrial Estate, Guindy<br />Chennai - 600032, India
-//                     </p>
-//                   </div>
-//                 </div>
-
-//                 <div className="flex items-start gap-4">
-//                   <Clock className="h-5 w-5 text-blue-600 mt-1" />
-//                   <div>
-//                     <p className="text-sm font-semibold text-gray-500 uppercase">Response Time</p>
-//                     <p className="text-lg text-gray-900 font-semibold">24 hours</p>
-//                     <p className="text-sm text-gray-500">Faster for urgent shutdowns</p>
-//                   </div>
-//                 </div>
-//               </CardContent>
-//             </Card>
-
-//             <Card className="border-2 border-blue-100 bg-blue-50">
-//               <CardContent className="space-y-4 py-6">
-//                 <h3 className="text-xl font-semibold text-blue-900">
-//                   Ready With Drawings Or BOM?
-//                 </h3>
-//                 <p className="text-blue-800 text-sm">
-//                   Email us CAD/PDF files and mention voltage class, insulation level, and delivery timelines.
-//                   We&apos;ll revert with a manufacturability review before quoting.
-//                 </p>
-//                 <Button
-//                   asChild
-//                   variant="secondary"
-//                   className="bg-white text-blue-900 hover:bg-gray-100 w-full"
-//                 >
-//                   <a href="mailto:srk@hitechinsulation.in?subject=RFQ%20-%20Hitech%20Insulation">
-//                     Send Files Via Email
-//                   </a>
-//                 </Button>
-//               </CardContent>
-//             </Card>
-//           </div>
-//         </div>
-//       </section>
-
-//       <Footer />
-//     </div>
-//   );
-// }
-
-// "use client";
-
-// import { Navigation } from "@/components/navigation";
-// import { Footer } from "@/components/footer";
-// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-// import { Button } from "@/components/ui/button";
-// import { Input } from "@/components/ui/input";
-// import { Textarea } from "@/components/ui/textarea";
-// import { Mail, Phone, MapPin, Clock } from "lucide-react";
-
-// export default function ContactPage() {
-//   return (
-//     <div className="min-h-screen bg-white">
-//       <Navigation />
-
-//       {/* Hero */}
-//       <section className="pt-32 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white text-center">
-//         <div className="max-w-4xl mx-auto space-y-6">
-//           <p className="text-sm font-semibold text-blue-600 uppercase tracking-[0.4em]">
-//             Contact Us
-//           </p>
-//           <h1 className="font-display text-4xl sm:text-5xl font-bold text-gray-900">
-//             Talk To Our Engineering & Sales Team
-//           </h1>
-//           <p className="text-lg text-gray-600">
-//             Share your drawings, specifications, or requirement summary. Our team will respond with
-//             technical guidance and pricing within 24 hours.
-//           </p>
-//         </div>
-//       </section>
-
-//       {/* Contact Section */}
-//       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-//         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
-//           {/* FORM */}
-//           <Card className="border-2 border-gray-100 shadow-lg">
-//             <CardHeader>
-//               <CardTitle className="text-2xl text-gray-900">Request A Custom Quote</CardTitle>
-//               <p className="text-sm text-gray-500">
-//                 Mention materials, dimensions, voltage class, quantity, and delivery timelines.
-//               </p>
-//             </CardHeader>
-
-//             <CardContent>
-//               <form action="https://formspree.io/f/xwpgqnay" method="POST" className="space-y-6">
-//                 {/* Name + Company */}
-//                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-//                   <div>
-//                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-//                       Full Name *
-//                     </label>
-//                     <Input
-//                       name="name"
-//                       required
-//                       placeholder="Your full name"
-//                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
-//                     />
-//                   </div>
-
-//                   <div>
-//                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-//                       Company Name *
-//                     </label>
-//                     <Input
-//                       name="company"
-//                       required
-//                       placeholder="Your company name"
-//                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
-//                     />
-//                   </div>
-//                 </div>
-
-//                 {/* Email + Phone */}
-//                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-//                   <div>
-//                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-//                       Email Address *
-//                     </label>
-//                     <Input
-//                       type="email"
-//                       name="email"
-//                       required
-//                       placeholder="you@company.com"
-//                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
-//                     />
-//                   </div>
-
-//                   <div>
-//                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-//                       Phone Number *
-//                     </label>
-//                     <Input
-//                       type="tel"
-//                       name="phone"
-//                       required
-//                       placeholder="+91 XXXXX XXXXX"
-//                       className="h-12 border-gray-200 focus:border-blue-600 focus:ring-blue-600"
-//                     />
-//                   </div>
-//                 </div>
-
-//                 {/* Product Selection */}
-//                 <div>
-//                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-//                     Product Required *
-//                   </label>
-//                   <select
-//                     name="product_required"
-//                     required
-//                     className="w-full h-12 rounded-md border border-gray-200 px-3 text-sm focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
-//                   >
-//                     <option value="">Select a product</option>
-//                     <option value="Pressboard Components">
-//                       Pressboard Components (Manufacturer)
-//                     </option>
-//                     <option value="Pressboard Sheets">Pressboard Sheets & Machined Parts</option>
-//                     <option value="Mica Sheets / Mica Tapes">Mica Sheets / Mica Tapes</option>
-//                     <option value="Glass Fibre Tapes">
-//                       Glass Fibre / Polyester / Cotton Tapes
-//                     </option>
-//                     <option value="Crepe Paper">Crepe Paper (Electrical Grade)</option>
-//                     <option value="Hylam Sheets">Hylam Sheets</option>
-//                     <option value="Kapton Tape">Kapton Tape</option>
-//                     <option value="Fibre Glass Adhesive Tapes">Fibre Glass Adhesive Tapes</option>
-//                     <option value="Polyester Adhesive Tapes">Polyester Adhesive Tapes</option>
-//                     <option value="Epoxy Cast Insulators">Epoxy Cast Insulators</option>
-//                     <option value="Other">Other (Specify Below)</option>
-//                   </select>
-//                 </div>
-
-//                 {/* Other Product */}
-//                 <div>
-//                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-//                     If Other, specify product details
-//                   </label>
-//                   <Textarea
-//                     name="other_product_details"
-//                     rows={3}
-//                     placeholder="FRP Rods, Syndanio Sheets, Epoxy Bushings, Cork Sheets, Custom insulation components..."
-//                     className="border-gray-200 focus:border-blue-600 focus:ring-blue-600 resize-none"
-//                   />
-//                 </div>
-
-//                 {/* Requirements */}
-//                 <div>
-//                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-//                     Specifications & Requirements *
-//                   </label>
-//                   <Textarea
-//                     name="requirements"
-//                     required
-//                     rows={6}
-//                     placeholder="Dimensions, thickness, voltage class, drawings link, quantity, delivery timeline..."
-//                     className="border-gray-200 focus:border-blue-600 focus:ring-blue-600 resize-none"
-//                   />
-//                 </div>
-
-//                 {/* Hidden meta */}
-//                 <input type="hidden" name="source" value="Contact Page Form" />
-
-//                 <Button
-//                   type="submit"
-//                   size="lg"
-//                   className="w-full bg-blue-600 hover:bg-blue-700 h-14 text-base font-semibold"
-//                 >
-//                   Submit Request
-//                 </Button>
-//               </form>
-//             </CardContent>
-//           </Card>
-
-//           {/* CONTACT DETAILS */}
-//           <div className="space-y-6">
-//             <Card className="border-2 border-gray-100">
-//               <CardHeader>
-//                 <CardTitle className="text-2xl text-gray-900">Reach Us Directly</CardTitle>
-//               </CardHeader>
-
-//               <CardContent className="space-y-5 text-gray-600">
-//                 <div className="flex items-start gap-4">
-//                   <Mail className="h-5 w-5 text-blue-600 mt-1" />
-//                   <div>
-//                     <p className="text-sm font-semibold text-gray-500 uppercase">Email</p>
-//                     <a
-//                       href="mailto:srk@hitechinsulation.in"
-//                       className="text-lg text-blue-700 font-semibold"
-//                     >
-//                       srk@hitechinsulation.in
-//                     </a>
-//                     <p className="text-sm text-gray-500">Send drawings, BOM, or RFQ files</p>
-//                   </div>
-//                 </div>
-
-//                 <div className="flex items-start gap-4">
-//                   <Phone className="h-5 w-5 text-blue-600 mt-1" />
-//                   <div>
-//                     <p className="text-sm font-semibold text-gray-500 uppercase">Phone</p>
-//                     <p className="text-lg text-gray-900 font-semibold">+91 90032 88146</p>
-//                     <p className="text-sm text-gray-500">Mon – Sat • 9:30 AM to 6:30 PM IST</p>
-//                   </div>
-//                 </div>
-
-//                 <div className="flex items-start gap-4">
-//                   <MapPin className="h-5 w-5 text-blue-600 mt-1" />
-//                   <div>
-//                     <p className="text-sm font-semibold text-gray-500 uppercase">Factory</p>
-//                     <p className="text-lg text-gray-900 font-semibold">Chennai, Tamil Nadu</p>
-//                     <p className="text-sm text-gray-500">
-//                       7/4 Industrial Estate, Guindy
-//                       <br />
-//                       Chennai – 600032, India
-//                     </p>
-//                   </div>
-//                 </div>
-
-//                 <div className="flex items-start gap-4">
-//                   <Clock className="h-5 w-5 text-blue-600 mt-1" />
-//                   <div>
-//                     <p className="text-sm font-semibold text-gray-500 uppercase">Response Time</p>
-//                     <p className="text-lg text-gray-900 font-semibold">Within 24 hours</p>
-//                     <p className="text-sm text-gray-500">Faster for urgent shutdowns</p>
-//                   </div>
-//                 </div>
-//               </CardContent>
-//             </Card>
-//           </div>
-//         </div>
-//       </section>
-
-//       <Footer />
-//     </div>
-//   );
-// }
-
 "use client";
 
 import { useState } from "react";
@@ -475,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Clock, CheckCircle } from "lucide-react";
 import Image from "next/image";
+import { SITE } from "@/lib/site";
 
 export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -635,10 +170,11 @@ export default function ContactPage() {
                       className="w-full h-12 rounded-md border border-gray-200 px-3 text-sm focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
                     >
                       <option value="">Select a product</option>
-                      <option value="Pressboard Components">
-                        Pressboard Components (Manufacturer)
-                      </option>
+                      <option value="Pre-Compressed Pressboard">Pre-Compressed Pressboard</option>
                       <option value="Pressboard Sheets">Pressboard Sheets & Machined Parts</option>
+                      <option value="Pressboard Components">
+                        Pressboard Components / Transformer Insulation Kits
+                      </option>
                       <option value="Mica Sheets / Mica Tapes">Mica Sheets / Mica Tapes</option>
                       <option value="Glass Fibre Tapes">
                         Glass Fibre / Polyester / Cotton Tapes
@@ -705,11 +241,8 @@ export default function ContactPage() {
                   <Mail className="h-5 w-5 text-blue-600 mt-1" />
                   <div>
                     <p className="text-sm font-semibold text-gray-500 uppercase">Email</p>
-                    <a
-                      href="mailto:srk@hitechinsulation.in"
-                      className="text-lg text-blue-700 font-semibold"
-                    >
-                      srk@hitechinsulation.in
+                    <a href={`mailto:${SITE.email}`} className="text-lg text-blue-700 font-semibold">
+                      {SITE.email}
                     </a>
                     <p className="text-sm text-gray-500">Send drawings, BOM, or RFQ files</p>
                   </div>
@@ -719,8 +252,20 @@ export default function ContactPage() {
                   <Phone className="h-5 w-5 text-blue-600 mt-1" />
                   <div>
                     <p className="text-sm font-semibold text-gray-500 uppercase">Phone</p>
-                    <p className="text-lg text-gray-900 font-semibold">+91 90032 88146</p>
-                    <p className="text-sm text-gray-500">Mon – Sat • 9:30 AM to 6:30 PM IST</p>
+                    <a href={SITE.phoneHref} className="text-lg text-blue-700 font-semibold">
+                      {SITE.phoneDisplay}
+                    </a>
+                    <p className="text-sm text-gray-500">
+                      {SITE.hours.days} • {SITE.hours.display} •{" "}
+                      <a
+                        href={SITE.whatsappHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-700 underline"
+                      >
+                        WhatsApp
+                      </a>
+                    </p>
                   </div>
                 </div>
 
@@ -728,12 +273,20 @@ export default function ContactPage() {
                   <MapPin className="h-5 w-5 text-blue-600 mt-1" />
                   <div>
                     <p className="text-sm font-semibold text-gray-500 uppercase">Factory</p>
-                    <p className="text-lg text-gray-900 font-semibold">Chennai, Tamil Nadu</p>
-                    <p className="text-sm text-gray-500">
-                      7/4 Industrial Estate, Guindy
+                    <p className="text-lg text-gray-900 font-semibold">Guindy, Chennai, Tamil Nadu</p>
+                    <address className="text-sm text-gray-500 not-italic">
+                      {SITE.name}, {SITE.address.street}
                       <br />
-                      Chennai – 600032, India
-                    </p>
+                      {SITE.address.locality} – {SITE.address.postalCode}, {SITE.address.region}, India
+                    </address>
+                    <a
+                      href={SITE.profiles.googleBusiness}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-blue-700 underline"
+                    >
+                      Get directions on Google Maps
+                    </a>
                   </div>
                 </div>
 

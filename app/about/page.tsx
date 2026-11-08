@@ -9,33 +9,6 @@ import Link from "next/link";
 import { Location } from "@/components/location";
 import Image from "next/image";
 
-// const milestones = [
-//   {
-//     year: "1977",
-//     title: "Founded in Chennai",
-//     description:
-//       "Mr. Radhakrushnun starts Hitech Insulation with a mission to build insulation components that never fail on the field.",
-//   },
-//   {
-//     year: "1990s",
-//     title: "Manufacturing Expansion",
-//     description:
-//       "Invested in CNC cutting, epoxy sheet fabrication, and precision pressboard machining to support transformer OEMs.",
-//   },
-//   {
-//     year: "2000s",
-//     title: "Global Partnerships",
-//     description:
-//       "Products approved by global brands including Hitachi, Toyota, Nike, ABB, Siemens, and Schneider Electric.",
-//   },
-//   {
-//     year: "Today",
-//     title: "Custom Engineering Hub",
-//     description:
-//       "End-to-end insulation engineering partner serving Indian and international transformer, motor, and switchgear manufacturers.",
-//   },
-// ];
-
 const milestones = [
   {
     year: "1974",

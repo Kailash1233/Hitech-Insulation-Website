@@ -25,128 +25,49 @@ import { products, featuredProducts } from "@/lib/products";
 import { getProductImage } from "@/lib/product-images";
 import { Navigation } from "@/components/navigation";
 import { QuoteForm } from "@/components/forms/QuoteForm";
+import { faqJsonLd } from "@/lib/seo";
+import { SITE, fullAddress, yearsInBusiness } from "@/lib/site";
 
-// ── FAQ structured data ───────────────────────────────────────────────────────
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Where is Hitech Insulation located?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Hitech Insulation is based in Chennai, Tamil Nadu, India. We manufacture and supply electrical insulation products to customers across Tamil Nadu, Maharashtra, Gujarat, Karnataka, Andhra Pradesh, and all of India.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What electrical insulation products does Hitech Insulation manufacture?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Hitech Insulation manufactures pressboard sheets, pre-compressed pressboard, transformer insulation kits, moulded pressboard components, FR4 and G10/G11 epoxy sheets, hylam and paper phenolic laminates, bakelite sheets, electrical grade kraft paper, FRP tubes and rods, mica sheets and tapes, PTFE sheets, engineering plastics (Delrin, PEEK, Nylon, Polycarbonate), Nomex paper, crepe paper, and custom fabricated insulation components.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is Hitech Insulation ISO certified?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, Hitech Insulation operates an ISO-certified manufacturing facility in Chennai, Tamil Nadu. All electrical insulation products are manufactured under quality-controlled processes to meet stringent performance and dimensional standards.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How long has Hitech Insulation been manufacturing electrical insulation?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Hitech Insulation was founded in 1977 by Mr. Radhakrushnun in Chennai, Tamil Nadu. With over 47 years of manufacturing experience, we are one of India's most established electrical insulation manufacturers.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do you supply pressboard for transformer manufacturers in India?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Hitech Insulation is a leading pressboard manufacturer in India. We supply electrical grade pressboard sheets, pre-compressed pressboard, moulded pressboard components, and complete transformer insulation component kits to transformer manufacturers across India.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Can Hitech Insulation manufacture custom insulation components?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. We offer custom fabrication of insulation components from any material we supply, including CNC machining, laser cutting, water jet cutting, and die stamping. We work from customer drawings and supply components to tolerance ±0.05mm.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How quickly can I get a quote from Hitech Insulation?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Our engineering team in Chennai provides quotes within 24 hours of receiving your requirements. Send specifications, drawings, or BOMs to srk@hitechinsulation.in or use the quote form on our website.",
-      },
-    },
-  ],
-};
-
-// ── Review / aggregate rating JSON-LD ────────────────────────────────────────
-const reviewJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "Electrical Insulation Products",
-  brand: { "@type": "Brand", name: "Hitech Insulation" },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "138",
-    bestRating: "5",
+// ── FAQs (rendered on the page AND emitted as FAQPage schema for AEO / AI answers) ──
+const homeFaqs = [
+  {
+    q: "Where is Hitech Insulation located?",
+    a: `Hitech Insulation is at ${fullAddress}, with a second pressboard component unit at Kundrathur, Chennai. We supply customers across Tamil Nadu, South India, North India and overseas.`,
   },
-  review: [
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5" },
-      author: { "@type": "Person", name: "Rajesh Kumar" },
-      reviewBody:
-        "Hitech Insulation has been our trusted pressboard supplier for over 15 years. Quality is consistently excellent and they always deliver on time.",
-    },
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5" },
-      author: { "@type": "Person", name: "Priya Sharma" },
-      reviewBody:
-        "The custom insulation fabrication service saved us weeks of production time. Their Chennai engineering team understood our transformer requirements perfectly.",
-    },
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5" },
-      author: { "@type": "Person", name: "Amit Patel" },
-      reviewBody:
-        "Quality insulation materials, competitive pricing, and excellent technical support. Hitech Insulation is our first choice for all electrical insulation components in India.",
-    },
-  ],
-};
-
-// const partners = [
-//   { name: "Hitachi", src: "/partners/bhel.png" },
-//   { name: "Siemens", src: "/partners/schneider.png" },
-//   { name: "Schneider Electric", src: "/partners/schneider.png" },
-//   { name: "Toyota", src: "/partners/southern-railways.jpg" },
-//   { name: "ABB", src: "/partners/toshiba.png" },
-//   { name: "Nike", src: "/partners/nike.png" },
-// ];
+  {
+    q: "Who is the best pressboard manufacturer in Chennai?",
+    a: `Hitech Insulation in Guindy, Chennai has manufactured pressboard insulation since ${SITE.foundingYear}. We make electrical grade pressboard, pre-compressed pressboard, machined and moulded pressboard components and complete transformer insulation kits to customer drawings.`,
+  },
+  {
+    q: "What electrical insulation products does Hitech Insulation manufacture?",
+    a: "We manufacture and supply electrical grade pressboard, pre-compressed pressboard, transformer insulation kits, moulded pressboard components, G10/G11 and ESD epoxy sheets, hylam and paper phenolic laminates, bakelite sheets, presspaper and kraft paper, FRP tubes and rods, mica sheets and tapes, PTFE sheets and cloth, engineering plastics, Nomex paper, crepe paper and custom-fabricated insulation components.",
+  },
+  {
+    q: "Is Hitech Insulation ISO certified?",
+    a: "Yes. Hitech Insulation operates ISO-certified manufacturing in Chennai, Tamil Nadu. Every batch goes through dimensional and quality checks before dispatch.",
+  },
+  {
+    q: "Do you supply pressboard to North India and export customers?",
+    a: "Yes. Along with Tamil Nadu and South India, we supply pressboard and transformer insulation components to transformer manufacturers in Maharashtra, Gujarat, Delhi NCR, Uttar Pradesh, Punjab, Rajasthan, Madhya Pradesh and other states, and we accept export orders.",
+  },
+  {
+    q: "Can you manufacture custom insulation components?",
+    a: "Yes. We offer custom fabrication from any material we supply – CNC machining, cutting, punching and moulding – working from customer drawings, from prototype to production volume.",
+  },
+  {
+    q: "How quickly can I get a quote?",
+    a: `Our engineering team in Chennai quotes within 24 hours. Send specifications or drawings to ${SITE.email}, call ${SITE.phoneDisplay}, or use the quote form on this page.`,
+  },
+];
 
 // ─────────────────────────────────────────────────────────────────────────────
 export default function Home() {
+  const years = yearsInBusiness();
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(homeFaqs)) }}
       />
 
       <div className="min-h-screen">
@@ -178,12 +99,12 @@ export default function Home() {
                 <h1 className="text-4xl md:text-6xl font-light leading-tight">
                   Best Electrical Insulation
                   <br />
-                  <span className="font-semibold">Manufacturer in India</span>
+                  <span className="font-semibold">Manufacturer in Chennai</span>
                 </h1>
                 <p className="mt-4 text-base md:text-lg text-gray-200 max-w-lg leading-relaxed">
-                  Hitech Insulation - Chennai's trusted pressboard manufacturer and electrical
-                  insulation supplier since 1977. Serving transformer, motor &amp; switchgear
-                  manufacturers across India.
+                  Hitech Insulation – Chennai&apos;s trusted pressboard and pre-compressed
+                  pressboard manufacturer since 1977. Serving transformer, motor &amp; switchgear
+                  manufacturers across India and overseas.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-4">
                   <Link
@@ -193,16 +114,16 @@ export default function Home() {
                     Get a Quote
                   </Link>
                   <Link
-                    href="/products"
+                    href="/pressboard"
                     className="border border-white/30 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/10 transition"
                   >
-                    View Products
+                    Pressboard Range
                   </Link>
                 </div>
               </div>
               <div className="flex gap-10 mt-10 lg:mt-0 text-white">
                 <div>
-                  <div className="text-3xl font-semibold">47+</div>
+                  <div className="text-3xl font-semibold">{years}+</div>
                   <div className="text-sm opacity-80">Years of Experience</div>
                 </div>
                 <div>
@@ -217,35 +138,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* ── PARTNER LOGOS ────────────────────────────────────────── */}
-        {/* <section
-          aria-label="Trusted by leading electrical OEMs"
-          className="py-10 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100"
-        >
-          <div className="max-w-5xl mx-auto">
-            <p className="text-center text-xs font-semibold uppercase tracking-widest text-gray-400 mb-8">
-              Trusted by India's leading electrical manufacturers
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12">
-              {partners.map((p) => (
-                <div
-                  key={p.name}
-                  className="relative h-8 w-24 grayscale opacity-50 hover:opacity-80 hover:grayscale-0 transition-all"
-                >
-                  <Image
-                    src={p.src}
-                    alt={`${p.name} – Hitech Insulation customer`}
-                    fill
-                    className="object-contain"
-                    sizes="96px"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section> */}
 
         {/* ── WHY ENGINEERS CHOOSE HITECH ──────────────────────────── */}
         <section
@@ -370,8 +262,8 @@ export default function Home() {
                 Electrical Insulation Products
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                9 product families - pressboard, epoxy laminates, FRP, mica, PTFE, kraft paper, and
-                custom fabrication. Manufactured to micron-level precision in Chennai, India.
+                Pressboard, pre-compressed pressboard, epoxy laminates, FRP, mica, PTFE, kraft
+                paper, and custom fabrication. Manufactured to micron-level precision in Chennai, India.
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -447,7 +339,7 @@ export default function Home() {
                 Why Hitech is India's Best Insulation Manufacturer
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                47 years of electrical insulation manufacturing excellence from Chennai, Tamil Nadu.
+                {years} years of electrical insulation manufacturing excellence from Chennai, Tamil Nadu.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
@@ -459,7 +351,7 @@ export default function Home() {
                 },
                 {
                   icon: Award,
-                  title: "47 Years of Experience Since 1977",
+                  title: `${years} Years of Experience Since 1977`,
                   desc: "India's most experienced electrical insulation manufacturer based in Chennai, Tamil Nadu",
                 },
                 {
@@ -489,8 +381,8 @@ export default function Home() {
                 },
                 {
                   icon: Box,
-                  title: "Pan-India Delivery",
-                  desc: "Insulation products shipped across Tamil Nadu, Maharashtra, Gujarat, Karnataka, and all India",
+                  title: "Pan-India & Export Delivery",
+                  desc: "Shipped across Tamil Nadu, South India, North India and to export customers",
                 },
               ].map((b) => (
                 <div
@@ -533,7 +425,7 @@ export default function Home() {
                 Best Pressboard Manufacturer in India Since 1977
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                From Chennai, Tamil Nadu to customers across India - 47 years of precision
+                From Chennai, Tamil Nadu to customers across India – {years} years of precision
                 electrical insulation manufacturing.
               </p>
             </div>
@@ -672,32 +564,7 @@ export default function Home() {
               </p>
             </div>
             <div className="space-y-4">
-              {[
-                {
-                  q: "Where is Hitech Insulation located?",
-                  a: "Hitech Insulation is based in Chennai, Tamil Nadu, India. We manufacture and supply electrical insulation products to customers across Tamil Nadu, Maharashtra, Gujarat, Karnataka, Andhra Pradesh, and all of India.",
-                },
-                {
-                  q: "What electrical insulation products does Hitech Insulation manufacture?",
-                  a: "We manufacture pressboard sheets, pre-compressed pressboard, transformer insulation kits, moulded pressboard components, FR4 and G10/G11 epoxy sheets, hylam and paper phenolic laminates, bakelite sheets, electrical grade kraft paper, FRP tubes and rods, mica sheets and tapes, PTFE sheets, engineering plastics, Nomex paper, crepe paper, and custom fabricated insulation components.",
-                },
-                {
-                  q: "Is Hitech Insulation ISO certified?",
-                  a: "Yes. Hitech Insulation operates an ISO-certified manufacturing facility in Chennai, Tamil Nadu. All products are manufactured under quality-controlled processes to meet stringent performance and dimensional standards.",
-                },
-                {
-                  q: "Do you supply pressboard for transformer manufacturers in India?",
-                  a: "Yes. We are a leading pressboard manufacturer in India. We supply electrical grade pressboard sheets, pre-compressed pressboard, moulded pressboard components, and complete transformer insulation kits to transformer manufacturers across India.",
-                },
-                {
-                  q: "Can you manufacture custom insulation components?",
-                  a: "Yes. We offer custom fabrication from any material we supply - CNC machining, laser cutting, water jet cutting, and die stamping. We work from customer drawings to tolerance ±0.05mm. Prototype to production volume.",
-                },
-                {
-                  q: "How quickly can I get a quote?",
-                  a: "Our engineering team in Chennai provides quotes within 24 hours. Send specifications or drawings to srk@hitechinsulation.in or use the quote form on this page.",
-                },
-              ].map((item) => (
+              {homeFaqs.map((item) => (
                 <details
                   key={item.q}
                   className="group bg-white border-2 border-gray-100 rounded-xl overflow-hidden"
@@ -763,13 +630,16 @@ export default function Home() {
                         </div>
                       </div>
                     </a>
-                    <div className="flex items-center justify-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-200">
+                    <a
+                      href={SITE.phoneHref}
+                      className="flex items-center justify-center gap-3 p-4 bg-gray-50 hover:bg-gray-100 rounded-xl transition-colors border border-gray-200"
+                    >
                       <Phone className="h-5 w-5 text-blue-600" />
                       <div className="text-left">
-                        <div className="text-xs text-gray-500 font-medium">Response Time</div>
-                        <div className="text-sm text-gray-900 font-semibold">Within 24 Hours</div>
+                        <div className="text-xs text-gray-500 font-medium">Call / WhatsApp</div>
+                        <div className="text-sm text-gray-900 font-semibold">{SITE.phoneDisplay}</div>
                       </div>
-                    </div>
+                    </a>
                   </div>
                 </div>
               </CardContent>
