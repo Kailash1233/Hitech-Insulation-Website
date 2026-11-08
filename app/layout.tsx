@@ -4,6 +4,7 @@ import { Inter, Poppins } from "next/font/google";
 import { getSeoMetadata, siteJsonLd } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import ProgressBar from "@/components/ProgressBar";
+import { WhatsappFloatingButton } from "@/components/whatsapp-button";
 import Script from "next/script";
 
 const inter = Inter({
@@ -120,6 +121,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </noscript>
         <ProgressBar />
         {children}
+        <WhatsappFloatingButton />
       </body>
     </html>
   );

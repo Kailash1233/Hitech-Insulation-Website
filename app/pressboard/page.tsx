@@ -22,6 +22,7 @@ import { products } from "@/lib/products";
 import { getProductImage } from "@/lib/product-images";
 import { breadcrumbJsonLd, faqJsonLd, getSeoMetadata } from "@/lib/seo";
 import { SITE, yearsInBusiness } from "@/lib/site";
+import { WhatsappEnquiryButton } from "@/components/whatsapp-button";
 
 export const metadata: Metadata = getSeoMetadata("pressboard");
 
@@ -523,6 +524,7 @@ export default function PressboardPage() {
             <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700">
               <Link href="/contact">Request a Quote</Link>
             </Button>
+            <WhatsappEnquiryButton productName="Pressboard / Pre-Compressed Pressboard" path="/pressboard" />
             <Button asChild size="lg" variant="outline">
               <a href={`mailto:${SITE.email}?subject=${encodeURIComponent("Pressboard enquiry")}`}>
                 <Mail className="mr-2 h-4 w-4" />
