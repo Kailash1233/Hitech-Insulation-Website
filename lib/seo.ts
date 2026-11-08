@@ -1,344 +1,367 @@
 import type { Metadata } from "next";
-import { products } from "./products";
+import { products, type Product } from "./products";
+import { getProductImage } from "./product-images";
+import { SITE, sameAsLinks, yearsInBusiness } from "./site";
 
-const BASE_URL = "https://www.hitechinsulation.in";
+const BASE_URL = SITE.url;
+const BRAND = SITE.name;
 
-const BRAND = "Hitech Insulation";
-const FOUNDED = "1977";
-
-const CORE_KEYWORDS = [
-  // Brand + location
-  "Hitech Insulation Chennai",
-  "Hitech Insulation Tamil Nadu",
-  "hitech insulation india",
-
-  // Best-in-class head terms
-  "best electrical insulation company india",
-  "best electrical insulation manufacturer chennai",
-  "electrical insulation manufacturer india",
-  "electrical insulation supplier chennai",
-  "electrical insulation company tamil nadu",
-
-  // Pressboard — primary manufacturing focus
-  "pressboard manufacturer india",
-  "best pressboard manufacturer india",
-  "pressboard manufacturer chennai",
-  "pressboard supplier tamil nadu",
-  "electrical grade pressboard india",
-  "transformer pressboard manufacturer india",
-  "pre compressed pressboard india",
-
-  // Transformer insulation
-  "transformer insulation manufacturer india",
-  "transformer insulation supplier chennai",
-  "transformer insulation components india",
-  "transformer insulation kits manufacturer india",
-
-  // Supporting categories
-  "epoxy sheet supplier india",
-  "FR4 sheet manufacturer india",
-  "phenolic laminate supplier india",
-  "hylam sheet supplier india",
-  "FRP components manufacturer india",
-  "mica sheet supplier india",
-  "kraft paper transformer insulation india",
-  "PTFE sheet supplier india",
-];
-
-type PageKey = "home" | "products" | "about" | "industries" | "contact" | "productDetails";
+type PageKey = "home" | "products" | "pressboard" | "about" | "industries" | "contact";
 
 interface SeoPage {
   title: string;
   description: string;
   keywords: string[];
+  path: string;
   ogImage?: string;
-  canonical?: string;
 }
 
+/**
+ * Titles are kept close to ~60 characters and descriptions to ~155 characters so Google
+ * shows them in full. Each page targets ONE primary keyword cluster to avoid cannibalisation:
+ *   home        → electrical insulation manufacturer Chennai / Tamil Nadu (brand + head term)
+ *   pressboard  → pressboard / pre-compressed pressboard manufacturer (main money keyword)
+ *   products    → electrical insulation products / materials catalogue
+ *   industries  → transformer / motor / switchgear insulation supplier
+ */
 const pages: Record<PageKey, SeoPage> = {
   home: {
-    title:
-      "Hitech Insulation | Best Electrical Insulation Manufacturer in Chennai, India Since 1977",
-    description:
-      "Hitech Insulation is India's trusted electrical insulation manufacturer based in Chennai, Tamil Nadu. Supplying pressboard, pre-compressed pressboard, transformer insulation kits, FR4 epoxy sheets, kraft paper, mica sheets, FRP components, and PTFE products since 1977. ISO-certified. 24-hour quote turnaround. Serving transformer, motor, and switchgear manufacturers across India.",
+    title: "Pressboard & Electrical Insulation Manufacturer Chennai | Hitech",
+    description: `Electrical insulation manufacturer in Guindy, Chennai since ${SITE.foundingYear}. Pressboard, pre-compressed pressboard & transformer insulation kits. All India & export.`,
     keywords: [
-      ...CORE_KEYWORDS,
-      "electrical insulation manufacturer since 1977",
-      "ISO certified insulation manufacturer india",
-      "transformer insulation components chennai",
-      "custom insulation fabrication india",
-      "insulation components for motors india",
-      "switchgear insulation supplier india",
-      "electrical insulation manufacturer tamil nadu",
-      "best insulation company tamil nadu",
-      "pressboard sheets india",
-      "moulded pressboard components india",
+      "electrical insulation manufacturer chennai",
+      "electrical insulation company tamil nadu",
+      "pressboard manufacturer chennai",
+      "pre compressed pressboard manufacturer india",
+      "transformer insulation materials supplier",
+      "hitech insulation guindy",
     ],
+    path: "/",
     ogImage: "/hero/hitech_hero_bg.webp",
-    canonical: BASE_URL,
+  },
+
+  pressboard: {
+    title: "Pressboard Manufacturer in Chennai, India | Pre-Compressed Pressboard",
+    description:
+      "Electrical grade & pre-compressed pressboard sheets, machined and moulded components for transformers. Chennai manufacturer supplying all India & export.",
+    keywords: [
+      "pressboard manufacturer india",
+      "pressboard manufacturer chennai",
+      "pre compressed pressboard",
+      "pre compressed pressboard manufacturer",
+      "transformer pressboard",
+      "electrical insulation pressboard sheet",
+      "pressboard supplier tamil nadu",
+      "pressboard components for transformers",
+      "pressboard exporter india",
+    ],
+    path: "/pressboard",
+    ogImage: "/products/precompressed-pressboard.jpg",
   },
 
   products: {
-    title:
-      "Electrical Insulation Products | Pressboard, Epoxy Sheets, FR4, Mica, FRP | Hitech Insulation India",
+    title: "Electrical Insulation Products & Materials | Hitech Insulation Chennai",
     description:
-      "Complete electrical insulation product catalog from Hitech Insulation, Chennai. Pressboard sheets, pre-compressed pressboard, transformer insulation kits, moulded pressboard components, FR4/G10/G11 epoxy sheets, hylam, bakelite, kraft paper, FRP tubes/rods, mica sheets, PTFE, Nomex, and custom fabrication. ISO-certified manufacturer. Get quote in 24 hours.",
+      "Pressboard, pre-compressed pressboard, insulation kits, G10 epoxy, hylam, bakelite, kraft paper, FRP, mica, PTFE & custom parts. Quote in 24 hours.",
     keywords: [
-      ...CORE_KEYWORDS,
-      "electrical insulation products catalog india",
-      "pressboard sheets manufacturer india",
-      "FR4 epoxy sheet supplier india",
-      "G10 G11 epoxy laminate india",
-      "hylam sheet manufacturer india",
-      "bakelite sheet supplier india",
-      "FRP tubes rods india",
-      "mica sheet supplier chennai",
-      "kraft paper transformer india",
-      "nomex paper india",
-      "PTFE sheet supplier india",
-      "ESD epoxy sheet india",
-      "custom insulation gaskets india",
-      "insulation products transformer motor switchgear india",
+      "electrical insulation products",
+      "electrical insulation materials supplier india",
+      "transformer insulation materials",
+      "epoxy sheet supplier chennai",
+      "hylam sheet supplier chennai",
+      "frp rods supplier chennai",
     ],
+    path: "/products",
     ogImage: "/hero/product_hero.jpg",
-    canonical: `${BASE_URL}/products`,
   },
 
   about: {
-    title:
-      "About Hitech Insulation | Electrical Insulation Manufacturer Since 1977 | Chennai, India",
-    description:
-      "Hitech Insulation was founded in 1977 in Chennai, Tamil Nadu by Mr. Radhakrushnun. Over 47 years we have grown from an insulation trading company to a precision manufacturer supplying transformer, motor, and switchgear manufacturers across India. ISO-certified manufacturing facility. Trusted by leading electrical OEMs.",
+    title: `About Hitech Insulation | Chennai Insulation Manufacturer Since ${SITE.foundingYear}`,
+    description: `Founded in ${SITE.foundingYear} in Chennai, Hitech Insulation makes pressboard components and electrical insulation for transformer, motor & switchgear makers.`,
     keywords: [
-      ...CORE_KEYWORDS,
-      "about hitech insulation chennai",
-      "electrical insulation company history india",
-      "insulation manufacturer founded 1977",
-      "ISO certified electrical insulation india",
-      "transformer insulation manufacturer tamil nadu",
-      "electrical insulation OEM supplier india",
-      "precision insulation manufacturer chennai",
-      "insulation manufacturing company chennai",
+      "about hitech insulation",
+      "electrical insulation company chennai",
+      "insulation manufacturer since 1977",
     ],
+    path: "/about",
     ogImage: "/hero/about_hero.jpg",
-    canonical: `${BASE_URL}/about`,
   },
 
   industries: {
-    title: "Industries Served | Transformer, Motor, Switchgear Insulation Supplier India | Hitech",
+    title: "Transformer, Motor & Switchgear Insulation Supplier | Hitech",
     description:
-      "Hitech Insulation supplies precision electrical insulation to transformer manufacturers, motor industries, panel board and switchgear manufacturers, and bus duct system builders across India. Serving OEMs including Hitachi, Toyota, BHEL, Siemens, Schneider Electric, and Toshiba from our Chennai facility.",
+      "Insulation materials and components for power & distribution transformers, electric motors, switchgear, panel boards and bus ducts – supplied from Chennai across India.",
     keywords: [
-      ...CORE_KEYWORDS,
-      "transformer manufacturer insulation supplier india",
-      "motor insulation supplier india",
-      "switchgear insulation supplier india",
-      "panel board insulation manufacturer india",
-      "bus duct insulation india",
-      "electrical OEM insulation supplier india",
-      "BHEL insulation supplier",
-      "Siemens insulation supplier india",
-      "industrial insulation manufacturer chennai",
-      "electrical equipment insulation india",
+      "transformer insulation supplier india",
+      "motor insulation materials supplier",
+      "switchgear insulation supplier",
+      "bus duct insulation",
     ],
+    path: "/industries",
     ogImage: "/hero/product_hero.jpg",
-    canonical: `${BASE_URL}/industries`,
   },
 
   contact: {
-    title: "Contact Hitech Insulation | Get Quote for Electrical Insulation | Chennai, India",
-    description:
-      "Contact Hitech Insulation in Chennai, Tamil Nadu for electrical insulation products and custom fabrication. Get a quote within 24 hours for pressboard, epoxy sheets, transformer insulation kits, FRP components, and more. Email: srk@hitechinsulation.in. ISO-certified manufacturer since 1977.",
+    title: "Contact Hitech Insulation, Guindy Chennai | Get a Quote in 24 Hours",
+    description: `Call ${SITE.phoneDisplay} or email ${SITE.email} for pressboard and electrical insulation quotes. Industrial Estate, Guindy, Chennai 600032.`,
     keywords: [
-      ...CORE_KEYWORDS,
-      "contact hitech insulation chennai",
-      "electrical insulation quote india",
-      "get insulation quote chennai",
-      "pressboard quote india",
-      "transformer insulation supplier contact india",
-      "electrical insulation manufacturer contact chennai",
-      "insulation fabrication quote india",
-      "24 hour quote insulation india",
+      "hitech insulation contact",
+      "hitech insulation guindy",
+      "pressboard price quote",
+      "electrical insulation supplier near me",
     ],
+    path: "/contact",
     ogImage: "/hero/contact_hero.jpg",
-    canonical: `${BASE_URL}/contact`,
-  },
-
-  // Inside the pages Record in the new seo.ts, add:
-  productDetails: {
-    title:
-      "Electrical Insulation Product | Specifications & Applications | Hitech Insulation India",
-    description:
-      "Detailed specifications, applications, and engineering data for electrical insulation products manufactured in Chennai, India. Pressboard, epoxy laminates, FRP, mica, PTFE, and more. Get a quote in 24 hours.",
-    keywords: [
-      "electrical insulation product specifications india",
-      "transformer insulation material india",
-      "pressboard specifications india",
-      "epoxy insulation sheet specifications",
-      "custom electrical insulation india",
-      "electrical insulation manufacturer chennai",
-    ],
-    ogImage: "/hero/product_hero.jpg",
-    canonical: `${BASE_URL}/products`,
   },
 };
 
-export function getSeoMetadata(page: PageKey): Metadata {
-  const p = pages[page];
+interface BuildMetaInput {
+  title: string;
+  description: string;
+  path: string;
+  keywords?: string[];
+  ogImage?: string;
+  ogType?: "website" | "article";
+}
+
+export function buildMetadata({
+  title,
+  description,
+  path,
+  keywords = [],
+  ogImage = "/hero/hitech_hero_bg.webp",
+  ogType = "website",
+}: BuildMetaInput): Metadata {
+  const url = path === "/" ? BASE_URL : `${BASE_URL}${path}`;
 
   return {
-    title: p.title,
-    description: p.description,
-    keywords: p.keywords.join(", "),
-    authors: [{ name: BRAND, url: BASE_URL }],
-    creator: BRAND,
-    publisher: BRAND,
-    category: "Electrical Insulation Manufacturing",
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-snippet": -1,
-        "max-image-preview": "large",
-        "max-video-preview": -1,
-      },
-    },
-    alternates: {
-      canonical: p.canonical ?? BASE_URL,
-    },
+    title: { absolute: title },
+    description,
+    keywords: keywords.length ? keywords.join(", ") : undefined,
+    alternates: { canonical: url },
     openGraph: {
-      type: "website",
+      type: ogType,
       locale: "en_IN",
-      url: p.canonical ?? BASE_URL,
+      url,
       siteName: BRAND,
-      title: p.title,
-      description: p.description,
-      images: [
-        {
-          url: p.ogImage ?? "/hero/hitech_hero_bg.webp",
-          width: 1200,
-          height: 630,
-          alt: `${BRAND} – Electrical Insulation Manufacturer, Chennai`,
-        },
-      ],
+      title,
+      description,
+      images: [{ url: ogImage, alt: `${BRAND} – ${title}` }],
     },
     twitter: {
       card: "summary_large_image",
-      title: p.title,
-      description: p.description,
-      images: [p.ogImage ?? "/hero/hitech_hero_bg.webp"],
-      creator: "@hitechinsulation",
-    },
-    other: {
-      // Additional meta for local SEO
-      "geo.region": "IN-TN",
-      "geo.placename": "Chennai",
-      "geo.position": "13.0827;80.2707",
-      ICBM: "13.0827, 80.2707",
+      title,
+      description,
+      images: [ogImage],
     },
   };
 }
 
+export function getSeoMetadata(page: PageKey): Metadata {
+  const p = pages[page];
+  return buildMetadata(p);
+}
+
+/* ─────────────────────────────── Product pages ─────────────────────────────── */
+
 /**
- * JSON-LD structured data for the organisation.
- * Add this to layout.tsx via <script> tag for rich results.
+ * Hand-written titles/descriptions for the highest-value product pages.
+ * Everything else falls back to an auto-generated, unique title + description.
  */
-export const organisationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: BRAND,
-  alternateName: "Hitech Insulation Chennai",
-  url: BASE_URL,
-  logo: `${BASE_URL}/HITECHINSULATION.png`,
-  foundingDate: FOUNDED,
-  description:
-    "Hitech Insulation is a leading electrical insulation manufacturer based in Chennai, Tamil Nadu, India. Established in 1977, we manufacture and supply pressboard, transformer insulation kits, epoxy sheets, FRP components, mica products, and custom insulation fabrication to transformer, motor, and switchgear manufacturers across India.",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Chennai",
-    addressRegion: "Tamil Nadu",
-    addressCountry: "IN",
+const productSeoOverrides: Record<string, { title?: string; description?: string; keywords?: string[] }> = {
+  pressboard: {
+    title: "Electrical Grade Pressboard Sheets Manufacturer, Chennai | Hitech",
+    description:
+      "Transformer-grade pressboard sheets – full sheets, cut-to-size and machined parts. Pressboard manufacturer in Chennai supplying all India and export.",
+    keywords: [
+      "pressboard sheet",
+      "electrical pressboard",
+      "transformer pressboard sheet",
+      "insulation pressboard price",
+      "pressboard manufacturer chennai",
+    ],
   },
-  contactPoint: {
-    "@type": "ContactPoint",
-    email: "srk@hitechinsulation.in",
-    contactType: "sales",
-    areaServed: "IN",
-    availableLanguage: ["English", "Tamil"],
+  "pre-compressed-pressboard": {
+    title: "Pre-Compressed Pressboard Manufacturer in India | Hitech Insulation",
+    description:
+      "High-density pre-compressed pressboard sheets & blocks, 3–75 mm, for transformer spacers and clamping rings. CNC machined to drawing in Chennai.",
+    keywords: [
+      "pre compressed pressboard",
+      "precompressed pressboard manufacturer",
+      "high density pressboard",
+      "pre compressed board for transformer",
+      "pre compressed pressboard price",
+    ],
   },
-  sameAs: [],
-  knowsAbout: [
-    "Electrical Insulation",
-    "Transformer Insulation",
-    "Pressboard Manufacturing",
-    "Epoxy Laminates",
-    "FRP Components",
-    "Mica Products",
-    "PTFE Products",
-    "Custom Insulation Fabrication",
-  ],
+  "moulded-pressboard-components": {
+    title: "Moulded Pressboard Components – Angle Rings, Caps | Hitech Insulation",
+    description:
+      "Hot-moulded pressboard angle rings, snouts, lead exits, collars and caps for transformer windings. Made to drawing in Chennai.",
+  },
+  "transformer-insulation-kits": {
+    title: "Transformer Insulation Kits & Pressboard Components | Hitech",
+    description:
+      "Pressboard insulation kits for distribution & power transformers – spacers, blocks, cylinders, rings – made to drawing and kitted in Chennai.",
+  },
+};
+
+const trimTo = (text: string, max: number) =>
+  text.length <= max ? text : `${text.slice(0, max - 1).replace(/[\s,;–-]+\S*$/, "")}…`;
+
+export function getProductMetadata(slug: string, product: Product): Metadata {
+  const override = productSeoOverrides[slug] ?? {};
+  const shortName = product.name.split(" – ")[0];
+
+  const title = override.title ?? `${shortName} Supplier in Chennai, India | Hitech Insulation`;
+  const description =
+    override.description ??
+    trimTo(
+      `${product.shortDescription}. Hitech Insulation, Chennai – custom sizes, pan-India delivery, quote in 24 hours.`,
+      158
+    );
+
+  return buildMetadata({
+    title,
+    description,
+    path: `/products/${slug}`,
+    keywords: override.keywords ?? [
+      `${shortName.toLowerCase()} supplier chennai`,
+      `${shortName.toLowerCase()} manufacturer india`,
+      `${product.category.toLowerCase()} for transformers`,
+    ],
+    ogImage: getProductImage(slug),
+  });
+}
+
+/* ─────────────────────────────── Structured data ─────────────────────────────── */
+
+const ORG_ID = `${BASE_URL}/#organization`;
+const BUSINESS_ID = `${BASE_URL}/#localbusiness`;
+const WEBSITE_ID = `${BASE_URL}/#website`;
+
+const postalAddress = {
+  "@type": "PostalAddress",
+  streetAddress: SITE.address.street,
+  addressLocality: SITE.address.locality,
+  addressRegion: SITE.address.region,
+  postalCode: SITE.address.postalCode,
+  addressCountry: SITE.address.country,
 };
 
 /**
- * JSON-LD for local business — critical for Chennai/Tamil Nadu local search ranking.
+ * Site-wide JSON-LD graph: Organization + LocalBusiness + WebSite, linked by @id.
+ * This is what Google's Knowledge Graph and AI answer engines (ChatGPT, Perplexity,
+ * Gemini, Google AI Overviews) use to understand WHO the business is and WHERE it is.
  */
-export const localBusinessJsonLd = {
+export const siteJsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": `${BASE_URL}/#localbusiness`,
-  name: BRAND,
-  image: `${BASE_URL}/HITECHINSULATION.png`,
-  url: BASE_URL,
-  telephone: "",
-  email: "srk@hitechinsulation.in",
-  foundingDate: FOUNDED,
-  description:
-    "Best electrical insulation manufacturer in Chennai, India. Supplying pressboard, transformer insulation components, epoxy sheets, FRP products, and custom fabrication since 1977.",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Chennai",
-    addressRegion: "Tamil Nadu",
-    postalCode: "",
-    addressCountry: "IN",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 13.0827,
-    longitude: 80.2707,
-  },
-  openingHoursSpecification: {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    opens: "09:00",
-    closes: "18:00",
-  },
-  priceRange: "$$",
-  areaServed: [
-    { "@type": "State", name: "Tamil Nadu" },
-    { "@type": "State", name: "Maharashtra" },
-    { "@type": "State", name: "Gujarat" },
-    { "@type": "State", name: "Karnataka" },
-    { "@type": "State", name: "Andhra Pradesh" },
-    { "@type": "Country", name: "India" },
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": ORG_ID,
+      name: BRAND,
+      alternateName: SITE.alternateNames,
+      url: BASE_URL,
+      logo: { "@type": "ImageObject", url: `${BASE_URL}${SITE.logo}` },
+      foundingDate: String(SITE.foundingYear),
+      founder: { "@type": "Person", name: SITE.founder },
+      email: SITE.email,
+      telephone: SITE.phone,
+      address: postalAddress,
+      description: `Hitech Insulation is an electrical insulation manufacturer in Guindy, Chennai, Tamil Nadu, India, established in ${SITE.foundingYear}. It manufactures electrical grade pressboard, pre-compressed pressboard, machined and moulded pressboard components and transformer insulation kits, and supplies epoxy laminates, phenolic laminates, FRP, mica, PTFE and other insulation materials to transformer, motor and switchgear manufacturers across India and overseas.`,
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          telephone: SITE.phone,
+          email: SITE.email,
+          contactType: "sales",
+          areaServed: "Worldwide",
+          availableLanguage: ["English", "Tamil", "Hindi"],
+        },
+      ],
+      sameAs: sameAsLinks,
+      knowsAbout: [
+        "Electrical insulation",
+        "Transformer insulation",
+        "Electrical grade pressboard",
+        "Pre-compressed pressboard",
+        "Moulded pressboard components",
+        "Transformer insulation kits",
+        "Epoxy glass laminates",
+        "Phenolic laminates",
+        "FRP insulation components",
+        "Mica insulation",
+      ],
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": BUSINESS_ID,
+      name: BRAND,
+      alternateName: SITE.alternateNames,
+      parentOrganization: { "@id": ORG_ID },
+      url: BASE_URL,
+      image: `${BASE_URL}/hero/hitech_hero_bg.webp`,
+      logo: `${BASE_URL}${SITE.logo}`,
+      telephone: SITE.phone,
+      email: SITE.email,
+      foundingDate: String(SITE.foundingYear),
+      description:
+        "Pressboard and electrical insulation manufacturer in Guindy, Chennai. Pre-compressed pressboard, transformer insulation kits, pressboard components, epoxy, FRP and mica insulation.",
+      address: postalAddress,
+      geo: { "@type": "GeoCoordinates", latitude: SITE.geo.latitude, longitude: SITE.geo.longitude },
+      hasMap: SITE.profiles.googleBusiness,
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          opens: SITE.hours.opens,
+          closes: SITE.hours.closes,
+        },
+      ],
+      areaServed: [
+        { "@type": "City", name: "Chennai" },
+        { "@type": "State", name: "Tamil Nadu" },
+        { "@type": "State", name: "Karnataka" },
+        { "@type": "State", name: "Andhra Pradesh" },
+        { "@type": "State", name: "Telangana" },
+        { "@type": "State", name: "Kerala" },
+        { "@type": "State", name: "Maharashtra" },
+        { "@type": "State", name: "Gujarat" },
+        { "@type": "State", name: "Uttar Pradesh" },
+        { "@type": "State", name: "Delhi" },
+        { "@type": "State", name: "Haryana" },
+        { "@type": "State", name: "Punjab" },
+        { "@type": "State", name: "Rajasthan" },
+        { "@type": "State", name: "Madhya Pradesh" },
+        { "@type": "State", name: "West Bengal" },
+        { "@type": "Country", name: "India" },
+      ],
+      sameAs: sameAsLinks,
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Electrical Insulation Products",
+        itemListElement: Object.values(products).map((product) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Product",
+            name: product.name,
+            url: `${BASE_URL}/products/${product.id}`,
+          },
+        })),
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": WEBSITE_ID,
+      url: BASE_URL,
+      name: BRAND,
+      publisher: { "@id": ORG_ID },
+      inLanguage: "en-IN",
+    },
   ],
-  hasOfferCatalog: {
-  "@type": "OfferCatalog",
-  name: "Electrical Insulation Products",
-  itemListElement: Object.values(products).map((product, index) => ({
-    "@type": "ListItem",
-    position: index + 1,
-    name: product.name,
-    url: `${BASE_URL}/products/${product.id}`,
-  })),
-},
 };
 
-/**
- * JSON-LD breadcrumb helper — use on product and sub-pages.
- */
-export function breadcrumbJsonLd(crumbs: { name: string; url: string }[]) {
+export function breadcrumbJsonLd(crumbs: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -346,7 +369,42 @@ export function breadcrumbJsonLd(crumbs: { name: string; url: string }[]) {
       "@type": "ListItem",
       position: i + 1,
       name: crumb.name,
-      item: crumb.url,
+      item: crumb.path === "/" ? BASE_URL : `${BASE_URL}${crumb.path}`,
     })),
   };
 }
+
+export function productJsonLd(product: Product) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": `${BASE_URL}/products/${product.id}#product`,
+    name: product.name,
+    description: [product.shortDescription, ...product.description].join(" "),
+    image: `${BASE_URL}${getProductImage(product.id)}`,
+    url: `${BASE_URL}/products/${product.id}`,
+    category: product.category,
+    brand: { "@type": "Brand", name: BRAND },
+    manufacturer: { "@id": ORG_ID },
+    countryOfOrigin: "IN",
+    additionalProperty: product.specifications.map((spec) => ({
+      "@type": "PropertyValue",
+      name: spec.label,
+      value: spec.value,
+    })),
+  };
+}
+
+export function faqJsonLd(faqs: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+}
+
+export const companyAgeText = () => `${yearsInBusiness()}+`;

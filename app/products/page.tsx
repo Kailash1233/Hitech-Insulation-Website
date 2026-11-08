@@ -7,7 +7,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { allProducts as products, productCategories } from "@/lib/products";
 import { getProductImage } from "@/lib/product-images";
-import { getSeoMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd, getSeoMetadata } from "@/lib/seo";
+import { SITE, yearsInBusiness } from "@/lib/site";
 import type { Metadata } from "next";
 
 const productList = Object.values(products);
@@ -28,9 +29,31 @@ const skuCount = productList.length;
 
 export const metadata: Metadata = getSeoMetadata("products");
 
+const catalogJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Electrical insulation products by Hitech Insulation, Chennai",
+    itemListElement: productList.map((product, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: product.name,
+      url: `${SITE.url}/products/${product.id}`,
+    })),
+  },
+  breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+  ]),
+];
+
 export default function ProductsPage() {
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(catalogJsonLd) }}
+      />
       <Navigation />
 
       <section className="relative min-h-[90svh] flex items-center px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -38,7 +61,7 @@ export default function ProductsPage() {
         <div className="absolute inset-0">
           <Image
             src="/hero/product_hero.jpg"
-            alt="Electrical insulation products catalog"
+            alt="Electrical insulation products – pressboard, laminates and components by Hitech Insulation, Chennai"
             fill
             priority
             className="object-cover"
@@ -73,7 +96,7 @@ export default function ProductsPage() {
             className="font-display font-bold tracking-tight leading-tight
                    text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
           >
-            Complete Electrical Insulation Catalog
+            Electrical Insulation Products &amp; Materials
           </h1>
 
           {/* Subtext */}
@@ -115,7 +138,7 @@ export default function ProductsPage() {
           <div className="mt-12 sm:mt-14 border-t border-white/20 pt-8">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
               {[
-                { label: "47+ Years", description: "Manufacturing" },
+                { label: `${yearsInBusiness()}+ Years`, description: "Manufacturing" },
                 { label: "ISO", description: "Certified Plant" },
                 { label: `${skuCount} Products`, description: `Across ${categoryCount} families` },
                 { label: "24 hrs", description: "Quote turnaround" },
@@ -196,8 +219,9 @@ export default function ProductsPage() {
                     </p>
                   </div>
                   <Button asChild variant="outline" className="border-gray-200">
-                    <Link href="/contact">
-                      Request Samples <ArrowRight className="ml-2 h-4 w-4" />
+                    <Link href={group.category === "Pressboard" ? "/pressboard" : "/contact"}>
+                      {group.category === "Pressboard" ? "Pressboard Overview" : "Request Samples"}{" "}
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </div>

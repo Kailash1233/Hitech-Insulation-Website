@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Home, ChevronRight, FileText, Mail } from "lucide-react";
+import { ArrowRight, Home, ChevronRight, FileText, Mail, Phone, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -16,7 +16,8 @@ import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { allProducts as products } from "@/lib/products";
 import { getProductImage } from "@/lib/product-images";
-import { getSeoMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, getProductMetadata, getSeoMetadata, productJsonLd } from "@/lib/seo";
+import { SITE } from "@/lib/site";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -34,11 +35,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = products[slug];
   if (!product) {
-    return getSeoMetadata("productDetails");
+    return getSeoMetadata("products");
   }
 
-  return getSeoMetadata("productDetails");
+  return getProductMetadata(slug, product);
 }
+
+export const dynamicParams = false;
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -54,20 +57,47 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     .map((id) => products[id])
     .filter(Boolean);
 
+  const isPressboard = product.category === "Pressboard";
+  const jsonLd = [
+    productJsonLd(product),
+    breadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Products", path: "/products" },
+      ...(isPressboard ? [{ name: "Pressboard", path: "/pressboard" }] : []),
+      { name: product.name, path: `/products/${product.id}` },
+    ]),
+    ...(product.faqs?.length ? [faqJsonLd(product.faqs)] : []),
+  ];
+
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navigation />
 
       <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
-            <Link href="/" className="hover:text-blue-900 flex items-center">
+          <nav
+            aria-label="Breadcrumb"
+            className="flex items-center space-x-2 text-sm text-gray-600 mb-8"
+          >
+            <Link href="/" className="hover:text-blue-900 flex items-center" aria-label="Home">
               <Home className="h-4 w-4" />
             </Link>
             <ChevronRight className="h-4 w-4" />
             <Link href="/products" className="hover:text-blue-900">
               Products
             </Link>
+            {isPressboard && (
+              <>
+                <ChevronRight className="h-4 w-4" />
+                <Link href="/pressboard" className="hover:text-blue-900">
+                  Pressboard
+                </Link>
+              </>
+            )}
             <ChevronRight className="h-4 w-4" />
             <span className="text-gray-900">{product.name}</span>
           </nav>
@@ -78,7 +108,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <div className="relative h-96 w-full rounded-lg mb-6 overflow-hidden border-2 border-gray-200 bg-gray-100">
                   <Image
                     src={getProductImage(product.id)}
-                    alt={`${product.name} - ${product.category} electrical insulation material`}
+                    alt={`${product.name} – ${product.category} supplied by Hitech Insulation, Chennai`}
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -188,11 +218,44 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                         Email Technical Team
                       </a>
                     </Button>
+                    <Button variant="outline" asChild>
+                      <a href={SITE.phoneHref}>
+                        <Phone className="mr-2 h-4 w-4" />
+                        {SITE.phoneDisplay}
+                      </a>
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
             </div>
           </div>
+
+          {product.faqs && product.faqs.length > 0 && (
+            <section aria-labelledby="product-faq-heading" className="mb-16 max-w-4xl">
+              <h2
+                id="product-faq-heading"
+                className="font-display text-3xl font-bold text-gray-900 mb-8"
+              >
+                {product.name} – FAQs
+              </h2>
+              <div className="space-y-4">
+                {product.faqs.map((item) => (
+                  <details
+                    key={item.q}
+                    className="group bg-white border-2 border-gray-100 rounded-xl overflow-hidden"
+                  >
+                    <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer list-none font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+                      <span>{item.q}</span>
+                      <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 group-open:rotate-45 transition-transform" />
+                    </summary>
+                    <div className="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                      {item.a}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
 
           {relatedProductsData.length > 0 && (
             <div>

@@ -1,136 +1,22 @@
-// import Link from 'next/link';
-// import { Mail, MapPin, Instagram, Facebook, Youtube } from 'lucide-react';
-
-// export function Footer() {
-//   return (
-//     <footer className="bg-gray-900 text-gray-300">
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-//           <div>
-//             <h3 className="text-white font-bold text-lg mb-4">Quick Links</h3>
-//             <ul className="space-y-2">
-//               <li>
-//                 <Link href="/#products" className="hover:text-white transition-colors">
-//                   All Products
-//                 </Link>
-//               </li>
-//               <li>
-//                 <Link href="/#about" className="hover:text-white transition-colors">
-//                   About Us
-//                 </Link>
-//               </li>
-//               <li>
-//                 <Link href="/#quote" className="hover:text-white transition-colors">
-//                   Request Quote
-//                 </Link>
-//               </li>
-//               <li>
-//                 <Link href="/#contact" className="hover:text-white transition-colors">
-//                   Technical Support
-//                 </Link>
-//               </li>
-//             </ul>
-//           </div>
-
-//           <div>
-//             <h3 className="text-white font-bold text-lg mb-4">Products</h3>
-//             <ul className="space-y-2">
-//               <li>
-//                 <Link href="/products/pressboard-3mm" className="hover:text-white transition-colors">
-//                   Pressboard
-//                 </Link>
-//               </li>
-//               <li>
-//                 <Link href="/products/fr4-epoxy-sheet" className="hover:text-white transition-colors">
-//                   Epoxy Sheets
-//                 </Link>
-//               </li>
-//               <li>
-//                 <Link href="/products/paper-phenolic" className="hover:text-white transition-colors">
-//                   Phenolic Laminates
-//                 </Link>
-//               </li>
-//               <li>
-//                 <Link href="/products/ptfe-sheet" className="hover:text-white transition-colors">
-//                   PTFE Products
-//                 </Link>
-//               </li>
-//               <li>
-//                 <Link href="/products/custom-gaskets" className="hover:text-white transition-colors">
-//                   Custom Components
-//                 </Link>
-//               </li>
-//             </ul>
-//           </div>
-
-//           <div>
-//             <h3 className="text-white font-bold text-lg mb-4">Industries</h3>
-//             <ul className="space-y-2">
-//               <li className="hover:text-white transition-colors cursor-pointer">
-//                 Transformer Manufacturers
-//               </li>
-//               <li className="hover:text-white transition-colors cursor-pointer">
-//                 Motor Industry
-//               </li>
-//               <li className="hover:text-white transition-colors cursor-pointer">
-//                 Panel Boards
-//               </li>
-//               <li className="hover:text-white transition-colors cursor-pointer">
-//                 Switchgear
-//               </li>
-//             </ul>
-//           </div>
-
-//           <div>
-//             <h3 className="text-white font-bold text-lg mb-4">Contact</h3>
-//             <ul className="space-y-3">
-//               <li className="flex items-start space-x-2">
-//                 <Mail className="h-5 w-5 mt-0.5 flex-shrink-0" />
-//                 <a
-//                   href="mailto:srk@hitechinsulation.in"
-//                   className="hover:text-white transition-colors"
-//                 >
-//                   srk@hitechinsulation.in
-//                 </a>
-//               </li>
-//               <li className="flex items-start space-x-2">
-//                 <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0" />
-//                 <span>Chennai, Tamil Nadu, India</span>
-//               </li>
-//               <li className="flex space-x-4 mt-4">
-//                 <a href="#" className="hover:text-white transition-colors">
-//                   <Instagram className="h-5 w-5" />
-//                 </a>
-//                 <a href="#" className="hover:text-white transition-colors">
-//                   <Facebook className="h-5 w-5" />
-//                 </a>
-//                 <a href="#" className="hover:text-white transition-colors">
-//                   <Youtube className="h-5 w-5" />
-//                 </a>
-//               </li>
-//             </ul>
-//           </div>
-//         </div>
-
-//         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-//           <p className="text-sm text-center md:text-left">
-//             © 2025 Hitech Insulation. Established 1977
-//           </p>
-//           <p className="text-sm text-center md:text-right">
-//             ISO Certified • Made in India • Shipped Globally
-//           </p>
-//         </div>
-//       </div>
-//     </footer>
-//   );
-// }
-
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, MapPin, Instagram, Facebook, Youtube, ArrowRight } from "lucide-react";
+import { Mail, MapPin, Phone, Instagram, Facebook, Youtube, Linkedin, ArrowRight } from "lucide-react";
+import { SITE, yearsInBusiness } from "@/lib/site";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { profiles } = SITE;
+  const socials = [
+    { href: profiles.instagram, label: "Instagram", Icon: Instagram },
+    { href: profiles.facebook, label: "Facebook", Icon: Facebook },
+    { href: profiles.linkedin, label: "LinkedIn", Icon: Linkedin },
+    { href: profiles.youtube, label: "YouTube", Icon: Youtube },
+  ].filter((s) => s.href);
+  const listings = [
+    { href: profiles.googleBusiness, label: "Google" },
+    { href: profiles.indiamart, label: "IndiaMART" },
+    { href: profiles.justdial, label: "Justdial" },
+  ];
 
   return (
     <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-gray-300">
@@ -170,8 +56,9 @@ export function Footer() {
               />
             </div>
             <p className="text-gray-400 leading-relaxed mb-6 max-w-sm">
-              Manufacturing precision electrical insulation components since 1977. Trusted by
-              India&apos;s leading transformer, motor, and switchgear manufacturers.
+              Pressboard and electrical insulation manufacturer in Guindy, Chennai since 1977 –{" "}
+              {yearsInBusiness()} years of supplying transformer, motor, and switchgear
+              manufacturers across India and overseas.
             </p>
 
             {/* Trust Badges */}
@@ -233,10 +120,26 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
+                  href="/pressboard"
+                  className="text-gray-400 hover:text-white transition-colors flex items-center group"
+                >
+                  Pressboard Manufacturer
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/products/pre-compressed-pressboard"
                   className="text-gray-400 hover:text-white transition-colors flex items-center group"
                 >
-                  Pressboard
+                  Pre-Compressed Pressboard
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/products/transformer-insulation-kits"
+                  className="text-gray-400 hover:text-white transition-colors flex items-center group"
+                >
+                  Transformer Insulation Kits
                 </Link>
               </li>
               <li>
@@ -252,7 +155,7 @@ export function Footer() {
                   href="/products/paper-phenolic"
                   className="text-gray-400 hover:text-white transition-colors flex items-center group"
                 >
-                  Bakelite Laminates
+                  Hylam &amp; Phenolic Laminates
                 </Link>
               </li>
               <li>
@@ -287,40 +190,55 @@ export function Footer() {
                   <span className="text-sm break-all">srk@hitechinsulation.in</span>
                 </a>
               </li>
+              <li>
+                <a
+                  href={SITE.phoneHref}
+                  className="text-gray-400 hover:text-white transition-colors flex items-start gap-3 group"
+                >
+                  <Phone className="h-5 w-5 mt-0.5 flex-shrink-0 text-blue-500 group-hover:text-blue-400" />
+                  <span className="text-sm">{SITE.phoneDisplay}</span>
+                </a>
+              </li>
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0 text-blue-500" />
-                <span className="text-sm text-gray-400">
-                  Chennai, Tamil Nadu,
+                <address className="text-sm text-gray-400 not-italic">
+                  {SITE.name}, {SITE.address.street},
                   <br />
-                  India
-                </span>
+                  {SITE.address.locality} – {SITE.address.postalCode}, {SITE.address.region}, India
+                </address>
               </li>
               <li>
                 <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 mt-6">
-                  Follow Us
+                  Find Us Online
                 </p>
-                <div className="flex gap-3">
-                  <a
-                    href="#"
-                    className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all hover:scale-110"
-                    aria-label="Instagram"
-                  >
-                    <Instagram className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="#"
-                    className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all hover:scale-110"
-                    aria-label="Facebook"
-                  >
-                    <Facebook className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="#"
-                    className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all hover:scale-110"
-                    aria-label="YouTube"
-                  >
-                    <Youtube className="h-5 w-5" />
-                  </a>
+                {socials.length > 0 && (
+                  <div className="flex gap-3 mb-3">
+                    {socials.map(({ href, label, Icon }) => (
+                      <a
+                        key={label}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all hover:scale-110"
+                        aria-label={label}
+                      >
+                        <Icon className="h-5 w-5" />
+                      </a>
+                    ))}
+                  </div>
+                )}
+                <div className="flex flex-wrap gap-2">
+                  {listings.map(({ href, label }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-gray-800 hover:bg-blue-600 px-3 py-1.5 rounded-full text-xs font-semibold text-gray-300 hover:text-white border border-gray-700 transition-colors"
+                    >
+                      {label}
+                    </a>
+                  ))}
                 </div>
               </li>
             </ul>
@@ -329,11 +247,12 @@ export function Footer() {
 
         <div className="border-t border-gray-800 pt-8 pb-12 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-500 leading-7 text-center max-w-6xl mx-auto">
-            Hitech Insulation is a leading manufacturer and supplier of electrical insulation
-            materials including Pressboard, Nomex Paper, Kraft Paper, FR4 Epoxy Sheets, Bakelite
+            Hitech Insulation, Guindy, Chennai is a leading manufacturer and supplier of electrical
+            insulation materials including Pressboard, Pre-Compressed Pressboard, Nomex Paper, Kraft Paper, FR4 Epoxy Sheets, Bakelite
             Sheets, PTFE Sheets, FRP Components, Mica Products, Polyester Films, Transformer
             Insulation Kits and Custom Electrical Insulation Components serving transformer,
-            switchgear, motor, generator and electrical equipment manufacturers across India.
+            switchgear, motor, generator and electrical equipment manufacturers across Tamil Nadu,
+            South India, North India and export markets.
           </p>
         </div>
 
